@@ -1,0 +1,37 @@
+
+
+
+context CAEX!CAEXFile
+{
+	constraint HasAdditionalInformation
+	{
+		check:	not self.AdditionalInformation.isEmpty()
+		
+		message : self.filename + ": No element <AdditionalInformation> available"
+	}
+}
+
+
+
+context CAEX!AdditionalInformation
+{
+	constraint HasAutomationMLVersionAttribute
+	{
+		guard: self.eContainer.satisfies("HasAdditionalInformation")
+	
+		check:	self.eContents.println().at(0).println().hasProperty("name").println() and
+		        self.eContents.println().at(0).println().name.println() = "AutomationMLVersion"
+		
+		message : self.eContainer.filename + ": No Attribute <AdditionalInformation>.AutomationMLVersion available"
+	}
+	
+	
+	constraint HasCorrectAutomationMLVersion
+	{
+		guard: self.satisfies("HasAutomationMLVersionAttribute")
+		
+		check: self.value = AutomationMLVersion
+		
+		message : self.eContainer.filename + ": <AdditionalInformation>.AutomationMLVersion wrong"	
+	}
+}

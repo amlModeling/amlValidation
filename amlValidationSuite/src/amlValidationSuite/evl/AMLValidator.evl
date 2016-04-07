@@ -1,0 +1,176 @@
+import "AMLValidatorConstants.evl";
+import "AMLValidatorDocumentVersions.evl";
+
+
+
+
+
+
+
+
+/*******************************************************************************************************/
+
+
+
+
+context CAEX!CAEXObject
+{ 
+	constraint HasName
+	{
+		guard: self.isTypeOf(InterfaceClassLib) or 
+		       self.isTypeOf(SystemUnitClassLib) or 
+		       self.isTypeOf(RoleClassLib)
+	
+		check: self.name.isDefined()
+		
+		message: self + ": Name not defined"
+	}
+	
+	
+	constraint HasVersion
+	{
+		/* Every AML standard library and every user defined AML library shall define its version
+		   number utilizing the CAEX element “Version”. The syntax of the value of the version number
+		   is not defined in this part of IEC 62714. */
+		   
+		guard: self.isTypeOf(InterfaceClassLib) or 
+		       self.isTypeOf(SystemUnitClassLib) or 
+		       self.isTypeOf(RoleClassLib)
+	
+		check: self.version.isDefined()
+		
+		message: self + ": Version not defined"	
+	}	
+}
+
+/*******************************************************************************************************/
+
+
+context CAEX!CAEXFile
+{	
+	
+	constraint SchemaVersion
+	{
+		check:	self.fileName.IsEmpty() = false and self.schemaVersion = CAEXSChemaVersion
+		
+		message : self + ": Attribut \"schemaVersion\" wrong"
+	}	
+	
+} 
+
+
+/*******************************************************************************************************/
+
+context CAEX!RoleClassLib
+{
+	constraint IsNameUnique
+	{
+		/*  According to IEC 62424:2008, A.2.2.1, AML classes (RoleClasses, InterfaceClasses and
+			SystemUnitClasses) shall be identified by their CAEX tag “Name”. */
+			
+		guard: self.satisfies("HasName")
+	
+		check: self.roleClass.forAll(e1 | self.roleClass.forAll(e2 | e1 <> e2 
+				implies e1.name <> e2.name))
+				
+		message : self + ": Name not unique"	
+	}
+}
+
+/*******************************************************************************************************/
+
+context CAEX!InterfaceClassLib
+{
+	constraint IsNameUnique
+	{
+		/*  According to IEC 62424:2008, A.2.2.1, AML classes (RoleClasses, InterfaceClasses and
+			SystemUnitClasses) shall be identified by their CAEX tag “Name”. */
+			
+		guard: self.satisfies("HasName")
+		
+		check: self.interfaceClass.forAll(e1 | self.interfaceClass.forAll(e2 | e1 <> e2 
+				implies e1.name <> e2.name))
+	
+		message : self.name + ": Name not unique"	
+	}	
+	
+	
+	
+	
+}
+
+/*******************************************************************************************************/
+
+context CAEX!SystemUnitClassLib
+{
+	constraint IsNameUnique
+	{
+		/*  According to IEC 62424:2008, A.2.2.1, AML classes (RoleClasses, InterfaceClasses and
+			SystemUnitClasses) shall be identified by their CAEX tag “Name”. */
+			
+		guard: self.satisfies("HasName")
+		
+		check: self.systemUnitClass.forAll(e1 | self.systemUnitClass.forAll(e2 | e1 <> e2 
+				implies e1.name <> e2.name)) 				
+	
+		message : self.name + ": Name not unique"	
+	}
+}
+
+
+/*******************************************************************************************************/
+
+
+context CAEX!InstanceHierarchy
+{	
+
+	constraint IsIDUnique
+	{
+		check: self.AreIDsUnique()	
+		message : self + ": ID's are not unique"
+	}
+}
+
+operation InstanceHierarchy AreIDsUnique() : Boolean{
+	
+	var seqIDs : Sequence;	
+	var internalElements : Sequence;
+	
+	//self.println();
+	
+	internalElements = self.getAllInteralElements();
+		
+	seqIDs.addAll(internalElements -> collect(e | e.iD));	
+	seqIDs.addAll(internalElements.externalInterface-> collect (e | e.iD).flatten());
+	
+	//seqIDs.println();
+
+	return IsUnique(seqIDs);
+}
+
+
+
+operation IsUnique(sequ : Sequence): Boolean{
+	var keyMap : Map;
+	
+	for (id : String in sequ)
+	{
+		if (not keyMap.containsKey(id)) //If id is not already in keymap we add it
+		{	
+			keyMap.put(id, null);		
+		}
+		else
+		{
+			return false;
+		}	
+	}
+	
+	return true;
+}
+
+
+
+ 
+
+
+
