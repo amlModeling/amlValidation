@@ -123,7 +123,7 @@ public class CAEXFileImpl extends CAEXBasicObjectImpl implements CAEXFile {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String SCHEMA_VERSION_EDEFAULT = "2.15";
+	protected static final String SCHEMA_VERSION_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getSchemaVersion() <em>Schema Version</em>}' attribute.

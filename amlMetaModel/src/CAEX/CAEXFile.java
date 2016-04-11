@@ -139,7 +139,7 @@ public interface CAEXFile extends CAEXBasicObject {
 
 	/**
 	 * Returns the value of the '<em><b>Schema Version</b></em>' attribute.
-	 * The default value is <code>"2.15"</code>.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -150,7 +150,7 @@ public interface CAEXFile extends CAEXBasicObject {
 	 * @see #unsetSchemaVersion()
 	 * @see #setSchemaVersion(String)
 	 * @see CAEX.CAEXPackage#getCAEXFile_SchemaVersion()
-	 * @model default="2.15" unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
+	 * @model default="" unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='attribute' name='SchemaVersion' namespace='##targetNamespace'"
 	 * @generated
 	 */

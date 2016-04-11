@@ -26,6 +26,8 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -96,20 +98,41 @@ public class AMLValidationSuite {
 		
 		transformer.transformModelsToXMI(config.getModelPath(), model, modelHierarchy);		
 		registerModelsAtModule();		
+		
+		
 	};
+	
+	private void setParametersToEVL(Map<String, String> parameter)
+	{
+		Iterator<Entry<String, String>> it = parameter.entrySet().iterator();
+		Variable actVar = null;
+		
+		
+		while(it.hasNext())
+		{
+			Entry<String, String> entry = it.next();
+			
+			actVar = new Variable(entry.getKey(), entry.getValue(), EolPrimitiveType.String);
+			module.getContext().getFrameStack().put(actVar);			
+		}
+	}
 	
 	
 	private void registerModelsAtModule() throws FileNotFoundException 
 	{
 		AMLValidationSuiteHelper helper = AMLValidationSuiteHelper.getInstance();
 		IModel iRootModel = null;
+		Map<String, String> parameter = null;
 		
 		models = modelHierarchy.getModels();
 		referencedModels = modelHierarchy.getReferencedModels();
 		
 		
 		helper.createModels(models, mapModels);
-		helper.createModels(referencedModels, mapModels);		
+		helper.createModels(referencedModels, mapModels);	
+		
+		//Has to be done before interlink
+		parameter = helper.readParameterForEVL(mapModels.get(rootModel));
 		
 		helper.interlinkModels(models, mapModels, modelHierarchy);		
 		helper.refreshLinkedModels(models, mapModels);		
@@ -117,7 +140,11 @@ public class AMLValidationSuite {
 		iRootModel = mapModels.get(rootModel);		
 			
 		module.getContext().getModelRepository().addModel(iRootModel);
+		
+		setParametersToEVL(parameter);
 	}
+	
+	
 	
 	
 	public Collection<UnsatisfiedConstraint> execute(String modelPath, String model) throws IOException, EolRuntimeException 

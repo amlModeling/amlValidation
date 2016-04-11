@@ -78,7 +78,7 @@ public class InstanceHierarchyImpl extends CAEXObjectImpl implements InstanceHie
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public EList<InternalElement> getAllInteralElements() {
 		// TODO: implement this method

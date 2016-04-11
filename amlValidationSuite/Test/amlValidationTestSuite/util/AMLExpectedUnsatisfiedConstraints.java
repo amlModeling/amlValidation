@@ -52,17 +52,30 @@ public class AMLExpectedUnsatisfiedConstraints {
 	public boolean containsAll(AMLExpectedUnsatisfiedConstraints rhs)
 	{
 		Iterator<AMLExpectedUnsatisfiedConstraint> it = rhs.constraints.iterator();
+		AMLExpectedUnsatisfiedConstraint akt = null;
 		boolean contains = true;
 		
 		while(it.hasNext())
 		{
-			contains = contains && constraints.contains(it.next());
-		}
+			akt = it.next();
+			contains = contains && constraints.contains(akt);
+		}		
 		
-		
-		return contains;
-		
+		return contains;		
 	}	
 	
+	@Override
+	public String toString()
+	{
+		Iterator<AMLExpectedUnsatisfiedConstraint> it = constraints.iterator();
+		StringBuffer buf = new StringBuffer();
+		
+		while(it.hasNext())
+		{
+			buf.append(it.next().toString()).append("\n");
+		}
+		
+		return buf.toString();
+	}
 
 }

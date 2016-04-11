@@ -42,9 +42,13 @@ public class AMLExpectedUnsatisfiedConstraint {
 	public boolean contains(AMLExpectedUnsatisfiedConstraint rhs)
 	{
 		return this.message.equals(rhs.message) &&
-			    this.name.equals(rhs.name);
-		
-		
+			    this.name.equals(rhs.name);		
+	}
+	
+	@Override
+	public String toString()
+	{
+		return "Constraint: " + getName() + " Message: " + getMessage();				
 	}
 	
 	

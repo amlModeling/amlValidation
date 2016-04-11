@@ -1,0 +1,17 @@
+
+
+
+context CAEX!CAEXFile
+{
+	
+	constraint HasElementAdditionalInformation
+	{
+		/* The CAEX root element “CAEXFile” of each AML top level document shall have the CAEX
+		child element “AdditionalInformation”.												*/		
+	
+		check:	not self.additionalInformation.isEmpty()
+		
+		message : self.filename + ": No element <AdditionalInformation> defined"
+	}	
+
+}

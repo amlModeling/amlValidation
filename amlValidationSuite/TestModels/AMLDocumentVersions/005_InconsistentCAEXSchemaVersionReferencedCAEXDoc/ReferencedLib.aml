@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<CAEXFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" FileName="ReferencedLib.aml" SchemaVersion="2.16" xsi:noNamespaceSchemaLocation="CAEX_ClassModel_V2.15.xsd">
+	<AdditionalInformation AutomationMLVersion="2.0"/>
+</CAEXFile>

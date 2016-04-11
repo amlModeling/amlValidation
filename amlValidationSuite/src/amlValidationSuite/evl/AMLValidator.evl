@@ -1,4 +1,6 @@
 import "AMLValidatorConstants.evl";
+
+import "AMLValidatorCommon.evl";
 import "AMLValidatorDocumentVersions.evl";
 
 
@@ -27,36 +29,12 @@ context CAEX!CAEXObject
 	}
 	
 	
-	constraint HasVersion
-	{
-		/* Every AML standard library and every user defined AML library shall define its version
-		   number utilizing the CAEX element “Version”. The syntax of the value of the version number
-		   is not defined in this part of IEC 62714. */
-		   
-		guard: self.isTypeOf(InterfaceClassLib) or 
-		       self.isTypeOf(SystemUnitClassLib) or 
-		       self.isTypeOf(RoleClassLib)
 	
-		check: self.version.isDefined()
-		
-		message: self + ": Version not defined"	
-	}	
 }
 
 /*******************************************************************************************************/
 
 
-context CAEX!CAEXFile
-{	
-	
-	constraint SchemaVersion
-	{
-		check:	self.fileName.IsEmpty() = false and self.schemaVersion = CAEXSChemaVersion
-		
-		message : self + ": Attribut \"schemaVersion\" wrong"
-	}	
-	
-} 
 
 
 /*******************************************************************************************************/

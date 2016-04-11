@@ -65,9 +65,7 @@ public class AMLModelTransformer {
 		{
 			DocumentBuilder db = dbf.newDocumentBuilder();
 			
-			//Todo: HACK 
-			if(!model.equals("Testcase_doNotTransform"))
-				serializer.writeXMI(xmlFile, resourceSet, xmiFile);			
+			serializer.writeXMI(xmlFile, resourceSet, xmiFile);			
 		
 			Document doc = db.parse(new FileInputStream(xmlFile));
 			
@@ -106,7 +104,7 @@ public class AMLModelTransformer {
 		{
 			modelPath = attrib.substring(0, attrib.lastIndexOf("/")+1);
 			refModel = attrib.substring(attrib.lastIndexOf("/")+1);
-			refModel = refModel.substring(0, refModel.length()-4); //.aml abschneiden			
+						
 		}
 		else
 		{
@@ -114,25 +112,13 @@ public class AMLModelTransformer {
 			modelPath = "";			
 		}
 		
+		refModel = refModel.substring(0, refModel.length()-4); //.aml abschneiden
+		
 		amlExternalReference.setModelPath(modelPath);
 		amlExternalReference.setRefModel(refModel);
 		amlExternalReference.setAlias(xmlExternalRef.getAttribute("Alias"));		
 		
 		return amlExternalReference;
 	}
-	
-	
-	private void addModelToModelHierarchy(String model, AMLExternalReference externalRef, HashMap<String, ArrayList<String>> modelHierarchy)
-	{
-		
-		
-		
-		
-	}
-	
-	
-	
-	
-	
 
 }

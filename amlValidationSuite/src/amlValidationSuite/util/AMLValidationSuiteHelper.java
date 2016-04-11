@@ -5,10 +5,13 @@ import java.io.FileNotFoundException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.epsilon.common.parse.problem.ParseProblem;
 import org.eclipse.epsilon.common.util.StringProperties;
 import org.eclipse.epsilon.emc.emf.EmfModel;
@@ -20,8 +23,10 @@ import org.eclipse.epsilon.eol.models.IModel;
 import org.eclipse.epsilon.eol.models.IRelativePathResolver;
 import org.eclipse.epsilon.evl.EvlModule;
 
+import CAEX.AdditionalInformation;
 import CAEX.CAEXFile;
 import CAEX.ExternalReference;
+import GenericAnyType.GenericAttribute;
 import amlValidationSuite.AMLValidationSuite;
 
 public class AMLValidationSuiteHelper {
@@ -262,9 +267,46 @@ public class AMLValidationSuiteHelper {
 	public void refreshLinkedModels(List<String> models, HashMap<String, EmfModel> mapModels) throws FileNotFoundException
 	{
 		disposeModels(models, mapModels);		
-		createModels(models, mapModels);
-		
+		createModels(models, mapModels);		
 	}
-
-
+	
+	public Map<String, String> readParameterForEVL(EmfModel rootModel)
+	{
+		HashMap<String, String> variables = new HashMap<String, String>();
+		List<GenericAttribute> listAdditionalInf = null;
+		Iterator<GenericAttribute> itAdditionalInf = null;
+		List<CAEXFile> listCAEXFile = null;
+		Iterator<CAEXFile> itCAEXFile = null;
+		IModel model = rootModel;
+		GenericAttribute actAddInf = null;
+		CAEXFile caexFile = null;
+		
+		try {
+			listAdditionalInf = (List<GenericAttribute>) model.getAllOfType("GenericAttribute");
+			itAdditionalInf = listAdditionalInf.iterator();
+			
+			while(itAdditionalInf.hasNext())
+			{
+				actAddInf = itAdditionalInf.next();
+				
+				if(actAddInf.getName().equals("AutomationMLVersion"))
+					variables.put("RootModelAutomationMLVersion", actAddInf.getValue());				
+			}
+			
+			listCAEXFile = (List<CAEXFile>) model.getAllOfType("CAEXFile");
+			itCAEXFile = listCAEXFile.iterator();
+			
+			while(itCAEXFile.hasNext())
+			{
+				caexFile = itCAEXFile.next();
+				variables.put("RootModelCAEXSchemaVersion", caexFile.getSchemaVersion());				
+			}
+		} catch (EolModelElementTypeNotFoundException e) {
+			//No additionalInformation in rootModel -> EVL will report that
+		}
+		
+		
+		
+		return variables;
+	}
 }
