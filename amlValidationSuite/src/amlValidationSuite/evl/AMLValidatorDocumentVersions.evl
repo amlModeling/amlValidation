@@ -3,31 +3,18 @@ import "AMLValidatorUtils.evl";
 
 
 context CAEX!CAEXFile
-{	
-	
+{		
 	constraint HasAttributeAutomationMLVersion
 	{
 		/* The element “AdditionalInformation” shall have an attribute “AutomationMLVersion”. */
 		
 		guard: self.satisfies("HasElementAdditionalInformation")
 		
-		check
-		{ 
-			/* As every CAEX document needs an AutomationMLVersion, 
-			   we use all instances of AdditionalInformation (attention - linked CAEX documents)
-			   and check if there is AutomationMLVersion available in every file */
-			
-			var automationMLVersion = CAEX!AdditionalInformation.allInstances.
-				select(inst| inst.hasAttribute("AutomationMLVersion") and 
-				             inst.eContainer.fileName = self.fileName);
-						
-			return automationMLVersion.size() = 1;		
-		}
+		check: self.additionalInformation.hasGenericElement("AutomationMLVersion")
 		
 		message : self.filename + ": No Attribute <AdditionalInformation>.AutomationMLVersion defined"
 	}
-	
-	
+		
 	
 	constraint HasCorrectAutomationMLVersion
 	{
@@ -39,27 +26,13 @@ context CAEX!CAEXFile
 		
 		check
 		{ 
-			/* As every CAEX document needs an AutomationMLVersion, 
-			   we use all instances of AdditionalInformation (attention - linked caex caex documents)
-			   and check if AutomationMLVersion is correct in every file */
-			
-			var additionalInformations = CAEX!AdditionalInformation.allInstances.
-				select(inst| inst.getAttributeValue("AutomationMLVersion") = AutomationMLVersion and 
-							 inst.eContainer.fileName = self.fileName);
-		
-			return additionalInformations.size() = 1;		
-		}
-		  
+			var documentAMLVersion = self.additionalInformation.getGenericElement("AutomationMLVersion").value;			
+			return documentAMLVersion = AutomationMLVersion;		
+		}		  
 		
 		message
-		{
-			var additionalInformations =  CAEX!AdditionalInformation.allInstances.
-				select(inst| inst.getAttributeValue("AutomationMLVersion") <> "" and 
-							 inst.eContainer.fileName = self.fileName);
-			
-			var incorrectAMLVersion = additionalInformations.attributes.at(0).at(0).value;
-							 
-			return self.filename + ": <AdditionalInformation>.AutomationMLVersion '" + incorrectAMLVersion + "' found - Expected: '" + AutomationMLVersion	+ "'";
+		{									 
+			return self.filename + ": <AdditionalInformation>.AutomationMLVersion '" + documentAMLVersion + "' found - Expected: '" + AutomationMLVersion	+ "'";
 		} 
 	}
 	
@@ -74,24 +47,14 @@ context CAEX!CAEXFile
 		
 		check 
 		{
-			var additionalInformations = CAEX!AdditionalInformation.allInstances.
-				select(inst| inst.getAttributeValue("AutomationMLVersion") = RootModelAutomationMLVersion and 
-							 inst.eContainer.fileName = self.fileName);
-		
-			return additionalInformations.size() = 1;	
+			var documentAMLVersion = self.additionalInformation.getGenericElement("AutomationMLVersion").value; 
+			return documentAMLVersion = RootModelAutomationMLVersion;		
 		}	
 		
 		message
-		{
-			var additionalInformations =  CAEX!AdditionalInformation.allInstances.
-				select(inst| inst.getAttributeValue("AutomationMLVersion") <> "" and 
-							 inst.eContainer.fileName = self.fileName);
-			
-			var incorrectAMLVersion = additionalInformations.attributes.at(0).at(0).value;
-							 
-			return self.filename + ": <AdditionalInformation>.AutomationMLVersion '" + incorrectAMLVersion + "' not consistent with RootModel-AutomationMLVersion - Expected: '" + RootModelAutomationMLVersion	+ "'";
-		}	
-			
+		{							 
+			return self.filename + ": <AdditionalInformation>.AutomationMLVersion '" + documentAMLVersion + "' not consistent with RootModel-AutomationMLVersion - Expected: '" + RootModelAutomationMLVersion	+ "'";
+		}				
 	}
 
 
@@ -116,12 +79,11 @@ context CAEX!CAEXFile
 		
 		check 
 		{
-			var actCAEXSchemaVersion = self.schemaVersion;
-			
-			return actCAEXSchemaVersion = RootModelCAEXSchemaVersion;	
+			var documentCAEXSchemaVersion = self.schemaVersion;			
+			return documentCAEXSchemaVersion = RootModelCAEXSchemaVersion;	
 		}	
 	
-		message : self.filename + ": <CAEXFile>.SchemaVersion '" + actCAEXSchemaVersion + "' not consistent with RootModel-SchemaVersion - Expected: '" + RootModelCAEXSchemaVersion	+ "'"	
+		message : self.filename + ": <CAEXFile>.SchemaVersion '" + documentCAEXSchemaVersion + "' not consistent with RootModel-SchemaVersion - Expected: '" + RootModelCAEXSchemaVersion	+ "'"	
 	}	
 } 
 

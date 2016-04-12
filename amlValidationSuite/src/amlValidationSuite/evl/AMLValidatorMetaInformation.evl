@@ -20,19 +20,8 @@ context CAEX!CAEXFile
 		
 		guard: self.satisfies("HasElementAdditionalInformation")
 		
-		check
-		{ 
-			/* As every CAEX document needs an WriterHeader, 
-			   we use all instances of AdditionalInformation (attention - linked CAEX documents)
-			   and check if there is WriterHeader available in every file */
-			
-			var writerHeader = CAEX!AdditionalInformation.allInstances.
-				select(inst| inst.hasAttribute("WriterHeader") and 
-				             inst.eContainer.fileName = self.fileName);
-						
-			return writerHeader.size() = 1;		
-		}
-		
+		check: self.additionalInformation.hasGenericElement("WriterHeader")
+				
 		message : self.filename + ": No Element <WriterHeader> defined"
 	}	
 	
@@ -40,18 +29,7 @@ context CAEX!CAEXFile
 	{
 		guard: self.satisfies("HasElementWriterHeader")
 		
-		check
-		{ 
-			/* As every CAEX document needs an WriterName, 
-			   we use all instances of AdditionalInformation (attention - linked CAEX documents)
-			   and check if there is WriterHeader available in every file */
-			
-			var writerHeader = CAEX!AdditionalInformation.allInstances.
-				select(inst| inst.hasAttribute("WriterName") and 
-				             inst.eContainer.fileName = self.fileName);
-						
-			return writerHeader.size() = 1;
-		}
+		check: self.additionalInformation.hasGenericElement("WriterName")
 		
 		message: self.filename + ": No Element <WriterName> defined"	
 	}
@@ -60,18 +38,7 @@ context CAEX!CAEXFile
 	{
 		guard: self.satisfies("HasElementWriterHeader")
 		
-		check
-		{ 
-			/* As every CAEX document needs an WriterName, 
-			   we use all instances of AdditionalInformation (attention - linked CAEX documents)
-			   and check if there is WriterHeader available in every file */
-			
-			var writerHeader = CAEX!AdditionalInformation.allInstances.
-				select(inst| inst.hasAttribute("WriterID") and 
-				             inst.eContainer.fileName = self.fileName);
-						
-			return writerHeader.size() = 1;
-		}
+		check: self.additionalInformation.hasGenericElement("WriterID")
 		
 		message: self.filename + ": No Element <WriterID> defined"
 	
@@ -81,18 +48,7 @@ context CAEX!CAEXFile
 	{
 		guard: self.satisfies("HasElementWriterHeader")
 		
-		check
-		{ 
-			/* As every CAEX document needs an WriterName, 
-			   we use all instances of AdditionalInformation (attention - linked CAEX documents)
-			   and check if there is WriterHeader available in every file */
-			
-			var writerHeader = CAEX!AdditionalInformation.allInstances.
-				select(inst| inst.hasAttribute("WriterVendor") and 
-				             inst.eContainer.fileName = self.fileName);
-						
-			return writerHeader.size() = 1;	
-		}
+		check: self.additionalInformation.hasGenericElement("WriterVendor")
 		
 		message: self.filename + ": No Element <WriterVendor> defined"
 	
@@ -102,18 +58,7 @@ context CAEX!CAEXFile
 	{
 		guard: self.satisfies("HasElementWriterHeader")
 		
-		check
-		{ 
-			/* As every CAEX document needs an WriterName, 
-			   we use all instances of AdditionalInformation (attention - linked CAEX documents)
-			   and check if there is WriterHeader available in every file */
-			
-			var writerHeader = CAEX!AdditionalInformation.allInstances.
-				select(inst| inst.hasAttribute("WriterVendorURL") and 
-				             inst.eContainer.fileName = self.fileName);
-						
-			return writerHeader.size() = 1;
-		}
+		check: self.additionalInformation.hasGenericElement("WriterVendorURL")
 		
 		message: self.filename + ": No Element <WriterVendorURL> defined"
 	
@@ -123,18 +68,7 @@ context CAEX!CAEXFile
 	{
 		guard: self.satisfies("HasElementWriterHeader")
 		
-		check
-		{ 
-			/* As every CAEX document needs an WriterName, 
-			   we use all instances of AdditionalInformation (attention - linked CAEX documents)
-			   and check if there is WriterHeader available in every file */
-			
-			var writerHeader = CAEX!AdditionalInformation.allInstances.
-				select(inst| inst.hasAttribute("WriterVersion") and 
-				             inst.eContainer.fileName = self.fileName);
-						
-			return writerHeader.size() = 1;		
-		}
+		check: self.additionalInformation.hasGenericElement("WriterVersion")
 		
 		message: self.filename + ": No Element <WriterVersion> defined"
 	
@@ -144,18 +78,7 @@ context CAEX!CAEXFile
 	{
 		guard: self.satisfies("HasElementWriterHeader")
 		
-		check
-		{ 
-			/* As every CAEX document needs an WriterName, 
-			   we use all instances of AdditionalInformation (attention - linked CAEX documents)
-			   and check if there is WriterHeader available in every file */
-			
-			var writerHeader = CAEX!AdditionalInformation.allInstances.
-				select(inst| inst.hasAttribute("WriterRelease") and 
-				             inst.eContainer.fileName = self.fileName);
-						
-			return writerHeader.size() = 1;
-		}
+		check: self.additionalInformation.hasGenericElement("WriterRelease")
 		
 		message: self.filename + ": No Element <WriterRelease> defined"
 	
@@ -165,18 +88,7 @@ context CAEX!CAEXFile
 	{
 		guard: self.satisfies("HasElementWriterHeader")
 		
-		check
-		{ 
-			/* As every CAEX document needs an WriterName, 
-			   we use all instances of AdditionalInformation (attention - linked CAEX documents)
-			   and check if there is WriterHeader available in every file */
-			
-			var writerHeader = CAEX!AdditionalInformation.allInstances.
-				select(inst| inst.hasAttribute("LastWritingDateTime") and 
-				             inst.eContainer.fileName = self.fileName);
-						
-			return writerHeader.size() = 1;	
-		}
+		check: self.additionalInformation.hasGenericElement("LastWritingDateTime")
 		
 		message: self.filename + ": No Element <LastWritingDateTime> defined"
 	
@@ -186,16 +98,7 @@ context CAEX!CAEXFile
 	{
 		guard: self.satisfies("HasLastWritingDateTime")
 		
-		check
-		{ 
-			/* Last WritingDateTime is of Type xs:DateTime */
-			
-			var writerHeader = CAEX!AdditionalInformation.allInstances.
-				select(inst| inst.getAttributeValue("LastWritingDateTime") <> "" and 
-				             inst.eContainer.fileName = self.fileName);
-						
-			return writerHeader.at(0).nestedElements.println().size() = 1;	
-		}
+		check: self.additionalInformation.hasGenericElement("LastWritingDateTime")
 		
 		message: self.filename + ": No Element <LastWritingDateTime> defined"
 	

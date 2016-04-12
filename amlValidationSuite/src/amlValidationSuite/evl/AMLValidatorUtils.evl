@@ -1,128 +1,52 @@
 
-operation GenericElement getGenericElement(elementName : String) : GenericElement
+operation Set getGenericElement(name : String) : Element
 {
 	var i : Integer = 0;
-	var ret : GenericElement = null;	
+	var j : Integer = 0;
+	var ret : Element = null;	
+	var act : GenericElement = null;	
 	
-	if(self.name = elementName)
-		ret = self;
-		
-	while (ret = null and i < self.nestedElements.size())
+	while(i < self.size() and ret = null)
 	{
-		ret = (self.nestedElements.at(i)).getNestedElement(elementName);
-		i = i + 1;				
-	}
-	
-	return ret;
-}
-
-
-
-operation GenericElement hasAttribute(attributeName : String) : Boolean
-{
-	var i : Integer = 0;
-	var ret : Boolean = false;	
-	
-	if(self.name = attributeName)
-		ret =  true;
-		
-	while (ret <> true and i < self.attributes.size())
-	{
-		if(self.attributes.at(i).name = attributeName)
-		{
-			ret = true;	
-			break;		
+		//Check if Set is filled with correct Type
+		if(self.at(i).isKindOf(Element)) 		
+		{		
+			act = self.at(i);
+						
+			if(act.name = name)
+			{
+				ret = act;
+				break;
+			}
+			else
+			{
+				while (ret = null and j < act.attributes.size())
+				{
+					if(act.attributes.at(j).name = name)
+					{
+						ret = act.attributes.at(j);	
+						break;		
+					}
+					j = j + 1;
+				}		
+			
+				if(ret = null)
+				{		
+					ret = act.nestedElements.getGenericElement(name);
+				}						
+			}
+			
+			i = i +1;
 		}
-		i = i + 1;
 	}	
-	
-	
-	if(ret <> true and not self.nestedElements.isEmpty())
-	{
-		i = 0;
-		
-		while (ret <> true and i < self.nestedElements.size())
-		{
-			i = i + 1;
-			ret = (self.nestedElements.at(i - 1)).hasAttribute(attributeName);			
-		}		
-	}
-	
-	return ret;
-}
-
-
-operation GenericElement getAttributeValue(attributeName : String) : String
-{
-	var i : Integer = 0;
-	var found : Boolean = false;
-	var ret : String = "";
-	
-	if(self.name = attributeName)
-	{
-		found =  true;
-		ret = self.value;	
-	}
-		
-		
-	while (found <> true and i < self.attributes.size())
-	{
-		
-		if(self.attributes.at(i).name = attributeName)
-		{
-			found = true;
-			ret = self.attributes.at(i).value;	
-			break;		
-		}
-		i = i + 1;
-	}	
-	
-	
-	if(found <> true and not self.nestedElements.isEmpty())
-	{
-		i = 0;
-		
-		while (ret = "" and i < self.nestedElements.size())
-		{
-			i = i + 1;
-			ret = (self.nestedElements.at(i - 1)).getAttributeValue(attributeName);			
-		}		
-	}
-	
+			
 	return ret;
 }
 
 
 
-
-
-
-operation isAutomationMLVersion_GenericElement(element : GenericAnyType) : Boolean
+operation Set hasGenericElement(name : String) : Boolean
 {
-	return true;
-
-
-
-
-}
-
-
-operation isWriteHeader_GenericElement(element : GenericAnyType) : Boolean
-{
-
-	return true;
-
-
-}
-
-
-
-
-
-operation hasGenericChildElements(element : GenericAnyType) : Boolean
-{
-
-
-
+	return self.getGenericElement(name) <> null;
 
 }
