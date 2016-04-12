@@ -3,8 +3,9 @@ import "AMLValidatorUtils.evl";
 
 
 context CAEX!CAEXFile
-{	
-	
+{		
+	//called multiple times from WriterHeader subitems -> therefore cached operation
+	@cached 
 	constraint HasElementWriterHeader
 	{
 		/* In a data exchange tool chain, all participating tools shall store this information in the
@@ -31,7 +32,103 @@ context CAEX!CAEXFile
 		}
 		
 		message : self.filename + ": No Element <WriterHeader> defined"
+	}	
+}
+
+
+context CAEX!AdditionalInformation
+{
+	constraint HasWriterName
+	{
+		guard: self.eContainer.satisfies("HasElementWriterHeader")
+		
+		check: self.hasAttribute("WriterName")
+		
+		message: self.eContainer.filename + ": No Element <WriterName> defined"
+	
+	}
+	/*
+	constraint HasWriterID
+	{
+		guard: self.eContainer.satisfies("HasElementWriterHeader")
+		
+		check: self.hasAttribute("WriterID")
+		
+		message: self.eContainer.filename + ": No Element <WriterID> defined"
+	
 	}
 	
+	constraint HasVendor
+	{
+		guard: self.eContainer.satisfies("HasElementWriterHeader")
+		
+		check: self.hasAttribute("WriterVendor")
+		
+		message: self.eContainer.filename + ": No Element <WriterVendor> defined"
 	
+	}
+	
+	constraint HasVendorURL
+	{
+		guard: self.eContainer.satisfies("HasElementWriterHeader")
+		
+		check: self.hasAttribute("WriterVendorURL")
+		
+		message: self.eContainer.filename + ": No Element <WriterVendorURL> defined"
+	
+	}
+	
+	constraint HasVersion
+	{
+		guard: self.eContainer.satisfies("HasElementWriterHeader")
+		
+		check: self.hasAttribute("WriterVersion")
+		
+		message: self.eContainer.filename + ": No Element <WriterVersion> defined"
+	
+	}
+	
+	constraint HasWriterRelease
+	{
+		guard: self.eContainer.satisfies("HasElementWriterHeader")
+		
+		check: self.hasAttribute("WriterRelease")
+		
+		message: self.eContainer.filename + ": No Element <WriterRelease> defined"
+	
+	}
+	
+	constraint HasLastWritingDateTime
+	{
+		guard: self.eContainer.satisfies("HasElementWriterHeader")
+		
+		check: self.hasAttribute("LastWritingDateTime")
+		
+		message: self.eContainer.filename + ": No Element <LastWritingDateTime> defined"
+	
+	}
+	
+	constraint HasWriterProjectTitle
+	{
+		guard: self.eContainer.satisfies("HasElementWriterHeader")
+		
+		check: self.hasAttribute("WriterProjectTitle")
+		
+		message: self.eContainer.filename + ": No Element <WriterProjectTitle> defined"
+	
+	}
+	
+	constraint HasWriterProjectID
+	{
+		guard: self.eContainer.satisfies("HasElementWriterHeader")
+		
+		check: self.hasAttribute("WriterProjectID")
+		
+		message: self.eContainer.filename + ": No Element <WriterProjectID> defined"
+	
+	}
+	*/
+
+
+
 }

@@ -3,7 +3,7 @@
 operation GenericElement hasAttribute(attributeName : String) : Boolean
 {
 	var i : Integer = 0;
-	var ret : Boolean = false;
+	var ret : Boolean = false;	
 	
 	if(self.name = attributeName)
 		ret =  true;
