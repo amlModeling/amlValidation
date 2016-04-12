@@ -9,6 +9,8 @@ context CAEX!CAEXFile
 	{
 		/* The element “AdditionalInformation” shall have an attribute “AutomationMLVersion”. */
 		
+		guard: self.satisfies("HasElementAdditionalInformation")
+		
 		check
 		{ 
 			/* As every CAEX document needs an AutomationMLVersion, 

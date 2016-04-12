@@ -5,7 +5,7 @@ import "AMLValidatorUtils.evl";
 context CAEX!CAEXFile
 {		
 	//called multiple times from WriterHeader subitems -> therefore cached operation
-	@cached 
+	 
 	constraint HasElementWriterHeader
 	{
 		/* In a data exchange tool chain, all participating tools shall store this information in the
@@ -17,6 +17,8 @@ context CAEX!CAEXFile
 		   object of the CAEX document.
 	       • The AdditionalInfomation block shall be named “WriterHeader”.
 		*/
+		
+		guard: self.satisfies("HasElementAdditionalInformation")
 		
 		check
 		{ 
@@ -33,26 +35,43 @@ context CAEX!CAEXFile
 		
 		message : self.filename + ": No Element <WriterHeader> defined"
 	}	
-}
-
-
-context CAEX!AdditionalInformation
-{
+	
 	constraint HasWriterName
 	{
-		guard: self.eContainer.satisfies("HasElementWriterHeader")
+		guard: self.satisfies("HasElementWriterHeader")
 		
-		check: self.hasAttribute("WriterName")
+		check
+		{ 
+			/* As every CAEX document needs an WriterName, 
+			   we use all instances of AdditionalInformation (attention - linked CAEX documents)
+			   and check if there is WriterHeader available in every file */
+			
+			var writerHeader = CAEX!AdditionalInformation.allInstances.
+				select(inst| inst.hasAttribute("WriterName") and 
+				             inst.eContainer.fileName = self.fileName);
+						
+			return writerHeader.size() = 1;
+		}
 		
-		message: self.eContainer.filename + ": No Element <WriterName> defined"
-	
+		message: self.filename + ": No Element <WriterName> defined"	
 	}
-	/*
+	
 	constraint HasWriterID
 	{
 		guard: self.eContainer.satisfies("HasElementWriterHeader")
 		
-		check: self.hasAttribute("WriterID")
+		check
+		{ 
+			/* As every CAEX document needs an WriterName, 
+			   we use all instances of AdditionalInformation (attention - linked CAEX documents)
+			   and check if there is WriterHeader available in every file */
+			
+			var writerHeader = CAEX!AdditionalInformation.allInstances.
+				select(inst| inst.hasAttribute("WriterID") and 
+				             inst.eContainer.fileName = self.fileName);
+						
+			return writerHeader.size() = 1;
+		}
 		
 		message: self.eContainer.filename + ": No Element <WriterID> defined"
 	
@@ -62,7 +81,18 @@ context CAEX!AdditionalInformation
 	{
 		guard: self.eContainer.satisfies("HasElementWriterHeader")
 		
-		check: self.hasAttribute("WriterVendor")
+		check
+		{ 
+			/* As every CAEX document needs an WriterName, 
+			   we use all instances of AdditionalInformation (attention - linked CAEX documents)
+			   and check if there is WriterHeader available in every file */
+			
+			var writerHeader = CAEX!AdditionalInformation.allInstances.
+				select(inst| inst.hasAttribute("WriterVendor") and 
+				             inst.eContainer.fileName = self.fileName);
+						
+			return writerHeader.size() = 1;	
+		}
 		
 		message: self.eContainer.filename + ": No Element <WriterVendor> defined"
 	
@@ -72,7 +102,18 @@ context CAEX!AdditionalInformation
 	{
 		guard: self.eContainer.satisfies("HasElementWriterHeader")
 		
-		check: self.hasAttribute("WriterVendorURL")
+		check
+		{ 
+			/* As every CAEX document needs an WriterName, 
+			   we use all instances of AdditionalInformation (attention - linked CAEX documents)
+			   and check if there is WriterHeader available in every file */
+			
+			var writerHeader = CAEX!AdditionalInformation.allInstances.
+				select(inst| inst.hasAttribute("WriterVendorURL") and 
+				             inst.eContainer.fileName = self.fileName);
+						
+			return writerHeader.size() = 1;
+		}
 		
 		message: self.eContainer.filename + ": No Element <WriterVendorURL> defined"
 	
@@ -82,7 +123,18 @@ context CAEX!AdditionalInformation
 	{
 		guard: self.eContainer.satisfies("HasElementWriterHeader")
 		
-		check: self.hasAttribute("WriterVersion")
+		check
+		{ 
+			/* As every CAEX document needs an WriterName, 
+			   we use all instances of AdditionalInformation (attention - linked CAEX documents)
+			   and check if there is WriterHeader available in every file */
+			
+			var writerHeader = CAEX!AdditionalInformation.allInstances.
+				select(inst| inst.hasAttribute("WriterVersion") and 
+				             inst.eContainer.fileName = self.fileName);
+						
+			return writerHeader.size() = 1;		
+		}
 		
 		message: self.eContainer.filename + ": No Element <WriterVersion> defined"
 	
@@ -92,7 +144,18 @@ context CAEX!AdditionalInformation
 	{
 		guard: self.eContainer.satisfies("HasElementWriterHeader")
 		
-		check: self.hasAttribute("WriterRelease")
+		check
+		{ 
+			/* As every CAEX document needs an WriterName, 
+			   we use all instances of AdditionalInformation (attention - linked CAEX documents)
+			   and check if there is WriterHeader available in every file */
+			
+			var writerHeader = CAEX!AdditionalInformation.allInstances.
+				select(inst| inst.hasAttribute("WriterRelease") and 
+				             inst.eContainer.fileName = self.fileName);
+						
+			return writerHeader.size() = 1;
+		}
 		
 		message: self.eContainer.filename + ": No Element <WriterRelease> defined"
 	
@@ -102,7 +165,18 @@ context CAEX!AdditionalInformation
 	{
 		guard: self.eContainer.satisfies("HasElementWriterHeader")
 		
-		check: self.hasAttribute("LastWritingDateTime")
+		check
+		{ 
+			/* As every CAEX document needs an WriterName, 
+			   we use all instances of AdditionalInformation (attention - linked CAEX documents)
+			   and check if there is WriterHeader available in every file */
+			
+			var writerHeader = CAEX!AdditionalInformation.allInstances.
+				select(inst| inst.hasAttribute("LastWritingDateTime") and 
+				             inst.eContainer.fileName = self.fileName);
+						
+			return writerHeader.size() = 1;	
+		}
 		
 		message: self.eContainer.filename + ": No Element <LastWritingDateTime> defined"
 	
@@ -112,7 +186,18 @@ context CAEX!AdditionalInformation
 	{
 		guard: self.eContainer.satisfies("HasElementWriterHeader")
 		
-		check: self.hasAttribute("WriterProjectTitle")
+		check
+		{ 
+			/* As every CAEX document needs an WriterName, 
+			   we use all instances of AdditionalInformation (attention - linked CAEX documents)
+			   and check if there is WriterHeader available in every file */
+			
+			var writerHeader = CAEX!AdditionalInformation.allInstances.
+				select(inst| inst.hasAttribute("WriterProjectTitle") and 
+				             inst.eContainer.fileName = self.fileName);
+						
+			return writerHeader.size() = 1;	
+		}
 		
 		message: self.eContainer.filename + ": No Element <WriterProjectTitle> defined"
 	
@@ -122,13 +207,22 @@ context CAEX!AdditionalInformation
 	{
 		guard: self.eContainer.satisfies("HasElementWriterHeader")
 		
-		check: self.hasAttribute("WriterProjectID")
+		check
+		{ 
+			/* As every CAEX document needs an WriterName, 
+			   we use all instances of AdditionalInformation (attention - linked CAEX documents)
+			   and check if there is WriterHeader available in every file */
+			
+			var writerHeader = CAEX!AdditionalInformation.allInstances.
+				select(inst| inst.hasAttribute("WriterProjectID") and 
+				             inst.eContainer.fileName = self.fileName);
+						
+			return writerHeader.size() = 1;	
+		}
 		
 		message: self.eContainer.filename + ": No Element <WriterProjectID> defined"
 	
 	}
-	*/
-
-
-
 }
+
+

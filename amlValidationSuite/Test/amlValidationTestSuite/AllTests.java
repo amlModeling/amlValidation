@@ -5,7 +5,7 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({})
+@SuiteClasses({AMLCommon.class, AMLDocumentVersions.class, AMLMetaInformation.class})
 public class AllTests {
 
 }
