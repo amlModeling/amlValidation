@@ -1,0 +1,37 @@
+import "AMLValidatorUtils.evl";
+
+
+
+context CAEX!CAEXFile
+{	
+	
+	constraint HasElementWriterHeader
+	{
+		/* In a data exchange tool chain, all participating tools shall store this information in the
+		   CAEX document in the same way. Hence, the document may contain information about
+		   multiple tools of a data exchange tool chain.A tool may remove the writer information of
+		   other tools. This may hinder the iterative data exchange with the other tools: hence the
+		   removal of writer information of other tools is not recommended.
+		   • This information shall be stored as part of the CAEX AdditionalInformation of the root
+		   object of the CAEX document.
+	       • The AdditionalInfomation block shall be named “WriterHeader”.
+		*/
+		
+		check
+		{ 
+			/* As every CAEX document needs an WriterHeader, 
+			   we use all instances of AdditionalInformation (attention - linked CAEX documents)
+			   and check if there is WriterHeader available in every file */
+			
+			var writerHeader = CAEX!AdditionalInformation.allInstances.
+				select(inst| inst.hasAttribute("WriterHeader") and 
+				             inst.eContainer.fileName = self.fileName);
+						
+			return writerHeader.size() = 1;		
+		}
+		
+		message : self.filename + ": No Element <WriterHeader> defined"
+	}
+	
+	
+}
