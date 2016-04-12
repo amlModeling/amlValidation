@@ -117,6 +117,17 @@ public class AMLDocumentVersions {
 	}
 	
 	
+	@Test
+	public void Test_100_Valid() throws Exception 
+	{
+		String modelPath = TestModelPath + "100_Valid\\";		
+				
+		actual = new AMLExpectedUnsatisfiedConstraints(validationSuite.execute(modelPath, "Testcase"));
+		
+		Assert.assertTrue(actual.containsAll(expected)&& expected.containsAll(actual));		
+	}
+	
+	
 	
 //	
 //	

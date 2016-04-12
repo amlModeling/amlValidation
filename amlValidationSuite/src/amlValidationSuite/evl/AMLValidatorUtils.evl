@@ -34,75 +34,45 @@ operation GenericElement hasAttribute(attributeName : String) : Boolean
 }
 
 
-
-
-
-/*
-
-operation GenericElement hasAttribute(attributeName : String) : Boolean
-{
-	var i : Integer = 0;
-	var ret : Boolean;
-	var elementContents : Sequence;
-	
-	elementContents = self.eContents();
-	
-	ret = false;
-			
-	while (i < elementContents.size())
-	{
-		if(elementContents.at(i).name = attributeName)
-		{
-			ret = true;
-			break;
-		}
-		i = i + 1;
-	}	
-	
-	if(ret <> true and not self.nestedElements.isEmpty())
-	{
-		//Check nested elements recursive 
-		return (self.nestedElements).hasAttribute(attributeName);		
-	}
-	
-	return ret;
-}
-
-*/
-
-// Liefert Wert von 1. Fund mit attributNamen attributeName
 operation GenericElement getAttributeValue(attributeName : String) : String
 {
 	var i : Integer = 0;
-	var ret : String;
-	var bFound : Boolean;
-	var elementContents : Sequence;
+	var found : Boolean = false;
+	var ret : String = "";
 	
-	elementContents = self.eContents();
-	
-	ret = "";
-	bFound = false;
-			
-	while (i < elementContents.size())
+	if(self.name = attributeName)
 	{
-		if(elementContents.at(i).name = attributeName)
+		found =  true;
+		ret = self.value;	
+	}
+		
+		
+	while (found <> true and i < self.attributes.size())
+	{
+		
+		if(self.attributes.at(i).name = attributeName)
 		{
-			ret = elementContents.at(i).value;
-			bFound = true;
-			break;
+			found = true;
+			ret = self.attributes.at(i).value;	
+			break;		
 		}
 		i = i + 1;
-	}
-	
-	if(bFound <> true and not self.nestedElements.isEmpty())
-	{
-		//Check nested elements recursive 
-		return (self.nestedElements).getAttributeValue(attributeName);		
 	}	
+	
+	
+	if(found <> true and not self.nestedElements.isEmpty())
+	{
+		i = 0;
+		
+		while (ret = "" and i < self.nestedElements.size())
+		{
+			i = i + 1;
+			ret = (self.nestedElements.at(i - 1)).getAttributeValue(attributeName);			
+		}		
+	}
 	
 	return ret;
 }
-
 
 
 

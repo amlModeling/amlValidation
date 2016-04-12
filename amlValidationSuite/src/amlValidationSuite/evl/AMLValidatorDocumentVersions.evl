@@ -3,7 +3,97 @@ import "AMLValidatorUtils.evl";
 
 
 context CAEX!CAEXFile
-{		
+{	
+	
+	constraint HasAttributeAutomationMLVersion
+	{
+		/* The element “AdditionalInformation” shall have an attribute “AutomationMLVersion”. */
+		
+		check
+		{ 
+			/* As every CAEX document needs an AutomationMLVersion, 
+			   we use all instances of AdditionalInformation (attention - linked CAEX documents)
+			   and check if there is AutomationMLVersion available in every file */
+			
+			var automationMLVersion = CAEX!AdditionalInformation.allInstances.
+				select(inst| inst.hasAttribute("AutomationMLVersion") and 
+				             inst.eContainer.fileName = self.fileName);
+						
+			return automationMLVersion.size() = 1;		
+		}
+		
+		message : self.filename + ": No Attribute <AdditionalInformation>.AutomationMLVersion defined"
+	}
+	
+	
+	
+	constraint HasCorrectAutomationMLVersion
+	{
+		/* The value of this attribute “AutomationMLVersion” shall be stored in the XML document. It
+		   shall be “2.0” to correspond to this standard. 
+		*/ 
+		
+		guard: self.satisfies("HasAttributeAutomationMLVersion")
+		
+		check
+		{ 
+			/* As every CAEX document needs an AutomationMLVersion, 
+			   we use all instances of AdditionalInformation (attention - linked caex caex documents)
+			   and check if AutomationMLVersion is correct in every file */
+			
+			var additionalInformations = CAEX!AdditionalInformation.allInstances.
+				select(inst| inst.getAttributeValue("AutomationMLVersion") = AutomationMLVersion and 
+							 inst.eContainer.fileName = self.fileName);
+		
+			return additionalInformations.size() = 1;		
+		}
+		  
+		
+		message
+		{
+			var additionalInformations =  CAEX!AdditionalInformation.allInstances.
+				select(inst| inst.getAttributeValue("AutomationMLVersion") <> "" and 
+							 inst.eContainer.fileName = self.fileName);
+			
+			var incorrectAMLVersion = additionalInformations.attributes.at(0).at(0).value;
+							 
+			return self.filename + ": <AdditionalInformation>.AutomationMLVersion '" + incorrectAMLVersion + "' found - Expected: '" + AutomationMLVersion	+ "'";
+		} 
+	}
+	
+	
+	constraint HasAutomationMLVersionOfRootModel
+	{
+		/* Every referenced CAEX document shall follow the same AML version of the root document.
+		   Mixing of documents with different AML versions is explicitly forbidden.
+		*/
+			
+		guard: self.satisfies("HasAttributeAutomationMLVersion")
+		
+		check 
+		{
+			var additionalInformations = CAEX!AdditionalInformation.allInstances.
+				select(inst| inst.getAttributeValue("AutomationMLVersion") = RootModelAutomationMLVersion and 
+							 inst.eContainer.fileName = self.fileName);
+		
+			return additionalInformations.size() = 1;	
+		}	
+		
+		message
+		{
+			var additionalInformations =  CAEX!AdditionalInformation.allInstances.
+				select(inst| inst.getAttributeValue("AutomationMLVersion") <> "" and 
+							 inst.eContainer.fileName = self.fileName);
+			
+			var incorrectAMLVersion = additionalInformations.attributes.at(0).at(0).value;
+							 
+			return self.filename + ": <AdditionalInformation>.AutomationMLVersion '" + incorrectAMLVersion + "' not consistent with RootModel-AutomationMLVersion - Expected: '" + RootModelAutomationMLVersion	+ "'";
+		}	
+			
+	}
+
+
+	
 	constraint HasCorrectCAEXSchemaVersion
 	{
 		/* IEC 62714 is based on the following document formats:
@@ -51,15 +141,15 @@ context CAEX!CAEXObject
 		{
 			if(self.isTypeOf(InterfaceClassLib))
 			{
-				return self.name + ": <InterfaceClassLib>.Version is not defined";			
+				return self.eContainer.filename + ": <InterfaceClassLib>.Version is not defined";			
 			}else			
 			if(self.isTypeOf(SystemUnitClassLib))
 			{
-				return self.name + ": <SystemUnitClassLib>.Version is not defined";			
+				return self.eContainer.filename + ": <SystemUnitClassLib>.Version is not defined";			
 			}else			
 			if(self.isTypeOf(RoleClassLib))
 			{
-				return self.name + ": <RoleClassLib>.Version is not defined";			
+				return self.eContainer.filename + ": <RoleClassLib>.Version is not defined";			
 			}		
 		}	
 	}
@@ -71,69 +161,9 @@ context CAEX!CAEXObject
 
 context CAEX!AdditionalInformation
 {
-	constraint HasAttributeAutomationMLVersion
-	{
-		/* The element “AdditionalInformation” shall have an attribute “AutomationMLVersion”. */
-		
-		check
-		{ 
-			var automationMLVersion = CAEX!AdditionalInformation.allInstances.select(inst| self.hasAttribute("AutomationMLVersion"));
-			
-			automationMLVersion.size().println();
-			
-			return automationMLVersion.size() = 1;
-		
-		}
-		
-		message : self.eContainer.filename + ": No Attribute <AdditionalInformation>.AutomationMLVersion defined"
-	}
 	
 	
-	constraint HasAttributeAutomationMLVersion
-	{
-		/* The element “AdditionalInformation” shall have an attribute “AutomationMLVersion”. */
-		
-		check: self.hasAttribute("AutomationMLVersion") = true
-		
-		message : self.eContainer.filename + ": No Attribute <AdditionalInformation>.AutomationMLVersion defined"
-	}
 	
-	
-	constraint HasCorrectAutomationMLVersion
-	{
-		/* The value of this attribute “AutomationMLVersion” shall be stored in the XML document. It
-		   shall be “2.0” to correspond to this standard. 
-		*/ 
-		
-		guard: self.satisfies("HasAttributeAutomationMLVersion")
-		
-		check 
-		{
-			var actAMLVersion = self.getAttributeValue("AutomationMLVersion");
-			
-			return actAMLVersion = AutomationMLVersion;	
-		}		  
-		
-		message : self.eContainer.filename + ": <AdditionalInformation>.AutomationMLVersion '" + actAMLVersion + "' found - Expected: '" + AutomationMLVersion	+ "'"
-	}
-	
-	constraint HasAutomationMLVersionOfRootModel
-	{
-		/* Every referenced CAEX document shall follow the same AML version of the root document.
-		   Mixing of documents with different AML versions is explicitly forbidden.
-		*/
-			
-		guard: self.satisfies("HasAttributeAutomationMLVersion")
-		
-		check 
-		{
-			var actAMLVersion = self.getAttributeValue("AutomationMLVersion");
-			
-			return actAMLVersion = RootModelAutomationMLVersion;	
-		}	
-	
-		message : self.eContainer.filename + ": <AdditionalInformation>.AutomationMLVersion '" + actAMLVersion + "' not consistent with RootModel-AutomationMLVersion - Expected: '" + RootModelAutomationMLVersion	+ "'"	
-	}
 	
 	
 	
