@@ -1,4 +1,22 @@
 
+operation GenericElement getGenericElement(elementName : String) : GenericElement
+{
+	var i : Integer = 0;
+	var ret : GenericElement = null;	
+	
+	if(self.name = elementName)
+		ret = self;
+		
+	while (ret = null and i < self.nestedElements.size())
+	{
+		ret = (self.nestedElements.at(i)).getNestedElement(elementName);
+		i = i + 1;				
+	}
+	
+	return ret;
+}
+
+
 
 operation GenericElement hasAttribute(attributeName : String) : Boolean
 {

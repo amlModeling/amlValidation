@@ -58,7 +58,7 @@ context CAEX!CAEXFile
 	
 	constraint HasWriterID
 	{
-		guard: self.eContainer.satisfies("HasElementWriterHeader")
+		guard: self.satisfies("HasElementWriterHeader")
 		
 		check
 		{ 
@@ -73,13 +73,13 @@ context CAEX!CAEXFile
 			return writerHeader.size() = 1;
 		}
 		
-		message: self.eContainer.filename + ": No Element <WriterID> defined"
+		message: self.filename + ": No Element <WriterID> defined"
 	
 	}
 	
 	constraint HasVendor
 	{
-		guard: self.eContainer.satisfies("HasElementWriterHeader")
+		guard: self.satisfies("HasElementWriterHeader")
 		
 		check
 		{ 
@@ -94,13 +94,13 @@ context CAEX!CAEXFile
 			return writerHeader.size() = 1;	
 		}
 		
-		message: self.eContainer.filename + ": No Element <WriterVendor> defined"
+		message: self.filename + ": No Element <WriterVendor> defined"
 	
 	}
 	
 	constraint HasVendorURL
 	{
-		guard: self.eContainer.satisfies("HasElementWriterHeader")
+		guard: self.satisfies("HasElementWriterHeader")
 		
 		check
 		{ 
@@ -115,13 +115,13 @@ context CAEX!CAEXFile
 			return writerHeader.size() = 1;
 		}
 		
-		message: self.eContainer.filename + ": No Element <WriterVendorURL> defined"
+		message: self.filename + ": No Element <WriterVendorURL> defined"
 	
 	}
 	
 	constraint HasVersion
 	{
-		guard: self.eContainer.satisfies("HasElementWriterHeader")
+		guard: self.satisfies("HasElementWriterHeader")
 		
 		check
 		{ 
@@ -136,13 +136,13 @@ context CAEX!CAEXFile
 			return writerHeader.size() = 1;		
 		}
 		
-		message: self.eContainer.filename + ": No Element <WriterVersion> defined"
+		message: self.filename + ": No Element <WriterVersion> defined"
 	
 	}
 	
 	constraint HasWriterRelease
 	{
-		guard: self.eContainer.satisfies("HasElementWriterHeader")
+		guard: self.satisfies("HasElementWriterHeader")
 		
 		check
 		{ 
@@ -157,13 +157,13 @@ context CAEX!CAEXFile
 			return writerHeader.size() = 1;
 		}
 		
-		message: self.eContainer.filename + ": No Element <WriterRelease> defined"
+		message: self.filename + ": No Element <WriterRelease> defined"
 	
 	}
 	
 	constraint HasLastWritingDateTime
 	{
-		guard: self.eContainer.satisfies("HasElementWriterHeader")
+		guard: self.satisfies("HasElementWriterHeader")
 		
 		check
 		{ 
@@ -178,51 +178,30 @@ context CAEX!CAEXFile
 			return writerHeader.size() = 1;	
 		}
 		
-		message: self.eContainer.filename + ": No Element <LastWritingDateTime> defined"
+		message: self.filename + ": No Element <LastWritingDateTime> defined"
 	
 	}
 	
-	constraint HasWriterProjectTitle
+	constraint IsLastWritingDateTimeCorrectFormated
 	{
-		guard: self.eContainer.satisfies("HasElementWriterHeader")
+		guard: self.satisfies("HasLastWritingDateTime")
 		
 		check
 		{ 
-			/* As every CAEX document needs an WriterName, 
-			   we use all instances of AdditionalInformation (attention - linked CAEX documents)
-			   and check if there is WriterHeader available in every file */
+			/* Last WritingDateTime is of Type xs:DateTime */
 			
 			var writerHeader = CAEX!AdditionalInformation.allInstances.
-				select(inst| inst.hasAttribute("WriterProjectTitle") and 
+				select(inst| inst.getAttributeValue("LastWritingDateTime") <> "" and 
 				             inst.eContainer.fileName = self.fileName);
 						
-			return writerHeader.size() = 1;	
+			return writerHeader.at(0).nestedElements.println().size() = 1;	
 		}
 		
-		message: self.eContainer.filename + ": No Element <WriterProjectTitle> defined"
+		message: self.filename + ": No Element <LastWritingDateTime> defined"
 	
 	}
 	
-	constraint HasWriterProjectID
-	{
-		guard: self.eContainer.satisfies("HasElementWriterHeader")
-		
-		check
-		{ 
-			/* As every CAEX document needs an WriterName, 
-			   we use all instances of AdditionalInformation (attention - linked CAEX documents)
-			   and check if there is WriterHeader available in every file */
-			
-			var writerHeader = CAEX!AdditionalInformation.allInstances.
-				select(inst| inst.hasAttribute("WriterProjectID") and 
-				             inst.eContainer.fileName = self.fileName);
-						
-			return writerHeader.size() = 1;	
-		}
-		
-		message: self.eContainer.filename + ": No Element <WriterProjectID> defined"
 	
-	}
 }
 
 

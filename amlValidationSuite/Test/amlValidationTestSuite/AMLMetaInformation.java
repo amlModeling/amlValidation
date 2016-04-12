@@ -57,5 +57,91 @@ public class AMLMetaInformation {
 		
 		Assert.assertTrue(actual.containsAll(expected)&& expected.containsAll(actual));		
 	}
+	
+	@Test
+	public void Test_003_NoWriterID() throws Exception 
+	{
+		String modelPath = TestModelPath + "003_NoWriterID\\";		
+		expected.addExpectedConstraint("HasWriterID", "Testcase.aml: No Element <WriterID> defined");
+		
+		actual = new AMLExpectedUnsatisfiedConstraints(validationSuite.execute(modelPath, "Testcase"));
+		
+		Assert.assertTrue(actual.containsAll(expected)&& expected.containsAll(actual));		
+	}
+	
+	@Test
+	public void Test_004_NoWriterVendor() throws Exception 
+	{
+		String modelPath = TestModelPath + "004_NoWriterVendor\\";		
+		expected.addExpectedConstraint("HasVendor", "Testcase.aml: No Element <WriterVendor> defined");
+		
+		actual = new AMLExpectedUnsatisfiedConstraints(validationSuite.execute(modelPath, "Testcase"));
+		
+		Assert.assertTrue(actual.containsAll(expected)&& expected.containsAll(actual));		
+	}
+	
+	@Test
+	public void Test_005_NoWriterVendorURL() throws Exception 
+	{
+		String modelPath = TestModelPath + "005_NoWriterVendorURL\\";		
+		expected.addExpectedConstraint("HasVendorURL", "Testcase.aml: No Element <WriterVendorURL> defined");
+		
+		actual = new AMLExpectedUnsatisfiedConstraints(validationSuite.execute(modelPath, "Testcase"));
+		
+		Assert.assertTrue(actual.containsAll(expected)&& expected.containsAll(actual));		
+	}
+	
+	@Test
+	public void Test_006_NoWriterVersion() throws Exception 
+	{
+		String modelPath = TestModelPath + "006_NoWriterVersion\\";		
+		expected.addExpectedConstraint("HasVersion", "Testcase.aml: No Element <WriterVersion> defined");
+		
+		actual = new AMLExpectedUnsatisfiedConstraints(validationSuite.execute(modelPath, "Testcase"));
+		
+		Assert.assertTrue(actual.containsAll(expected)&& expected.containsAll(actual));		
+	}
+	
+	@Test
+	public void Test_007_NoWriterRelease() throws Exception 
+	{
+		String modelPath = TestModelPath + "007_NoWriterRelease\\";		
+		expected.addExpectedConstraint("HasWriterRelease", "Testcase.aml: No Element <WriterRelease> defined");
+		
+		actual = new AMLExpectedUnsatisfiedConstraints(validationSuite.execute(modelPath, "Testcase"));
+		
+		Assert.assertTrue(actual.containsAll(expected)&& expected.containsAll(actual));		
+	}
+	
+	@Test
+	public void Test_008_NoLastWritingDateTime() throws Exception 
+	{
+		String modelPath = TestModelPath + "008_NoLastWritingDateTime\\";		
+		expected.addExpectedConstraint("HasLastWritingDateTime", "Testcase.aml: No Element <LastWritingDateTime> defined");
+		
+		actual = new AMLExpectedUnsatisfiedConstraints(validationSuite.execute(modelPath, "Testcase"));
+		
+		Assert.assertTrue(actual.containsAll(expected)&& expected.containsAll(actual));		
+	}
+	
+	@Test
+	public void Test_009_NoWriterProjectTitle() throws Exception 
+	{
+		String modelPath = TestModelPath + "009_NoWriterProjectTitle\\";		
+				
+		actual = new AMLExpectedUnsatisfiedConstraints(validationSuite.execute(modelPath, "Testcase"));
+		
+		Assert.assertTrue(actual.containsAll(expected)&& expected.containsAll(actual));		
+	}
+	
+	@Test
+	public void Test_010_NoWriterProjectID() throws Exception 
+	{
+		String modelPath = TestModelPath + "010_NoWriterProjectID\\";		
+				
+		actual = new AMLExpectedUnsatisfiedConstraints(validationSuite.execute(modelPath, "Testcase"));
+		
+		Assert.assertTrue(actual.containsAll(expected)&& expected.containsAll(actual));		
+	}
 
 }
