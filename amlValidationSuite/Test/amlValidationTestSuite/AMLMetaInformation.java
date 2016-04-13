@@ -114,34 +114,18 @@ public class AMLMetaInformation {
 	}
 	
 	@Test
-	public void Test_008_NoLastWritingDateTime() throws Exception 
+	public void Test_008_LastWritingDateTimeWrongFormated() throws Exception 
 	{
-		String modelPath = TestModelPath + "008_NoLastWritingDateTime\\";		
-		expected.addExpectedConstraint("HasLastWritingDateTime", "Testcase.aml: No Element <LastWritingDateTime> defined");
+		String modelPath = TestModelPath + "008_LastWritingDateTimeWrongFormated\\";		
+		expected.addExpectedConstraint("IsLastWritingDateTimeCorrectFormated", "Testcase.aml: LastWritingDateTime '20161-04-11T23:57:35' is not of type DateTime");
 		
 		actual = new AMLExpectedUnsatisfiedConstraints(validationSuite.execute(modelPath, "Testcase"));
 		
 		Assert.assertTrue(actual.containsAll(expected)&& expected.containsAll(actual));		
 	}
 	
-	@Test
-	public void Test_009_NoWriterProjectTitle() throws Exception 
-	{
-		String modelPath = TestModelPath + "009_NoWriterProjectTitle\\";		
-				
-		actual = new AMLExpectedUnsatisfiedConstraints(validationSuite.execute(modelPath, "Testcase"));
-		
-		Assert.assertTrue(actual.containsAll(expected)&& expected.containsAll(actual));		
-	}
 	
-	@Test
-	public void Test_010_NoWriterProjectID() throws Exception 
-	{
-		String modelPath = TestModelPath + "010_NoWriterProjectID\\";		
-				
-		actual = new AMLExpectedUnsatisfiedConstraints(validationSuite.execute(modelPath, "Testcase"));
-		
-		Assert.assertTrue(actual.containsAll(expected)&& expected.containsAll(actual));		
-	}
+	
+	
 
 }

@@ -27,6 +27,7 @@ context CAEX!CAEXFile
 	
 	constraint HasWriterName
 	{
+		/* Meta information "WriterName" mandatory */		
 		guard: self.satisfies("HasElementWriterHeader")
 		
 		check: self.additionalInformation.hasGenericElement("WriterName")
@@ -36,6 +37,7 @@ context CAEX!CAEXFile
 	
 	constraint HasWriterID
 	{
+		/* Meta information "WriterID" mandatory */
 		guard: self.satisfies("HasElementWriterHeader")
 		
 		check: self.additionalInformation.hasGenericElement("WriterID")
@@ -46,6 +48,7 @@ context CAEX!CAEXFile
 	
 	constraint HasVendor
 	{
+		/* Meta information "WriterVendor" mandatory */	
 		guard: self.satisfies("HasElementWriterHeader")
 		
 		check: self.additionalInformation.hasGenericElement("WriterVendor")
@@ -56,6 +59,7 @@ context CAEX!CAEXFile
 	
 	constraint HasVendorURL
 	{
+		/* Meta information "WriterVendorURL" mandatory */	
 		guard: self.satisfies("HasElementWriterHeader")
 		
 		check: self.additionalInformation.hasGenericElement("WriterVendorURL")
@@ -66,6 +70,7 @@ context CAEX!CAEXFile
 	
 	constraint HasVersion
 	{
+		/* Meta information "WriterVersion" mandatory */	
 		guard: self.satisfies("HasElementWriterHeader")
 		
 		check: self.additionalInformation.hasGenericElement("WriterVersion")
@@ -76,6 +81,7 @@ context CAEX!CAEXFile
 	
 	constraint HasWriterRelease
 	{
+		/* Meta information "WriterRelease" mandatory */	
 		guard: self.satisfies("HasElementWriterHeader")
 		
 		check: self.additionalInformation.hasGenericElement("WriterRelease")
@@ -86,6 +92,7 @@ context CAEX!CAEXFile
 	
 	constraint HasLastWritingDateTime
 	{
+		/* Meta information "LastWritingDateTime" mandatory */	
 		guard: self.satisfies("HasElementWriterHeader")
 		
 		check: self.additionalInformation.hasGenericElement("LastWritingDateTime")
@@ -96,13 +103,38 @@ context CAEX!CAEXFile
 	
 	constraint IsLastWritingDateTimeCorrectFormated
 	{
+		/* Meta information "LastWritingDateTime" has to be of type DateTime 
+		   ATTENTION - only rough format checking - invalid dates 2016-99-99 are not checked */	
 		guard: self.satisfies("HasLastWritingDateTime")
 		
-		check: self.additionalInformation.hasGenericElement("LastWritingDateTime")
+		check
+		{
+			var lastWritingDate = self.additionalInformation.getGenericElement("LastWritingDateTime").value;
+			
+			return lastWritingDate.matches("(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2}).*");			
+		}
 		
-		message: self.filename + ": No Element <LastWritingDateTime> defined"
-	
+		message: self.filename + ": LastWritingDateTime '" + lastWritingDate + "' is not of type DateTime"	
 	}
+	
+	
+	constraint NoDuplicatedMetaInformationInWriterHeader
+	{
+		/* Multiple meta information of the same name are forbidden in the same “WriterHeader” element. */	
+		guard: self.satisfies("HasElementWriterHeader")
+		
+		check
+		{
+			var writerHeader = self.additionalInformation.getGenericElement("WriterHeader");			
+			var duplicates = writerHeader.getAllChildNodeNames().getDuplicates();
+			
+			return duplicates.isEmpty();						
+		}
+		
+		message: self.filename + ": LastWritingDateTime '" + lastWritingDate + "' is not of type DateTime"	
+	}
+	
+	
 	
 	
 }

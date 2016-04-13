@@ -43,10 +43,45 @@ operation Set getGenericElement(name : String) : Element
 	return ret;
 }
 
-
-
 operation Set hasGenericElement(name : String) : Boolean
 {
 	return self.getGenericElement(name) <> null;
-
 }
+
+
+
+operation GenericElement getAllChildNodeNames() : Sequence
+{
+	var nodeNames : Sequence;
+	var i : Integer = 0;
+	
+	// No recursion - only 1 hierarchy level considered
+	while(i < self.nestedElements.size())
+	{
+		nodeNames.add(self.nestedElements.at(i).name);
+		i = i + 1;
+	}
+	
+	
+	return nodeNames;
+}
+
+operation Sequence getDuplicates() : Sequence
+{
+	var duplicates : Sequence;
+	var keyMap : Map;
+	
+	
+	for(key : String in self)
+	{
+		if(not keyMap.containsKey(key))
+			keyMap.put(key, "");
+		else
+			duplicates.add(key);
+	
+	}
+	
+	
+	return duplicates;
+}
+
