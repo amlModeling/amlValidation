@@ -155,9 +155,9 @@ context CAEX!CAEXFile
 						writerHeaderNodes.at(6).name = "LastWritingDateTime";
 			
 			if(writerHeaderNodes.size() > 7)
-				valid = valid and writerHeaderNodes.at(7).name.println() = "WriterProjectTitle";			
+				valid = valid and writerHeaderNodes.at(7).name = "WriterProjectTitle";			
 			if(writerHeaderNodes.size() > 8)
-				valid = valid and writerHeaderNodes.at(8).name.println() = "WriterProjectID";
+				valid = valid and writerHeaderNodes.at(8).name = "WriterProjectID";
 						
 			
 			return valid;					

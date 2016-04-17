@@ -1,0 +1,55 @@
+import "AMLValidatorUtils.evl";
+
+
+context CAEX!CAEXObject
+{ 
+	constraint HasName
+	{
+		/*According to IEC 62424:2008, A.2.2.1, AML classes (RoleClasses, InterfaceClasses and
+		SystemUnitClasses) shall be identified by their CAEX tag “Name”. */
+	
+		guard: self.isTypeOf(InterfaceClass) or 
+		       self.isTypeOf(SystemUnitClass) or 
+		       self.isTypeOf(RoleClass)
+	
+		check: self.name.isDefined()
+		
+		message
+		{
+			var type : String;			
+			var filename: String = self.eContainer.eContainer.filename ;
+			var libName : String = self.eContainer.name;
+			
+			if(self.isTypeOf(InterfaceClass))
+				type = "InterfaceClass";
+			else
+			if (self.isTypeOf(SystemUnitClass))
+				type = "SystemUnitClass";
+			else if (self.isTypeOf(RoleClass))
+				type = "RoleClass";
+				
+			return filename + " - " + type + "Lib " + libName + ": " + type + " without attribute 'name' defined";				
+		}		
+	}
+	
+	constraint IsNameUnique
+	{
+		/*  This name shall be unique within the hierarchy level of the corresponding AML library over
+			the life time of the class.*/
+			
+		guard: self.isTypeOf(InterfaceClassLib) or 
+		       self.isTypeOf(SystemUnitClassLib) or 
+		       self.isTypeOf(RoleClassLib)
+		
+		check
+		{
+			var classes = self.getClasses();			
+			var duplicates = classes.getDuplicateClasses();
+		
+			return duplicates.isEmpty();
+		}
+	
+		message: self.eContainer.filename + ": Classname not unique: " + self.name + ": '" + duplicates.keyset().toString() + "'"		 	
+	}			
+}
+

@@ -65,9 +65,6 @@ operation GenericElement getAllChildNodes() : Sequence
 	return nodeNames;
 }
 
-
-
-
 operation Sequence getDuplicateElements() : Map
 {
 	var duplicates : Map;
@@ -101,6 +98,51 @@ operation Set toString(): String
 	
 	return ret;
 }
+
+operation CAEXObject getClasses(): Sequence
+{
+	var ret : Sequence;
+	var classes : OrderedSet;
+	
+	if(self.isTypeOf(InterfaceClassLib))
+		classes = self.interfaceClass;
+	else if(self.isTypeOf(SystemUnitClassLib))
+		classes = self.systemUnitClass;
+	else if(self.isTypeOf(RoleClassLib))
+		classes = self.roleClass;
+	
+	if(classes.size() <> 0)	
+	{
+		for(class : CAEXObject in classes)
+		{
+			ret.add(class.name);
+		}
+	}	
+	
+	return ret;
+}
+
+
+operation Sequence getDuplicateClasses() : Map
+{
+	var duplicates : Map;
+	var keyMap : Map;	
+	
+    for(className : String in self)
+	{
+		if(not keyMap.containsKey(className))
+			keyMap.put(className, "");
+		else
+			duplicates.put(className, "");
+	
+	}
+		
+		
+	return duplicates;
+}
+
+
+
 
 
 operation CAEXFile satisfiesAll(invariants : Sequence): Boolean

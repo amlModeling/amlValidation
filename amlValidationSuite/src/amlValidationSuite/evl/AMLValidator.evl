@@ -3,34 +3,7 @@ import "AMLValidatorConstants.evl";
 import "AMLValidatorCommon.evl";
 import "AMLValidatorDocumentVersions.evl";
 import "AMLValidatorMetaInformation.evl";
-
-
-
-/*******************************************************************************************************/
-
-
-
-
-context CAEX!CAEXObject
-{ 
-	constraint HasName
-	{
-		guard: self.isTypeOf(InterfaceClassLib) or 
-		       self.isTypeOf(SystemUnitClassLib) or 
-		       self.isTypeOf(RoleClassLib)
-	
-		check: self.name.isDefined()
-		
-		message: self + ": Name not defined"
-	}
-	
-	
-	
-}
-
-/*******************************************************************************************************/
-
-
+import "AMLValidatorObjectIdentification.evl";
 
 
 /*******************************************************************************************************/
