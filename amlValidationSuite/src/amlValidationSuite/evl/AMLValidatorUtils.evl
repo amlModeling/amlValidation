@@ -50,7 +50,7 @@ operation Set hasGenericElement(name : String) : Boolean
 
 
 
-operation GenericElement getAllChildNodeNames() : Sequence
+operation GenericElement getAllChildNodes() : Sequence
 {
 	var nodeNames : Sequence;
 	var i : Integer = 0;
@@ -58,30 +58,62 @@ operation GenericElement getAllChildNodeNames() : Sequence
 	// No recursion - only 1 hierarchy level considered
 	while(i < self.nestedElements.size())
 	{
-		nodeNames.add(self.nestedElements.at(i).name);
+		nodeNames.add(self.nestedElements.at(i));
 		i = i + 1;
-	}
-	
+	}	
 	
 	return nodeNames;
 }
 
-operation Sequence getDuplicates() : Sequence
+
+
+
+operation Sequence getDuplicateElements() : Map
 {
-	var duplicates : Sequence;
+	var duplicates : Map;
 	var keyMap : Map;
 	
 	
-	for(key : String in self)
+	for(element : Element in self)
 	{
-		if(not keyMap.containsKey(key))
-			keyMap.put(key, "");
+		if(not keyMap.containsKey(element.name))
+			keyMap.put(element.name, "");
 		else
-			duplicates.add(key);
+			duplicates.put(element.name, "");
 	
-	}
-	
+	}	
 	
 	return duplicates;
 }
+
+
+operation Set toString(): String
+{
+	var ret : String = "";
+	
+	for(element : String in self)
+	{
+		if(ret.isEmpty())
+			ret = ret + element;
+		else
+			ret = ret + ", " + element;
+	}
+	
+	return ret;
+}
+
+
+operation CAEXFile satisfiesAll(invariants : Sequence): Boolean
+{
+	var ret : Boolean = true;
+	
+	for(invariant : String in invariants)
+	{
+		ret = ret and self.satisfies(invariant);
+	}
+	
+	return ret;
+}
+
+
 

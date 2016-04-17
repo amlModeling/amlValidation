@@ -29,8 +29,8 @@ public class AMLMetaInformation {
 	public void tearDown() throws Exception {
 		if(!(actual.containsAll(expected)&& expected.containsAll(actual)))
 		{
-			System.out.println("ACTUAL: " + actual.toString()); 
-			System.out.println("EXPECTED: " + expected.toString());
+			System.out.println("ACTUAL: \n" + actual.toString()); 
+			System.out.println("EXPECTED: \n" + expected.toString());
 	
 		}
 	}
@@ -118,6 +118,17 @@ public class AMLMetaInformation {
 	{
 		String modelPath = TestModelPath + "008_LastWritingDateTimeWrongFormated\\";		
 		expected.addExpectedConstraint("IsLastWritingDateTimeCorrectFormated", "Testcase.aml: LastWritingDateTime '20161-04-11T23:57:35' is not of type DateTime");
+		
+		actual = new AMLExpectedUnsatisfiedConstraints(validationSuite.execute(modelPath, "Testcase"));
+		
+		Assert.assertTrue(actual.containsAll(expected)&& expected.containsAll(actual));		
+	}
+	
+	@Test
+	public void Test_010_WrongElementOrder() throws Exception 
+	{
+		String modelPath = TestModelPath + "010_WrongElementOrder\\";		
+		expected.addExpectedConstraint("OrderOfWriterHeaderCorrect", "Testcase.aml: Order of <WriterHeader> elements not correct");
 		
 		actual = new AMLExpectedUnsatisfiedConstraints(validationSuite.execute(modelPath, "Testcase"));
 		

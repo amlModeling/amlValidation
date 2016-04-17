@@ -126,13 +126,49 @@ context CAEX!CAEXFile
 		check
 		{
 			var writerHeader = self.additionalInformation.getGenericElement("WriterHeader");			
-			var duplicates = writerHeader.getAllChildNodeNames().getDuplicates();
+			var duplicates = writerHeader.getAllChildNodes().getDuplicateElements();
 			
 			return duplicates.isEmpty();						
 		}
 		
-		message: self.filename + ": LastWritingDateTime '" + lastWritingDate + "' is not of type DateTime"	
+		message: self.filename + ": Duplicate Metainformation - multiple instances of element(s): '" + duplicates.keyset().toString() + "'"	
 	}
+	
+	constraint OrderOfWriterHeaderCorrect
+	{		
+	
+		/* The order of the meta information shall be equivalent to Table 2. */	
+		guard: self.satisfiesAll(Sequence{"HasElementWriterHeader", "HasWriterName", "HasWriterID", 
+								"HasVendor", "HasVendorURL", "HasVersion", "HasWriterRelease", "HasLastWritingDateTime"})
+						
+		check
+		{
+			var writerHeader = self.additionalInformation.getGenericElement("WriterHeader");
+			var writerHeaderNodes = writerHeader.getAllChildNodes();	
+			
+			var valid = writerHeaderNodes.at(0).name = "WriterName" and
+						writerHeaderNodes.at(1).name = "WriterID" and
+						writerHeaderNodes.at(2).name = "WriterVendor" and
+						writerHeaderNodes.at(3).name = "WriterVendorURL" and
+						writerHeaderNodes.at(4).name = "WriterVersion" and
+						writerHeaderNodes.at(5).name = "WriterRelease" and
+						writerHeaderNodes.at(6).name = "LastWritingDateTime";
+			
+			if(writerHeaderNodes.size() > 7)
+				valid = valid and writerHeaderNodes.at(7).name.println() = "WriterProjectTitle";			
+			if(writerHeaderNodes.size() > 8)
+				valid = valid and writerHeaderNodes.at(8).name.println() = "WriterProjectID";
+						
+			
+			return valid;					
+		}
+		
+		message: self.filename + ": Order of <WriterHeader> elements not correct"
+	}
+	
+	
+	
+	
 	
 	
 	
