@@ -138,8 +138,8 @@ context CAEX!CAEXFile
 	{		
 	
 		/* The order of the meta information shall be equivalent to Table 2. */	
-		guard: self.satisfiesAll(Sequence{"HasElementWriterHeader", "HasWriterName", "HasWriterID", 
-								"HasVendor", "HasVendorURL", "HasVersion", "HasWriterRelease", "HasLastWritingDateTime"})
+		guard: self.satisfies("HasElementWriterHeader", "HasWriterName", "HasWriterID", 
+							   "HasVendor", "HasVendorURL", "HasVersion", "HasWriterRelease", "HasLastWritingDateTime")
 						
 		check
 		{

@@ -50,6 +50,43 @@ context CAEX!CAEXObject
 		}
 	
 		message: self.eContainer.filename + ": Classname not unique: " + self.name + ": '" + duplicates.keyset().toString() + "'"		 	
-	}			
+	}		
+	
+	
+	
+	
+	
+	
+}
+
+
+context CAEX!CAEXBasicObject
+{
+	constraint IsIDGUID
+	{
+		guard: self.isTypeOf(CAEXFile) 		  
+	
+		check
+		{
+			var instances : Sequence;
+			var filename : String;
+		
+			if(self.isTypeOf(CAEXFile))
+			{
+				instances = self.getAllInternalElements(true);
+				filename = self.filename;	
+			}
+						
+			var duplicates = instances.getDuplicateIDs();			
+					
+			return duplicates.isEmpty();		
+		} 
+		
+		message: filename + " Duplicate ID(s) found: " + duplicateIDsToString(duplicates) 
+	}	
+	
+
+
+
 }
 

@@ -7,14 +7,17 @@ import CAEX.CAEXPackage;
 import CAEX.ExternalReference;
 import CAEX.InstanceHierarchy;
 import CAEX.InterfaceClassLib;
+import CAEX.InternalElement;
 import CAEX.RoleClassLib;
 import CAEX.SystemUnitClassLib;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
+import java.util.Iterator;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -293,6 +296,39 @@ public class CAEXFileImpl extends CAEXBasicObjectImpl implements CAEXFile {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public EList<InternalElement> getAllInternalElements(boolean includeExternalReferences) {
+		EList<InternalElement> ret = new BasicEList<InternalElement>();
+		
+		if(instanceHierarchy != null)
+		{
+			Iterator<InstanceHierarchy> it = instanceHierarchy.iterator();	
+			
+			while(it.hasNext())
+			{
+				ret.addAll(it.next().getAllInternalElements());
+			}
+		}
+		
+		if(includeExternalReferences && externalReference != null)
+		{
+			Iterator<ExternalReference> itExtRef = externalReference.iterator();
+			
+			while(itExtRef.hasNext())
+				ret.addAll(itExtRef.next().getLinkedModel().getAllInternalElements(true));			
+		}		
+		
+		return ret;
+	}
+	
+		
+	
+	
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -434,6 +470,20 @@ public class CAEXFileImpl extends CAEXBasicObjectImpl implements CAEXFile {
 				return isSetSchemaVersion();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case CAEXPackage.CAEX_FILE___GET_ALL_INTERNAL_ELEMENTS__BOOLEAN:
+				return getAllInternalElements((Boolean)arguments.get(0));
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

@@ -762,13 +762,22 @@ public interface CAEXPackage extends EPackage {
 	int CAEX_FILE_FEATURE_COUNT = CAEX_BASIC_OBJECT_FEATURE_COUNT + 7;
 
 	/**
+	 * The operation id for the '<em>Get All Internal Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAEX_FILE___GET_ALL_INTERNAL_ELEMENTS__BOOLEAN = CAEX_BASIC_OBJECT_OPERATION_COUNT + 0;
+
+	/**
 	 * The number of operations of the '<em>File</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAEX_FILE_OPERATION_COUNT = CAEX_BASIC_OBJECT_OPERATION_COUNT + 0;
+	int CAEX_FILE_OPERATION_COUNT = CAEX_BASIC_OBJECT_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link CAEX.impl.CopyrightImpl <em>Copyright</em>}' class.
@@ -1408,13 +1417,13 @@ public interface CAEXPackage extends EPackage {
 	int INSTANCE_HIERARCHY_FEATURE_COUNT = CAEX_OBJECT_FEATURE_COUNT + 1;
 
 	/**
-	 * The operation id for the '<em>Get All Interal Elements</em>' operation.
+	 * The operation id for the '<em>Get All Internal Elements</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INSTANCE_HIERARCHY___GET_ALL_INTERAL_ELEMENTS = CAEX_OBJECT_OPERATION_COUNT + 0;
+	int INSTANCE_HIERARCHY___GET_ALL_INTERNAL_ELEMENTS = CAEX_OBJECT_OPERATION_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Instance Hierarchy</em>' class.
@@ -4127,6 +4136,16 @@ public interface CAEXPackage extends EPackage {
 	EAttribute getCAEXFile_SchemaVersion();
 
 	/**
+	 * Returns the meta object for the '{@link CAEX.CAEXFile#getAllInternalElements(boolean) <em>Get All Internal Elements</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get All Internal Elements</em>' operation.
+	 * @see CAEX.CAEXFile#getAllInternalElements(boolean)
+	 * @generated
+	 */
+	EOperation getCAEXFile__GetAllInternalElements__boolean();
+
+	/**
 	 * Returns the meta object for class '{@link CAEX.CAEXObject <em>Object</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4351,14 +4370,14 @@ public interface CAEXPackage extends EPackage {
 	EReference getInstanceHierarchy_InternalElement();
 
 	/**
-	 * Returns the meta object for the '{@link CAEX.InstanceHierarchy#getAllInteralElements() <em>Get All Interal Elements</em>}' operation.
+	 * Returns the meta object for the '{@link CAEX.InstanceHierarchy#getAllInternalElements() <em>Get All Internal Elements</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Get All Interal Elements</em>' operation.
-	 * @see CAEX.InstanceHierarchy#getAllInteralElements()
+	 * @return the meta object for the '<em>Get All Internal Elements</em>' operation.
+	 * @see CAEX.InstanceHierarchy#getAllInternalElements()
 	 * @generated
 	 */
-	EOperation getInstanceHierarchy__GetAllInteralElements();
+	EOperation getInstanceHierarchy__GetAllInternalElements();
 
 	/**
 	 * Returns the meta object for class '{@link CAEX.InterfaceClassLib <em>Interface Class Lib</em>}'.
@@ -5457,6 +5476,14 @@ public interface CAEXPackage extends EPackage {
 		EAttribute CAEX_FILE__SCHEMA_VERSION = eINSTANCE.getCAEXFile_SchemaVersion();
 
 		/**
+		 * The meta object literal for the '<em><b>Get All Internal Elements</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation CAEX_FILE___GET_ALL_INTERNAL_ELEMENTS__BOOLEAN = eINSTANCE.getCAEXFile__GetAllInternalElements__boolean();
+
+		/**
 		 * The meta object literal for the '{@link CAEX.impl.CAEXObjectImpl <em>Object</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -5639,12 +5666,12 @@ public interface CAEXPackage extends EPackage {
 		EReference INSTANCE_HIERARCHY__INTERNAL_ELEMENT = eINSTANCE.getInstanceHierarchy_InternalElement();
 
 		/**
-		 * The meta object literal for the '<em><b>Get All Interal Elements</b></em>' operation.
+		 * The meta object literal for the '<em><b>Get All Internal Elements</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation INSTANCE_HIERARCHY___GET_ALL_INTERAL_ELEMENTS = eINSTANCE.getInstanceHierarchy__GetAllInteralElements();
+		EOperation INSTANCE_HIERARCHY___GET_ALL_INTERNAL_ELEMENTS = eINSTANCE.getInstanceHierarchy__GetAllInternalElements();
 
 		/**
 		 * The meta object literal for the '{@link CAEX.impl.InterfaceClassLibImpl <em>Interface Class Lib</em>}' class.

@@ -675,6 +675,15 @@ public class CAEXPackageImpl extends EPackageImpl implements CAEXPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getCAEXFile__GetAllInternalElements__boolean() {
+		return caexFileEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getCAEXObject() {
 		return caexObjectEClass;
 	}
@@ -864,7 +873,7 @@ public class CAEXPackageImpl extends EPackageImpl implements CAEXPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getInstanceHierarchy__GetAllInteralElements() {
+	public EOperation getInstanceHierarchy__GetAllInternalElements() {
 		return instanceHierarchyEClass.getEOperations().get(0);
 	}
 
@@ -1615,6 +1624,7 @@ public class CAEXPackageImpl extends EPackageImpl implements CAEXPackage {
 		createEReference(caexFileEClass, CAEX_FILE__SYSTEM_UNIT_CLASS_LIB);
 		createEAttribute(caexFileEClass, CAEX_FILE__FILE_NAME);
 		createEAttribute(caexFileEClass, CAEX_FILE__SCHEMA_VERSION);
+		createEOperation(caexFileEClass, CAEX_FILE___GET_ALL_INTERNAL_ELEMENTS__BOOLEAN);
 
 		caexObjectEClass = createEClass(CAEX_OBJECT);
 		createEAttribute(caexObjectEClass, CAEX_OBJECT__ID);
@@ -1643,7 +1653,7 @@ public class CAEXPackageImpl extends EPackageImpl implements CAEXPackage {
 
 		instanceHierarchyEClass = createEClass(INSTANCE_HIERARCHY);
 		createEReference(instanceHierarchyEClass, INSTANCE_HIERARCHY__INTERNAL_ELEMENT);
-		createEOperation(instanceHierarchyEClass, INSTANCE_HIERARCHY___GET_ALL_INTERAL_ELEMENTS);
+		createEOperation(instanceHierarchyEClass, INSTANCE_HIERARCHY___GET_ALL_INTERNAL_ELEMENTS);
 
 		interfaceClassLibEClass = createEClass(INTERFACE_CLASS_LIB);
 		createEReference(interfaceClassLibEClass, INTERFACE_CLASS_LIB__INTERFACE_CLASS);
@@ -1844,6 +1854,9 @@ public class CAEXPackageImpl extends EPackageImpl implements CAEXPackage {
 		initEAttribute(getCAEXFile_FileName(), theXMLTypePackage.getString(), "fileName", null, 1, 1, CAEXFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCAEXFile_SchemaVersion(), theXMLTypePackage.getString(), "schemaVersion", "", 1, 1, CAEXFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		EOperation op = initEOperation(getCAEXFile__GetAllInternalElements__boolean(), this.getInternalElement(), "getAllInternalElements", 0, -1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theXMLTypePackage.getBoolean(), "includeExternalReferences", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(caexObjectEClass, CAEXObject.class, "CAEXObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCAEXObject_ID(), theXMLTypePackage.getString(), "iD", null, 0, 1, CAEXObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCAEXObject_Name(), theXMLTypePackage.getString(), "name", null, 1, 1, CAEXObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1872,7 +1885,7 @@ public class CAEXPackageImpl extends EPackageImpl implements CAEXPackage {
 		initEClass(instanceHierarchyEClass, InstanceHierarchy.class, "InstanceHierarchy", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getInstanceHierarchy_InternalElement(), this.getInternalElement(), null, "internalElement", null, 0, -1, InstanceHierarchy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEOperation(getInstanceHierarchy__GetAllInteralElements(), this.getInternalElement(), "getAllInteralElements", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getInstanceHierarchy__GetAllInternalElements(), this.getInternalElement(), "getAllInternalElements", 0, -1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(interfaceClassLibEClass, InterfaceClassLib.class, "InterfaceClassLib", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getInterfaceClassLib_InterfaceClass(), this.getInterfaceClass(), null, "interfaceClass", null, 0, -1, InterfaceClassLib.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

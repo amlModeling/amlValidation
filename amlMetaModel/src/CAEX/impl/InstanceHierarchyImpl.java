@@ -9,9 +9,10 @@ import CAEX.InternalElement;
 import java.lang.reflect.InvocationTargetException;
 
 import java.util.Collection;
+import java.util.Iterator;
 
 import org.eclipse.emf.common.notify.NotificationChain;
-
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -80,11 +81,36 @@ public class InstanceHierarchyImpl extends CAEXObjectImpl implements InstanceHie
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public EList<InternalElement> getAllInteralElements() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+	public EList<InternalElement> getAllInternalElements() 
+	{
+		EList<InternalElement> ret = new BasicEList<InternalElement>();
+		Iterator<InternalElement> it = internalElement.iterator();
+		
+		while(it.hasNext())
+		{
+			getAllInternalElements(it.next(), ret);	
+		}
+		
+		return ret;
+	}	
+	
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	private void getAllInternalElements(InternalElement internalElement, EList<InternalElement> elements)
+	{
+		elements.add(internalElement);
+		Iterator<InternalElement> it = internalElement.getInternalElement().iterator();		
+				
+		while(it.hasNext())
+			getAllInternalElements(it.next(), elements);			
+		
 	}
+	
+	
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -168,8 +194,8 @@ public class InstanceHierarchyImpl extends CAEXObjectImpl implements InstanceHie
 	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
-			case CAEXPackage.INSTANCE_HIERARCHY___GET_ALL_INTERAL_ELEMENTS:
-				return getAllInteralElements();
+			case CAEXPackage.INSTANCE_HIERARCHY___GET_ALL_INTERNAL_ELEMENTS:
+				return getAllInternalElements();
 		}
 		return super.eInvoke(operationID, arguments);
 	}

@@ -191,4 +191,12 @@ public interface CAEXFile extends CAEXBasicObject {
 	 */
 	boolean isSetSchemaVersion();
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model includeExternalReferencesDataType="org.eclipse.emf.ecore.xml.type.Boolean"
+	 * @generated
+	 */
+	EList<InternalElement> getAllInternalElements(boolean includeExternalReferences);
+
 } // CAEXFile

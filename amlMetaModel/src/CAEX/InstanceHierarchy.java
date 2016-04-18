@@ -43,6 +43,6 @@ public interface InstanceHierarchy extends CAEXObject {
 	 * @model kind="operation"
 	 * @generated
 	 */
-	EList<InternalElement> getAllInteralElements();
+	EList<InternalElement> getAllInternalElements();
 
 } // InstanceHierarchy

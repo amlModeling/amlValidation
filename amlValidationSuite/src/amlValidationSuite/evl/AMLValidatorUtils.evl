@@ -133,17 +133,47 @@ operation Sequence getDuplicateClasses() : Map
 		if(not keyMap.containsKey(className))
 			keyMap.put(className, "");
 		else
-			duplicates.put(className, "");
-	
-	}
-		
+			duplicates.put(className, "");	
+	}		
 		
 	return duplicates;
 }
 
 
+operation Sequence getDuplicateIDs(): Map
+{
+	var duplicates : Map;
+	var keyMap : Map;	
+	
+	for(object : CAEXObject in self)
+	{
+		if(not keyMap.containsKey(object.iD))
+			keyMap.put(object.iD, "");
+		else
+			duplicates.put(object.iD, object);	
+	}	
+		
+	return duplicates;
+}
 
 
+operation duplicateIDsToString(duplicates : Map) : String
+{
+	var ret : String = "";
+	var obj : CAEXObject;
+	
+	for(key : String in duplicates.keyset())
+	{
+		obj = duplicates.get(key);
+		ret += "ID='" + key + "' " + obj.eClass.getName() + " Name='" + obj.name + "'\n";
+	}
+	
+	return ret;	
+}
+
+
+
+/*
 
 operation CAEXFile satisfiesAll(invariants : Sequence): Boolean
 {
@@ -157,5 +187,5 @@ operation CAEXFile satisfiesAll(invariants : Sequence): Boolean
 	return ret;
 }
 
-
+*/
 
