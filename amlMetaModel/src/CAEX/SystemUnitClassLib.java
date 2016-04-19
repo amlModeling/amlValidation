@@ -37,4 +37,12 @@ public interface SystemUnitClassLib extends CAEXObject {
 	 */
 	EList<SystemUnitClass> getSystemUnitClass();
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	EList<SystemUnitClass> getAllSystemUnitClasses();
+
 } // SystemUnitClassLib

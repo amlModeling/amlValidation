@@ -127,6 +127,8 @@ context CAEX!CAEXFile
 			var filename : String;		
 			
 			instances = self.getAllInternalElements(true);
+			instances.addAll(self.getAllExternalInterfaces(true));
+			
 			filename = self.filename;	
 			
 						
@@ -159,8 +161,24 @@ context CAEX!InternalElement
 		}
 	
 	}
+}
 
-
-
+context CAEX!ExternalInterface
+{
+	constraint HasID
+	{
+		check: self.id.isDefined()
+		
+		message
+		{
+			var allContainer : Map;
+			var file : CAEXFile;
+									
+			getAllContainer(self, allContainer);
+			file = allContainer.get("CAEXFile");			
+			
+			return "File=" + file.filename + self.eContainer.eClass.getName() + "=" + self.eContainer.name + " ExternalInterface '" + self.name + "' without ID defined";
+		}	
+	}
 }
 

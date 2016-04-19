@@ -199,4 +199,28 @@ public interface CAEXFile extends CAEXBasicObject {
 	 */
 	EList<InternalElement> getAllInternalElements(boolean includeExternalReferences);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model includeExternalReferencesDataType="org.eclipse.emf.ecore.xml.type.Boolean"
+	 * @generated
+	 */
+	EList<ExternalInterface> getAllExternalInterfaces(boolean includeExternalReferences);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model includeExternalReferencesDataType="org.eclipse.emf.ecore.xml.type.Boolean"
+	 * @generated
+	 */
+	EList<RoleClass> getAllRoleClasses(boolean includeExternalReferences);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model includeExternalReferencesDataType="org.eclipse.emf.ecore.xml.type.Boolean"
+	 * @generated
+	 */
+	EList<SystemUnitClass> getAllSystemUnitClasses(boolean includeExternalReferences);
+
 } // CAEXFile

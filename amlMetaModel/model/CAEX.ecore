@@ -252,6 +252,15 @@
     <eOperations name="getAllInternalElements" upperBound="-1" eType="#//InternalElement">
       <eParameters name="includeExternalReferences" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Boolean"/>
     </eOperations>
+    <eOperations name="getAllExternalInterfaces" upperBound="-1" eType="#//ExternalInterface">
+      <eParameters name="includeExternalReferences" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Boolean"/>
+    </eOperations>
+    <eOperations name="getAllRoleClasses" upperBound="-1" eType="#//RoleClass">
+      <eParameters name="includeExternalReferences" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Boolean"/>
+    </eOperations>
+    <eOperations name="getAllSystemUnitClasses" upperBound="-1" eType="#//SystemUnitClass">
+      <eParameters name="includeExternalReferences" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Boolean"/>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="externalReference" upperBound="-1"
         eType="#//ExternalReference" containment="true" resolveProxies="false">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -804,6 +813,7 @@
       <details key="name" value="RoleClassLib"/>
       <details key="kind" value="elementOnly"/>
     </eAnnotations>
+    <eOperations name="getAllRoleClasses" upperBound="-1" eType="#//RoleClass"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="roleClass" upperBound="-1"
         eType="#//RoleClass" containment="true" resolveProxies="false">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -938,6 +948,7 @@
       <details key="name" value="SystemUnitClassLib"/>
       <details key="kind" value="elementOnly"/>
     </eAnnotations>
+    <eOperations name="getAllSystemUnitClasses" upperBound="-1" eType="#//SystemUnitClass"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="systemUnitClass" upperBound="-1"
         eType="#//SystemUnitClass" containment="true" resolveProxies="false">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">

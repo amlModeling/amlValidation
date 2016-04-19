@@ -6,10 +6,12 @@ import CAEX.CAEXPackage;
 import CAEX.RoleClass;
 import CAEX.RoleClassLib;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
+import java.util.Iterator;
 
 import org.eclipse.emf.common.notify.NotificationChain;
-
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -72,6 +74,39 @@ public class RoleClassLibImpl extends CAEXObjectImpl implements RoleClassLib {
 		}
 		return roleClass;
 	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public EList<RoleClass> getAllRoleClasses() {
+		EList<RoleClass> ret = new BasicEList<RoleClass>();
+		Iterator<RoleClass> it = roleClass.iterator();
+		
+		while(it.hasNext())
+		{
+			getAllRoleClasses(it.next(), ret);	
+		}
+		
+		return ret;
+	}
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	private void getAllRoleClasses(RoleClass roleClass, EList<RoleClass> roleClasses)
+	{
+		roleClasses.add(roleClass);
+		Iterator<RoleClass> it = roleClass.getRoleClass().iterator();		
+				
+		while(it.hasNext())
+			getAllRoleClasses(it.next(), roleClasses);			
+		
+	}
+	
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -145,6 +180,20 @@ public class RoleClassLibImpl extends CAEXObjectImpl implements RoleClassLib {
 				return roleClass != null && !roleClass.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case CAEXPackage.ROLE_CLASS_LIB___GET_ALL_ROLE_CLASSES:
+				return getAllRoleClasses();
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 } //RoleClassLibImpl

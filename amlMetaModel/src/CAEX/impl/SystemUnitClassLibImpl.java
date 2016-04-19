@@ -6,10 +6,12 @@ import CAEX.CAEXPackage;
 import CAEX.SystemUnitClass;
 import CAEX.SystemUnitClassLib;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
+import java.util.Iterator;
 
 import org.eclipse.emf.common.notify.NotificationChain;
-
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -72,6 +74,41 @@ public class SystemUnitClassLibImpl extends CAEXObjectImpl implements SystemUnit
 		}
 		return systemUnitClass;
 	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public EList<SystemUnitClass> getAllSystemUnitClasses() {
+		EList<SystemUnitClass> ret = new BasicEList<SystemUnitClass>();
+		Iterator<SystemUnitClass> it = systemUnitClass.iterator();
+		
+		while(it.hasNext())
+		{
+			getAllSystemUnitClasses(it.next(), ret);	
+		}
+		
+		return ret;
+	}
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	private void getAllSystemUnitClasses(SystemUnitClass systemUnitClass, EList<SystemUnitClass> systemUnitClasses)
+	{
+		systemUnitClasses.add(systemUnitClass);
+		Iterator<SystemUnitClass> it = systemUnitClass.getSystemUnitClass().iterator();		
+				
+		while(it.hasNext())
+			getAllSystemUnitClasses(it.next(), systemUnitClasses);			
+		
+	}
+	
+	
+	
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -145,6 +182,20 @@ public class SystemUnitClassLibImpl extends CAEXObjectImpl implements SystemUnit
 				return systemUnitClass != null && !systemUnitClass.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case CAEXPackage.SYSTEM_UNIT_CLASS_LIB___GET_ALL_SYSTEM_UNIT_CLASSES:
+				return getAllSystemUnitClasses();
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 } //SystemUnitClassLibImpl

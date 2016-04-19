@@ -117,7 +117,7 @@ operation Sequence getDuplicateIDs(): Map
 	var duplicates : Map;
 	var keyMap : Map;	
 	
-	for(object : CAEXObject in self)
+	for(object : CAEXBasicObject in self)
 	{
 		if(not keyMap.containsKey(object.iD))
 		{

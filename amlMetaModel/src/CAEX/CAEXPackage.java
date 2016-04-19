@@ -771,13 +771,40 @@ public interface CAEXPackage extends EPackage {
 	int CAEX_FILE___GET_ALL_INTERNAL_ELEMENTS__BOOLEAN = CAEX_BASIC_OBJECT_OPERATION_COUNT + 0;
 
 	/**
+	 * The operation id for the '<em>Get All External Interfaces</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAEX_FILE___GET_ALL_EXTERNAL_INTERFACES__BOOLEAN = CAEX_BASIC_OBJECT_OPERATION_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Get All Role Classes</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAEX_FILE___GET_ALL_ROLE_CLASSES__BOOLEAN = CAEX_BASIC_OBJECT_OPERATION_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Get All System Unit Classes</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAEX_FILE___GET_ALL_SYSTEM_UNIT_CLASSES__BOOLEAN = CAEX_BASIC_OBJECT_OPERATION_COUNT + 3;
+
+	/**
 	 * The number of operations of the '<em>File</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAEX_FILE_OPERATION_COUNT = CAEX_BASIC_OBJECT_OPERATION_COUNT + 1;
+	int CAEX_FILE_OPERATION_COUNT = CAEX_BASIC_OBJECT_OPERATION_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link CAEX.impl.CopyrightImpl <em>Copyright</em>}' class.
@@ -2806,13 +2833,22 @@ public interface CAEXPackage extends EPackage {
 	int ROLE_CLASS_LIB_FEATURE_COUNT = CAEX_OBJECT_FEATURE_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>Get All Role Classes</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLE_CLASS_LIB___GET_ALL_ROLE_CLASSES = CAEX_OBJECT_OPERATION_COUNT + 0;
+
+	/**
 	 * The number of operations of the '<em>Role Class Lib</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ROLE_CLASS_LIB_OPERATION_COUNT = CAEX_OBJECT_OPERATION_COUNT + 0;
+	int ROLE_CLASS_LIB_OPERATION_COUNT = CAEX_OBJECT_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link CAEX.impl.RoleClassImpl <em>Role Class</em>}' class.
@@ -3423,13 +3459,22 @@ public interface CAEXPackage extends EPackage {
 	int SYSTEM_UNIT_CLASS_LIB_FEATURE_COUNT = CAEX_OBJECT_FEATURE_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>Get All System Unit Classes</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM_UNIT_CLASS_LIB___GET_ALL_SYSTEM_UNIT_CLASSES = CAEX_OBJECT_OPERATION_COUNT + 0;
+
+	/**
 	 * The number of operations of the '<em>System Unit Class Lib</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SYSTEM_UNIT_CLASS_LIB_OPERATION_COUNT = CAEX_OBJECT_OPERATION_COUNT + 0;
+	int SYSTEM_UNIT_CLASS_LIB_OPERATION_COUNT = CAEX_OBJECT_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link CAEX.impl.SystemUnitFamilyImpl <em>System Unit Family</em>}' class.
@@ -4146,6 +4191,36 @@ public interface CAEXPackage extends EPackage {
 	EOperation getCAEXFile__GetAllInternalElements__boolean();
 
 	/**
+	 * Returns the meta object for the '{@link CAEX.CAEXFile#getAllExternalInterfaces(boolean) <em>Get All External Interfaces</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get All External Interfaces</em>' operation.
+	 * @see CAEX.CAEXFile#getAllExternalInterfaces(boolean)
+	 * @generated
+	 */
+	EOperation getCAEXFile__GetAllExternalInterfaces__boolean();
+
+	/**
+	 * Returns the meta object for the '{@link CAEX.CAEXFile#getAllRoleClasses(boolean) <em>Get All Role Classes</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get All Role Classes</em>' operation.
+	 * @see CAEX.CAEXFile#getAllRoleClasses(boolean)
+	 * @generated
+	 */
+	EOperation getCAEXFile__GetAllRoleClasses__boolean();
+
+	/**
+	 * Returns the meta object for the '{@link CAEX.CAEXFile#getAllSystemUnitClasses(boolean) <em>Get All System Unit Classes</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get All System Unit Classes</em>' operation.
+	 * @see CAEX.CAEXFile#getAllSystemUnitClasses(boolean)
+	 * @generated
+	 */
+	EOperation getCAEXFile__GetAllSystemUnitClasses__boolean();
+
+	/**
 	 * Returns the meta object for class '{@link CAEX.CAEXObject <em>Object</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4808,6 +4883,16 @@ public interface CAEXPackage extends EPackage {
 	EReference getRoleClassLib_RoleClass();
 
 	/**
+	 * Returns the meta object for the '{@link CAEX.RoleClassLib#getAllRoleClasses() <em>Get All Role Classes</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get All Role Classes</em>' operation.
+	 * @see CAEX.RoleClassLib#getAllRoleClasses()
+	 * @generated
+	 */
+	EOperation getRoleClassLib__GetAllRoleClasses();
+
+	/**
 	 * Returns the meta object for class '{@link CAEX.RoleClass <em>Role Class</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4988,6 +5073,16 @@ public interface CAEXPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getSystemUnitClassLib_SystemUnitClass();
+
+	/**
+	 * Returns the meta object for the '{@link CAEX.SystemUnitClassLib#getAllSystemUnitClasses() <em>Get All System Unit Classes</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get All System Unit Classes</em>' operation.
+	 * @see CAEX.SystemUnitClassLib#getAllSystemUnitClasses()
+	 * @generated
+	 */
+	EOperation getSystemUnitClassLib__GetAllSystemUnitClasses();
 
 	/**
 	 * Returns the meta object for class '{@link CAEX.SystemUnitClass <em>System Unit Class</em>}'.
@@ -5482,6 +5577,30 @@ public interface CAEXPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation CAEX_FILE___GET_ALL_INTERNAL_ELEMENTS__BOOLEAN = eINSTANCE.getCAEXFile__GetAllInternalElements__boolean();
+
+		/**
+		 * The meta object literal for the '<em><b>Get All External Interfaces</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation CAEX_FILE___GET_ALL_EXTERNAL_INTERFACES__BOOLEAN = eINSTANCE.getCAEXFile__GetAllExternalInterfaces__boolean();
+
+		/**
+		 * The meta object literal for the '<em><b>Get All Role Classes</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation CAEX_FILE___GET_ALL_ROLE_CLASSES__BOOLEAN = eINSTANCE.getCAEXFile__GetAllRoleClasses__boolean();
+
+		/**
+		 * The meta object literal for the '<em><b>Get All System Unit Classes</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation CAEX_FILE___GET_ALL_SYSTEM_UNIT_CLASSES__BOOLEAN = eINSTANCE.getCAEXFile__GetAllSystemUnitClasses__boolean();
 
 		/**
 		 * The meta object literal for the '{@link CAEX.impl.CAEXObjectImpl <em>Object</em>}' class.
@@ -6018,6 +6137,14 @@ public interface CAEXPackage extends EPackage {
 		EReference ROLE_CLASS_LIB__ROLE_CLASS = eINSTANCE.getRoleClassLib_RoleClass();
 
 		/**
+		 * The meta object literal for the '<em><b>Get All Role Classes</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ROLE_CLASS_LIB___GET_ALL_ROLE_CLASSES = eINSTANCE.getRoleClassLib__GetAllRoleClasses();
+
+		/**
 		 * The meta object literal for the '{@link CAEX.impl.RoleClassImpl <em>Role Class</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -6162,6 +6289,14 @@ public interface CAEXPackage extends EPackage {
 		 * @generated
 		 */
 		EReference SYSTEM_UNIT_CLASS_LIB__SYSTEM_UNIT_CLASS = eINSTANCE.getSystemUnitClassLib_SystemUnitClass();
+
+		/**
+		 * The meta object literal for the '<em><b>Get All System Unit Classes</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation SYSTEM_UNIT_CLASS_LIB___GET_ALL_SYSTEM_UNIT_CLASSES = eINSTANCE.getSystemUnitClassLib__GetAllSystemUnitClasses();
 
 		/**
 		 * The meta object literal for the '{@link CAEX.impl.SystemUnitClassImpl <em>System Unit Class</em>}' class.

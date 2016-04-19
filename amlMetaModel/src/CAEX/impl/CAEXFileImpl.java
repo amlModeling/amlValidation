@@ -4,11 +4,14 @@ package CAEX.impl;
 
 import CAEX.CAEXFile;
 import CAEX.CAEXPackage;
+import CAEX.ExternalInterface;
 import CAEX.ExternalReference;
 import CAEX.InstanceHierarchy;
 import CAEX.InterfaceClassLib;
 import CAEX.InternalElement;
+import CAEX.RoleClass;
 import CAEX.RoleClassLib;
+import CAEX.SystemUnitClass;
 import CAEX.SystemUnitClassLib;
 
 import java.lang.reflect.InvocationTargetException;
@@ -328,6 +331,119 @@ public class CAEXFileImpl extends CAEXBasicObjectImpl implements CAEXFile {
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * 	Collects all External Interfaces within the hierarchy
+	 *  An ExternalInterface can be used in following Types:
+	 *  	- Internal Element
+	 *  	- RoleClass
+	 *  	- RoleRequirement	 *  	
+	 *  	- SystemUnitClass
+	 * 
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public EList<ExternalInterface> getAllExternalInterfaces(boolean includeExternalReferences) {
+		EList<ExternalInterface> ret = new BasicEList<ExternalInterface>();
+		EList<InternalElement> allInternalElements = new BasicEList<InternalElement>();		
+		EList<RoleClass> allRoleClasses = new BasicEList<RoleClass>();
+		EList<SystemUnitClass> allSystemUnitClasses = new BasicEList<SystemUnitClass>();
+		
+		allInternalElements = getAllInternalElements(includeExternalReferences);
+		allRoleClasses = getAllRoleClasses(includeExternalReferences);
+		allSystemUnitClasses = getAllSystemUnitClasses(includeExternalReferences);
+		
+		for(InternalElement aktIE : allInternalElements)
+		{			
+			// Todo -> Hinterfragen warum  aktIE.getExternalInterface() InterfaceClass liefert
+			ret.addAll((Collection<? extends ExternalInterface>) aktIE.getExternalInterface());
+			
+			if(aktIE.getRoleRequirements() != null)			
+				ret.addAll((Collection<? extends ExternalInterface>) aktIE.getRoleRequirements().getExternalInterface());
+		}
+		
+		for(RoleClass aktRC : allRoleClasses)
+		{
+			ret.addAll(aktRC.getExternalInterface());
+		}
+		
+		for(SystemUnitClass aktSUC : allSystemUnitClasses)
+		{
+			ret.addAll((Collection<? extends ExternalInterface>) aktSUC.getSystemUnitClass());
+		}
+		
+		
+		
+		
+		
+		return ret;
+	}
+	
+	
+	
+	
+	
+	
+	
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public EList<RoleClass> getAllRoleClasses(boolean includeExternalReferences) {
+		EList<RoleClass> ret = new BasicEList<RoleClass>();
+		
+		if(roleClassLib != null)
+		{
+			Iterator<RoleClassLib> it = roleClassLib.iterator();	
+			
+			while(it.hasNext())
+			{
+				ret.addAll(it.next().getAllRoleClasses());
+			}
+		}
+		
+		if(includeExternalReferences && externalReference != null)
+		{
+			Iterator<ExternalReference> itExtRef = externalReference.iterator();
+			
+			while(itExtRef.hasNext())
+				ret.addAll(itExtRef.next().getLinkedModel().getAllRoleClasses(true));			
+		}		
+		
+		return ret;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public EList<SystemUnitClass> getAllSystemUnitClasses(boolean includeExternalReferences) {
+		EList<SystemUnitClass> ret = new BasicEList<SystemUnitClass>();
+		
+		if(systemUnitClassLib != null)
+		{
+			Iterator<SystemUnitClassLib> it = systemUnitClassLib.iterator();	
+			
+			while(it.hasNext())
+			{
+				ret.addAll(it.next().getAllSystemUnitClasses());
+			}
+		}
+		
+		if(includeExternalReferences && externalReference != null)
+		{
+			Iterator<ExternalReference> itExtRef = externalReference.iterator();
+			
+			while(itExtRef.hasNext())
+				ret.addAll(itExtRef.next().getLinkedModel().getAllSystemUnitClasses(true));			
+		}		
+		
+		return ret;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -482,6 +598,12 @@ public class CAEXFileImpl extends CAEXBasicObjectImpl implements CAEXFile {
 		switch (operationID) {
 			case CAEXPackage.CAEX_FILE___GET_ALL_INTERNAL_ELEMENTS__BOOLEAN:
 				return getAllInternalElements((Boolean)arguments.get(0));
+			case CAEXPackage.CAEX_FILE___GET_ALL_EXTERNAL_INTERFACES__BOOLEAN:
+				return getAllExternalInterfaces((Boolean)arguments.get(0));
+			case CAEXPackage.CAEX_FILE___GET_ALL_ROLE_CLASSES__BOOLEAN:
+				return getAllRoleClasses((Boolean)arguments.get(0));
+			case CAEXPackage.CAEX_FILE___GET_ALL_SYSTEM_UNIT_CLASSES__BOOLEAN:
+				return getAllSystemUnitClasses((Boolean)arguments.get(0));
 		}
 		return super.eInvoke(operationID, arguments);
 	}

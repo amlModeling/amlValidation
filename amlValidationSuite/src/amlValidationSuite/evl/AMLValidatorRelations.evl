@@ -1,0 +1,23 @@
+import "AMLValidatorUtils.evl";
+
+
+context CAEX!SystemUnitClass
+{
+	constraint IsRefBaseClassPathValid
+	{
+		guard: self.refBaseClassPath.isDefined()
+		
+		check: true
+		
+		message: "asdf"
+	
+	
+	
+	
+	}
+
+
+
+
+}
+
