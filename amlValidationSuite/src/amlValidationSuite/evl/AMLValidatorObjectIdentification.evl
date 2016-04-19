@@ -1,81 +1,134 @@
 import "AMLValidatorUtils.evl";
 
 
-context CAEX!CAEXObject
-{ 
-	constraint HasName
-	{
-		/*According to IEC 62424:2008, A.2.2.1, AML classes (RoleClasses, InterfaceClasses and
-		SystemUnitClasses) shall be identified by their CAEX tag “Name”. */
-	
-		guard: self.isTypeOf(InterfaceClass) or 
-		       self.isTypeOf(SystemUnitClass) or 
-		       self.isTypeOf(RoleClass)
-	
-		check: self.name.isDefined()
-		
-		message
-		{
-			var type : String;			
-			var filename: String = self.eContainer.eContainer.filename ;
-			var libName : String = self.eContainer.name;
-			
-			if(self.isTypeOf(InterfaceClass))
-				type = "InterfaceClass";
-			else
-			if (self.isTypeOf(SystemUnitClass))
-				type = "SystemUnitClass";
-			else if (self.isTypeOf(RoleClass))
-				type = "RoleClass";
-				
-			return filename + " - " + type + "Lib " + libName + ": " + type + " without attribute 'name' defined";				
-		}		
-	}
-	
+context CAEX!InterfaceClassLib
+{
 	constraint IsNameUnique
 	{
 		/*  This name shall be unique within the hierarchy level of the corresponding AML library over
 			the life time of the class.*/
-			
-		guard: self.isTypeOf(InterfaceClassLib) or 
-		       self.isTypeOf(SystemUnitClassLib) or 
-		       self.isTypeOf(RoleClassLib)
-		
 		check
 		{
-			var classes = self.getClasses();			
-			var duplicates = classes.getDuplicateClasses();
-		
+			var duplicates = getDuplicateClassNames(self.interfaceClass);			
+					
 			return duplicates.isEmpty();
 		}
 	
-		message: self.eContainer.filename + ": Classname not unique: " + self.name + ": '" + duplicates.keyset().toString() + "'"		 	
-	}		
-	
-	
-	
-	
-	
-	
+		message: "File=" + self.eContainer.filename + " " + "InterfaceClassLib=" + self.name + ": Duplicate Class Names: " + duplicates.toString()
+	}
 }
 
 
-context CAEX!CAEXBasicObject
+
+
+
+context CAEX!InterfaceClass
+{
+	constraint HasName
+	{
+		/*According to IEC 62424:2008, A.2.2.1, AML classes (RoleClasses, InterfaceClasses and
+		SystemUnitClasses) shall be identified by their CAEX tag “Name”. */
+
+		check: self.name.isDefined()
+
+		message
+		{	
+			var filename : String = self.eContainer.eContainer.filename;
+			var libName : String = self.eContainer.name;
+			
+			return filename + " - InterfaceClassLib " + libName + ": InterfaceClass without attribute 'name' defined";
+		}
+	}	
+}
+
+context CAEX!SystemUnitClassLib
+{
+	constraint IsNameUnique
+	{
+		/*  This name shall be unique within the hierarchy level of the corresponding AML library over
+			the life time of the class.*/
+		check
+		{
+			var duplicates = getDuplicateClassNames(self.systemunitclass);			
+					
+			return duplicates.isEmpty();
+		}
+	
+		message: "File=" + self.eContainer.filename + " " + "SystemUnitClassLib=" + self.name + ": Duplicate Class Names: " + duplicates.toString()
+	}
+}
+
+
+
+
+context CAEX!SystemUnitClass
+{
+	constraint HasName
+	{
+		/*According to IEC 62424:2008, A.2.2.1, AML classes (RoleClasses, InterfaceClasses and
+		SystemUnitClasses) shall be identified by their CAEX tag “Name”. */
+
+		check: self.name.isDefined()
+
+		message
+		{	
+			var filename : String = self.eContainer.eContainer.filename;
+			var libName : String = self.eContainer.name;
+			
+			return filename + " - SystemUnitClassLib " + libName + ": SystemUnitClass without attribute 'name' defined";
+		}
+	}	
+}
+
+context CAEX!RoleClassLib
+{
+	constraint IsNameUnique
+	{
+		/*  This name shall be unique within the hierarchy level of the corresponding AML library over
+			the life time of the class.*/
+		check
+		{
+			var duplicates = getDuplicateClassNames(self.roleclass);			
+					
+			return duplicates.isEmpty();
+		}
+	
+		message: "File=" + self.eContainer.filename + " " + "RoleClassLib=" + self.name + ": Duplicate Class Names: " + duplicates.toString()
+	}
+}
+
+
+context CAEX!RoleClass
+{
+	constraint HasName
+	{
+		/*According to IEC 62424:2008, A.2.2.1, AML classes (RoleClasses, InterfaceClasses and
+		SystemUnitClasses) shall be identified by their CAEX tag “Name”. */
+
+		check: self.name.isDefined()
+
+		message
+		{	
+			var filename : String = self.eContainer.eContainer.filename;
+			var libName : String = self.eContainer.name;
+			
+			return filename + " - RoleClassLib " + libName + ": RoleClass without attribute 'name' defined";
+		}
+	}	
+}
+
+context CAEX!CAEXFile
 {
 	constraint IsIDGUID
 	{
-		guard: self.isTypeOf(CAEXFile) 		  
-	
 		check
 		{
 			var instances : Sequence;
-			var filename : String;
-		
-			if(self.isTypeOf(CAEXFile))
-			{
-				instances = self.getAllInternalElements(true);
-				filename = self.filename;	
-			}
+			var filename : String;		
+			
+			instances = self.getAllInternalElements(true);
+			filename = self.filename;	
+			
 						
 			var duplicates = instances.getDuplicateIDs();			
 					
@@ -84,7 +137,28 @@ context CAEX!CAEXBasicObject
 		
 		message: filename + " Duplicate ID(s) found: " + duplicateIDsToString(duplicates) 
 	}	
+}
+
+context CAEX!InternalElement
+{
+	constraint HasID
+	{
+		check: self.id.isDefined()
+		
+		message
+		{
+			var allContainer : Map;
+			var file : CAEXFile;
+			var instanceHierarchy : InstanceHierarchy;
+						
+			getAllContainer(self, allContainer);
+			file = allContainer.get("CAEXFile");
+			instanceHierarchy = allContainer.get("InstanceHierarchy");
+			
+			return "File=" + file.filename + " InstanceHierarchy=" + instanceHierarchy.name + " InternalElement '" + self.name + "' without ID defined";
+		}
 	
+	}
 
 
 

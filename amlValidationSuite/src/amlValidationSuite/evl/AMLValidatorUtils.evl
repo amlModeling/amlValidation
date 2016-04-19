@@ -65,6 +65,8 @@ operation GenericElement getAllChildNodes() : Sequence
 	return nodeNames;
 }
 
+
+
 operation Sequence getDuplicateElements() : Map
 {
 	var duplicates : Map;
@@ -84,56 +86,26 @@ operation Sequence getDuplicateElements() : Map
 }
 
 
-operation Set toString(): String
-{
-	var ret : String = "";
-	
-	for(element : String in self)
-	{
-		if(ret.isEmpty())
-			ret = ret + element;
-		else
-			ret = ret + ", " + element;
-	}
-	
-	return ret;
-}
 
-operation CAEXObject getClasses(): Sequence
+operation getDuplicateClassNames(classes : OrderedSet) : Sequence
 {
-	var ret : Sequence;
-	var classes : OrderedSet;
+	var duplicates : Sequence;
+	var keyMap : Map;
+	var className : String;
+		
 	
-	if(self.isTypeOf(InterfaceClassLib))
-		classes = self.interfaceClass;
-	else if(self.isTypeOf(SystemUnitClassLib))
-		classes = self.systemUnitClass;
-	else if(self.isTypeOf(RoleClassLib))
-		classes = self.roleClass;
-	
-	if(classes.size() <> 0)	
+    for(class : CAEXObject in classes)
 	{
-		for(class : CAEXObject in classes)
-		{
-			ret.add(class.name);
-		}
-	}	
-	
-	return ret;
-}
-
-
-operation Sequence getDuplicateClasses() : Map
-{
-	var duplicates : Map;
-	var keyMap : Map;	
-	
-    for(className : String in self)
-	{
+		className = class.name;
+		
 		if(not keyMap.containsKey(className))
-			keyMap.put(className, "");
+		{	
+			keyMap.put(className, className);
+		}
 		else
-			duplicates.put(className, "");	
+		{
+			duplicates.add(className);
+		}	
 	}		
 		
 	return duplicates;
@@ -148,9 +120,25 @@ operation Sequence getDuplicateIDs(): Map
 	for(object : CAEXObject in self)
 	{
 		if(not keyMap.containsKey(object.iD))
-			keyMap.put(object.iD, "");
+		{
+			var elements : Sequence;
+			
+			elements.add(object);
+			keyMap.put(object.iD, elements); //Save the object which contains the iD
+		}
 		else
-			duplicates.put(object.iD, object);	
+		{
+			var elements : Sequence;
+		
+			if(not duplicates.containsKey(object.iD))
+				elements = keyMap.get(object.iD);
+			else
+				elements = duplicates.get(object.iD);
+			
+			elements.add(object);
+				
+			duplicates.put(object.iD, elements);	
+		}
 	}	
 		
 	return duplicates;
@@ -160,12 +148,26 @@ operation Sequence getDuplicateIDs(): Map
 operation duplicateIDsToString(duplicates : Map) : String
 {
 	var ret : String = "";
-	var obj : CAEXObject;
+	var elementsWithSameID : Sequence;
+	var allContainer : Map;
+	
 	
 	for(key : String in duplicates.keyset())
 	{
-		obj = duplicates.get(key);
-		ret += "ID='" + key + "' " + obj.eClass.getName() + " Name='" + obj.name + "'\n";
+		elementsWithSameID = duplicates.get(key);
+		
+		for(element : CAEXObject in elementsWithSameID)
+		{
+			getAllContainer(element, allContainer);
+			
+			var file = allContainer.get("CAEXFile");
+			var instanceHierarchy = allContainer.get("InstanceHierarchy");
+			
+			ret += "\nFile="+ file.filename + " InstanceHierarchy=" + instanceHierarchy.name + " ID='" + key + "' Name='" + element.name + "'";			
+		}
+		ret +="\n";
+		
+		
 	}
 	
 	return ret;	
@@ -173,19 +175,17 @@ operation duplicateIDsToString(duplicates : Map) : String
 
 
 
-/*
-
-operation CAEXFile satisfiesAll(invariants : Sequence): Boolean
+operation getAllContainer(object : Any, result : Map) 
 {
-	var ret : Boolean = true;
+	result.put(object.eClass.getName(), object);
 	
-	for(invariant : String in invariants)
+	if(object.eContainer <> null)
 	{
-		ret = ret and self.satisfies(invariant);
+		getAllContainer(object.eContainer, result);
 	}
-	
-	return ret;
 }
 
-*/
+
+
+
 

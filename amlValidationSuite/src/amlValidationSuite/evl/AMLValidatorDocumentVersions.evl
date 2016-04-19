@@ -56,7 +56,19 @@ context CAEX!CAEXFile
 			return self.filename + ": <AdditionalInformation>.AutomationMLVersion '" + documentAMLVersion + "' not consistent with RootModel-AutomationMLVersion - Expected: '" + RootModelAutomationMLVersion	+ "'";
 		}				
 	}
-
+	
+	
+	constraint HasCAEXSchemaVersion
+	{
+		/* IEC 62714 is based on the following document formats:
+		   CAEX version 2.15;
+		*/
+		
+		check: self.schemaVersion.isDefined()
+		
+		message: self.filename + "CAEX Schema Version not defined"
+	
+	}
 
 	
 	constraint HasCorrectCAEXSchemaVersion
@@ -64,6 +76,8 @@ context CAEX!CAEXFile
 		/* IEC 62714 is based on the following document formats:
 		   CAEX version 2.15;
 		*/
+		
+		guard: self.satisfies("HasCAEXSchemaVersion")
 		
 		check:	self.schemaVersion = CAEXSChemaVersion
 		
@@ -75,7 +89,9 @@ context CAEX!CAEXFile
 		/* Every referenced external document shall also follow the named schema versions specified
 		   in the above AML version specification. Mixing of external document versions outside
 		   of one AML version specification is explicitly forbidden.
-		*/				
+		*/	
+		
+		guard: self.satisfies("HasCAEXSchemaVersion")			
 		
 		check 
 		{
@@ -87,34 +103,46 @@ context CAEX!CAEXFile
 	}	
 } 
 
-context CAEX!CAEXObject
+
+context CAEX!InterfaceClassLib
 {
 	constraint HasLibraryVersion
 	{
 		/* Every AML standard library and every user defined AML library shall define its version
 		   number utilizing the CAEX element “Version”. The syntax of the value of the version number
 		   is not defined in this part of IEC 62714. */
-		   
-		guard: self.isTypeOf(InterfaceClassLib) or 
-		       self.isTypeOf(SystemUnitClassLib) or 
-		       self.isTypeOf(RoleClassLib)
-	
+
 		check: self.version.isDefined()
 		
-		message
-		{
-			if(self.isTypeOf(InterfaceClassLib))
-			{
-				return self.eContainer.filename + ": <InterfaceClassLib>.Version is not defined";			
-			}else			
-			if(self.isTypeOf(SystemUnitClassLib))
-			{
-				return self.eContainer.filename + ": <SystemUnitClassLib>.Version is not defined";			
-			}else			
-			if(self.isTypeOf(RoleClassLib))
-			{
-				return self.eContainer.filename + ": <RoleClassLib>.Version is not defined";			
-			}		
-		}	
+		message: self.eContainer.filename + ": <InterfaceClassLib>.Version is not defined"
+	}
+}
+
+context CAEX!SystemUnitClassLib
+{
+	constraint HasLibraryVersion
+	{
+		/* Every AML standard library and every user defined AML library shall define its version
+		   number utilizing the CAEX element “Version”. The syntax of the value of the version number
+		   is not defined in this part of IEC 62714. */
+
+		check: self.version.isDefined()
+		
+		message: self.eContainer.filename + ": <SystemUnitClassLib>.Version is not defined"
+	}
+}
+
+
+context CAEX!RoleClassLib
+{
+	constraint HasLibraryVersion
+	{
+		/* Every AML standard library and every user defined AML library shall define its version
+		   number utilizing the CAEX element “Version”. The syntax of the value of the version number
+		   is not defined in this part of IEC 62714. */
+
+		check: self.version.isDefined()
+		
+		message: self.eContainer.filename + ": <RoleClassLib>.Version is not defined"
 	}
 }

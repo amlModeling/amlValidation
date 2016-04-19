@@ -165,14 +165,6 @@ context CAEX!CAEXFile
 		
 		message: self.filename + ": Order of <WriterHeader> elements not correct"
 	}
-	
-	
-	
-	
-	
-	
-	
-	
 }
 
 
