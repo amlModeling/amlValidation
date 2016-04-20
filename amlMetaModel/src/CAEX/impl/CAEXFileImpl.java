@@ -367,7 +367,7 @@ public class CAEXFileImpl extends CAEXBasicObjectImpl implements CAEXFile {
 		
 		for(SystemUnitClass aktSUC : allSystemUnitClasses)
 		{
-			ret.addAll((Collection<? extends ExternalInterface>) aktSUC.getSystemUnitClass());
+			ret.addAll((Collection<? extends ExternalInterface>) aktSUC.getExternalInterface());
 		}
 		
 		

@@ -274,7 +274,191 @@ public class AMLObjectIdentification {
 		
 		Assert.assertTrue(actual.containsAll(expected)&& expected.containsAll(actual));		
 	}
+	
+	
+	@Test
+	public void Test_019_ExternalInterfaceInInternalElements_MultipleModelsDuplicateIDs() throws Exception 
+	{
+		String modelPath = TestModelPath + "019_ExternalInterfaceInInternalElements_MultipleModelsDuplicateIDs\\";		
+		expected.addExpectedConstraint("IsIDGUID", "Testcase.aml Duplicate ID(s) found: "  
+				+ "\nFile=Testcase.aml InstanceHierarchy=InstanceHierarchy1 type=InternalElement ID='5096a7e5-b712-4e36-82fc-8890555e1d9d' Name='InternalElement13'"
+				+ "\nFile=ReferencedLib.aml InstanceHierarchy=InstanceHierarchy52 type=ExternalInterface ID='5096a7e5-b712-4e36-82fc-8890555e1d9d' Name='DupicateID2'\n"
+				+ "\nFile=Testcase.aml InstanceHierarchy=InstanceHierarchy2 type=InternalElement ID='c05fdc3f-eb92-45c2-98f6-1486669703e0' Name='InternalElement61'"
+				+ "\nFile=ReferencedLib.aml InstanceHierarchy=InstanceHierarchy51 type=ExternalInterface ID='c05fdc3f-eb92-45c2-98f6-1486669703e0' Name='DupicateID1'\n");
+
+		actual = new AMLExpectedUnsatisfiedConstraints(validationSuite.execute(modelPath, "Testcase"));
 		
+		Assert.assertTrue(actual.containsAll(expected)&& expected.containsAll(actual));		
+	}
+	
+	@Test
+	public void Test_020_ExternalInterfaceInRoleClass_DuplicateIDSameRC_NotNested() throws Exception 
+	{
+		String modelPath = TestModelPath + "020_ExternalInterfaceInRoleClass_DuplicateIDSameRC_NotNested\\";		
+		expected.addExpectedConstraint("IsIDGUID", "Testcase.aml Duplicate ID(s) found: "  
+				+ "\nFile=Testcase.aml RoleClassLib=RoleClassLib1 type=ExternalInterface ID='070068e2-47b3-4f2c-a4f1-52aca710ada2' Name='Interface1'"
+				+ "\nFile=Testcase.aml RoleClassLib=RoleClassLib1 type=ExternalInterface ID='070068e2-47b3-4f2c-a4f1-52aca710ada2' Name='Interface2'\n");
+
+		actual = new AMLExpectedUnsatisfiedConstraints(validationSuite.execute(modelPath, "Testcase"));
+		
+		Assert.assertTrue(actual.containsAll(expected)&& expected.containsAll(actual));		
+	}
+	
+	
+	@Test
+	public void Test_021_ExternalInterfaceInRoleClass_DuplicateIDDifferentRC_NotNested() throws Exception 
+	{
+		String modelPath = TestModelPath + "021_ExternalInterfaceInRoleClass_DuplicateIDDifferentRC_NotNested\\";		
+		expected.addExpectedConstraint("IsIDGUID", "Testcase.aml Duplicate ID(s) found: "  
+				+ "\nFile=Testcase.aml RoleClassLib=RoleClassLib1 type=ExternalInterface ID='070068e2-47b3-4f2c-a4f1-52aca710ada2' Name='Interface1'"
+				+ "\nFile=Testcase.aml RoleClassLib=RoleClassLib1 type=ExternalInterface ID='070068e2-47b3-4f2c-a4f1-52aca710ada2' Name='Interface2'\n");
+
+		actual = new AMLExpectedUnsatisfiedConstraints(validationSuite.execute(modelPath, "Testcase"));
+		
+		Assert.assertTrue(actual.containsAll(expected)&& expected.containsAll(actual));		
+	}
+	
+	@Test
+	public void Test_022_ExternalInterfaceInRoleClass_DuplicateIDSameRC_Nested() throws Exception 
+	{
+		String modelPath = TestModelPath + "022_ExternalInterfaceInRoleClass_DuplicateIDSameRC_Nested\\";		
+		expected.addExpectedConstraint("IsIDGUID", "Testcase.aml Duplicate ID(s) found: "  
+				+ "\nFile=Testcase.aml RoleClassLib=RoleClassLib1 type=ExternalInterface ID='070068e2-47b3-4f2c-a4f1-52aca710ada2' Name='Interface1'"
+				+ "\nFile=Testcase.aml RoleClassLib=RoleClassLib1 type=ExternalInterface ID='070068e2-47b3-4f2c-a4f1-52aca710ada2' Name='Interface2'\n");
+
+		actual = new AMLExpectedUnsatisfiedConstraints(validationSuite.execute(modelPath, "Testcase"));
+		
+		Assert.assertTrue(actual.containsAll(expected)&& expected.containsAll(actual));		
+	}
+	
+	@Test
+	public void Test_023_ExternalInterfaceInRoleClass_DuplicateIDDifferentRoleClassLib() throws Exception 
+	{
+		String modelPath = TestModelPath + "023_ExternalInterfaceInRoleClass_DuplicateIDDifferentRoleClassLib\\";		
+		expected.addExpectedConstraint("IsIDGUID", "Testcase.aml Duplicate ID(s) found: "  
+				+ "\nFile=Testcase.aml RoleClassLib=RoleClassLib1 type=ExternalInterface ID='070068e2-47b3-4f2c-a4f1-52aca710ada2' Name='Interface1'"
+				+ "\nFile=Testcase.aml RoleClassLib=RoleClassLib2 type=ExternalInterface ID='070068e2-47b3-4f2c-a4f1-52aca710ada2' Name='Interface2'\n");
+
+		actual = new AMLExpectedUnsatisfiedConstraints(validationSuite.execute(modelPath, "Testcase"));
+		
+		Assert.assertTrue(actual.containsAll(expected)&& expected.containsAll(actual));		
+	}
+	
+	@Test
+	public void Test_024_ExternalInterfaceInRoleClass_DuplicateIDExternalInterfaceIntElementRoleClass() throws Exception 
+	{
+		String modelPath = TestModelPath + "024_ExternalInterfaceInRoleClass_DuplicateIDExternalInterfaceIntElementRoleClass\\";		
+		expected.addExpectedConstraint("IsIDGUID", "Testcase.aml Duplicate ID(s) found: "  
+				+"\nFile=Testcase.aml InstanceHierarchy=InstanceHierarchy1 type=ExternalInterface ID='070068e2-47b3-4f2c-a4f1-52aca710ada2' Name='Interface1'"
+				+"\nFile=Testcase.aml RoleClassLib=RoleClassLib1 type=ExternalInterface ID='070068e2-47b3-4f2c-a4f1-52aca710ada2' Name='Interface2'\n");
+
+		actual = new AMLExpectedUnsatisfiedConstraints(validationSuite.execute(modelPath, "Testcase"));
+		
+		Assert.assertTrue(actual.containsAll(expected)&& expected.containsAll(actual));		
+	}
+	
+	@Test
+	public void Test_025_ExternalInterfaceInRoleClass_DuplicateIDInternalElementIntElementRoleClasss() throws Exception 
+	{
+		String modelPath = TestModelPath + "025_ExternalInterfaceInRoleClass_DuplicateIDInternalElementIntElementRoleClass\\";		
+		expected.addExpectedConstraint("IsIDGUID", "Testcase.aml Duplicate ID(s) found: "  
+				+ "\nFile=Testcase.aml InstanceHierarchy=InstanceHierarchy1 type=InternalElement ID='070068e2-47b3-4f2c-a4f1-52aca710ada2' Name='InternalElement1'"
+				+ "\nFile=Testcase.aml RoleClassLib=RoleClassLib1 type=ExternalInterface ID='070068e2-47b3-4f2c-a4f1-52aca710ada2' Name='Interface2'\n");
+
+
+		actual = new AMLExpectedUnsatisfiedConstraints(validationSuite.execute(modelPath, "Testcase"));
+		
+		Assert.assertTrue(actual.containsAll(expected)&& expected.containsAll(actual));		
+	}
+	
+	@Test
+	public void Test_026_ExternalInterfaceInSystemUnitClass_DuplicateIDSameSUC_NotNested() throws Exception 
+	{
+		String modelPath = TestModelPath + "026_ExternalInterfaceInSystemUnitClass_DuplicateIDSameSUC_NotNested\\";		
+		expected.addExpectedConstraint("IsIDGUID", "Testcase.aml Duplicate ID(s) found: "  
+				+ "\nFile=Testcase.aml SystemUnitClassLib=SystemUnitClassLib1 type=ExternalInterface ID='1ec43e7d-2fb2-4482-9266-c7ba87debc2f' Name='Interface1'"
+				+ "\nFile=Testcase.aml SystemUnitClassLib=SystemUnitClassLib1 type=ExternalInterface ID='1ec43e7d-2fb2-4482-9266-c7ba87debc2f' Name='Interface2'\n");
+
+
+		actual = new AMLExpectedUnsatisfiedConstraints(validationSuite.execute(modelPath, "Testcase"));
+		
+		Assert.assertTrue(actual.containsAll(expected)&& expected.containsAll(actual));		
+	}
+	
+	@Test
+	public void Test_027_ExternalInterfaceInSystemUnitClass_DuplicateIDDifferentSUC_NotNested() throws Exception 
+	{
+		String modelPath = TestModelPath + "027_ExternalInterfaceInSystemUnitClass_DuplicateIDDifferentSUC_NotNested\\";		
+		expected.addExpectedConstraint("IsIDGUID", "Testcase.aml Duplicate ID(s) found: "  
+				+ "\nFile=Testcase.aml SystemUnitClassLib=SystemUnitClassLib1 type=ExternalInterface ID='1ec43e7d-2fb2-4482-9266-c7ba87debc2f' Name='Interface1'"
+				+ "\nFile=Testcase.aml SystemUnitClassLib=SystemUnitClassLib1 type=ExternalInterface ID='1ec43e7d-2fb2-4482-9266-c7ba87debc2f' Name='Interface2'\n");
+
+
+		actual = new AMLExpectedUnsatisfiedConstraints(validationSuite.execute(modelPath, "Testcase"));
+		
+		Assert.assertTrue(actual.containsAll(expected)&& expected.containsAll(actual));		
+	}
+	
+	
+	@Test
+	public void Test_028_ExternalInterfaceInSystemUnitClass_DuplicateIDSameSUC_Nested() throws Exception 
+	{
+		String modelPath = TestModelPath + "028_ExternalInterfaceInSystemUnitClass_DuplicateIDSameSUC_Nested\\";		
+		expected.addExpectedConstraint("IsIDGUID", "Testcase.aml Duplicate ID(s) found: "  
+				+ "\nFile=Testcase.aml SystemUnitClassLib=SystemUnitClassLib1 type=ExternalInterface ID='1ec43e7d-2fb2-4482-9266-c7ba87debc2f' Name='Interface2'"
+				+ "\nFile=Testcase.aml SystemUnitClassLib=SystemUnitClassLib1 type=ExternalInterface ID='1ec43e7d-2fb2-4482-9266-c7ba87debc2f' Name='Interface1'\n");
+
+
+		actual = new AMLExpectedUnsatisfiedConstraints(validationSuite.execute(modelPath, "Testcase"));
+		
+		Assert.assertTrue(actual.containsAll(expected)&& expected.containsAll(actual));		
+	}
+	
+	
+	@Test
+	public void Test_029_ExternalInterfaceInSystemUnitClass_DuplicateIDDifferentSUC_NotNested() throws Exception 
+	{
+		String modelPath = TestModelPath + "029_ExternalInterfaceInSystemUnitClass_DuplicateIDDifferentSUC_NotNested\\";		
+		expected.addExpectedConstraint("IsIDGUID", "Testcase.aml Duplicate ID(s) found: "  
+				+ "\nFile=Testcase.aml SystemUnitClassLib=SystemUnitClassLib1 type=ExternalInterface ID='1ec43e7d-2fb2-4482-9266-c7ba87debc2f' Name='Interface2'"
+				+ "\nFile=Testcase.aml SystemUnitClassLib=SystemUnitClassLib2 type=ExternalInterface ID='1ec43e7d-2fb2-4482-9266-c7ba87debc2f' Name='Interface1'\n");
+
+
+		actual = new AMLExpectedUnsatisfiedConstraints(validationSuite.execute(modelPath, "Testcase"));
+		
+		Assert.assertTrue(actual.containsAll(expected)&& expected.containsAll(actual));		
+	}
+	
+	
+	@Test
+	public void Test_030_ExternalInterfaceInSystemUnitClass_DuplicateIDDifferentSUC_Nested() throws Exception 
+	{
+		String modelPath = TestModelPath + "030_ExternalInterfaceInSystemUnitClass_DuplicateIDDifferentSUC_Nested\\";		
+		expected.addExpectedConstraint("IsIDGUID", "Testcase.aml Duplicate ID(s) found: "  
+				+ "\nFile=Testcase.aml SystemUnitClassLib=SystemUnitClassLib1 type=ExternalInterface ID='1ec43e7d-2fb2-4482-9266-c7ba87debc2f' Name='Interface2'"
+				+ "\nFile=Testcase.aml SystemUnitClassLib=SystemUnitClassLib2 type=ExternalInterface ID='1ec43e7d-2fb2-4482-9266-c7ba87debc2f' Name='Interface1'\n");
+
+
+		actual = new AMLExpectedUnsatisfiedConstraints(validationSuite.execute(modelPath, "Testcase"));
+		
+		Assert.assertTrue(actual.containsAll(expected)&& expected.containsAll(actual));		
+	}
+	
+	
+	@Test
+	public void Test_031_ExternalInterfaceInRoleRequirements() throws Exception 
+	{
+		String modelPath = TestModelPath + "031_ExternalInterfaceInRoleRequirements\\";		
+		expected.addExpectedConstraint("IsIDGUID", "Testcase.aml Duplicate ID(s) found: "  
+				+ "\nFile=Testcase.aml InstanceHierarchy=InstanceHierarchy1 type=InternalElement ID='879ad56c-a983-47d1-b00c-c7d021922353' Name='InternalElement1'"
+				+ "\nFile=Testcase.aml InstanceHierarchy=InstanceHierarchy1 type=InterfaceClass ID='879ad56c-a983-47d1-b00c-c7d021922353' Name='Interface2'\n");
+
+
+		actual = new AMLExpectedUnsatisfiedConstraints(validationSuite.execute(modelPath, "Testcase"));
+		
+		Assert.assertTrue(actual.containsAll(expected)&& expected.containsAll(actual));		
+	}
+	
 	
 	
 	

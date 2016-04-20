@@ -150,6 +150,8 @@ operation duplicateIDsToString(duplicates : Map) : String
 	var ret : String = "";
 	var elementsWithSameID : Sequence;
 	var allContainer : Map;
+	var container : CAEXObject;
+	
 	
 	
 	for(key : String in duplicates.keyset())
@@ -159,11 +161,20 @@ operation duplicateIDsToString(duplicates : Map) : String
 		for(element : CAEXBasicObject in elementsWithSameID)
 		{
 			getAllContainer(element, allContainer);
-			
+						
 			var file = allContainer.get("CAEXFile");
-			var instanceHierarchy = allContainer.get("InstanceHierarchy");
 			
-			ret += "\nFile="+ file.filename + " InstanceHierarchy=" + instanceHierarchy.name + " type=" + element.eClass.getName() + " ID='" + key + "' Name='" + element.name + "'";			
+			if(element.isTypeOf(InternalElement) or element.eContainer.isTypeOf(InternalElement) )			
+				container = allContainer.get("InstanceHierarchy");
+			else
+			if(element.eContainer.isTypeOf(RoleClass))
+				container = allContainer.get("RoleClassLib");
+			else
+			if(element.eContainer.isTypeOf(SystemUnitClass))
+				container = allContainer.get("SystemUnitClassLib");
+			
+			
+			ret += "\nFile="+ file.filename + " " + container.eClass.getName() + "=" + container.name + " type=" + element.eClass.getName() + " ID='" + key + "' Name='" + element.name + "'";			
 		}
 		ret +="\n";
 		

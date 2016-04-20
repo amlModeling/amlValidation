@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<CAEXFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" FileName="ReferencedLib.aml" SchemaVersion="2.15" xsi:noNamespaceSchemaLocation="CAEX_ClassModel_V2.15.xsd">
+	<AdditionalInformation AutomationMLVersion="2.0"/>
+	<AdditionalInformation>
+		<WriterHeader>
+			<WriterName>AutomationML Editor</WriterName>
+			<WriterID>916578CA-FE0D-474E-A4FC-9E1719892369</WriterID>
+			<WriterVendor>AutomationML e.V.</WriterVendor>
+			<WriterVendorURL>www.AutomationML.org</WriterVendorURL>
+			<WriterVersion>4.3.11.0</WriterVersion>
+			<WriterRelease>4.3.11.0</WriterRelease>
+			<LastWritingDateTime>2016-04-11T23:57:35.5278227+02:00</LastWritingDateTime>
+			<WriterProjectTitle>unspecified</WriterProjectTitle>
+			<WriterProjectID>unspecified</WriterProjectID>
+		</WriterHeader>
+	</AdditionalInformation>
+	<InstanceHierarchy Name="InstanceHierarchy51">
+		<Version>1.0.0</Version>
+		<InternalElement Name="InternalElement511" ID="9c99111a-937d-402e-8941-a390a0b5bb3e">
+			<InternalElement Name="InternalElement512" ID="8e362e89-2c88-4bb6-827a-a26f48e29ada">
+				<InternalElement Name="InternalElement513" ID="7896a017-350d-478f-8f75-6d471c25a278" />
+			</InternalElement>
+		</InternalElement>
+		<InternalElement Name="InternalElement521" ID="e56339ec-1ddf-41b0-8d70-139c606ce916">
+			<InternalElement Name="InternalElement522" ID="f5973236-6c1f-43d1-ac7f-cf8b34f33021" />
+				<ExternalInterface Name="DupicateID1" ID ="c05fdc3f-eb92-45c2-98f6-1486669703e0"/> <!-- duplicate ID-->
+		</InternalElement>
+		<InternalElement Name="InternalElement531" ID="3e402fb2-ca24-4016-8771-ae5f17a482a4" />
+	</InstanceHierarchy>
+	<InstanceHierarchy Name="InstanceHierarchy52">
+		<Version>1.0.0</Version>
+		<InternalElement Name="InternalElement551" ID="1a51459a-539e-4197-b506-e304ee51e5c4">
+			<InternalElement Name="InternalElement552" ID="c9be9315-5a25-4cf3-aea6-859db743636d">
+				<ExternalInterface Name="DupicateID2" ID ="5096a7e5-b712-4e36-82fc-8890555e1d9d"/> <!-- duplicate ID-->
+				<InternalElement Name="InternalElement553" ID="72ae2ad5-312e-42a1-b90f-b208f1e9aadd" />
+			</InternalElement>
+		</InternalElement>
+		<InternalElement Name="InternalElement561" ID="98fe215b-ecb0-48b8-938b-084686663a9a" />
+	</InstanceHierarchy>
+</CAEXFile>
