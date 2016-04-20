@@ -108,8 +108,8 @@ public class AMLObjectIdentification {
 	{
 		String modelPath = TestModelPath + "007_InternalElements_DuplicateIDSameIH_NotNested\\";		
 		expected.addExpectedConstraint("IsIDGUID", "Testcase.aml Duplicate ID(s) found: "
-				+ "\nFile=Testcase.aml InstanceHierarchy=InstanceHierarchy1 ID='9c99111a-937d-402e-8941-a390a0b5bb3e' Name='InternalElement11'" 
-				+ "\nFile=Testcase.aml InstanceHierarchy=InstanceHierarchy1 ID='9c99111a-937d-402e-8941-a390a0b5bb3e' Name='InternalElement21'\n");
+				+ "\nFile=Testcase.aml InstanceHierarchy=InstanceHierarchy1 type=InternalElement ID='9c99111a-937d-402e-8941-a390a0b5bb3e' Name='InternalElement11'" 
+				+ "\nFile=Testcase.aml InstanceHierarchy=InstanceHierarchy1 type=InternalElement ID='9c99111a-937d-402e-8941-a390a0b5bb3e' Name='InternalElement21'\n");
 		
 		actual = new AMLExpectedUnsatisfiedConstraints(validationSuite.execute(modelPath, "Testcase"));
 		
@@ -121,8 +121,8 @@ public class AMLObjectIdentification {
 	{
 		String modelPath = TestModelPath + "008_InternalElements_DuplicateIDSameIH_Nested\\";		
 		expected.addExpectedConstraint("IsIDGUID", "Testcase.aml Duplicate ID(s) found: "
-				+ "\nFile=Testcase.aml InstanceHierarchy=InstanceHierarchy1 ID='9c99111a-937d-402e-8941-a390a0b5bb3e' Name='InternalElement1'"
-				+ "\nFile=Testcase.aml InstanceHierarchy=InstanceHierarchy1 ID='9c99111a-937d-402e-8941-a390a0b5bb3e' Name='InternalElement3'\n");
+				+ "\nFile=Testcase.aml InstanceHierarchy=InstanceHierarchy1 type=InternalElement ID='9c99111a-937d-402e-8941-a390a0b5bb3e' Name='InternalElement1'"
+				+ "\nFile=Testcase.aml InstanceHierarchy=InstanceHierarchy1 type=InternalElement ID='9c99111a-937d-402e-8941-a390a0b5bb3e' Name='InternalElement3'\n");
 				
 		
 		actual = new AMLExpectedUnsatisfiedConstraints(validationSuite.execute(modelPath, "Testcase"));
@@ -135,8 +135,8 @@ public class AMLObjectIdentification {
 	{
 		String modelPath = TestModelPath + "009_InternalElements_DuplicateIDDifferentIH_NotNested\\";		
 		expected.addExpectedConstraint("IsIDGUID", "Testcase.aml Duplicate ID(s) found: "
-				+ "\nFile=Testcase.aml InstanceHierarchy=InstanceHierarchy1 ID='9c99111a-937d-402e-8941-a390a0b5bb3e' Name='InternalElement1'"
-				+ "\nFile=Testcase.aml InstanceHierarchy=InstanceHierarchy2 ID='9c99111a-937d-402e-8941-a390a0b5bb3e' Name='InternalElement2'\n");
+				+ "\nFile=Testcase.aml InstanceHierarchy=InstanceHierarchy1 type=InternalElement ID='9c99111a-937d-402e-8941-a390a0b5bb3e' Name='InternalElement1'"
+				+ "\nFile=Testcase.aml InstanceHierarchy=InstanceHierarchy2 type=InternalElement ID='9c99111a-937d-402e-8941-a390a0b5bb3e' Name='InternalElement2'\n");
 		
 		actual = new AMLExpectedUnsatisfiedConstraints(validationSuite.execute(modelPath, "Testcase"));
 		
@@ -148,8 +148,8 @@ public class AMLObjectIdentification {
 	{
 		String modelPath = TestModelPath + "010_InternalElements_DuplicateIDDifferentIH_Nested1\\";		
 		expected.addExpectedConstraint("IsIDGUID", "Testcase.aml Duplicate ID(s) found: "
-				+ "\nFile=Testcase.aml InstanceHierarchy=InstanceHierarchy1 ID='9c99111a-937d-402e-8941-a390a0b5bb3e' Name='InternalElement2'"
-				+ "\nFile=Testcase.aml InstanceHierarchy=InstanceHierarchy2 ID='9c99111a-937d-402e-8941-a390a0b5bb3e' Name='InternalElement3'\n");
+				+ "\nFile=Testcase.aml InstanceHierarchy=InstanceHierarchy1 type=InternalElement ID='9c99111a-937d-402e-8941-a390a0b5bb3e' Name='InternalElement2'"
+				+ "\nFile=Testcase.aml InstanceHierarchy=InstanceHierarchy2 type=InternalElement ID='9c99111a-937d-402e-8941-a390a0b5bb3e' Name='InternalElement3'\n");
 		
 		actual = new AMLExpectedUnsatisfiedConstraints(validationSuite.execute(modelPath, "Testcase"));
 		
@@ -161,8 +161,8 @@ public class AMLObjectIdentification {
 	{
 		String modelPath = TestModelPath + "011_InternalElements_DuplicateIDDifferentIH_Nested2\\";		
 		expected.addExpectedConstraint("IsIDGUID", "Testcase.aml Duplicate ID(s) found: "
-				+ "\nFile=Testcase.aml InstanceHierarchy=InstanceHierarchy1 ID='9c99111a-937d-402e-8941-a390a0b5bb3e' Name='InternalElement1'"
-				+ "\nFile=Testcase.aml InstanceHierarchy=InstanceHierarchy2 ID='9c99111a-937d-402e-8941-a390a0b5bb3e' Name='InternalElement2'\n");
+				+ "\nFile=Testcase.aml InstanceHierarchy=InstanceHierarchy1 type=InternalElement ID='9c99111a-937d-402e-8941-a390a0b5bb3e' Name='InternalElement1'"
+				+ "\nFile=Testcase.aml InstanceHierarchy=InstanceHierarchy2 type=InternalElement ID='9c99111a-937d-402e-8941-a390a0b5bb3e' Name='InternalElement2'\n");
 		
 		actual = new AMLExpectedUnsatisfiedConstraints(validationSuite.execute(modelPath, "Testcase"));
 		
@@ -174,26 +174,26 @@ public class AMLObjectIdentification {
 	{
 		String modelPath = TestModelPath + "012_InternalElements_MultipleModelsDuplicateID\\";		
 		expected.addExpectedConstraint("IsIDGUID", "Testcase.aml Duplicate ID(s) found: "
-				+ "\nFile=Testcase.aml InstanceHierarchy=InstanceHierarchy1 ID='8e362e89-2c88-4bb6-827a-a26f48e29ada' Name='InternalElement12'"
-				+ "\nFile=ReferencedLib.aml InstanceHierarchy=InstanceHierarchy51 ID='8e362e89-2c88-4bb6-827a-a26f48e29ada' Name='InternalElement512'\n"
-				+ "\nFile=Testcase.aml InstanceHierarchy=InstanceHierarchy1 ID='f5973236-6c1f-43d1-ac7f-cf8b34f33021' Name='InternalElement22'"
-				+ "\nFile=ReferencedLib.aml InstanceHierarchy=InstanceHierarchy51 ID='f5973236-6c1f-43d1-ac7f-cf8b34f33021' Name='InternalElement522'\n"
-				+ "\nFile=Testcase.aml InstanceHierarchy=InstanceHierarchy2 ID='c9be9315-5a25-4cf3-aea6-859db743636d' Name='InternalElement52'"
-				+ "\nFile=ReferencedLib.aml InstanceHierarchy=InstanceHierarchy52 ID='c9be9315-5a25-4cf3-aea6-859db743636d' Name='InternalElement552'\n"
-				+ "\nFile=Testcase.aml InstanceHierarchy=InstanceHierarchy2 ID='72ae2ad5-312e-42a1-b90f-b208f1e9aadd' Name='InternalElement53'"
-				+ "\nFile=ReferencedLib.aml InstanceHierarchy=InstanceHierarchy52 ID='72ae2ad5-312e-42a1-b90f-b208f1e9aadd' Name='InternalElement553'\n"
-				+ "\nFile=Testcase.aml InstanceHierarchy=InstanceHierarchy2 ID='1a51459a-539e-4197-b506-e304ee51e5c4' Name='InternalElement51'"
-				+ "\nFile=ReferencedLib.aml InstanceHierarchy=InstanceHierarchy52 ID='1a51459a-539e-4197-b506-e304ee51e5c4' Name='InternalElement551'\n"
-				+ "\nFile=Testcase.aml InstanceHierarchy=InstanceHierarchy1 ID='3e402fb2-ca24-4016-8771-ae5f17a482a4' Name='InternalElement31'"
-				+ "\nFile=ReferencedLib.aml InstanceHierarchy=InstanceHierarchy51 ID='3e402fb2-ca24-4016-8771-ae5f17a482a4' Name='InternalElement531'\n"
-				+ "\nFile=Testcase.aml InstanceHierarchy=InstanceHierarchy1 ID='9c99111a-937d-402e-8941-a390a0b5bb3e' Name='InternalElement11'"
-				+ "\nFile=ReferencedLib.aml InstanceHierarchy=InstanceHierarchy51 ID='9c99111a-937d-402e-8941-a390a0b5bb3e' Name='InternalElement511'\n"
-				+ "\nFile=Testcase.aml InstanceHierarchy=InstanceHierarchy1 ID='7a16a017-350d-478f-8f75-6d471c25a278' Name='InternalElement13'"
-				+ "\nFile=ReferencedLib.aml InstanceHierarchy=InstanceHierarchy51 ID='7a16a017-350d-478f-8f75-6d471c25a278' Name='InternalElement513'\n"
-				+ "\nFile=Testcase.aml InstanceHierarchy=InstanceHierarchy1 ID='e56339ec-1ddf-41b0-8d70-139c606ce916' Name='InternalElement21'"
-				+ "\nFile=ReferencedLib.aml InstanceHierarchy=InstanceHierarchy51 ID='e56339ec-1ddf-41b0-8d70-139c606ce916' Name='InternalElement521'\n"
-				+ "\nFile=Testcase.aml InstanceHierarchy=InstanceHierarchy2 ID='98fe215b-ecb0-48b8-938b-084686663a9a' Name='InternalElement61'"
-				+ "\nFile=ReferencedLib.aml InstanceHierarchy=InstanceHierarchy52 ID='98fe215b-ecb0-48b8-938b-084686663a9a' Name='InternalElement561'\n");
+				+ "\nFile=Testcase.aml InstanceHierarchy=InstanceHierarchy1 type=InternalElement ID='8e362e89-2c88-4bb6-827a-a26f48e29ada' Name='InternalElement12'"
+				+ "\nFile=ReferencedLib.aml InstanceHierarchy=InstanceHierarchy51 type=InternalElement ID='8e362e89-2c88-4bb6-827a-a26f48e29ada' Name='InternalElement512'\n"
+				+ "\nFile=Testcase.aml InstanceHierarchy=InstanceHierarchy1 type=InternalElement ID='f5973236-6c1f-43d1-ac7f-cf8b34f33021' Name='InternalElement22'"
+				+ "\nFile=ReferencedLib.aml InstanceHierarchy=InstanceHierarchy51 type=InternalElement ID='f5973236-6c1f-43d1-ac7f-cf8b34f33021' Name='InternalElement522'\n"
+				+ "\nFile=Testcase.aml InstanceHierarchy=InstanceHierarchy2 type=InternalElement ID='c9be9315-5a25-4cf3-aea6-859db743636d' Name='InternalElement52'"
+				+ "\nFile=ReferencedLib.aml InstanceHierarchy=InstanceHierarchy52 type=InternalElement ID='c9be9315-5a25-4cf3-aea6-859db743636d' Name='InternalElement552'\n"
+				+ "\nFile=Testcase.aml InstanceHierarchy=InstanceHierarchy2 type=InternalElement ID='72ae2ad5-312e-42a1-b90f-b208f1e9aadd' Name='InternalElement53'"
+				+ "\nFile=ReferencedLib.aml InstanceHierarchy=InstanceHierarchy52 type=InternalElement ID='72ae2ad5-312e-42a1-b90f-b208f1e9aadd' Name='InternalElement553'\n"
+				+ "\nFile=Testcase.aml InstanceHierarchy=InstanceHierarchy2 type=InternalElement ID='1a51459a-539e-4197-b506-e304ee51e5c4' Name='InternalElement51'"
+				+ "\nFile=ReferencedLib.aml InstanceHierarchy=InstanceHierarchy52 type=InternalElement ID='1a51459a-539e-4197-b506-e304ee51e5c4' Name='InternalElement551'\n"
+				+ "\nFile=Testcase.aml InstanceHierarchy=InstanceHierarchy1 type=InternalElement ID='3e402fb2-ca24-4016-8771-ae5f17a482a4' Name='InternalElement31'"
+				+ "\nFile=ReferencedLib.aml InstanceHierarchy=InstanceHierarchy51 type=InternalElement ID='3e402fb2-ca24-4016-8771-ae5f17a482a4' Name='InternalElement531'\n"
+				+ "\nFile=Testcase.aml InstanceHierarchy=InstanceHierarchy1 type=InternalElement ID='9c99111a-937d-402e-8941-a390a0b5bb3e' Name='InternalElement11'"
+				+ "\nFile=ReferencedLib.aml InstanceHierarchy=InstanceHierarchy51 type=InternalElement ID='9c99111a-937d-402e-8941-a390a0b5bb3e' Name='InternalElement511'\n"
+				+ "\nFile=Testcase.aml InstanceHierarchy=InstanceHierarchy1 type=InternalElement ID='7a16a017-350d-478f-8f75-6d471c25a278' Name='InternalElement13'"
+				+ "\nFile=ReferencedLib.aml InstanceHierarchy=InstanceHierarchy51 type=InternalElement ID='7a16a017-350d-478f-8f75-6d471c25a278' Name='InternalElement513'\n"
+				+ "\nFile=Testcase.aml InstanceHierarchy=InstanceHierarchy1 type=InternalElement ID='e56339ec-1ddf-41b0-8d70-139c606ce916' Name='InternalElement21'"
+				+ "\nFile=ReferencedLib.aml InstanceHierarchy=InstanceHierarchy51 type=InternalElement ID='e56339ec-1ddf-41b0-8d70-139c606ce916' Name='InternalElement521'\n"
+				+ "\nFile=Testcase.aml InstanceHierarchy=InstanceHierarchy2 type=InternalElement ID='98fe215b-ecb0-48b8-938b-084686663a9a' Name='InternalElement61'"
+				+ "\nFile=ReferencedLib.aml InstanceHierarchy=InstanceHierarchy52 type=InternalElement ID='98fe215b-ecb0-48b8-938b-084686663a9a' Name='InternalElement561'\n");
 		actual = new AMLExpectedUnsatisfiedConstraints(validationSuite.execute(modelPath, "Testcase"));
 		
 		Assert.assertTrue(actual.containsAll(expected)&& expected.containsAll(actual));		
@@ -209,7 +209,76 @@ public class AMLObjectIdentification {
 		
 		Assert.assertTrue(actual.containsAll(expected)&& expected.containsAll(actual));		
 	}
+	
+	@Test
+	public void Test_014_ExternalInterfaceInInternalElement_DuplicateIDSameIE_NotNested() throws Exception 
+	{
+		String modelPath = TestModelPath + "014_ExternalInterfaceInInternalElement_DuplicateIDSameIE_NotNested\\";		
+		expected.addExpectedConstraint("IsIDGUID", "Testcase.aml Duplicate ID(s) found: "  
+				+ "\nFile=Testcase.aml InstanceHierarchy=InstanceHierarchy1 type=ExternalInterface ID='b99d7d6a-b6a3-4278-8ba9-635ff37a0d13' Name='Interface1'"
+				+ "\nFile=Testcase.aml InstanceHierarchy=InstanceHierarchy1 type=ExternalInterface ID='b99d7d6a-b6a3-4278-8ba9-635ff37a0d13' Name='Interface2'\n");
+				
+		actual = new AMLExpectedUnsatisfiedConstraints(validationSuite.execute(modelPath, "Testcase"));
 		
+		Assert.assertTrue(actual.containsAll(expected)&& expected.containsAll(actual));		
+	}
+	
+	@Test
+	public void Test_015_ExternalInterfaceInInternalElement_DuplicateIDDifferentIE_NotNested() throws Exception 
+	{
+		String modelPath = TestModelPath + "015_ExternalInterfaceInInternalElement_DuplicateIDDifferentIE_NotNested\\";		
+		expected.addExpectedConstraint("IsIDGUID", "Testcase.aml Duplicate ID(s) found: "  
+				+ "\nFile=Testcase.aml InstanceHierarchy=InstanceHierarchy1 type=ExternalInterface ID='b99d7d6a-b6a3-4278-8ba9-635ff37a0d13' Name='Interface1'"
+				+ "\nFile=Testcase.aml InstanceHierarchy=InstanceHierarchy1 type=ExternalInterface ID='b99d7d6a-b6a3-4278-8ba9-635ff37a0d13' Name='Interface2'\n");
+				
+		actual = new AMLExpectedUnsatisfiedConstraints(validationSuite.execute(modelPath, "Testcase"));
+		
+		Assert.assertTrue(actual.containsAll(expected)&& expected.containsAll(actual));		
+	}
+	
+	@Test
+	public void Test_016_ExternalInterfaceInInternalElement_DuplicateIDSameIE_Nested() throws Exception 
+	{
+		String modelPath = TestModelPath + "016_ExternalInterfaceInInternalElement_DuplicateIDSameIE_Nested\\";		
+		expected.addExpectedConstraint("IsIDGUID", "Testcase.aml Duplicate ID(s) found: "  
+				+ "\nFile=Testcase.aml InstanceHierarchy=InstanceHierarchy1 type=ExternalInterface ID='b99d7d6a-b6a3-4278-8ba9-635ff37a0d13' Name='Interface1'"
+				+ "\nFile=Testcase.aml InstanceHierarchy=InstanceHierarchy1 type=ExternalInterface ID='b99d7d6a-b6a3-4278-8ba9-635ff37a0d13' Name='Interface2'\n");
+				
+		actual = new AMLExpectedUnsatisfiedConstraints(validationSuite.execute(modelPath, "Testcase"));
+		
+		Assert.assertTrue(actual.containsAll(expected)&& expected.containsAll(actual));		
+	}
+	
+	@Test
+	public void Test_017_ExternalInterfaceInInternalElement_DuplicateIDDifferentIH() throws Exception 
+	{
+		String modelPath = TestModelPath + "017_ExternalInterfaceInInternalElement_DuplicateIDDifferentIH\\";		
+		expected.addExpectedConstraint("IsIDGUID", "Testcase.aml Duplicate ID(s) found: "  
+				+ "\nFile=Testcase.aml InstanceHierarchy=InstanceHierarchy1 type=ExternalInterface ID='b99d7d6a-b6a3-4278-8ba9-635ff37a0d13' Name='Interface1'"
+				+ "\nFile=Testcase.aml InstanceHierarchy=InstanceHierarchy2 type=ExternalInterface ID='b99d7d6a-b6a3-4278-8ba9-635ff37a0d13' Name='Interface2'\n");
+				
+		actual = new AMLExpectedUnsatisfiedConstraints(validationSuite.execute(modelPath, "Testcase"));
+		
+		Assert.assertTrue(actual.containsAll(expected)&& expected.containsAll(actual));		
+	}
+	
+	@Test
+	public void Test_018_ExternalInterfaceInInternalElement_DuplicateIDIntElemExtInt() throws Exception 
+	{
+		String modelPath = TestModelPath + "018_ExternalInterfaceInInternalElement_DuplicateIDIntElemExtInt\\";		
+		expected.addExpectedConstraint("IsIDGUID", "Testcase.aml Duplicate ID(s) found: "  
+				+ "\nFile=Testcase.aml InstanceHierarchy=InstanceHierarchy1 type=InternalElement ID='9022e364-dc65-467c-9711-003ac4887064' Name='InternalElement11'"
+				+ "\nFile=Testcase.aml InstanceHierarchy=InstanceHierarchy1 type=ExternalInterface ID='9022e364-dc65-467c-9711-003ac4887064' Name='Interface1'\n");
+				
+		actual = new AMLExpectedUnsatisfiedConstraints(validationSuite.execute(modelPath, "Testcase"));
+		
+		Assert.assertTrue(actual.containsAll(expected)&& expected.containsAll(actual));		
+	}
+		
+	
+	
+	
+	
 	
 
 }

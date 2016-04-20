@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CAEXFile FileName="Testcase.aml" SchemaVersion="2.15" xsi:noNamespaceSchemaLocation="CAEX_ClassModel_V2.15.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<AdditionalInformation>
+		<WriterHeader>
+			<WriterName>AutomationML Editor</WriterName>
+			<WriterID>916578CA-FE0D-474E-A4FC-9E1719892369</WriterID>
+			<WriterVendor>AutomationML e.V.</WriterVendor>
+			<WriterVendorURL>www.AutomationML.org</WriterVendorURL>
+			<WriterVersion>4.3.11.0</WriterVersion>
+			<WriterRelease>4.3.11.0</WriterRelease>
+			<LastWritingDateTime>2016-04-20T02:04:09.4820569+02:00</LastWritingDateTime>
+			<WriterProjectTitle>unspecified</WriterProjectTitle>
+			<WriterProjectID>unspecified</WriterProjectID>
+		</WriterHeader>
+	</AdditionalInformation>
+	<AdditionalInformation AutomationMLVersion="2.0" />
+	<InstanceHierarchy Name="InstanceHierarchy1">
+		<Version>1.0.0</Version>
+		<InternalElement Name="InternalElement11" ID="9022e364-dc65-467c-9711-003ac4887064">
+			<ExternalInterface Name="Interface1" ID="b99d7d6a-b6a3-4278-8ba9-635ff37a0d13" />
+		</InternalElement>
+	</InstanceHierarchy>
+	<InstanceHierarchy Name="InstanceHierarchy2">
+		<Version>1.0.0</Version>
+		<InternalElement Name="InternalElement1" ID="7f69399d-fa81-4eb5-a9c8-8a0f5cec3f62">
+			<ExternalInterface Name="Interface2" ID="b99d7d6a-b6a3-4278-8ba9-635ff37a0d13" />
+		</InternalElement>
+	</InstanceHierarchy>
+</CAEXFile>

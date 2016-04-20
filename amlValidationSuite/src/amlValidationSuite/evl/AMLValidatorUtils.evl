@@ -156,14 +156,14 @@ operation duplicateIDsToString(duplicates : Map) : String
 	{
 		elementsWithSameID = duplicates.get(key);
 		
-		for(element : CAEXObject in elementsWithSameID)
+		for(element : CAEXBasicObject in elementsWithSameID)
 		{
 			getAllContainer(element, allContainer);
 			
 			var file = allContainer.get("CAEXFile");
 			var instanceHierarchy = allContainer.get("InstanceHierarchy");
 			
-			ret += "\nFile="+ file.filename + " InstanceHierarchy=" + instanceHierarchy.name + " ID='" + key + "' Name='" + element.name + "'";			
+			ret += "\nFile="+ file.filename + " InstanceHierarchy=" + instanceHierarchy.name + " type=" + element.eClass.getName() + " ID='" + key + "' Name='" + element.name + "'";			
 		}
 		ret +="\n";
 		

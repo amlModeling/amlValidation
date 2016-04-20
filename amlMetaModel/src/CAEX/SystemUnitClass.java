@@ -50,7 +50,7 @@ public interface SystemUnitClass extends CAEXObject {
 
 	/**
 	 * Returns the value of the '<em><b>External Interface</b></em>' containment reference list.
-	 * The list contents are of type {@link CAEX.InterfaceClass}.
+	 * The list contents are of type {@link CAEX.ExternalInterface}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -62,7 +62,7 @@ public interface SystemUnitClass extends CAEXObject {
 	 *        extendedMetaData="kind='element' name='ExternalInterface' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	EList<InterfaceClass> getExternalInterface();
+	EList<ExternalInterface> getExternalInterface();
 
 	/**
 	 * Returns the value of the '<em><b>Internal Element</b></em>' containment reference list.
