@@ -270,9 +270,9 @@ public class AMLValidationSuiteHelper {
 		createModels(models, mapModels);		
 	}
 	
-	public Map<String, String> readParameterForEVL(EmfModel rootModel)
+	public Map<String, Object> readParameterForEVL(EmfModel rootModel)
 	{
-		HashMap<String, String> variables = new HashMap<String, String>();
+		HashMap<String, Object> variables = new HashMap<String, Object>();
 		List<GenericAttribute> listAdditionalInf = null;
 		Iterator<GenericAttribute> itAdditionalInf = null;
 		List<CAEXFile> listCAEXFile = null;
@@ -299,14 +299,50 @@ public class AMLValidationSuiteHelper {
 			while(itCAEXFile.hasNext())
 			{
 				caexFile = itCAEXFile.next();
-				variables.put("RootModelCAEXSchemaVersion", caexFile.getSchemaVersion());				
+				
+				variables.put("RootModelCAEXSchemaVersion", caexFile.getSchemaVersion());
+				
 			}
 		} catch (EolModelElementTypeNotFoundException e) {
 			//No additionalInformation in rootModel -> EVL will report that
-		}
 		
+		}
 		
 		
 		return variables;
 	}
+		
+	public CAEXFile getRootCAEXFile(String rootModel, HashMap<String, EmfModel> mapModels)
+	{
+		CAEXFile ret = null;
+		Iterator<CAEXFile> it = null;
+		IModel model = (IModel)mapModels.get(rootModel);
+		
+		
+		List<CAEXFile> listCAEX;
+		try {
+			listCAEX = (List<CAEXFile>) model.getAllOfType("CAEXFile");
+			
+			it = listCAEX.iterator();
+			
+			while(it.hasNext())
+			{
+				CAEXFile akt = it.next(); 
+				if(akt.getFileName() == rootModel + ".aml")
+				{
+					ret = akt;
+					break;
+				}
+			}
+			
+		} catch (EolModelElementTypeNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+		
+		return ret;	
+	}
 }
+
+
+

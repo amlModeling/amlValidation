@@ -2,6 +2,8 @@
  */
 package CAEX;
 
+import GenericAnyType.Element;
+import GenericAnyType.GenericElement;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
@@ -198,5 +200,13 @@ public interface CAEXBasicObject extends EObject {
 	 * @generated
 	 */
 	boolean isSetChangeMode();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model nameDataType="org.eclipse.emf.ecore.xml.type.String" listAdditionalInformationMany="true"
+	 * @generated
+	 */
+	Element getAdditionalInformationEntry(String name, EList<GenericElement> listAdditionalInformation);
 
 } // CAEXBasicObject

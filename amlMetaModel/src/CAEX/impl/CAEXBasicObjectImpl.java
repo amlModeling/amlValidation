@@ -11,7 +11,12 @@ import CAEX.Description;
 import CAEX.Revision;
 import CAEX.Version;
 
+import GenericAnyType.Element;
+import GenericAnyType.GenericAttribute;
+import GenericAnyType.GenericElement;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
+import java.util.Iterator;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -341,8 +346,62 @@ public class CAEXBasicObjectImpl extends MinimalEObjectImpl.Container implements
 	 */
 	public boolean isSetChangeMode() {
 		return changeModeESet;
+	}	
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public Element getAdditionalInformationEntry(String name, EList<GenericElement> listAdditionalInformation) {
+		Element ret = null;
+		Iterator<GenericElement> itElements = listAdditionalInformation.iterator();		
+		
+		GenericElement aktElement = null;
+		GenericAttribute aktAttribut = null;
+		String elementName, attributName;
+		
+		while(itElements.hasNext())
+		{
+			aktElement = itElements.next();
+						
+			elementName = aktElement.getName();
+			
+			if(elementName != null && elementName.equals(name))
+			{
+				ret = aktElement;
+				break;
+			}
+			else
+			{
+				Iterator<GenericAttribute> itAttribute = aktElement.getAttributes().iterator();
+				
+				while(itAttribute.hasNext() && ret == null)
+				{
+					aktAttribut = itAttribute.next();
+					
+					attributName = aktAttribut.getName();
+					
+					if(attributName != null && attributName.equals(name))
+					{
+						ret = aktAttribut;
+						break;
+					}					
+				}
+				
+				if(ret == null && aktElement.getNestedElements() != null)
+				{
+					ret = getAdditionalInformationEntry(name, aktElement.getNestedElements());
+					
+				}				
+			}			
+		}	
+		
+		return ret;
+
 	}
 
+	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -474,6 +533,21 @@ public class CAEXBasicObjectImpl extends MinimalEObjectImpl.Container implements
 				return isSetChangeMode();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	@SuppressWarnings("unchecked")
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case CAEXPackage.CAEX_BASIC_OBJECT___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST:
+				return getAdditionalInformationEntry((String)arguments.get(0), (EList<GenericElement>)arguments.get(1));
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

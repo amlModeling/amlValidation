@@ -603,6 +603,15 @@ public class CAEXPackageImpl extends EPackageImpl implements CAEXPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getCAEXBasicObject__GetAdditionalInformationEntry__String_EList() {
+		return caexBasicObjectEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getCAEXFile() {
 		return caexFileEClass;
 	}
@@ -1660,6 +1669,7 @@ public class CAEXPackageImpl extends EPackageImpl implements CAEXPackage {
 		createEReference(caexBasicObjectEClass, CAEX_BASIC_OBJECT__COPYRIGHT);
 		createEReference(caexBasicObjectEClass, CAEX_BASIC_OBJECT__ADDITIONAL_INFORMATION);
 		createEAttribute(caexBasicObjectEClass, CAEX_BASIC_OBJECT__CHANGE_MODE);
+		createEOperation(caexBasicObjectEClass, CAEX_BASIC_OBJECT___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST);
 
 		caexFileEClass = createEClass(CAEX_FILE);
 		createEReference(caexFileEClass, CAEX_FILE__EXTERNAL_REFERENCE);
@@ -1895,6 +1905,10 @@ public class CAEXPackageImpl extends EPackageImpl implements CAEXPackage {
 		initEReference(getCAEXBasicObject_AdditionalInformation(), this.getAdditionalInformation(), null, "additionalInformation", null, 0, -1, CAEXBasicObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCAEXBasicObject_ChangeMode(), this.getChangeMode(), "changeMode", "state", 0, 1, CAEXBasicObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		EOperation op = initEOperation(getCAEXBasicObject__GetAdditionalInformationEntry__String_EList(), theGenericAnyTypePackage.getElement(), "getAdditionalInformationEntry", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theXMLTypePackage.getString(), "name", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theGenericAnyTypePackage.getGenericElement(), "listAdditionalInformation", 0, -1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(caexFileEClass, CAEXFile.class, "CAEXFile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getCAEXFile_ExternalReference(), this.getExternalReference(), null, "externalReference", null, 0, -1, CAEXFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCAEXFile_InstanceHierarchy(), this.getInstanceHierarchy(), null, "instanceHierarchy", null, 0, -1, CAEXFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1904,7 +1918,7 @@ public class CAEXPackageImpl extends EPackageImpl implements CAEXPackage {
 		initEAttribute(getCAEXFile_FileName(), theXMLTypePackage.getString(), "fileName", null, 1, 1, CAEXFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCAEXFile_SchemaVersion(), theXMLTypePackage.getString(), "schemaVersion", "", 1, 1, CAEXFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		EOperation op = initEOperation(getCAEXFile__GetAllInternalElements__boolean(), this.getInternalElement(), "getAllInternalElements", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getCAEXFile__GetAllInternalElements__boolean(), this.getInternalElement(), "getAllInternalElements", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theXMLTypePackage.getBoolean(), "includeExternalReferences", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = initEOperation(getCAEXFile__GetAllExternalInterfaces__boolean(), this.getExternalInterface(), "getAllExternalInterfaces", 0, -1, IS_UNIQUE, IS_ORDERED);

@@ -10,8 +10,8 @@ context CAEX!CAEXFile
 		
 		guard: self.satisfies("HasElementAdditionalInformation")
 		
-		check: self.additionalInformation.hasGenericElement("AutomationMLVersion")
-		
+		check: self.getAdditionalInformationEntry("AutomationMLVersion", self.additionalInformation) <> null
+				
 		message : self.filename + ": No Attribute <AdditionalInformation>.AutomationMLVersion defined"
 	}
 		
@@ -26,7 +26,8 @@ context CAEX!CAEXFile
 		
 		check
 		{ 
-			var documentAMLVersion = self.additionalInformation.getGenericElement("AutomationMLVersion").value;			
+			//var documentAMLVersion = self.additionalInformation.getGenericElement("AutomationMLVersion").value;			
+			var documentAMLVersion = self.getAdditionalInformationEntry("AutomationMLVersion", self.additionalInformation).value;
 			return documentAMLVersion = AutomationMLVersion;		
 		}		  
 		
@@ -47,7 +48,8 @@ context CAEX!CAEXFile
 		
 		check 
 		{
-			var documentAMLVersion = self.additionalInformation.getGenericElement("AutomationMLVersion").value; 
+			
+			var documentAMLVersion = self.getAdditionalInformationEntry("AutomationMLVersion", self.additionalInformation).value; 
 			return documentAMLVersion = RootModelAutomationMLVersion;		
 		}	
 		

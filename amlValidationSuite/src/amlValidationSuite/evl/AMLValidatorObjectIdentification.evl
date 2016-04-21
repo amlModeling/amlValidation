@@ -1,5 +1,12 @@
 import "AMLValidatorUtils.evl";
 
+pre test
+{
+	//rootModel.println();
+
+
+}
+
 
 context CAEX!InterfaceClassLib
 {

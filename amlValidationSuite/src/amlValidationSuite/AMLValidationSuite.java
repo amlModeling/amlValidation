@@ -32,6 +32,7 @@ import java.util.Set;
 
 import javax.xml.parsers.ParserConfigurationException;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.epsilon.emc.emf.EmfModel;
 import org.eclipse.epsilon.eol.IEolExecutableModule;
@@ -42,6 +43,9 @@ import org.eclipse.epsilon.eol.execute.context.Variable;
 import org.eclipse.epsilon.eol.models.IModel;
 import org.eclipse.epsilon.evl.EvlModule;
 import org.eclipse.epsilon.evl.execute.UnsatisfiedConstraint;
+import org.eclipse.epsilon.eol.types.EolAnyType;
+import org.eclipse.epsilon.eol.types.EolModelElementType;
+import org.eclipse.epsilon.eol.types.EolModelType;
 import org.eclipse.epsilon.eol.types.EolPrimitiveType;
 import org.eclipse.epsilon.eol.types.EolType;
 import org.xml.sax.SAXException;
@@ -102,19 +106,18 @@ public class AMLValidationSuite {
 		
 	};
 	
-	private void setParametersToEVL(Map<String, String> parameter)
+	private void setParametersToEVL(Map<String, Object> parameter)
 	{
-		Iterator<Entry<String, String>> it = parameter.entrySet().iterator();
+		Iterator<Entry<String, Object>> it = parameter.entrySet().iterator();
 		Variable actVar = null;
-		
 		
 		while(it.hasNext())
 		{
-			Entry<String, String> entry = it.next();
+			Entry<String, Object> entry = it.next();
 			
-			actVar = new Variable(entry.getKey(), entry.getValue(), EolPrimitiveType.String);
+			actVar = Variable.createReadOnlyVariable(entry.getKey(), entry.getValue());
 			module.getContext().getFrameStack().put(actVar);			
-		}
+		}		
 	}
 	
 	
@@ -122,7 +125,7 @@ public class AMLValidationSuite {
 	{
 		AMLValidationSuiteHelper helper = AMLValidationSuiteHelper.getInstance();
 		IModel iRootModel = null;
-		Map<String, String> parameter = null;
+		Map<String, Object> parameter = null;
 		
 		models = modelHierarchy.getModels();
 		referencedModels = modelHierarchy.getReferencedModels();

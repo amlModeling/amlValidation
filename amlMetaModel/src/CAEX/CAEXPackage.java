@@ -136,13 +136,22 @@ public interface CAEXPackage extends EPackage {
 	int CAEX_BASIC_OBJECT_FEATURE_COUNT = 6;
 
 	/**
+	 * The operation id for the '<em>Get Additional Information Entry</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAEX_BASIC_OBJECT___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST = 0;
+
+	/**
 	 * The number of operations of the '<em>Basic Object</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAEX_BASIC_OBJECT_OPERATION_COUNT = 0;
+	int CAEX_BASIC_OBJECT_OPERATION_COUNT = 1;
 
 	/**
 	 * The meta object id for the '{@link CAEX.impl.AttributeNameMappingImpl <em>Attribute Name Mapping</em>}' class.
@@ -234,6 +243,15 @@ public interface CAEXPackage extends EPackage {
 	 * @ordered
 	 */
 	int ATTRIBUTE_NAME_MAPPING_FEATURE_COUNT = CAEX_BASIC_OBJECT_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Get Additional Information Entry</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTRIBUTE_NAME_MAPPING___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST = CAEX_BASIC_OBJECT___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST;
 
 	/**
 	 * The number of operations of the '<em>Attribute Name Mapping</em>' class.
@@ -334,6 +352,15 @@ public interface CAEXPackage extends EPackage {
 	 * @ordered
 	 */
 	int CAEX_OBJECT_FEATURE_COUNT = CAEX_BASIC_OBJECT_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Get Additional Information Entry</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAEX_OBJECT___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST = CAEX_BASIC_OBJECT___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST;
 
 	/**
 	 * The number of operations of the '<em>Object</em>' class.
@@ -499,6 +526,15 @@ public interface CAEXPackage extends EPackage {
 	int ATTRIBUTE_FEATURE_COUNT = CAEX_OBJECT_FEATURE_COUNT + 7;
 
 	/**
+	 * The operation id for the '<em>Get Additional Information Entry</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTRIBUTE___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST = CAEX_OBJECT___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST;
+
+	/**
 	 * The number of operations of the '<em>Attribute</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -615,6 +651,15 @@ public interface CAEXPackage extends EPackage {
 	 * @ordered
 	 */
 	int ATTRIBUTE_VALUE_REQUIREMENT_FEATURE_COUNT = CAEX_BASIC_OBJECT_FEATURE_COUNT + 4;
+
+	/**
+	 * The operation id for the '<em>Get Additional Information Entry</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTRIBUTE_VALUE_REQUIREMENT___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST = CAEX_BASIC_OBJECT___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST;
 
 	/**
 	 * The number of operations of the '<em>Attribute Value Requirement</em>' class.
@@ -760,6 +805,15 @@ public interface CAEXPackage extends EPackage {
 	 * @ordered
 	 */
 	int CAEX_FILE_FEATURE_COUNT = CAEX_BASIC_OBJECT_FEATURE_COUNT + 7;
+
+	/**
+	 * The operation id for the '<em>Get Additional Information Entry</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAEX_FILE___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST = CAEX_BASIC_OBJECT___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST;
 
 	/**
 	 * The operation id for the '<em>Get All Internal Elements</em>' operation.
@@ -1090,6 +1144,15 @@ public interface CAEXPackage extends EPackage {
 	int INTERFACE_CLASS_FEATURE_COUNT = CAEX_OBJECT_FEATURE_COUNT + 4;
 
 	/**
+	 * The operation id for the '<em>Get Additional Information Entry</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERFACE_CLASS___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST = CAEX_OBJECT___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST;
+
+	/**
 	 * The number of operations of the '<em>Interface Class</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1226,6 +1289,15 @@ public interface CAEXPackage extends EPackage {
 	int EXTERNAL_INTERFACE_FEATURE_COUNT = INTERFACE_CLASS_FEATURE_COUNT + 0;
 
 	/**
+	 * The operation id for the '<em>Get Additional Information Entry</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTERNAL_INTERFACE___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST = INTERFACE_CLASS___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST;
+
+	/**
 	 * The number of operations of the '<em>External Interface</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1335,6 +1407,15 @@ public interface CAEXPackage extends EPackage {
 	int EXTERNAL_REFERENCE_FEATURE_COUNT = CAEX_BASIC_OBJECT_FEATURE_COUNT + 3;
 
 	/**
+	 * The operation id for the '<em>Get Additional Information Entry</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTERNAL_REFERENCE___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST = CAEX_BASIC_OBJECT___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST;
+
+	/**
 	 * The number of operations of the '<em>External Reference</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1442,6 +1523,15 @@ public interface CAEXPackage extends EPackage {
 	 * @ordered
 	 */
 	int INSTANCE_HIERARCHY_FEATURE_COUNT = CAEX_OBJECT_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Get Additional Information Entry</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANCE_HIERARCHY___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST = CAEX_OBJECT___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST;
 
 	/**
 	 * The operation id for the '<em>Get All Internal Elements</em>' operation.
@@ -1560,6 +1650,15 @@ public interface CAEXPackage extends EPackage {
 	 * @ordered
 	 */
 	int INTERFACE_CLASS_LIB_FEATURE_COUNT = CAEX_OBJECT_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Get Additional Information Entry</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERFACE_CLASS_LIB___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST = CAEX_OBJECT___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST;
 
 	/**
 	 * The number of operations of the '<em>Interface Class Lib</em>' class.
@@ -1698,6 +1797,15 @@ public interface CAEXPackage extends EPackage {
 	int INTERFACE_FAMILY_FEATURE_COUNT = INTERFACE_CLASS_FEATURE_COUNT + 0;
 
 	/**
+	 * The operation id for the '<em>Get Additional Information Entry</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERFACE_FAMILY___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST = INTERFACE_CLASS___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST;
+
+	/**
 	 * The number of operations of the '<em>Interface Family</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1796,6 +1904,15 @@ public interface CAEXPackage extends EPackage {
 	 * @ordered
 	 */
 	int INTERFACE_NAME_MAPPING_FEATURE_COUNT = CAEX_BASIC_OBJECT_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Get Additional Information Entry</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERFACE_NAME_MAPPING___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST = CAEX_BASIC_OBJECT___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST;
 
 	/**
 	 * The number of operations of the '<em>Interface Name Mapping</em>' class.
@@ -1968,6 +2085,15 @@ public interface CAEXPackage extends EPackage {
 	 * @ordered
 	 */
 	int SYSTEM_UNIT_CLASS_FEATURE_COUNT = CAEX_OBJECT_FEATURE_COUNT + 8;
+
+	/**
+	 * The operation id for the '<em>Get Additional Information Entry</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM_UNIT_CLASS___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST = CAEX_OBJECT___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST;
 
 	/**
 	 * The number of operations of the '<em>System Unit Class</em>' class.
@@ -2178,6 +2304,15 @@ public interface CAEXPackage extends EPackage {
 	int INTERNAL_ELEMENT_FEATURE_COUNT = SYSTEM_UNIT_CLASS_FEATURE_COUNT + 4;
 
 	/**
+	 * The operation id for the '<em>Get Additional Information Entry</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERNAL_ELEMENT___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST = SYSTEM_UNIT_CLASS___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST;
+
+	/**
 	 * The number of operations of the '<em>Internal Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2314,6 +2449,15 @@ public interface CAEXPackage extends EPackage {
 	int INTERNAL_LINK_FEATURE_COUNT = CAEX_OBJECT_FEATURE_COUNT + 4;
 
 	/**
+	 * The operation id for the '<em>Get Additional Information Entry</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERNAL_LINK___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST = CAEX_OBJECT___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST;
+
+	/**
 	 * The number of operations of the '<em>Internal Link</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2412,6 +2556,15 @@ public interface CAEXPackage extends EPackage {
 	 * @ordered
 	 */
 	int MAPPING_FEATURE_COUNT = CAEX_BASIC_OBJECT_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Get Additional Information Entry</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAPPING___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST = CAEX_BASIC_OBJECT___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST;
 
 	/**
 	 * The number of operations of the '<em>Mapping</em>' class.
@@ -2597,6 +2750,15 @@ public interface CAEXPackage extends EPackage {
 	int REF_SEMANTIC_FEATURE_COUNT = CAEX_BASIC_OBJECT_FEATURE_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>Get Additional Information Entry</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REF_SEMANTIC___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST = CAEX_BASIC_OBJECT___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST;
+
+	/**
 	 * The number of operations of the '<em>Ref Semantic</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2724,6 +2886,15 @@ public interface CAEXPackage extends EPackage {
 	int REVISION_FEATURE_COUNT = CAEX_BASIC_OBJECT_FEATURE_COUNT + 5;
 
 	/**
+	 * The operation id for the '<em>Get Additional Information Entry</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REVISION___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST = CAEX_BASIC_OBJECT___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST;
+
+	/**
 	 * The number of operations of the '<em>Revision</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2831,6 +3002,15 @@ public interface CAEXPackage extends EPackage {
 	 * @ordered
 	 */
 	int ROLE_CLASS_LIB_FEATURE_COUNT = CAEX_OBJECT_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Get Additional Information Entry</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLE_CLASS_LIB___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST = CAEX_OBJECT___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST;
 
 	/**
 	 * The operation id for the '<em>Get All Role Classes</em>' operation.
@@ -2987,6 +3167,15 @@ public interface CAEXPackage extends EPackage {
 	int ROLE_CLASS_FEATURE_COUNT = CAEX_OBJECT_FEATURE_COUNT + 5;
 
 	/**
+	 * The operation id for the '<em>Get Additional Information Entry</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLE_CLASS___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST = CAEX_OBJECT___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST;
+
+	/**
 	 * The number of operations of the '<em>Role Class</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3132,6 +3321,15 @@ public interface CAEXPackage extends EPackage {
 	int ROLE_FAMILY_FEATURE_COUNT = ROLE_CLASS_FEATURE_COUNT + 0;
 
 	/**
+	 * The operation id for the '<em>Get Additional Information Entry</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLE_FAMILY___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST = ROLE_CLASS___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST;
+
+	/**
 	 * The number of operations of the '<em>Role Family</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3239,6 +3437,15 @@ public interface CAEXPackage extends EPackage {
 	 * @ordered
 	 */
 	int ROLE_REQUIREMENTS_FEATURE_COUNT = CAEX_BASIC_OBJECT_FEATURE_COUNT + 3;
+
+	/**
+	 * The operation id for the '<em>Get Additional Information Entry</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLE_REQUIREMENTS___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST = CAEX_BASIC_OBJECT___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST;
 
 	/**
 	 * The number of operations of the '<em>Role Requirements</em>' class.
@@ -3350,6 +3557,15 @@ public interface CAEXPackage extends EPackage {
 	int SUPPORTED_ROLE_CLASS_FEATURE_COUNT = CAEX_BASIC_OBJECT_FEATURE_COUNT + 3;
 
 	/**
+	 * The operation id for the '<em>Get Additional Information Entry</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUPPORTED_ROLE_CLASS___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST = CAEX_BASIC_OBJECT___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST;
+
+	/**
 	 * The number of operations of the '<em>Supported Role Class</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3457,6 +3673,15 @@ public interface CAEXPackage extends EPackage {
 	 * @ordered
 	 */
 	int SYSTEM_UNIT_CLASS_LIB_FEATURE_COUNT = CAEX_OBJECT_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Get Additional Information Entry</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM_UNIT_CLASS_LIB___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST = CAEX_OBJECT___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST;
 
 	/**
 	 * The operation id for the '<em>Get All System Unit Classes</em>' operation.
@@ -3638,6 +3863,15 @@ public interface CAEXPackage extends EPackage {
 	 * @ordered
 	 */
 	int SYSTEM_UNIT_FAMILY_FEATURE_COUNT = SYSTEM_UNIT_CLASS_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Get Additional Information Entry</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM_UNIT_FAMILY___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST = SYSTEM_UNIT_CLASS___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST;
 
 	/**
 	 * The number of operations of the '<em>System Unit Family</em>' class.
@@ -4092,6 +4326,16 @@ public interface CAEXPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getCAEXBasicObject_ChangeMode();
+
+	/**
+	 * Returns the meta object for the '{@link CAEX.CAEXBasicObject#getAdditionalInformationEntry(java.lang.String, org.eclipse.emf.common.util.EList) <em>Get Additional Information Entry</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Additional Information Entry</em>' operation.
+	 * @see CAEX.CAEXBasicObject#getAdditionalInformationEntry(java.lang.String, org.eclipse.emf.common.util.EList)
+	 * @generated
+	 */
+	EOperation getCAEXBasicObject__GetAdditionalInformationEntry__String_EList();
 
 	/**
 	 * Returns the meta object for class '{@link CAEX.CAEXFile <em>File</em>}'.
@@ -5503,6 +5747,14 @@ public interface CAEXPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute CAEX_BASIC_OBJECT__CHANGE_MODE = eINSTANCE.getCAEXBasicObject_ChangeMode();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Additional Information Entry</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation CAEX_BASIC_OBJECT___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST = eINSTANCE.getCAEXBasicObject__GetAdditionalInformationEntry__String_EList();
 
 		/**
 		 * The meta object literal for the '{@link CAEX.impl.CAEXFileImpl <em>File</em>}' class.

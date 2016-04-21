@@ -5,7 +5,6 @@ package GenericAnyType.impl;
 import GenericAnyType.GenericAnyTypePackage;
 import GenericAnyType.GenericAttribute;
 import GenericAnyType.GenericElement;
-
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.NotificationChain;

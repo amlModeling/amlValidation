@@ -20,8 +20,8 @@ context CAEX!CAEXFile
 		
 		guard: self.satisfies("HasElementAdditionalInformation")
 		
-		check: self.additionalInformation.hasGenericElement("WriterHeader")
-				
+		check: self.getAdditionalInformationEntry("WriterHeader", self.additionalInformation) <> null 
+						
 		message : self.filename + ": No Element <WriterHeader> defined"
 	}	
 	
@@ -30,7 +30,8 @@ context CAEX!CAEXFile
 		/* Meta information "WriterName" mandatory */		
 		guard: self.satisfies("HasElementWriterHeader")
 		
-		check: self.additionalInformation.hasGenericElement("WriterName")
+		check: self.getAdditionalInformationEntry("WriterName", self.additionalInformation) <> null
+		
 		
 		message: self.filename + ": No Element <WriterName> defined"	
 	}
@@ -40,7 +41,8 @@ context CAEX!CAEXFile
 		/* Meta information "WriterID" mandatory */
 		guard: self.satisfies("HasElementWriterHeader")
 		
-		check: self.additionalInformation.hasGenericElement("WriterID")
+		check: self.getAdditionalInformationEntry("WriterID", self.additionalInformation) <> null 
+		
 		
 		message: self.filename + ": No Element <WriterID> defined"
 	
@@ -51,7 +53,8 @@ context CAEX!CAEXFile
 		/* Meta information "WriterVendor" mandatory */	
 		guard: self.satisfies("HasElementWriterHeader")
 		
-		check: self.additionalInformation.hasGenericElement("WriterVendor")
+		check: self.getAdditionalInformationEntry("WriterVendor", self.additionalInformation) <> null 
+		
 		
 		message: self.filename + ": No Element <WriterVendor> defined"
 	
@@ -62,8 +65,8 @@ context CAEX!CAEXFile
 		/* Meta information "WriterVendorURL" mandatory */	
 		guard: self.satisfies("HasElementWriterHeader")
 		
-		check: self.additionalInformation.hasGenericElement("WriterVendorURL")
-		
+		check: self.getAdditionalInformationEntry("WriterVendorURL", self.additionalInformation) <> null 
+				
 		message: self.filename + ": No Element <WriterVendorURL> defined"
 	
 	}
@@ -73,8 +76,8 @@ context CAEX!CAEXFile
 		/* Meta information "WriterVersion" mandatory */	
 		guard: self.satisfies("HasElementWriterHeader")
 		
-		check: self.additionalInformation.hasGenericElement("WriterVersion")
-		
+		check: self.getAdditionalInformationEntry("WriterVersion", self.additionalInformation) <> null 
+				
 		message: self.filename + ": No Element <WriterVersion> defined"
 	
 	}
@@ -84,8 +87,8 @@ context CAEX!CAEXFile
 		/* Meta information "WriterRelease" mandatory */	
 		guard: self.satisfies("HasElementWriterHeader")
 		
-		check: self.additionalInformation.hasGenericElement("WriterRelease")
-		
+		check: self.getAdditionalInformationEntry("WriterRelease", self.additionalInformation) <> null 
+				
 		message: self.filename + ": No Element <WriterRelease> defined"
 	
 	}
@@ -95,8 +98,8 @@ context CAEX!CAEXFile
 		/* Meta information "LastWritingDateTime" mandatory */	
 		guard: self.satisfies("HasElementWriterHeader")
 		
-		check: self.additionalInformation.hasGenericElement("LastWritingDateTime")
-		
+		check: self.getAdditionalInformationEntry("LastWritingDateTime", self.additionalInformation) <> null 
+			
 		message: self.filename + ": No Element <LastWritingDateTime> defined"
 	
 	}
@@ -109,7 +112,8 @@ context CAEX!CAEXFile
 		
 		check
 		{
-			var lastWritingDate = self.additionalInformation.getGenericElement("LastWritingDateTime").value;
+			var lastWritingDate = self.getAdditionalInformationEntry("LastWritingDateTime", self.additionalInformation).value;
+			//var lastWritingDate = self.additionalInformation.getGenericElement("LastWritingDateTime").value;
 			
 			return lastWritingDate.matches("(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2}).*");			
 		}
@@ -125,7 +129,7 @@ context CAEX!CAEXFile
 		
 		check
 		{
-			var writerHeader = self.additionalInformation.getGenericElement("WriterHeader");			
+			var writerHeader = self.getAdditionalInformationEntry("WriterHeader", self.additionalInformation);			
 			var duplicates = writerHeader.getAllChildNodes().getDuplicateElements();
 			
 			return duplicates.isEmpty();						
@@ -143,7 +147,7 @@ context CAEX!CAEXFile
 						
 		check
 		{
-			var writerHeader = self.additionalInformation.getGenericElement("WriterHeader");
+			var writerHeader = self.getAdditionalInformationEntry("WriterHeader", self.additionalInformation);
 			var writerHeaderNodes = writerHeader.getAllChildNodes();	
 			
 			var valid = writerHeaderNodes.at(0).name = "WriterName" and
