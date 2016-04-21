@@ -134,11 +134,13 @@ public class AMLValidationSuite {
 		helper.createModels(models, mapModels);
 		helper.createModels(referencedModels, mapModels);	
 		
-		//Has to be done before interlink
-		parameter = helper.readParameterForEVL(mapModels.get(rootModel));
+		
+		
 		
 		helper.interlinkModels(models, mapModels, modelHierarchy);		
 		helper.refreshLinkedModels(models, mapModels);		
+		
+		parameter = helper.readParameterForEVL(mapModels.get(rootModel), this.rootModel);
 		
 		iRootModel = mapModels.get(rootModel);		
 			

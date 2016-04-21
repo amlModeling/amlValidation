@@ -11,6 +11,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.epsilon.common.parse.problem.ParseProblem;
 import org.eclipse.epsilon.common.util.StringProperties;
@@ -26,7 +27,9 @@ import org.eclipse.epsilon.evl.EvlModule;
 import CAEX.AdditionalInformation;
 import CAEX.CAEXFile;
 import CAEX.ExternalReference;
+import GenericAnyType.Element;
 import GenericAnyType.GenericAttribute;
+import GenericAnyType.GenericElement;
 import amlValidationSuite.AMLValidationSuite;
 
 public class AMLValidationSuiteHelper {
@@ -270,65 +273,44 @@ public class AMLValidationSuiteHelper {
 		createModels(models, mapModels);		
 	}
 	
-	public Map<String, Object> readParameterForEVL(EmfModel rootModel)
+	public Map<String, Object> readParameterForEVL(EmfModel rootModel, String rootModelName)
 	{
 		HashMap<String, Object> variables = new HashMap<String, Object>();
-		List<GenericAttribute> listAdditionalInf = null;
-		Iterator<GenericAttribute> itAdditionalInf = null;
-		List<CAEXFile> listCAEXFile = null;
-		Iterator<CAEXFile> itCAEXFile = null;
-		IModel model = rootModel;
-		GenericAttribute actAddInf = null;
 		CAEXFile caexFile = null;
+		Element automationML = null;
+		String automationMLVersion = "", caexSchemaVersion = "";		
 		
-		try {
-			listAdditionalInf = (List<GenericAttribute>) model.getAllOfType("GenericAttribute");
-			itAdditionalInf = listAdditionalInf.iterator();
-			
-			while(itAdditionalInf.hasNext())
-			{
-				actAddInf = itAdditionalInf.next();
-				
-				if(actAddInf.getName().equals("AutomationMLVersion"))
-					variables.put("RootModelAutomationMLVersion", actAddInf.getValue());				
-			}
-			
-			listCAEXFile = (List<CAEXFile>) model.getAllOfType("CAEXFile");
-			itCAEXFile = listCAEXFile.iterator();
-			
-			while(itCAEXFile.hasNext())
-			{
-				caexFile = itCAEXFile.next();
-				
-				variables.put("RootModelCAEXSchemaVersion", caexFile.getSchemaVersion());
-				
-			}
-		} catch (EolModelElementTypeNotFoundException e) {
-			//No additionalInformation in rootModel -> EVL will report that
+		caexFile = getRootCAEXFile(rootModel, rootModelName);
 		
-		}
+		automationML = caexFile.getAdditionalInformationEntry("AutomationMLVersion", (EList<GenericElement>) (EList<?>) caexFile.getAdditionalInformation());
+				
+		if(automationML != null)
+			automationMLVersion = automationML.getValue();
 		
+		caexSchemaVersion = caexFile.getSchemaVersion();
+			
+		variables.put("RootModelAutomationMLVersion", automationMLVersion);				
+		variables.put("RootModelCAEXSchemaVersion", caexSchemaVersion);
+		variables.put("RootModel", caexFile);
 		
 		return variables;
 	}
 		
-	public CAEXFile getRootCAEXFile(String rootModel, HashMap<String, EmfModel> mapModels)
+	public CAEXFile getRootCAEXFile(IModel rootModel, String rootModelName)
 	{
 		CAEXFile ret = null;
-		Iterator<CAEXFile> it = null;
-		IModel model = (IModel)mapModels.get(rootModel);
-		
-		
+		Iterator<CAEXFile> it = null;		
 		List<CAEXFile> listCAEX;
+		
 		try {
-			listCAEX = (List<CAEXFile>) model.getAllOfType("CAEXFile");
+			listCAEX = (List<CAEXFile>) rootModel.getAllOfType("CAEXFile");
 			
 			it = listCAEX.iterator();
 			
 			while(it.hasNext())
 			{
 				CAEXFile akt = it.next(); 
-				if(akt.getFileName() == rootModel + ".aml")
+				if(akt.getFileName().equals(rootModelName + ".aml"))
 				{
 					ret = akt;
 					break;
