@@ -852,13 +852,31 @@ public interface CAEXPackage extends EPackage {
 	int CAEX_FILE___GET_ALL_SYSTEM_UNIT_CLASSES__BOOLEAN = CAEX_BASIC_OBJECT_OPERATION_COUNT + 3;
 
 	/**
+	 * The operation id for the '<em>Get Linked Model</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAEX_FILE___GET_LINKED_MODEL__STRING = CAEX_BASIC_OBJECT_OPERATION_COUNT + 4;
+
+	/**
+	 * The operation id for the '<em>Get System Unit Class Lib</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAEX_FILE___GET_SYSTEM_UNIT_CLASS_LIB__STRING = CAEX_BASIC_OBJECT_OPERATION_COUNT + 5;
+
+	/**
 	 * The number of operations of the '<em>File</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAEX_FILE_OPERATION_COUNT = CAEX_BASIC_OBJECT_OPERATION_COUNT + 4;
+	int CAEX_FILE_OPERATION_COUNT = CAEX_BASIC_OBJECT_OPERATION_COUNT + 6;
 
 	/**
 	 * The meta object id for the '{@link CAEX.impl.CopyrightImpl <em>Copyright</em>}' class.
@@ -3693,13 +3711,22 @@ public interface CAEXPackage extends EPackage {
 	int SYSTEM_UNIT_CLASS_LIB___GET_ALL_SYSTEM_UNIT_CLASSES = CAEX_OBJECT_OPERATION_COUNT + 0;
 
 	/**
+	 * The operation id for the '<em>Get System Unit Class</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM_UNIT_CLASS_LIB___GET_SYSTEM_UNIT_CLASS__STRING = CAEX_OBJECT_OPERATION_COUNT + 1;
+
+	/**
 	 * The number of operations of the '<em>System Unit Class Lib</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SYSTEM_UNIT_CLASS_LIB_OPERATION_COUNT = CAEX_OBJECT_OPERATION_COUNT + 1;
+	int SYSTEM_UNIT_CLASS_LIB_OPERATION_COUNT = CAEX_OBJECT_OPERATION_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link CAEX.impl.SystemUnitFamilyImpl <em>System Unit Family</em>}' class.
@@ -4463,6 +4490,26 @@ public interface CAEXPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getCAEXFile__GetAllSystemUnitClasses__boolean();
+
+	/**
+	 * Returns the meta object for the '{@link CAEX.CAEXFile#getLinkedModel(java.lang.String) <em>Get Linked Model</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Linked Model</em>' operation.
+	 * @see CAEX.CAEXFile#getLinkedModel(java.lang.String)
+	 * @generated
+	 */
+	EOperation getCAEXFile__GetLinkedModel__String();
+
+	/**
+	 * Returns the meta object for the '{@link CAEX.CAEXFile#getSystemUnitClassLib(java.lang.String) <em>Get System Unit Class Lib</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get System Unit Class Lib</em>' operation.
+	 * @see CAEX.CAEXFile#getSystemUnitClassLib(java.lang.String)
+	 * @generated
+	 */
+	EOperation getCAEXFile__GetSystemUnitClassLib__String();
 
 	/**
 	 * Returns the meta object for class '{@link CAEX.CAEXObject <em>Object</em>}'.
@@ -5329,6 +5376,16 @@ public interface CAEXPackage extends EPackage {
 	EOperation getSystemUnitClassLib__GetAllSystemUnitClasses();
 
 	/**
+	 * Returns the meta object for the '{@link CAEX.SystemUnitClassLib#getSystemUnitClass(java.lang.String) <em>Get System Unit Class</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get System Unit Class</em>' operation.
+	 * @see CAEX.SystemUnitClassLib#getSystemUnitClass(java.lang.String)
+	 * @generated
+	 */
+	EOperation getSystemUnitClassLib__GetSystemUnitClass__String();
+
+	/**
 	 * Returns the meta object for class '{@link CAEX.SystemUnitClass <em>System Unit Class</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5853,6 +5910,22 @@ public interface CAEXPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation CAEX_FILE___GET_ALL_SYSTEM_UNIT_CLASSES__BOOLEAN = eINSTANCE.getCAEXFile__GetAllSystemUnitClasses__boolean();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Linked Model</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation CAEX_FILE___GET_LINKED_MODEL__STRING = eINSTANCE.getCAEXFile__GetLinkedModel__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Get System Unit Class Lib</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation CAEX_FILE___GET_SYSTEM_UNIT_CLASS_LIB__STRING = eINSTANCE.getCAEXFile__GetSystemUnitClassLib__String();
 
 		/**
 		 * The meta object literal for the '{@link CAEX.impl.CAEXObjectImpl <em>Object</em>}' class.
@@ -6549,6 +6622,14 @@ public interface CAEXPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation SYSTEM_UNIT_CLASS_LIB___GET_ALL_SYSTEM_UNIT_CLASSES = eINSTANCE.getSystemUnitClassLib__GetAllSystemUnitClasses();
+
+		/**
+		 * The meta object literal for the '<em><b>Get System Unit Class</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation SYSTEM_UNIT_CLASS_LIB___GET_SYSTEM_UNIT_CLASS__STRING = eINSTANCE.getSystemUnitClassLib__GetSystemUnitClass__String();
 
 		/**
 		 * The meta object literal for the '{@link CAEX.impl.SystemUnitClassImpl <em>System Unit Class</em>}' class.

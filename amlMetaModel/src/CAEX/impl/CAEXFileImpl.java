@@ -445,6 +445,56 @@ public class CAEXFileImpl extends CAEXBasicObjectImpl implements CAEXFile {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public CAEXFile getLinkedModel(String modelName) {
+		EList<ExternalReference> listExtRef = getExternalReference();
+		Iterator<ExternalReference> itExtRef = listExtRef.iterator();
+		CAEXFile ret = null;
+		
+		while(itExtRef.hasNext())
+		{
+			ExternalReference extRef = itExtRef.next();
+			
+			if(extRef.getLinkedModel().getFileName().equals(modelName + ".aml"))
+			{
+				ret = extRef.getLinkedModel();
+				break;
+			}
+				
+		}
+		
+		return ret;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public SystemUnitClassLib getSystemUnitClassLib(String libName) {
+		EList<SystemUnitClassLib> listSCL = getSystemUnitClassLib();
+		Iterator<SystemUnitClassLib> itSCL = listSCL.iterator();
+		SystemUnitClassLib ret = null;
+		
+		while(itSCL.hasNext())
+		{
+			SystemUnitClassLib SCL = itSCL.next();
+			
+			if(SCL.getName().equals(libName))
+			{
+				ret = SCL;
+				break;
+			}				
+		}
+		
+		return ret;
+		
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -604,6 +654,10 @@ public class CAEXFileImpl extends CAEXBasicObjectImpl implements CAEXFile {
 				return getAllRoleClasses((Boolean)arguments.get(0));
 			case CAEXPackage.CAEX_FILE___GET_ALL_SYSTEM_UNIT_CLASSES__BOOLEAN:
 				return getAllSystemUnitClasses((Boolean)arguments.get(0));
+			case CAEXPackage.CAEX_FILE___GET_LINKED_MODEL__STRING:
+				return getLinkedModel((String)arguments.get(0));
+			case CAEXPackage.CAEX_FILE___GET_SYSTEM_UNIT_CLASS_LIB__STRING:
+				return getSystemUnitClassLib((String)arguments.get(0));
 		}
 		return super.eInvoke(operationID, arguments);
 	}

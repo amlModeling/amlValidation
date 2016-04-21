@@ -720,6 +720,24 @@ public class CAEXPackageImpl extends EPackageImpl implements CAEXPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getCAEXFile__GetLinkedModel__String() {
+		return caexFileEClass.getEOperations().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getCAEXFile__GetSystemUnitClassLib__String() {
+		return caexFileEClass.getEOperations().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getCAEXObject() {
 		return caexObjectEClass;
 	}
@@ -1449,6 +1467,15 @@ public class CAEXPackageImpl extends EPackageImpl implements CAEXPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getSystemUnitClassLib__GetSystemUnitClass__String() {
+		return systemUnitClassLibEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getSystemUnitClass() {
 		return systemUnitClassEClass;
 	}
@@ -1683,6 +1710,8 @@ public class CAEXPackageImpl extends EPackageImpl implements CAEXPackage {
 		createEOperation(caexFileEClass, CAEX_FILE___GET_ALL_EXTERNAL_INTERFACES__BOOLEAN);
 		createEOperation(caexFileEClass, CAEX_FILE___GET_ALL_ROLE_CLASSES__BOOLEAN);
 		createEOperation(caexFileEClass, CAEX_FILE___GET_ALL_SYSTEM_UNIT_CLASSES__BOOLEAN);
+		createEOperation(caexFileEClass, CAEX_FILE___GET_LINKED_MODEL__STRING);
+		createEOperation(caexFileEClass, CAEX_FILE___GET_SYSTEM_UNIT_CLASS_LIB__STRING);
 
 		caexObjectEClass = createEClass(CAEX_OBJECT);
 		createEAttribute(caexObjectEClass, CAEX_OBJECT__ID);
@@ -1788,6 +1817,7 @@ public class CAEXPackageImpl extends EPackageImpl implements CAEXPackage {
 		systemUnitClassLibEClass = createEClass(SYSTEM_UNIT_CLASS_LIB);
 		createEReference(systemUnitClassLibEClass, SYSTEM_UNIT_CLASS_LIB__SYSTEM_UNIT_CLASS);
 		createEOperation(systemUnitClassLibEClass, SYSTEM_UNIT_CLASS_LIB___GET_ALL_SYSTEM_UNIT_CLASSES);
+		createEOperation(systemUnitClassLibEClass, SYSTEM_UNIT_CLASS_LIB___GET_SYSTEM_UNIT_CLASS__STRING);
 
 		systemUnitClassEClass = createEClass(SYSTEM_UNIT_CLASS);
 		createEReference(systemUnitClassEClass, SYSTEM_UNIT_CLASS__ATTRIBUTE);
@@ -1930,6 +1960,12 @@ public class CAEXPackageImpl extends EPackageImpl implements CAEXPackage {
 		op = initEOperation(getCAEXFile__GetAllSystemUnitClasses__boolean(), this.getSystemUnitClass(), "getAllSystemUnitClasses", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theXMLTypePackage.getBoolean(), "includeExternalReferences", 0, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = initEOperation(getCAEXFile__GetLinkedModel__String(), this.getCAEXFile(), "getLinkedModel", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theXMLTypePackage.getString(), "modelName", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getCAEXFile__GetSystemUnitClassLib__String(), this.getSystemUnitClassLib(), "getSystemUnitClassLib", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theXMLTypePackage.getString(), "libName", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(caexObjectEClass, CAEXObject.class, "CAEXObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCAEXObject_ID(), theXMLTypePackage.getString(), "iD", null, 0, 1, CAEXObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCAEXObject_Name(), theXMLTypePackage.getString(), "name", null, 1, 1, CAEXObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2037,6 +2073,9 @@ public class CAEXPackageImpl extends EPackageImpl implements CAEXPackage {
 		initEReference(getSystemUnitClassLib_SystemUnitClass(), this.getSystemUnitClass(), null, "systemUnitClass", null, 0, -1, SystemUnitClassLib.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getSystemUnitClassLib__GetAllSystemUnitClasses(), this.getSystemUnitClass(), "getAllSystemUnitClasses", 0, -1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getSystemUnitClassLib__GetSystemUnitClass__String(), this.getSystemUnitClass(), "getSystemUnitClass", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theXMLTypePackage.getString(), "name", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(systemUnitClassEClass, SystemUnitClass.class, "SystemUnitClass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSystemUnitClass_Attribute(), this.getAttribute(), null, "attribute", null, 0, -1, SystemUnitClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

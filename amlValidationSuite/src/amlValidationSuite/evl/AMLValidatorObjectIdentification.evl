@@ -2,7 +2,7 @@ import "AMLValidatorUtils.evl";
 
 pre test
 {
-	//rootModel.println();
+	RootModel.println();
 
 
 }

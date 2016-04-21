@@ -223,4 +223,20 @@ public interface CAEXFile extends CAEXBasicObject {
 	 */
 	EList<SystemUnitClass> getAllSystemUnitClasses(boolean includeExternalReferences);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model modelNameDataType="org.eclipse.emf.ecore.xml.type.String"
+	 * @generated
+	 */
+	CAEXFile getLinkedModel(String modelName);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model libNameDataType="org.eclipse.emf.ecore.xml.type.String"
+	 * @generated
+	 */
+	SystemUnitClassLib getSystemUnitClassLib(String libName);
+
 } // CAEXFile

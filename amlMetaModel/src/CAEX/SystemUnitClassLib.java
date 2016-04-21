@@ -45,4 +45,12 @@ public interface SystemUnitClassLib extends CAEXObject {
 	 */
 	EList<SystemUnitClass> getAllSystemUnitClasses();
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model nameDataType="org.eclipse.emf.ecore.xml.type.String"
+	 * @generated
+	 */
+	SystemUnitClass getSystemUnitClass(String name);
+
 } // SystemUnitClassLib

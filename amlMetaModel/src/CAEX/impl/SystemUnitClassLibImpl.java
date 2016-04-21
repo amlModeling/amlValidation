@@ -97,6 +97,30 @@ public class SystemUnitClassLibImpl extends CAEXObjectImpl implements SystemUnit
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	public SystemUnitClass getSystemUnitClass(String name) {
+		EList<SystemUnitClass> listSUC = getSystemUnitClass();
+		Iterator<SystemUnitClass> itSUC = listSUC.iterator();
+		SystemUnitClass ret = null;
+		
+		while(itSUC.hasNext())
+		{
+			SystemUnitClass SUC = itSUC.next();
+			
+			if(SUC.getName().equals(name))
+			{
+				ret = SUC;
+				break;
+			}
+		}
+				
+		return ret;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
 	private void getAllSystemUnitClasses(SystemUnitClass systemUnitClass, EList<SystemUnitClass> systemUnitClasses)
 	{
 		systemUnitClasses.add(systemUnitClass);
@@ -194,6 +218,8 @@ public class SystemUnitClassLibImpl extends CAEXObjectImpl implements SystemUnit
 		switch (operationID) {
 			case CAEXPackage.SYSTEM_UNIT_CLASS_LIB___GET_ALL_SYSTEM_UNIT_CLASSES:
 				return getAllSystemUnitClasses();
+			case CAEXPackage.SYSTEM_UNIT_CLASS_LIB___GET_SYSTEM_UNIT_CLASS__STRING:
+				return getSystemUnitClass((String)arguments.get(0));
 		}
 		return super.eInvoke(operationID, arguments);
 	}
