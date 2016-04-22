@@ -1,0 +1,30 @@
+import "AMLValidatorUtils.evl";
+
+
+context CAEX!SystemUnitClass
+{
+	constraint IsRefBaseClassPathValid
+	{
+		guard: self.refBaseClassPath.isDefined()
+		
+		check
+		{
+			var pathMap = prepareRefClassPath(self.refBaseClassPath);
+			
+			var errorText = checkRefClassPath("SUC", pathMap);
+		
+			return errorText = "";
+		} 
+		
+		message: errorText
+	
+	
+	
+	
+	}
+
+
+
+
+}
+

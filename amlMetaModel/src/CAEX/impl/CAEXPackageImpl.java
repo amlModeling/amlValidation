@@ -1557,6 +1557,24 @@ public class CAEXPackageImpl extends EPackageImpl implements CAEXPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getSystemUnitClass__GetSystemUnitClass__String() {
+		return systemUnitClassEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getSystemUnitClass__GetAttribute__String() {
+		return systemUnitClassEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getSystemUnitFamily() {
 		return systemUnitFamilyEClass;
 	}
@@ -1828,6 +1846,8 @@ public class CAEXPackageImpl extends EPackageImpl implements CAEXPackage {
 		createEAttribute(systemUnitClassEClass, SYSTEM_UNIT_CLASS__REF_BASE_CLASS_PATH);
 		createEReference(systemUnitClassEClass, SYSTEM_UNIT_CLASS__BASE_CLASS);
 		createEReference(systemUnitClassEClass, SYSTEM_UNIT_CLASS__SYSTEM_UNIT_CLASS);
+		createEOperation(systemUnitClassEClass, SYSTEM_UNIT_CLASS___GET_SYSTEM_UNIT_CLASS__STRING);
+		createEOperation(systemUnitClassEClass, SYSTEM_UNIT_CLASS___GET_ATTRIBUTE__STRING);
 
 		systemUnitFamilyEClass = createEClass(SYSTEM_UNIT_FAMILY);
 
@@ -2086,6 +2106,12 @@ public class CAEXPackageImpl extends EPackageImpl implements CAEXPackage {
 		initEAttribute(getSystemUnitClass_RefBaseClassPath(), theXMLTypePackage.getString(), "refBaseClassPath", null, 0, 1, SystemUnitClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSystemUnitClass_BaseClass(), this.getSystemUnitClass(), null, "baseClass", null, 0, 1, SystemUnitClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSystemUnitClass_SystemUnitClass(), this.getSystemUnitClass(), null, "systemUnitClass", null, 0, -1, SystemUnitClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		op = initEOperation(getSystemUnitClass__GetSystemUnitClass__String(), this.getSystemUnitClass(), "getSystemUnitClass", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theXMLTypePackage.getString(), "name", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getSystemUnitClass__GetAttribute__String(), this.getAttribute(), "getAttribute", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theXMLTypePackage.getString(), "name", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(systemUnitFamilyEClass, SystemUnitFamily.class, "SystemUnitFamily", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

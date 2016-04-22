@@ -4,6 +4,7 @@ import "AMLValidatorCommon.evl";
 import "AMLValidatorDocumentVersions.evl";
 import "AMLValidatorMetaInformation.evl";
 import "AMLValidatorObjectIdentification.evl";
+import "AMLValidatorReferences.evl";
 
 
 

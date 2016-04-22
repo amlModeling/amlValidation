@@ -10,7 +10,9 @@ import CAEX.InternalLink;
 import CAEX.SupportedRoleClass;
 import CAEX.SystemUnitClass;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
+import java.util.Iterator;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -289,6 +291,54 @@ public class SystemUnitClassImpl extends CAEXObjectImpl implements SystemUnitCla
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public SystemUnitClass getSystemUnitClass(String name) {
+		EList<SystemUnitClass> listSUC = getSystemUnitClass();
+		Iterator<SystemUnitClass> itSUC = listSUC.iterator();
+		SystemUnitClass ret = null;
+		
+		while(itSUC.hasNext())
+		{
+			SystemUnitClass SUC = itSUC.next();
+			
+			if(SUC.getName().equals(name))
+			{
+				ret = SUC;
+				break;
+			}
+		}
+				
+		return ret;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public Attribute getAttribute(String name) {
+		EList<Attribute> listAttributes = getAttribute();
+		Iterator<Attribute> itAttr = listAttributes.iterator();
+		Attribute ret = null;
+		
+		while(itAttr.hasNext())
+		{
+			Attribute attr = itAttr.next();
+			
+			if(attr.getName().equals(name))
+			{
+				ret = attr;
+				break;
+			}
+		}
+				
+		return ret;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -444,6 +494,22 @@ public class SystemUnitClassImpl extends CAEXObjectImpl implements SystemUnitCla
 				return systemUnitClass != null && !systemUnitClass.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case CAEXPackage.SYSTEM_UNIT_CLASS___GET_SYSTEM_UNIT_CLASS__STRING:
+				return getSystemUnitClass((String)arguments.get(0));
+			case CAEXPackage.SYSTEM_UNIT_CLASS___GET_ATTRIBUTE__STRING:
+				return getAttribute((String)arguments.get(0));
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

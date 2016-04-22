@@ -2114,13 +2114,31 @@ public interface CAEXPackage extends EPackage {
 	int SYSTEM_UNIT_CLASS___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST = CAEX_OBJECT___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST;
 
 	/**
+	 * The operation id for the '<em>Get System Unit Class</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM_UNIT_CLASS___GET_SYSTEM_UNIT_CLASS__STRING = CAEX_OBJECT_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Get Attribute</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM_UNIT_CLASS___GET_ATTRIBUTE__STRING = CAEX_OBJECT_OPERATION_COUNT + 1;
+
+	/**
 	 * The number of operations of the '<em>System Unit Class</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SYSTEM_UNIT_CLASS_OPERATION_COUNT = CAEX_OBJECT_OPERATION_COUNT + 0;
+	int SYSTEM_UNIT_CLASS_OPERATION_COUNT = CAEX_OBJECT_OPERATION_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link CAEX.impl.InternalElementImpl <em>Internal Element</em>}' class.
@@ -2329,6 +2347,24 @@ public interface CAEXPackage extends EPackage {
 	 * @ordered
 	 */
 	int INTERNAL_ELEMENT___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST = SYSTEM_UNIT_CLASS___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST;
+
+	/**
+	 * The operation id for the '<em>Get System Unit Class</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERNAL_ELEMENT___GET_SYSTEM_UNIT_CLASS__STRING = SYSTEM_UNIT_CLASS___GET_SYSTEM_UNIT_CLASS__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Attribute</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERNAL_ELEMENT___GET_ATTRIBUTE__STRING = SYSTEM_UNIT_CLASS___GET_ATTRIBUTE__STRING;
 
 	/**
 	 * The number of operations of the '<em>Internal Element</em>' class.
@@ -3899,6 +3935,24 @@ public interface CAEXPackage extends EPackage {
 	 * @ordered
 	 */
 	int SYSTEM_UNIT_FAMILY___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST = SYSTEM_UNIT_CLASS___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST;
+
+	/**
+	 * The operation id for the '<em>Get System Unit Class</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM_UNIT_FAMILY___GET_SYSTEM_UNIT_CLASS__STRING = SYSTEM_UNIT_CLASS___GET_SYSTEM_UNIT_CLASS__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Attribute</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM_UNIT_FAMILY___GET_ATTRIBUTE__STRING = SYSTEM_UNIT_CLASS___GET_ATTRIBUTE__STRING;
 
 	/**
 	 * The number of operations of the '<em>System Unit Family</em>' class.
@@ -5484,6 +5538,26 @@ public interface CAEXPackage extends EPackage {
 	EReference getSystemUnitClass_SystemUnitClass();
 
 	/**
+	 * Returns the meta object for the '{@link CAEX.SystemUnitClass#getSystemUnitClass(java.lang.String) <em>Get System Unit Class</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get System Unit Class</em>' operation.
+	 * @see CAEX.SystemUnitClass#getSystemUnitClass(java.lang.String)
+	 * @generated
+	 */
+	EOperation getSystemUnitClass__GetSystemUnitClass__String();
+
+	/**
+	 * Returns the meta object for the '{@link CAEX.SystemUnitClass#getAttribute(java.lang.String) <em>Get Attribute</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Attribute</em>' operation.
+	 * @see CAEX.SystemUnitClass#getAttribute(java.lang.String)
+	 * @generated
+	 */
+	EOperation getSystemUnitClass__GetAttribute__String();
+
+	/**
 	 * Returns the meta object for class '{@link CAEX.SystemUnitFamily <em>System Unit Family</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6704,6 +6778,22 @@ public interface CAEXPackage extends EPackage {
 		 * @generated
 		 */
 		EReference SYSTEM_UNIT_CLASS__SYSTEM_UNIT_CLASS = eINSTANCE.getSystemUnitClass_SystemUnitClass();
+
+		/**
+		 * The meta object literal for the '<em><b>Get System Unit Class</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation SYSTEM_UNIT_CLASS___GET_SYSTEM_UNIT_CLASS__STRING = eINSTANCE.getSystemUnitClass__GetSystemUnitClass__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Attribute</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation SYSTEM_UNIT_CLASS___GET_ATTRIBUTE__STRING = eINSTANCE.getSystemUnitClass__GetAttribute__String();
 
 		/**
 		 * The meta object literal for the '{@link CAEX.impl.SystemUnitFamilyImpl <em>System Unit Family</em>}' class.
