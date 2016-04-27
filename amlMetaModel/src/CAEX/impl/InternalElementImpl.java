@@ -7,10 +7,12 @@ import CAEX.InternalElement;
 import CAEX.Mapping;
 import CAEX.RoleRequirements;
 import CAEX.SystemUnitClass;
+import java.util.Iterator;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
+import org.eclipse.emf.common.util.BasicEList;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -245,6 +247,23 @@ public class InternalElementImpl extends SystemUnitClassImpl implements Internal
 		baseSystemUnit = newBaseSystemUnit;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CAEXPackage.INTERNAL_ELEMENT__BASE_SYSTEM_UNIT, oldBaseSystemUnit, baseSystemUnit));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public EList<InternalElement> getAllInternalElements() {
+		EList<InternalElement> ret = new BasicEList<InternalElement>();
+		Iterator<InternalElement> it = getInternalElement().iterator();		
+		
+		ret.add(this);
+		
+		while(it.hasNext())
+			ret.addAll(it.next().getAllInternalElements());
+		
+		return ret;
 	}
 
 	/**

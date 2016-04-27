@@ -1,11 +1,5 @@
 import "AMLValidatorUtils.evl";
 
-pre test
-{
-	RootModel.println();
-
-
-}
 
 
 context CAEX!InterfaceClassLib
@@ -24,9 +18,6 @@ context CAEX!InterfaceClassLib
 		message: "File=" + self.eContainer.filename + " " + "InterfaceClassLib=" + self.name + ": Duplicate Class Names: " + duplicates.toString()
 	}
 }
-
-
-
 
 
 context CAEX!InterfaceClass
@@ -128,6 +119,11 @@ context CAEX!CAEXFile
 {
 	constraint IsIDGUID
 	{
+		/* All AML object instances (CAEX InternalElements and CAEX ExternalInterfaces) shall be
+		   identified by their CAEX tag “ID”. This identifier shall be a universal unique identifier
+		   (UUID) according to ISO/IEC 9834-8.
+  		*/
+	
 		check
 		{
 			var instances : Sequence;
@@ -152,6 +148,8 @@ context CAEX!InternalElement
 {
 	constraint HasID
 	{
+		/* According to IEC 62424:2008, A.3.15, the tag “ID” is not mandatory in contrast to this part of IEC 62714.*/
+		
 		check: self.id.isDefined()
 		
 		message
@@ -174,6 +172,8 @@ context CAEX!ExternalInterface
 {
 	constraint HasID
 	{
+		/* According to IEC 62424:2008, A.3.15, the tag “ID” is not mandatory in contrast to this part of IEC 62714.*/
+			
 		check: self.id.isDefined()
 		
 		message

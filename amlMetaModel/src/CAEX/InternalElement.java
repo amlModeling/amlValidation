@@ -2,6 +2,8 @@
  */
 package CAEX;
 
+import org.eclipse.emf.common.util.EList;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -126,5 +128,13 @@ public interface InternalElement extends SystemUnitClass {
 	 * @generated
 	 */
 	void setBaseSystemUnit(SystemUnitClass value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	EList<InternalElement> getAllInternalElements();
 
 } // InternalElement

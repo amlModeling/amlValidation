@@ -37,9 +37,9 @@ public class AMLReferences {
 	
 	
 	@Test
-	public void Test_001_SUC() throws Exception 
+	public void Test_001_SUCL_NotExisting_SameFile() throws Exception 
 	{
-		String modelPath = TestModelPath + "001_SUC\\";		
+		String modelPath = TestModelPath + "001_SUCL_NotExisting_SameFile\\";		
 		//expected.addExpectedConstraint("HasName", "Testcase.aml - RoleClassLib ManufacturingRoleClasses: RoleClass without attribute 'name' defined");
 		
 		actual = new AMLExpectedUnsatisfiedConstraints(validationSuite.execute(modelPath, "Testcase"));

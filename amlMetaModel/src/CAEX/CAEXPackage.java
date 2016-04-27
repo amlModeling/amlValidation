@@ -2132,13 +2132,31 @@ public interface CAEXPackage extends EPackage {
 	int SYSTEM_UNIT_CLASS___GET_ATTRIBUTE__STRING = CAEX_OBJECT_OPERATION_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>Get All System Unit Classes</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM_UNIT_CLASS___GET_ALL_SYSTEM_UNIT_CLASSES = CAEX_OBJECT_OPERATION_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Get All Internal Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM_UNIT_CLASS___GET_ALL_INTERNAL_ELEMENTS = CAEX_OBJECT_OPERATION_COUNT + 3;
+
+	/**
 	 * The number of operations of the '<em>System Unit Class</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SYSTEM_UNIT_CLASS_OPERATION_COUNT = CAEX_OBJECT_OPERATION_COUNT + 2;
+	int SYSTEM_UNIT_CLASS_OPERATION_COUNT = CAEX_OBJECT_OPERATION_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link CAEX.impl.InternalElementImpl <em>Internal Element</em>}' class.
@@ -2367,13 +2385,31 @@ public interface CAEXPackage extends EPackage {
 	int INTERNAL_ELEMENT___GET_ATTRIBUTE__STRING = SYSTEM_UNIT_CLASS___GET_ATTRIBUTE__STRING;
 
 	/**
+	 * The operation id for the '<em>Get All System Unit Classes</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERNAL_ELEMENT___GET_ALL_SYSTEM_UNIT_CLASSES = SYSTEM_UNIT_CLASS___GET_ALL_SYSTEM_UNIT_CLASSES;
+
+	/**
+	 * The operation id for the '<em>Get All Internal Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERNAL_ELEMENT___GET_ALL_INTERNAL_ELEMENTS = SYSTEM_UNIT_CLASS_OPERATION_COUNT + 0;
+
+	/**
 	 * The number of operations of the '<em>Internal Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INTERNAL_ELEMENT_OPERATION_COUNT = SYSTEM_UNIT_CLASS_OPERATION_COUNT + 0;
+	int INTERNAL_ELEMENT_OPERATION_COUNT = SYSTEM_UNIT_CLASS_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link CAEX.impl.InternalLinkImpl <em>Internal Link</em>}' class.
@@ -3230,13 +3266,22 @@ public interface CAEXPackage extends EPackage {
 	int ROLE_CLASS___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST = CAEX_OBJECT___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST;
 
 	/**
+	 * The operation id for the '<em>Get All Role Classes</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLE_CLASS___GET_ALL_ROLE_CLASSES = CAEX_OBJECT_OPERATION_COUNT + 0;
+
+	/**
 	 * The number of operations of the '<em>Role Class</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ROLE_CLASS_OPERATION_COUNT = CAEX_OBJECT_OPERATION_COUNT + 0;
+	int ROLE_CLASS_OPERATION_COUNT = CAEX_OBJECT_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link CAEX.impl.RoleFamilyImpl <em>Role Family</em>}' class.
@@ -3382,6 +3427,15 @@ public interface CAEXPackage extends EPackage {
 	 * @ordered
 	 */
 	int ROLE_FAMILY___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST = ROLE_CLASS___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST;
+
+	/**
+	 * The operation id for the '<em>Get All Role Classes</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLE_FAMILY___GET_ALL_ROLE_CLASSES = ROLE_CLASS___GET_ALL_ROLE_CLASSES;
 
 	/**
 	 * The number of operations of the '<em>Role Family</em>' class.
@@ -3953,6 +4007,24 @@ public interface CAEXPackage extends EPackage {
 	 * @ordered
 	 */
 	int SYSTEM_UNIT_FAMILY___GET_ATTRIBUTE__STRING = SYSTEM_UNIT_CLASS___GET_ATTRIBUTE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get All System Unit Classes</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM_UNIT_FAMILY___GET_ALL_SYSTEM_UNIT_CLASSES = SYSTEM_UNIT_CLASS___GET_ALL_SYSTEM_UNIT_CLASSES;
+
+	/**
+	 * The operation id for the '<em>Get All Internal Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM_UNIT_FAMILY___GET_ALL_INTERNAL_ELEMENTS = SYSTEM_UNIT_CLASS___GET_ALL_INTERNAL_ELEMENTS;
 
 	/**
 	 * The number of operations of the '<em>System Unit Family</em>' class.
@@ -4971,6 +5043,16 @@ public interface CAEXPackage extends EPackage {
 	EReference getInternalElement_BaseSystemUnit();
 
 	/**
+	 * Returns the meta object for the '{@link CAEX.InternalElement#getAllInternalElements() <em>Get All Internal Elements</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get All Internal Elements</em>' operation.
+	 * @see CAEX.InternalElement#getAllInternalElements()
+	 * @generated
+	 */
+	EOperation getInternalElement__GetAllInternalElements();
+
+	/**
 	 * Returns the meta object for class '{@link CAEX.InternalLink <em>Internal Link</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5303,6 +5385,16 @@ public interface CAEXPackage extends EPackage {
 	EReference getRoleClass_RoleClass();
 
 	/**
+	 * Returns the meta object for the '{@link CAEX.RoleClass#getAllRoleClasses() <em>Get All Role Classes</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get All Role Classes</em>' operation.
+	 * @see CAEX.RoleClass#getAllRoleClasses()
+	 * @generated
+	 */
+	EOperation getRoleClass__GetAllRoleClasses();
+
+	/**
 	 * Returns the meta object for class '{@link CAEX.RoleFamily <em>Role Family</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5556,6 +5648,26 @@ public interface CAEXPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getSystemUnitClass__GetAttribute__String();
+
+	/**
+	 * Returns the meta object for the '{@link CAEX.SystemUnitClass#getAllSystemUnitClasses() <em>Get All System Unit Classes</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get All System Unit Classes</em>' operation.
+	 * @see CAEX.SystemUnitClass#getAllSystemUnitClasses()
+	 * @generated
+	 */
+	EOperation getSystemUnitClass__GetAllSystemUnitClasses();
+
+	/**
+	 * Returns the meta object for the '{@link CAEX.SystemUnitClass#getAllInternalElements() <em>Get All Internal Elements</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get All Internal Elements</em>' operation.
+	 * @see CAEX.SystemUnitClass#getAllInternalElements()
+	 * @generated
+	 */
+	EOperation getSystemUnitClass__GetAllInternalElements();
 
 	/**
 	 * Returns the meta object for class '{@link CAEX.SystemUnitFamily <em>System Unit Family</em>}'.
@@ -6330,6 +6442,14 @@ public interface CAEXPackage extends EPackage {
 		EReference INTERNAL_ELEMENT__BASE_SYSTEM_UNIT = eINSTANCE.getInternalElement_BaseSystemUnit();
 
 		/**
+		 * The meta object literal for the '<em><b>Get All Internal Elements</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INTERNAL_ELEMENT___GET_ALL_INTERNAL_ELEMENTS = eINSTANCE.getInternalElement__GetAllInternalElements();
+
+		/**
 		 * The meta object literal for the '{@link CAEX.impl.InternalLinkImpl <em>Internal Link</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -6594,6 +6714,14 @@ public interface CAEXPackage extends EPackage {
 		EReference ROLE_CLASS__ROLE_CLASS = eINSTANCE.getRoleClass_RoleClass();
 
 		/**
+		 * The meta object literal for the '<em><b>Get All Role Classes</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ROLE_CLASS___GET_ALL_ROLE_CLASSES = eINSTANCE.getRoleClass__GetAllRoleClasses();
+
+		/**
 		 * The meta object literal for the '{@link CAEX.impl.RoleFamilyImpl <em>Role Family</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -6794,6 +6922,22 @@ public interface CAEXPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation SYSTEM_UNIT_CLASS___GET_ATTRIBUTE__STRING = eINSTANCE.getSystemUnitClass__GetAttribute__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Get All System Unit Classes</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation SYSTEM_UNIT_CLASS___GET_ALL_SYSTEM_UNIT_CLASSES = eINSTANCE.getSystemUnitClass__GetAllSystemUnitClasses();
+
+		/**
+		 * The meta object literal for the '<em><b>Get All Internal Elements</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation SYSTEM_UNIT_CLASS___GET_ALL_INTERNAL_ELEMENTS = eINSTANCE.getSystemUnitClass__GetAllInternalElements();
 
 		/**
 		 * The meta object literal for the '{@link CAEX.impl.SystemUnitFamilyImpl <em>System Unit Family</em>}' class.

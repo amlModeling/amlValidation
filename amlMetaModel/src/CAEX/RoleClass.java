@@ -129,4 +129,12 @@ public interface RoleClass extends CAEXObject {
 	 */
 	EList<RoleClass> getRoleClass();
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	EList<RoleClass> getAllRoleClasses();
+
 } // RoleClass

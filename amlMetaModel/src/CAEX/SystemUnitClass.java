@@ -196,4 +196,20 @@ public interface SystemUnitClass extends CAEXObject {
 	 */
 	Attribute getAttribute(String name);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	EList<SystemUnitClass> getAllSystemUnitClasses();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	EList<InternalElement> getAllInternalElements();
+
 } // SystemUnitClass

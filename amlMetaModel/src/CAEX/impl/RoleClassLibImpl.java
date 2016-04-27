@@ -86,28 +86,14 @@ public class RoleClassLibImpl extends CAEXObjectImpl implements RoleClassLib {
 		
 		while(it.hasNext())
 		{
-			getAllRoleClasses(it.next(), ret);	
+			ret.addAll(it.next().getAllRoleClasses());
+				
 		}
 		
 		return ret;
 	}
 	
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	private void getAllRoleClasses(RoleClass roleClass, EList<RoleClass> roleClasses)
-	{
-		roleClasses.add(roleClass);
-		Iterator<RoleClass> it = roleClass.getRoleClass().iterator();		
-				
-		while(it.hasNext())
-			getAllRoleClasses(it.next(), roleClasses);			
-		
-	}
 	
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -303,6 +303,9 @@ public class CAEXFileImpl extends CAEXBasicObjectImpl implements CAEXFile {
 	 */
 	public EList<InternalElement> getAllInternalElements(boolean includeExternalReferences) {
 		EList<InternalElement> ret = new BasicEList<InternalElement>();
+		EList<SystemUnitClass> listSUC = null;
+		Iterator<SystemUnitClass> itSUC = null;
+		
 		
 		if(instanceHierarchy != null)
 		{
@@ -320,7 +323,18 @@ public class CAEXFileImpl extends CAEXBasicObjectImpl implements CAEXFile {
 			
 			while(itExtRef.hasNext())
 				ret.addAll(itExtRef.next().getLinkedModel().getAllInternalElements(true));			
-		}		
+		}
+		
+		//SystemUnitClasses can also contain Internal Elements!!		
+		listSUC = getAllSystemUnitClasses(includeExternalReferences);
+		itSUC = listSUC.iterator();
+		
+		while(itSUC.hasNext())
+		{
+			ret.addAll(itSUC.next().getAllInternalElements());
+		}
+		
+		
 		
 		return ret;
 	}

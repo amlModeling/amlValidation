@@ -459,6 +459,23 @@ public class AMLObjectIdentification {
 		Assert.assertTrue(actual.containsAll(expected)&& expected.containsAll(actual));		
 	}
 	
+	@Test
+	public void Test_032_InternalElements_DuplicateIDInstanceHierarchy_SystemUnitClass() throws Exception 
+	{
+		String modelPath = TestModelPath + "032_InternalElements_DuplicateIDInstanceHierarchy_SystemUnitClass\\";		
+		expected.addExpectedConstraint("IsIDGUID", "Testcase.aml Duplicate ID(s) found: "  
+				+ "\nFile=Testcase.aml InstanceHierarchy=InstanceHierarchy1 type=InternalElement ID='9c99111a-937d-402e-8941-a390a0b5bb3e' Name='InternalElement11'"
+				+ "\nFile=Testcase.aml SystemUnitClassLib=SystemUnitClassLib1 type=InternalElement ID='9c99111a-937d-402e-8941-a390a0b5bb3e' Name='InternalElement2'\n");
+
+
+		actual = new AMLExpectedUnsatisfiedConstraints(validationSuite.execute(modelPath, "Testcase"));
+		
+		Assert.assertTrue(actual.containsAll(expected)&& expected.containsAll(actual));		
+	}
+	
+	
+	
+	
 	
 	
 	

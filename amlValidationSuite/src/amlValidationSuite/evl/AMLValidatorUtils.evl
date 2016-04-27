@@ -109,19 +109,19 @@ operation duplicateIDsToString(duplicates : Map) : String
 		
 		for(element : CAEXBasicObject in elementsWithSameID)
 		{
+			allContainer.clear();
 			getAllContainer(element, allContainer);
 						
 			var file = allContainer.get("CAEXFile");
 			
-			if(element.isTypeOf(InternalElement) or element.eContainer.isTypeOf(InternalElement) )			
+			if(allContainer.get("InstanceHierarchy") <> null)			
 				container = allContainer.get("InstanceHierarchy");
 			else
-			if(element.eContainer.isTypeOf(RoleClass))
+			if(allContainer.get("RoleClassLib") <> null)
 				container = allContainer.get("RoleClassLib");
 			else
-			if(element.eContainer.isTypeOf(SystemUnitClass))
+			if(allContainer.get("SystemUnitClassLib") <> null)
 				container = allContainer.get("SystemUnitClassLib");
-			
 			
 			ret += "\nFile="+ file.filename + " " + container.eClass.getName() + "=" + container.name + " type=" + element.eClass.getName() + " ID='" + key + "' Name='" + element.name + "'";			
 		}
@@ -132,6 +132,7 @@ operation duplicateIDsToString(duplicates : Map) : String
 	
 	return ret;	
 }
+
 
 operation getAllContainer(object : Any, result : Map) 
 {
@@ -144,7 +145,7 @@ operation getAllContainer(object : Any, result : Map)
 }
 
 
-/* No idea to implement that as RegEx */
+/* No idea how to implement that as RegEx */
 operation prepareRefClassPath(path : String) : Map
 {
 	var LinkedModul : String;
@@ -205,10 +206,10 @@ operation prepareRefClassPath(path : String) : Map
 		}else		
 		if(aktChar = "." and inBracket = false)
 		{
-			Token = path.substring(LastTokenBegin, i);
-			Class = Token;
-			Class = Class.replace("\\[", "");
-			Class = Class.replace("\\]", "");
+			Token = path.substring(LastTokenBegin, i);			
+			Token = Token.replace("\\[", "");
+			Token = Token.replace("\\]", "");
+			Path.add(Token);
 			LastTokenBegin = i+1;
 			Attribut = path.substring(LastTokenBegin, path.length());
 			Attribut = Attribut.replace("\\[", "");
@@ -219,9 +220,9 @@ operation prepareRefClassPath(path : String) : Map
 		if(aktChar = ":" and inBracket = false)
 		{
 		 	Token = path.substring(LastTokenBegin, i);
-			Class = Token;
-			Class = Class.replace("\\[", "");
-			Class = Class.replace("\\]", "");
+			Token = Token.replace("\\[", "");
+			Token = Token.replace("\\]", "");
+			Path.add(Token);
 			LastTokenBegin = i+1;
 			Interface = path.substring(LastTokenBegin, path.length());
 			Interface = Interface.replace("\\[", "");
@@ -235,18 +236,20 @@ operation prepareRefClassPath(path : String) : Map
 	if(LastTokenBegin <> i)
 	{
 		Token = path.substring(LastTokenBegin, i);
-		Class = Token;
-		Class = Class.replace("\\[", "");
-		Class = Class.replace("\\]", "");
+		
+		Token = Token.replace("\\[", "");
+		Token = Token.replace("\\]", "");
+		Path.add(Token);
 	}		
 	
 	
 	objectMap.put("ExtRef", LinkedModul);
 	objectMap.put("Lib", Lib);
 	objectMap.put("Path", Path);
-	objectMap.put("Class", Class);
 	objectMap.put("Attribut", Attribut);
 	objectMap.put("Interface", Interface);	
+	
+	objectMap.println();
 		
 	return objectMap;
 }
@@ -258,16 +261,20 @@ operation checkRefClassPath(library : String, pathMap : Map) : String
 	var lib : String;
 	var caex : CAEXFile = null;
 	var path : Sequence;
-	var class : String;
-	
+	var attrib : String;
+	var interface : String;
+		
 	extRef = pathMap.get("ExtRef");
 	lib    = pathMap.get("Lib");
 	path   = pathMap.get("Path");	
+	attrib = pathMap.get("Attribut");
+	interface = pathMap.get("Interface");		
 
 	if(library = "SUC")
 	{
 		var SUL : SystemUnitClassLib = null;
-		var SUC : SystemUnitClass = null;		
+		var SUC : SystemUnitClass = null;	
+		var atr : Attribute = null;	
 		
 		if(extRef <> "")
 			caex = RootModel.getLinkedModel(extRef);
@@ -293,13 +300,17 @@ operation checkRefClassPath(library : String, pathMap : Map) : String
 				return "SystemUnitClass " + aktPath + " not found";
 		}
 		
-		if(SUC = null)
-			SUC = SUL.getSystemUnitClass(class);
-		else
-			SUC = SUC.getSystemUnitClass(class);
 		
-		if(SUC = null)
-			return "SystemUnitClass " + class + " not found";
+		if(attrib <> "")
+		{
+			atr = SUC.getAttribute(attrib);
+			
+			if(atr = null)
+				return "Attribute " + attrib + " not found";		
+		}
+		
+		
+	
 		
 		
 		

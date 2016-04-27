@@ -7,11 +7,13 @@ import CAEX.CAEXPackage;
 import CAEX.ExternalInterface;
 import CAEX.RoleClass;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
+import java.util.Iterator;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -217,6 +219,25 @@ public class RoleClassImpl extends CAEXObjectImpl implements RoleClass {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public EList<RoleClass> getAllRoleClasses() {
+		EList<RoleClass> ret = new BasicEList<RoleClass>();
+		Iterator<RoleClass> it = getRoleClass().iterator();
+		
+		ret.add(this);
+		
+		while(it.hasNext())
+		{
+			ret.addAll(it.next().getAllRoleClasses());		
+		}
+		
+		return ret;		
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -333,6 +354,20 @@ public class RoleClassImpl extends CAEXObjectImpl implements RoleClass {
 				return roleClass != null && !roleClass.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case CAEXPackage.ROLE_CLASS___GET_ALL_ROLE_CLASSES:
+				return getAllRoleClasses();
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

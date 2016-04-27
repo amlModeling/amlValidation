@@ -88,28 +88,11 @@ public class InstanceHierarchyImpl extends CAEXObjectImpl implements InstanceHie
 		
 		while(it.hasNext())
 		{
-			getAllInternalElements(it.next(), ret);	
+			ret.addAll(it.next().getAllInternalElements());				
 		}
 		
 		return ret;
 	}	
-	
-	
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	private void getAllInternalElements(InternalElement internalElement, EList<InternalElement> elements)
-	{
-		elements.add(internalElement);
-		Iterator<InternalElement> it = internalElement.getInternalElement().iterator();		
-				
-		while(it.hasNext())
-			getAllInternalElements(it.next(), elements);			
-		
-	}
-	
 	
 
 	/**

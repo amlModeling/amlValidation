@@ -16,7 +16,7 @@ import java.util.Iterator;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -339,6 +339,38 @@ public class SystemUnitClassImpl extends CAEXObjectImpl implements SystemUnitCla
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public EList<SystemUnitClass> getAllSystemUnitClasses() {
+		EList<SystemUnitClass> ret = new BasicEList<SystemUnitClass>();
+		Iterator<SystemUnitClass> it = getSystemUnitClass().iterator();
+		
+		ret.add(this);
+		
+		while(it.hasNext())
+			ret.addAll(it.next().getAllSystemUnitClasses());
+		
+		return ret;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public EList<InternalElement> getAllInternalElements() {
+		EList<InternalElement> ret = new BasicEList<InternalElement>();
+		Iterator<InternalElement> it = getInternalElement().iterator();
+				
+		while(it.hasNext())
+			ret.addAll(it.next().getAllInternalElements());
+			
+		return ret;		
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -508,6 +540,10 @@ public class SystemUnitClassImpl extends CAEXObjectImpl implements SystemUnitCla
 				return getSystemUnitClass((String)arguments.get(0));
 			case CAEXPackage.SYSTEM_UNIT_CLASS___GET_ATTRIBUTE__STRING:
 				return getAttribute((String)arguments.get(0));
+			case CAEXPackage.SYSTEM_UNIT_CLASS___GET_ALL_SYSTEM_UNIT_CLASSES:
+				return getAllSystemUnitClasses();
+			case CAEXPackage.SYSTEM_UNIT_CLASS___GET_ALL_INTERNAL_ELEMENTS:
+				return getAllInternalElements();
 		}
 		return super.eInvoke(operationID, arguments);
 	}

@@ -86,7 +86,7 @@ public class SystemUnitClassLibImpl extends CAEXObjectImpl implements SystemUnit
 		
 		while(it.hasNext())
 		{
-			getAllSystemUnitClasses(it.next(), ret);	
+			ret.addAll(it.next().getAllSystemUnitClasses());				
 		}
 		
 		return ret;
@@ -116,24 +116,7 @@ public class SystemUnitClassLibImpl extends CAEXObjectImpl implements SystemUnit
 		return ret;
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	private void getAllSystemUnitClasses(SystemUnitClass systemUnitClass, EList<SystemUnitClass> systemUnitClasses)
-	{
-		systemUnitClasses.add(systemUnitClass);
-		Iterator<SystemUnitClass> it = systemUnitClass.getSystemUnitClass().iterator();		
-				
-		while(it.hasNext())
-			getAllSystemUnitClasses(it.next(), systemUnitClasses);			
-		
-	}
 	
-	
-	
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

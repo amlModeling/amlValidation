@@ -1080,6 +1080,15 @@ public class CAEXPackageImpl extends EPackageImpl implements CAEXPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getInternalElement__GetAllInternalElements() {
+		return internalElementEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getInternalLink() {
 		return internalLinkEClass;
 	}
@@ -1359,6 +1368,15 @@ public class CAEXPackageImpl extends EPackageImpl implements CAEXPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getRoleClass__GetAllRoleClasses() {
+		return roleClassEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getRoleFamily() {
 		return roleFamilyEClass;
 	}
@@ -1575,6 +1593,24 @@ public class CAEXPackageImpl extends EPackageImpl implements CAEXPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getSystemUnitClass__GetAllSystemUnitClasses() {
+		return systemUnitClassEClass.getEOperations().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getSystemUnitClass__GetAllInternalElements() {
+		return systemUnitClassEClass.getEOperations().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getSystemUnitFamily() {
 		return systemUnitFamilyEClass;
 	}
@@ -1780,6 +1816,7 @@ public class CAEXPackageImpl extends EPackageImpl implements CAEXPackage {
 		createEReference(internalElementEClass, INTERNAL_ELEMENT__MAPPING_OBJECT);
 		createEAttribute(internalElementEClass, INTERNAL_ELEMENT__REF_BASE_SYSTEM_UNIT_PATH);
 		createEReference(internalElementEClass, INTERNAL_ELEMENT__BASE_SYSTEM_UNIT);
+		createEOperation(internalElementEClass, INTERNAL_ELEMENT___GET_ALL_INTERNAL_ELEMENTS);
 
 		internalLinkEClass = createEClass(INTERNAL_LINK);
 		createEAttribute(internalLinkEClass, INTERNAL_LINK__REF_PARTNER_SIDE_A);
@@ -1819,6 +1856,7 @@ public class CAEXPackageImpl extends EPackageImpl implements CAEXPackage {
 		createEAttribute(roleClassEClass, ROLE_CLASS__REF_BASE_CLASS_PATH);
 		createEReference(roleClassEClass, ROLE_CLASS__BASE_CLASS);
 		createEReference(roleClassEClass, ROLE_CLASS__ROLE_CLASS);
+		createEOperation(roleClassEClass, ROLE_CLASS___GET_ALL_ROLE_CLASSES);
 
 		roleFamilyEClass = createEClass(ROLE_FAMILY);
 
@@ -1848,6 +1886,8 @@ public class CAEXPackageImpl extends EPackageImpl implements CAEXPackage {
 		createEReference(systemUnitClassEClass, SYSTEM_UNIT_CLASS__SYSTEM_UNIT_CLASS);
 		createEOperation(systemUnitClassEClass, SYSTEM_UNIT_CLASS___GET_SYSTEM_UNIT_CLASS__STRING);
 		createEOperation(systemUnitClassEClass, SYSTEM_UNIT_CLASS___GET_ATTRIBUTE__STRING);
+		createEOperation(systemUnitClassEClass, SYSTEM_UNIT_CLASS___GET_ALL_SYSTEM_UNIT_CLASSES);
+		createEOperation(systemUnitClassEClass, SYSTEM_UNIT_CLASS___GET_ALL_INTERNAL_ELEMENTS);
 
 		systemUnitFamilyEClass = createEClass(SYSTEM_UNIT_FAMILY);
 
@@ -2037,6 +2077,8 @@ public class CAEXPackageImpl extends EPackageImpl implements CAEXPackage {
 		initEAttribute(getInternalElement_RefBaseSystemUnitPath(), theXMLTypePackage.getString(), "refBaseSystemUnitPath", null, 0, 1, InternalElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getInternalElement_BaseSystemUnit(), this.getSystemUnitClass(), null, "baseSystemUnit", null, 0, 1, InternalElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEOperation(getInternalElement__GetAllInternalElements(), this.getInternalElement(), "getAllInternalElements", 0, -1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(internalLinkEClass, InternalLink.class, "InternalLink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getInternalLink_RefPartnerSideA(), theXMLTypePackage.getString(), "refPartnerSideA", null, 0, 1, InternalLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInternalLink_RefPartnerSideB(), theXMLTypePackage.getString(), "refPartnerSideB", null, 0, 1, InternalLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2077,6 +2119,8 @@ public class CAEXPackageImpl extends EPackageImpl implements CAEXPackage {
 		initEReference(getRoleClass_BaseClass(), this.getRoleClass(), null, "baseClass", null, 0, 1, RoleClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRoleClass_RoleClass(), this.getRoleClass(), null, "roleClass", null, 0, -1, RoleClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEOperation(getRoleClass__GetAllRoleClasses(), this.getRoleClass(), "getAllRoleClasses", 0, -1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(roleFamilyEClass, RoleFamily.class, "RoleFamily", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(roleRequirementsEClass, RoleRequirements.class, "RoleRequirements", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -2112,6 +2156,10 @@ public class CAEXPackageImpl extends EPackageImpl implements CAEXPackage {
 
 		op = initEOperation(getSystemUnitClass__GetAttribute__String(), this.getAttribute(), "getAttribute", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theXMLTypePackage.getString(), "name", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getSystemUnitClass__GetAllSystemUnitClasses(), this.getSystemUnitClass(), "getAllSystemUnitClasses", 0, -1, IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getSystemUnitClass__GetAllInternalElements(), this.getInternalElement(), "getAllInternalElements", 0, -1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(systemUnitFamilyEClass, SystemUnitFamily.class, "SystemUnitFamily", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
