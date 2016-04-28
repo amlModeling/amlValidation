@@ -239,4 +239,20 @@ public interface CAEXFile extends CAEXBasicObject {
 	 */
 	SystemUnitClassLib getSystemUnitClassLib(String libName);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model libNameDataType="org.eclipse.emf.ecore.xml.type.String"
+	 * @generated
+	 */
+	RoleClassLib getRoleClassLib(String libName);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model libNameDataType="org.eclipse.emf.ecore.xml.type.String"
+	 * @generated
+	 */
+	InterfaceClassLib getInterfaceClassLib(String libName);
+
 } // CAEXFile

@@ -146,7 +146,7 @@ operation getAllContainer(object : Any, result : Map)
 
 
 /* No idea how to implement that as RegEx */
-operation prepareRefClassPath(path : String) : Map
+operation prepareRefBaseClassPath(path : String) : Map
 {
 	var LinkedModul : String;
 	var Lib : String;
@@ -181,14 +181,11 @@ operation prepareRefClassPath(path : String) : Map
 		}else		
 		if(aktChar = "/" and inBracket = false)
 		{
-			Token = path.substring(LastTokenBegin, i);
+			Token = replaceChars(path.substring(LastTokenBegin, i));
 			
 			if(LibModus)
 			{
-				Lib = Token;
-				Lib = Lib.replace("\\[", "");
-				Lib = Lib.replace("\\]", "");			
-				
+				Lib = Token;								
 				LibModus = false;				
 			}
 			else
@@ -198,35 +195,29 @@ operation prepareRefClassPath(path : String) : Map
 		}else				
 		if(aktChar = "@" and inBracket = false)
 		{
-			Token = path.substring(LastTokenBegin, i);
-			LinkedModul = Token;
-			LinkedModul = LinkedModul.replace("\\[", "");
-			LinkedModul = LinkedModul.replace("\\]", "");
+			LinkedModul = replaceChars(path.substring(LastTokenBegin, i));
 			LastTokenBegin = i+1;
 		}else		
 		if(aktChar = "." and inBracket = false)
 		{
-			Token = path.substring(LastTokenBegin, i);			
-			Token = Token.replace("\\[", "");
-			Token = Token.replace("\\]", "");
+			Token = replaceChars(path.substring(LastTokenBegin, i));		
+			
 			Path.add(Token);
 			LastTokenBegin = i+1;
-			Attribut = path.substring(LastTokenBegin, path.length());
-			Attribut = Attribut.replace("\\[", "");
-			Attribut = Attribut.replace("\\]", "");
+			
+			Attribut = replaceChars(path.substring(LastTokenBegin, path.length()));
+						
 			LastTokenBegin = path.length();
 			
 		}else		
 		if(aktChar = ":" and inBracket = false)
 		{
-		 	Token = path.substring(LastTokenBegin, i);
-			Token = Token.replace("\\[", "");
-			Token = Token.replace("\\]", "");
+		 	Token = replaceChars(path.substring(LastTokenBegin, i));			
+			
 			Path.add(Token);
 			LastTokenBegin = i+1;
-			Interface = path.substring(LastTokenBegin, path.length());
-			Interface = Interface.replace("\\[", "");
-			Interface = Interface.replace("\\]", "");
+			Interface = replaceChars(path.substring(LastTokenBegin, path.length()));
+						
 			LastTokenBegin = path.length();			
 		}
 		
@@ -235,10 +226,8 @@ operation prepareRefClassPath(path : String) : Map
 	
 	if(LastTokenBegin <> i)
 	{
-		Token = path.substring(LastTokenBegin, i);
-		
-		Token = Token.replace("\\[", "");
-		Token = Token.replace("\\]", "");
+		Token = replaceChars(path.substring(LastTokenBegin, i));
+			
 		Path.add(Token);
 	}		
 	
@@ -254,8 +243,17 @@ operation prepareRefClassPath(path : String) : Map
 	return objectMap;
 }
 
+operation replaceChars(token : String) : String
+{
+	token = token.replace("\\[", "");
+	token = token.replace("\\]", "");
+	
+	return token;
+}
 
-operation checkRefClassPath(library : String, pathMap : Map) : String
+
+
+operation checkRefBaseClassPathSUC(pathMap : Map, eContainer : CAEXObject) : String
 {
 	var extRef : String;
 	var lib : String;
@@ -270,57 +268,44 @@ operation checkRefClassPath(library : String, pathMap : Map) : String
 	attrib = pathMap.get("Attribut");
 	interface = pathMap.get("Interface");		
 
-	if(library = "SUC")
-	{
-		var SUL : SystemUnitClassLib = null;
-		var SUC : SystemUnitClass = null;	
-		var atr : Attribute = null;	
-		
-		if(extRef <> "")
-			caex = RootModel.getLinkedModel(extRef);
-		else
-			caex = RootModel;
-		
-		if(caex = null)
-			return "External Reference " + extRef + " not found";
-		
-		SUL = caex.getSystemUnitClassLib(lib);
-		
-		if(SUL == null)
-			return "SystemUnitClassLib " + lib + " not found";
-		
-		for(aktPath : String in path)
-		{
-			if(SUC = null)
-				SUC = SUL.getSystemUnitClass(aktPath);
-			else
-				SUC = SUC.getSystemUnitClass(aktPath);	
-				
-			if(SUC = null)
-				return "SystemUnitClass " + aktPath + " not found";
-		}
-		
-		
-		if(attrib <> "")
-		{
-			atr = SUC.getAttribute(attrib);
-			
-			if(atr = null)
-				return "Attribute " + attrib + " not found";		
-		}
-		
-		
+	var SUL : SystemUnitClassLib = null;
+	var SUC : SystemUnitClass = null;	
+	var atr : Attribute = null;	
 	
-		
-		
-		
-		
-		
-		
-	}
-
-
-
+	//One hierarchy level above
+	if(extRef ="" and lib = "" and attrib = "" and interface = "" and path.size() = 1)
+	{
+		if(path.at(0).println() <> eContainer.name.println())
+			return "SystemUnitClass " + path.at(0) + " not found";	
+		else
+			return "";
+	}	
+	
+	
+	if(extRef <> "")
+		caex = RootModel.getLinkedModel(extRef);
+	else
+		caex = RootModel;
+	
+	if(caex = null)
+		return "External Reference " + extRef + " not found";
+	
+	SUL = caex.getSystemUnitClassLib(lib);
+	
+	if(SUL == null)
+		return "SystemUnitClassLib " + lib + " not found";
+	
+	for(aktPath : String in path)
+	{
+		if(SUC = null)
+			SUC = SUL.getSystemUnitClass(aktPath);
+		else
+			SUC = SUC.getSystemUnitClass(aktPath);	
+			
+		if(SUC = null)
+			return "SystemUnitClass " + aktPath + " not found";
+	}	
+	
 	return "";
 
 }

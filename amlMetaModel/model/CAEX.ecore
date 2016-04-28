@@ -40,6 +40,7 @@
       <details key="name" value="AttributeType"/>
       <details key="kind" value="elementOnly"/>
     </eAnnotations>
+    <eOperations name="getAllAttributes" upperBound="-1" eType="#//Attribute"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="defaultValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="A predefined default value for an attribute."/>
@@ -269,6 +270,12 @@
       <eParameters name="modelName" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
     </eOperations>
     <eOperations name="getSystemUnitClassLib" eType="#//SystemUnitClassLib">
+      <eParameters name="libName" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
+    </eOperations>
+    <eOperations name="getRoleClassLib" eType="#//RoleClassLib">
+      <eParameters name="libName" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
+    </eOperations>
+    <eOperations name="getInterfaceClassLib" eType="#//InterfaceClassLib">
       <eParameters name="libName" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="externalReference" upperBound="-1"

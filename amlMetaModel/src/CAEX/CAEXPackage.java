@@ -535,13 +535,22 @@ public interface CAEXPackage extends EPackage {
 	int ATTRIBUTE___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST = CAEX_OBJECT___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST;
 
 	/**
+	 * The operation id for the '<em>Get All Attributes</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTRIBUTE___GET_ALL_ATTRIBUTES = CAEX_OBJECT_OPERATION_COUNT + 0;
+
+	/**
 	 * The number of operations of the '<em>Attribute</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ATTRIBUTE_OPERATION_COUNT = CAEX_OBJECT_OPERATION_COUNT + 0;
+	int ATTRIBUTE_OPERATION_COUNT = CAEX_OBJECT_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link CAEX.impl.AttributeValueRequirementImpl <em>Attribute Value Requirement</em>}' class.
@@ -870,13 +879,31 @@ public interface CAEXPackage extends EPackage {
 	int CAEX_FILE___GET_SYSTEM_UNIT_CLASS_LIB__STRING = CAEX_BASIC_OBJECT_OPERATION_COUNT + 5;
 
 	/**
+	 * The operation id for the '<em>Get Role Class Lib</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAEX_FILE___GET_ROLE_CLASS_LIB__STRING = CAEX_BASIC_OBJECT_OPERATION_COUNT + 6;
+
+	/**
+	 * The operation id for the '<em>Get Interface Class Lib</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAEX_FILE___GET_INTERFACE_CLASS_LIB__STRING = CAEX_BASIC_OBJECT_OPERATION_COUNT + 7;
+
+	/**
 	 * The number of operations of the '<em>File</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAEX_FILE_OPERATION_COUNT = CAEX_BASIC_OBJECT_OPERATION_COUNT + 6;
+	int CAEX_FILE_OPERATION_COUNT = CAEX_BASIC_OBJECT_OPERATION_COUNT + 8;
 
 	/**
 	 * The meta object id for the '{@link CAEX.impl.CopyrightImpl <em>Copyright</em>}' class.
@@ -4351,6 +4378,16 @@ public interface CAEXPackage extends EPackage {
 	EAttribute getAttribute_AttributeDataType();
 
 	/**
+	 * Returns the meta object for the '{@link CAEX.Attribute#getAllAttributes() <em>Get All Attributes</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get All Attributes</em>' operation.
+	 * @see CAEX.Attribute#getAllAttributes()
+	 * @generated
+	 */
+	EOperation getAttribute__GetAllAttributes();
+
+	/**
 	 * Returns the meta object for class '{@link CAEX.AttributeValueRequirement <em>Attribute Value Requirement</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4636,6 +4673,26 @@ public interface CAEXPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getCAEXFile__GetSystemUnitClassLib__String();
+
+	/**
+	 * Returns the meta object for the '{@link CAEX.CAEXFile#getRoleClassLib(java.lang.String) <em>Get Role Class Lib</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Role Class Lib</em>' operation.
+	 * @see CAEX.CAEXFile#getRoleClassLib(java.lang.String)
+	 * @generated
+	 */
+	EOperation getCAEXFile__GetRoleClassLib__String();
+
+	/**
+	 * Returns the meta object for the '{@link CAEX.CAEXFile#getInterfaceClassLib(java.lang.String) <em>Get Interface Class Lib</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Interface Class Lib</em>' operation.
+	 * @see CAEX.CAEXFile#getInterfaceClassLib(java.lang.String)
+	 * @generated
+	 */
+	EOperation getCAEXFile__GetInterfaceClassLib__String();
 
 	/**
 	 * Returns the meta object for class '{@link CAEX.CAEXObject <em>Object</em>}'.
@@ -5892,6 +5949,14 @@ public interface CAEXPackage extends EPackage {
 		EAttribute ATTRIBUTE__ATTRIBUTE_DATA_TYPE = eINSTANCE.getAttribute_AttributeDataType();
 
 		/**
+		 * The meta object literal for the '<em><b>Get All Attributes</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ATTRIBUTE___GET_ALL_ATTRIBUTES = eINSTANCE.getAttribute__GetAllAttributes();
+
+		/**
 		 * The meta object literal for the '{@link CAEX.impl.AttributeValueRequirementImpl <em>Attribute Value Requirement</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -6112,6 +6177,22 @@ public interface CAEXPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation CAEX_FILE___GET_SYSTEM_UNIT_CLASS_LIB__STRING = eINSTANCE.getCAEXFile__GetSystemUnitClassLib__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Role Class Lib</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation CAEX_FILE___GET_ROLE_CLASS_LIB__STRING = eINSTANCE.getCAEXFile__GetRoleClassLib__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Interface Class Lib</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation CAEX_FILE___GET_INTERFACE_CLASS_LIB__STRING = eINSTANCE.getCAEXFile__GetInterfaceClassLib__String();
 
 		/**
 		 * The meta object literal for the '{@link CAEX.impl.CAEXObjectImpl <em>Object</em>}' class.

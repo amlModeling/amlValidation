@@ -509,6 +509,53 @@ public class CAEXFileImpl extends CAEXBasicObjectImpl implements CAEXFile {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public RoleClassLib getRoleClassLib(String libName) {
+		EList<RoleClassLib> listRCL = getRoleClassLib();
+		Iterator<RoleClassLib> itRCL = listRCL.iterator();
+		RoleClassLib ret = null;
+		
+		while(itRCL.hasNext())
+		{
+			RoleClassLib RCL = itRCL.next();
+			
+			if(RCL.getName().equals(libName))
+			{
+				ret = RCL;
+				break;
+			}				
+		}
+		
+		return ret;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public InterfaceClassLib getInterfaceClassLib(String libName) {
+		EList<InterfaceClassLib> listICL = getInterfaceClassLib();
+		Iterator<InterfaceClassLib> itICL = listICL.iterator();
+		InterfaceClassLib ret = null;
+		
+		while(itICL.hasNext())
+		{
+			InterfaceClassLib ICL = itICL.next();
+			
+			if(ICL.getName().equals(libName))
+			{
+				ret = ICL;
+				break;
+			}				
+		}
+		return ret;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -672,6 +719,10 @@ public class CAEXFileImpl extends CAEXBasicObjectImpl implements CAEXFile {
 				return getLinkedModel((String)arguments.get(0));
 			case CAEXPackage.CAEX_FILE___GET_SYSTEM_UNIT_CLASS_LIB__STRING:
 				return getSystemUnitClassLib((String)arguments.get(0));
+			case CAEXPackage.CAEX_FILE___GET_ROLE_CLASS_LIB__STRING:
+				return getRoleClassLib((String)arguments.get(0));
+			case CAEXPackage.CAEX_FILE___GET_INTERFACE_CLASS_LIB__STRING:
+				return getInterfaceClassLib((String)arguments.get(0));
 		}
 		return super.eInvoke(operationID, arguments);
 	}

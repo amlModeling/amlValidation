@@ -181,4 +181,12 @@ public interface Attribute extends CAEXObject {
 	 */
 	void setAttributeDataType(String value);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	EList<Attribute> getAllAttributes();
+
 } // Attribute

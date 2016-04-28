@@ -495,6 +495,15 @@ public class CAEXPackageImpl extends EPackageImpl implements CAEXPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getAttribute__GetAllAttributes() {
+		return attributeEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getAttributeValueRequirement() {
 		return attributeValueRequirementEClass;
 	}
@@ -731,6 +740,24 @@ public class CAEXPackageImpl extends EPackageImpl implements CAEXPackage {
 	 */
 	public EOperation getCAEXFile__GetSystemUnitClassLib__String() {
 		return caexFileEClass.getEOperations().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getCAEXFile__GetRoleClassLib__String() {
+		return caexFileEClass.getEOperations().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getCAEXFile__GetInterfaceClassLib__String() {
+		return caexFileEClass.getEOperations().get(7);
 	}
 
 	/**
@@ -1736,6 +1763,7 @@ public class CAEXPackageImpl extends EPackageImpl implements CAEXPackage {
 		createEReference(attributeEClass, ATTRIBUTE__ATTRIBUTE);
 		createEAttribute(attributeEClass, ATTRIBUTE__UNIT);
 		createEAttribute(attributeEClass, ATTRIBUTE__ATTRIBUTE_DATA_TYPE);
+		createEOperation(attributeEClass, ATTRIBUTE___GET_ALL_ATTRIBUTES);
 
 		attributeValueRequirementEClass = createEClass(ATTRIBUTE_VALUE_REQUIREMENT);
 		createEReference(attributeValueRequirementEClass, ATTRIBUTE_VALUE_REQUIREMENT__ORDINAL_SCALED_TYPE);
@@ -1766,6 +1794,8 @@ public class CAEXPackageImpl extends EPackageImpl implements CAEXPackage {
 		createEOperation(caexFileEClass, CAEX_FILE___GET_ALL_SYSTEM_UNIT_CLASSES__BOOLEAN);
 		createEOperation(caexFileEClass, CAEX_FILE___GET_LINKED_MODEL__STRING);
 		createEOperation(caexFileEClass, CAEX_FILE___GET_SYSTEM_UNIT_CLASS_LIB__STRING);
+		createEOperation(caexFileEClass, CAEX_FILE___GET_ROLE_CLASS_LIB__STRING);
+		createEOperation(caexFileEClass, CAEX_FILE___GET_INTERFACE_CLASS_LIB__STRING);
 
 		caexObjectEClass = createEClass(CAEX_OBJECT);
 		createEAttribute(caexObjectEClass, CAEX_OBJECT__ID);
@@ -1981,6 +2011,8 @@ public class CAEXPackageImpl extends EPackageImpl implements CAEXPackage {
 		initEAttribute(getAttribute_Unit(), theXMLTypePackage.getString(), "unit", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAttribute_AttributeDataType(), this.getAttributeDataType(), "attributeDataType", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEOperation(getAttribute__GetAllAttributes(), this.getAttribute(), "getAllAttributes", 0, -1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(attributeValueRequirementEClass, AttributeValueRequirement.class, "AttributeValueRequirement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAttributeValueRequirement_OrdinalScaledType(), this.getOrdinalScaled(), null, "ordinalScaledType", null, 0, 1, AttributeValueRequirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAttributeValueRequirement_NominalScaledType(), this.getNominalScaled(), null, "nominalScaledType", null, 0, 1, AttributeValueRequirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2024,6 +2056,12 @@ public class CAEXPackageImpl extends EPackageImpl implements CAEXPackage {
 		addEParameter(op, theXMLTypePackage.getString(), "modelName", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = initEOperation(getCAEXFile__GetSystemUnitClassLib__String(), this.getSystemUnitClassLib(), "getSystemUnitClassLib", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theXMLTypePackage.getString(), "libName", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getCAEXFile__GetRoleClassLib__String(), this.getRoleClassLib(), "getRoleClassLib", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theXMLTypePackage.getString(), "libName", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getCAEXFile__GetInterfaceClassLib__String(), this.getInterfaceClassLib(), "getInterfaceClassLib", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theXMLTypePackage.getString(), "libName", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(caexObjectEClass, CAEXObject.class, "CAEXObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

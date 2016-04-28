@@ -7,11 +7,13 @@ import CAEX.AttributeValueRequirement;
 import CAEX.CAEXPackage;
 import CAEX.RefSemantic;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
+import java.util.Iterator;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -294,6 +296,23 @@ public class AttributeImpl extends CAEXObjectImpl implements Attribute {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public EList<Attribute> getAllAttributes() {
+		EList<Attribute> ret = new BasicEList<Attribute>();
+		Iterator<Attribute> it = getAttribute().iterator();
+		
+		ret.add(this);
+		
+		while(it.hasNext())
+			ret.addAll(it.next().getAllAttributes());
+		
+		return ret;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -429,6 +448,20 @@ public class AttributeImpl extends CAEXObjectImpl implements Attribute {
 				return ATTRIBUTE_DATA_TYPE_EDEFAULT == null ? attributeDataType != null : !ATTRIBUTE_DATA_TYPE_EDEFAULT.equals(attributeDataType);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case CAEXPackage.ATTRIBUTE___GET_ALL_ATTRIBUTES:
+				return getAllAttributes();
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

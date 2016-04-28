@@ -9,22 +9,24 @@ context CAEX!SystemUnitClass
 		
 		check
 		{
-			var pathMap = prepareRefClassPath(self.refBaseClassPath);
+			var pathMap = prepareRefBaseClassPath(self.refBaseClassPath);
 			
-			var errorText = checkRefClassPath("SUC", pathMap);
+			var errorText = checkRefBaseClassPathSUC(pathMap, self.eContainer);
 		
 			return errorText = "";
 		} 
 		
-		message: errorText
-	
-	
-	
-	
+		message
+		{
+			var allContainer : Map;
+			var file : CAEXFile;
+			getAllContainer(self, allContainer);
+			file = allContainer.get("CAEXFile");
+			
+			return "File=" + file.filename + " - RefBaseClassPath not valid: " + errorText;
+			
+		
+		} 	
 	}
-
-
-
-
 }
 
