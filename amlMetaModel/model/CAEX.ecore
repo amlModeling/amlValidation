@@ -538,6 +538,9 @@
       <details key="name" value="InterfaceClassLib"/>
       <details key="kind" value="elementOnly"/>
     </eAnnotations>
+    <eOperations name="getInterfaceClass" eType="#//InterfaceClass">
+      <eParameters name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="interfaceClass" upperBound="-1"
         eType="#//InterfaceClass" containment="true" resolveProxies="false">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -558,6 +561,9 @@
       <details key="name" value="InterfaceClassType"/>
       <details key="kind" value="elementOnly"/>
     </eAnnotations>
+    <eOperations name="getInterfaceClass" eType="#//InterfaceClass">
+      <eParameters name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="attribute" upperBound="-1"
         eType="#//Attribute" containment="true" resolveProxies="false">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -832,6 +838,9 @@
       <details key="kind" value="elementOnly"/>
     </eAnnotations>
     <eOperations name="getAllRoleClasses" upperBound="-1" eType="#//RoleClass"/>
+    <eOperations name="getRoleClass" eType="#//RoleClass">
+      <eParameters name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="roleClass" upperBound="-1"
         eType="#//RoleClass" containment="true" resolveProxies="false">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -853,6 +862,9 @@
       <details key="kind" value="elementOnly"/>
     </eAnnotations>
     <eOperations name="getAllRoleClasses" upperBound="-1" eType="#//RoleClass"/>
+    <eOperations name="getRoleClass" eType="#//RoleClass">
+      <eParameters name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="attribute" upperBound="-1"
         eType="#//Attribute" containment="true" resolveProxies="false">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">

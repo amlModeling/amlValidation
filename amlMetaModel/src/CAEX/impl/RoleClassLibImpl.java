@@ -3,6 +3,7 @@
 package CAEX.impl;
 
 import CAEX.CAEXPackage;
+import CAEX.InterfaceClass;
 import CAEX.RoleClass;
 import CAEX.RoleClassLib;
 
@@ -97,6 +98,31 @@ public class RoleClassLibImpl extends CAEXObjectImpl implements RoleClassLib {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public RoleClass getRoleClass(String name) {
+		EList<RoleClass> listRC = getRoleClass();
+		Iterator<RoleClass> itRC = listRC.iterator();
+		RoleClass ret = null;
+		
+		while(itRC.hasNext())
+		{
+			RoleClass RC = itRC.next();
+			
+			if(RC.getName().equals(name))
+			{
+				ret = RC;
+				break;
+			}
+		}
+		
+		return ret;
+				
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -178,6 +204,8 @@ public class RoleClassLibImpl extends CAEXObjectImpl implements RoleClassLib {
 		switch (operationID) {
 			case CAEXPackage.ROLE_CLASS_LIB___GET_ALL_ROLE_CLASSES:
 				return getAllRoleClasses();
+			case CAEXPackage.ROLE_CLASS_LIB___GET_ROLE_CLASS__STRING:
+				return getRoleClass((String)arguments.get(0));
 		}
 		return super.eInvoke(operationID, arguments);
 	}

@@ -137,4 +137,12 @@ public interface RoleClass extends CAEXObject {
 	 */
 	EList<RoleClass> getAllRoleClasses();
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model nameDataType="org.eclipse.emf.ecore.xml.type.String"
+	 * @generated
+	 */
+	RoleClass getRoleClass(String name);
+
 } // RoleClass

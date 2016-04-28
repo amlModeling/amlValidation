@@ -6,7 +6,9 @@ import CAEX.Attribute;
 import CAEX.CAEXPackage;
 import CAEX.InterfaceClass;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
+import java.util.Iterator;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -193,6 +195,30 @@ public class InterfaceClassImpl extends CAEXObjectImpl implements InterfaceClass
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public InterfaceClass getInterfaceClass(String name) {
+		EList<InterfaceClass> listIFC = getInterfaceClass();
+		Iterator<InterfaceClass> itIFC = listIFC.iterator();
+		InterfaceClass ret = null;
+		
+		while(itIFC.hasNext())
+		{
+			InterfaceClass IFC = itIFC.next();
+			
+			if(IFC.getName().equals(name))
+			{
+				ret = IFC;
+				break;
+			}
+		}
+				
+		return ret;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -296,6 +322,20 @@ public class InterfaceClassImpl extends CAEXObjectImpl implements InterfaceClass
 				return interfaceClass != null && !interfaceClass.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case CAEXPackage.INTERFACE_CLASS___GET_INTERFACE_CLASS__STRING:
+				return getInterfaceClass((String)arguments.get(0));
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

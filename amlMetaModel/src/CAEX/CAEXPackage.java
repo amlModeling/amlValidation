@@ -1198,13 +1198,22 @@ public interface CAEXPackage extends EPackage {
 	int INTERFACE_CLASS___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST = CAEX_OBJECT___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST;
 
 	/**
+	 * The operation id for the '<em>Get Interface Class</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERFACE_CLASS___GET_INTERFACE_CLASS__STRING = CAEX_OBJECT_OPERATION_COUNT + 0;
+
+	/**
 	 * The number of operations of the '<em>Interface Class</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INTERFACE_CLASS_OPERATION_COUNT = CAEX_OBJECT_OPERATION_COUNT + 0;
+	int INTERFACE_CLASS_OPERATION_COUNT = CAEX_OBJECT_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link CAEX.impl.ExternalInterfaceImpl <em>External Interface</em>}' class.
@@ -1341,6 +1350,15 @@ public interface CAEXPackage extends EPackage {
 	 * @ordered
 	 */
 	int EXTERNAL_INTERFACE___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST = INTERFACE_CLASS___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST;
+
+	/**
+	 * The operation id for the '<em>Get Interface Class</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTERNAL_INTERFACE___GET_INTERFACE_CLASS__STRING = INTERFACE_CLASS___GET_INTERFACE_CLASS__STRING;
 
 	/**
 	 * The number of operations of the '<em>External Interface</em>' class.
@@ -1706,13 +1724,22 @@ public interface CAEXPackage extends EPackage {
 	int INTERFACE_CLASS_LIB___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST = CAEX_OBJECT___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST;
 
 	/**
+	 * The operation id for the '<em>Get Interface Class</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERFACE_CLASS_LIB___GET_INTERFACE_CLASS__STRING = CAEX_OBJECT_OPERATION_COUNT + 0;
+
+	/**
 	 * The number of operations of the '<em>Interface Class Lib</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INTERFACE_CLASS_LIB_OPERATION_COUNT = CAEX_OBJECT_OPERATION_COUNT + 0;
+	int INTERFACE_CLASS_LIB_OPERATION_COUNT = CAEX_OBJECT_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link CAEX.impl.InterfaceFamilyImpl <em>Interface Family</em>}' class.
@@ -1849,6 +1876,15 @@ public interface CAEXPackage extends EPackage {
 	 * @ordered
 	 */
 	int INTERFACE_FAMILY___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST = INTERFACE_CLASS___GET_ADDITIONAL_INFORMATION_ENTRY__STRING_ELIST;
+
+	/**
+	 * The operation id for the '<em>Get Interface Class</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERFACE_FAMILY___GET_INTERFACE_CLASS__STRING = INTERFACE_CLASS___GET_INTERFACE_CLASS__STRING;
 
 	/**
 	 * The number of operations of the '<em>Interface Family</em>' class.
@@ -3139,13 +3175,22 @@ public interface CAEXPackage extends EPackage {
 	int ROLE_CLASS_LIB___GET_ALL_ROLE_CLASSES = CAEX_OBJECT_OPERATION_COUNT + 0;
 
 	/**
+	 * The operation id for the '<em>Get Role Class</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLE_CLASS_LIB___GET_ROLE_CLASS__STRING = CAEX_OBJECT_OPERATION_COUNT + 1;
+
+	/**
 	 * The number of operations of the '<em>Role Class Lib</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ROLE_CLASS_LIB_OPERATION_COUNT = CAEX_OBJECT_OPERATION_COUNT + 1;
+	int ROLE_CLASS_LIB_OPERATION_COUNT = CAEX_OBJECT_OPERATION_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link CAEX.impl.RoleClassImpl <em>Role Class</em>}' class.
@@ -3302,13 +3347,22 @@ public interface CAEXPackage extends EPackage {
 	int ROLE_CLASS___GET_ALL_ROLE_CLASSES = CAEX_OBJECT_OPERATION_COUNT + 0;
 
 	/**
+	 * The operation id for the '<em>Get Role Class</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLE_CLASS___GET_ROLE_CLASS__STRING = CAEX_OBJECT_OPERATION_COUNT + 1;
+
+	/**
 	 * The number of operations of the '<em>Role Class</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ROLE_CLASS_OPERATION_COUNT = CAEX_OBJECT_OPERATION_COUNT + 1;
+	int ROLE_CLASS_OPERATION_COUNT = CAEX_OBJECT_OPERATION_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link CAEX.impl.RoleFamilyImpl <em>Role Family</em>}' class.
@@ -3463,6 +3517,15 @@ public interface CAEXPackage extends EPackage {
 	 * @ordered
 	 */
 	int ROLE_FAMILY___GET_ALL_ROLE_CLASSES = ROLE_CLASS___GET_ALL_ROLE_CLASSES;
+
+	/**
+	 * The operation id for the '<em>Get Role Class</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLE_FAMILY___GET_ROLE_CLASS__STRING = ROLE_CLASS___GET_ROLE_CLASS__STRING;
 
 	/**
 	 * The number of operations of the '<em>Role Family</em>' class.
@@ -4950,6 +5013,16 @@ public interface CAEXPackage extends EPackage {
 	EReference getInterfaceClassLib_InterfaceClass();
 
 	/**
+	 * Returns the meta object for the '{@link CAEX.InterfaceClassLib#getInterfaceClass(java.lang.String) <em>Get Interface Class</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Interface Class</em>' operation.
+	 * @see CAEX.InterfaceClassLib#getInterfaceClass(java.lang.String)
+	 * @generated
+	 */
+	EOperation getInterfaceClassLib__GetInterfaceClass__String();
+
+	/**
 	 * Returns the meta object for class '{@link CAEX.InterfaceClass <em>Interface Class</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5002,6 +5075,16 @@ public interface CAEXPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getInterfaceClass_InterfaceClass();
+
+	/**
+	 * Returns the meta object for the '{@link CAEX.InterfaceClass#getInterfaceClass(java.lang.String) <em>Get Interface Class</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Interface Class</em>' operation.
+	 * @see CAEX.InterfaceClass#getInterfaceClass(java.lang.String)
+	 * @generated
+	 */
+	EOperation getInterfaceClass__GetInterfaceClass__String();
 
 	/**
 	 * Returns the meta object for class '{@link CAEX.InterfaceFamily <em>Interface Family</em>}'.
@@ -5377,6 +5460,16 @@ public interface CAEXPackage extends EPackage {
 	EOperation getRoleClassLib__GetAllRoleClasses();
 
 	/**
+	 * Returns the meta object for the '{@link CAEX.RoleClassLib#getRoleClass(java.lang.String) <em>Get Role Class</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Role Class</em>' operation.
+	 * @see CAEX.RoleClassLib#getRoleClass(java.lang.String)
+	 * @generated
+	 */
+	EOperation getRoleClassLib__GetRoleClass__String();
+
+	/**
 	 * Returns the meta object for class '{@link CAEX.RoleClass <em>Role Class</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5450,6 +5543,16 @@ public interface CAEXPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getRoleClass__GetAllRoleClasses();
+
+	/**
+	 * Returns the meta object for the '{@link CAEX.RoleClass#getRoleClass(java.lang.String) <em>Get Role Class</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Role Class</em>' operation.
+	 * @see CAEX.RoleClass#getRoleClass(java.lang.String)
+	 * @generated
+	 */
+	EOperation getRoleClass__GetRoleClass__String();
 
 	/**
 	 * Returns the meta object for class '{@link CAEX.RoleFamily <em>Role Family</em>}'.
@@ -6403,6 +6506,14 @@ public interface CAEXPackage extends EPackage {
 		EReference INTERFACE_CLASS_LIB__INTERFACE_CLASS = eINSTANCE.getInterfaceClassLib_InterfaceClass();
 
 		/**
+		 * The meta object literal for the '<em><b>Get Interface Class</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INTERFACE_CLASS_LIB___GET_INTERFACE_CLASS__STRING = eINSTANCE.getInterfaceClassLib__GetInterfaceClass__String();
+
+		/**
 		 * The meta object literal for the '{@link CAEX.impl.InterfaceClassImpl <em>Interface Class</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -6443,6 +6554,14 @@ public interface CAEXPackage extends EPackage {
 		 * @generated
 		 */
 		EReference INTERFACE_CLASS__INTERFACE_CLASS = eINSTANCE.getInterfaceClass_InterfaceClass();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Interface Class</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INTERFACE_CLASS___GET_INTERFACE_CLASS__STRING = eINSTANCE.getInterfaceClass__GetInterfaceClass__String();
 
 		/**
 		 * The meta object literal for the '{@link CAEX.impl.InterfaceFamilyImpl <em>Interface Family</em>}' class.
@@ -6745,6 +6864,14 @@ public interface CAEXPackage extends EPackage {
 		EOperation ROLE_CLASS_LIB___GET_ALL_ROLE_CLASSES = eINSTANCE.getRoleClassLib__GetAllRoleClasses();
 
 		/**
+		 * The meta object literal for the '<em><b>Get Role Class</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ROLE_CLASS_LIB___GET_ROLE_CLASS__STRING = eINSTANCE.getRoleClassLib__GetRoleClass__String();
+
+		/**
 		 * The meta object literal for the '{@link CAEX.impl.RoleClassImpl <em>Role Class</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -6801,6 +6928,14 @@ public interface CAEXPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation ROLE_CLASS___GET_ALL_ROLE_CLASSES = eINSTANCE.getRoleClass__GetAllRoleClasses();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Role Class</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ROLE_CLASS___GET_ROLE_CLASS__STRING = eINSTANCE.getRoleClass__GetRoleClass__String();
 
 		/**
 		 * The meta object literal for the '{@link CAEX.impl.RoleFamilyImpl <em>Role Family</em>}' class.

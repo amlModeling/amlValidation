@@ -37,4 +37,12 @@ public interface InterfaceClassLib extends CAEXObject {
 	 */
 	EList<InterfaceClass> getInterfaceClass();
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model nameDataType="org.eclipse.emf.ecore.xml.type.String"
+	 * @generated
+	 */
+	InterfaceClass getInterfaceClass(String name);
+
 } // InterfaceClassLib

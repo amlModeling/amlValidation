@@ -981,6 +981,15 @@ public class CAEXPackageImpl extends EPackageImpl implements CAEXPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getInterfaceClassLib__GetInterfaceClass__String() {
+		return interfaceClassLibEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getInterfaceClass() {
 		return interfaceClassEClass;
 	}
@@ -1019,6 +1028,15 @@ public class CAEXPackageImpl extends EPackageImpl implements CAEXPackage {
 	 */
 	public EReference getInterfaceClass_InterfaceClass() {
 		return (EReference)interfaceClassEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInterfaceClass__GetInterfaceClass__String() {
+		return interfaceClassEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -1341,6 +1359,15 @@ public class CAEXPackageImpl extends EPackageImpl implements CAEXPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getRoleClassLib__GetRoleClass__String() {
+		return roleClassLibEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getRoleClass() {
 		return roleClassEClass;
 	}
@@ -1397,6 +1424,15 @@ public class CAEXPackageImpl extends EPackageImpl implements CAEXPackage {
 	 */
 	public EOperation getRoleClass__GetAllRoleClasses() {
 		return roleClassEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getRoleClass__GetRoleClass__String() {
+		return roleClassEClass.getEOperations().get(1);
 	}
 
 	/**
@@ -1828,12 +1864,14 @@ public class CAEXPackageImpl extends EPackageImpl implements CAEXPackage {
 
 		interfaceClassLibEClass = createEClass(INTERFACE_CLASS_LIB);
 		createEReference(interfaceClassLibEClass, INTERFACE_CLASS_LIB__INTERFACE_CLASS);
+		createEOperation(interfaceClassLibEClass, INTERFACE_CLASS_LIB___GET_INTERFACE_CLASS__STRING);
 
 		interfaceClassEClass = createEClass(INTERFACE_CLASS);
 		createEReference(interfaceClassEClass, INTERFACE_CLASS__ATTRIBUTE);
 		createEAttribute(interfaceClassEClass, INTERFACE_CLASS__REF_BASE_CLASS_PATH);
 		createEReference(interfaceClassEClass, INTERFACE_CLASS__BASE_CLASS);
 		createEReference(interfaceClassEClass, INTERFACE_CLASS__INTERFACE_CLASS);
+		createEOperation(interfaceClassEClass, INTERFACE_CLASS___GET_INTERFACE_CLASS__STRING);
 
 		interfaceFamilyEClass = createEClass(INTERFACE_FAMILY);
 
@@ -1879,6 +1917,7 @@ public class CAEXPackageImpl extends EPackageImpl implements CAEXPackage {
 		roleClassLibEClass = createEClass(ROLE_CLASS_LIB);
 		createEReference(roleClassLibEClass, ROLE_CLASS_LIB__ROLE_CLASS);
 		createEOperation(roleClassLibEClass, ROLE_CLASS_LIB___GET_ALL_ROLE_CLASSES);
+		createEOperation(roleClassLibEClass, ROLE_CLASS_LIB___GET_ROLE_CLASS__STRING);
 
 		roleClassEClass = createEClass(ROLE_CLASS);
 		createEReference(roleClassEClass, ROLE_CLASS__ATTRIBUTE);
@@ -1887,6 +1926,7 @@ public class CAEXPackageImpl extends EPackageImpl implements CAEXPackage {
 		createEReference(roleClassEClass, ROLE_CLASS__BASE_CLASS);
 		createEReference(roleClassEClass, ROLE_CLASS__ROLE_CLASS);
 		createEOperation(roleClassEClass, ROLE_CLASS___GET_ALL_ROLE_CLASSES);
+		createEOperation(roleClassEClass, ROLE_CLASS___GET_ROLE_CLASS__STRING);
 
 		roleFamilyEClass = createEClass(ROLE_FAMILY);
 
@@ -2097,11 +2137,17 @@ public class CAEXPackageImpl extends EPackageImpl implements CAEXPackage {
 		initEClass(interfaceClassLibEClass, InterfaceClassLib.class, "InterfaceClassLib", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getInterfaceClassLib_InterfaceClass(), this.getInterfaceClass(), null, "interfaceClass", null, 0, -1, InterfaceClassLib.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		op = initEOperation(getInterfaceClassLib__GetInterfaceClass__String(), this.getInterfaceClass(), "getInterfaceClass", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theXMLTypePackage.getString(), "name", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(interfaceClassEClass, InterfaceClass.class, "InterfaceClass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getInterfaceClass_Attribute(), this.getAttribute(), null, "attribute", null, 0, -1, InterfaceClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInterfaceClass_RefBaseClassPath(), theXMLTypePackage.getString(), "refBaseClassPath", null, 0, 1, InterfaceClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getInterfaceClass_BaseClass(), this.getInterfaceClass(), null, "baseClass", null, 0, 1, InterfaceClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getInterfaceClass_InterfaceClass(), this.getInterfaceClass(), null, "interfaceClass", null, 0, -1, InterfaceClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		op = initEOperation(getInterfaceClass__GetInterfaceClass__String(), this.getInterfaceClass(), "getInterfaceClass", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theXMLTypePackage.getString(), "name", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(interfaceFamilyEClass, InterfaceFamily.class, "InterfaceFamily", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -2150,6 +2196,9 @@ public class CAEXPackageImpl extends EPackageImpl implements CAEXPackage {
 
 		initEOperation(getRoleClassLib__GetAllRoleClasses(), this.getRoleClass(), "getAllRoleClasses", 0, -1, IS_UNIQUE, IS_ORDERED);
 
+		op = initEOperation(getRoleClassLib__GetRoleClass__String(), this.getRoleClass(), "getRoleClass", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theXMLTypePackage.getString(), "name", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(roleClassEClass, RoleClass.class, "RoleClass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getRoleClass_Attribute(), this.getAttribute(), null, "attribute", null, 0, -1, RoleClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRoleClass_ExternalInterface(), this.getExternalInterface(), null, "externalInterface", null, 0, -1, RoleClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2158,6 +2207,9 @@ public class CAEXPackageImpl extends EPackageImpl implements CAEXPackage {
 		initEReference(getRoleClass_RoleClass(), this.getRoleClass(), null, "roleClass", null, 0, -1, RoleClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getRoleClass__GetAllRoleClasses(), this.getRoleClass(), "getAllRoleClasses", 0, -1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getRoleClass__GetRoleClass__String(), this.getRoleClass(), "getRoleClass", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theXMLTypePackage.getString(), "name", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(roleFamilyEClass, RoleFamily.class, "RoleFamily", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

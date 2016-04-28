@@ -310,7 +310,117 @@ operation checkRefBaseClassPathSUC(pathMap : Map, eContainer : CAEXObject) : Str
 
 }
 
+operation checkRefBaseClassPathRCL(pathMap : Map, eContainer : CAEXObject) : String
+{
+	var extRef : String;
+	var lib : String;
+	var caex : CAEXFile = null;
+	var path : Sequence;
+	var attrib : String;
+	var interface : String;
+		
+	extRef = pathMap.get("ExtRef");
+	lib    = pathMap.get("Lib");
+	path   = pathMap.get("Path");	
+	attrib = pathMap.get("Attribut");
+	interface = pathMap.get("Interface");		
+
+	var RCL : RoleClassLib = null;
+	var RC : RoleClass = null;	
+	var atr : Attribute = null;	
+	
+	//One hierarchy level above
+	if(extRef ="" and lib = "" and attrib = "" and interface = "" and path.size() = 1)
+	{
+		if(path.at(0).println() <> eContainer.name.println())
+			return "RoleClass " + path.at(0) + " not found";	
+		else
+			return "";
+	}	
+	
+	
+	if(extRef <> "")
+		caex = RootModel.getLinkedModel(extRef);
+	else
+		caex = RootModel;
+	
+	if(caex = null)
+		return "External Reference " + extRef + " not found";
+	
+	RCL = caex.getRoleClassLib(lib);
+	
+	if(RCL == null)
+		return "RoleClassLib " + lib + " not found";
+	
+	for(aktPath : String in path)
+	{
+		if(RC = null)
+			RC = SUL.getRoleClass(aktPath);
+		else
+			RC = SUC.getRoleClass(aktPath);	
+			
+		if(RC = null)
+			return "RoleClass " + aktPath + " not found";
+	}	
+	
+	return "";
+}
 
 
+operation checkRefBaseClassPathICL(pathMap : Map, eContainer : CAEXObject) : String
+{
+	var extRef : String;
+	var lib : String;
+	var caex : CAEXFile = null;
+	var path : Sequence;
+	var attrib : String;
+	var interface : String;
+		
+	extRef = pathMap.get("ExtRef");
+	lib    = pathMap.get("Lib");
+	path   = pathMap.get("Path");	
+	attrib = pathMap.get("Attribut");
+	interface = pathMap.get("Interface");		
+
+	var ICL : InterfaceClassLib = null;
+	var IC : InterfaceClass = null;	
+	var atr : Attribute = null;	
+	
+	//One hierarchy level above
+	if(extRef ="" and lib = "" and attrib = "" and interface = "" and path.size() = 1)
+	{
+		if(path.at(0).println() <> eContainer.name.println())
+			return "InterfaceClass " + path.at(0) + " not found";	
+		else
+			return "";
+	}	
+	
+	
+	if(extRef <> "")
+		caex = RootModel.getLinkedModel(extRef);
+	else
+		caex = RootModel;
+	
+	if(caex = null)
+		return "External Reference " + extRef + " not found";
+	
+	ICL = caex.getInterfaceClassLib(lib);
+	
+	if(ICL == null)
+		return "InterfaceClassLib " + lib + " not found";
+	
+	for(aktPath : String in path)
+	{
+		if(IC = null)
+			IC = ICL.getInterfaceClass(aktPath);
+		else
+			IC = IC.getInterfaceClass(aktPath);	
+			
+		if(IC = null)
+			return "InterfaceClass " + aktPath + " not found";
+	}	
+	
+	return "";
+}
 
 
