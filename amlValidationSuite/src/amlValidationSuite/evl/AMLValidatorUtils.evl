@@ -252,8 +252,20 @@ operation replaceChars(token : String) : String
 }
 
 
+operation CAEXObject isAMLBaseClass() : Boolean
+{
+	var ret : Boolean = false;
+	
+	if(self.isTypeOf(SystemUnitClass) or
+	   self.isTypeOf(InterfaceClass) or 
+	   self.isTypeOf(RoleClass))
+	   ret = true;
+	
+	return ret;
+}
 
-operation checkRefBaseClassPathSUC(pathMap : Map, eContainer : CAEXObject) : String
+
+operation CAEXObject checkRefBaseClassPath(pathMap : Map, eContainer : CAEXObject) : String
 {
 	var extRef : String;
 	var lib : String;
@@ -265,162 +277,121 @@ operation checkRefBaseClassPathSUC(pathMap : Map, eContainer : CAEXObject) : Str
 	extRef = pathMap.get("ExtRef");
 	lib    = pathMap.get("Lib");
 	path   = pathMap.get("Path");	
-	attrib = pathMap.get("Attribut");
-	interface = pathMap.get("Interface");		
-
-	var SUL : SystemUnitClassLib = null;
-	var SUC : SystemUnitClass = null;	
-	var atr : Attribute = null;	
+	interface = pathMap.get("Interface");
+	
+	var library : CAEXObject = null;
+	var class : CAEXObject = null;
 	
 	//One hierarchy level above
-	if(extRef ="" and lib = "" and attrib = "" and interface = "" and path.size() = 1)
+	if(extRef ="" and lib = "" and interface = "" and path.size() = 1)
 	{
 		if(path.at(0).println() <> eContainer.name.println())
-			return "SystemUnitClass " + path.at(0) + " not found";	
+			return self.errorClassNotFound(path.at(0));
 		else
 			return "";
-	}	
-	
+	}
 	
 	if(extRef <> "")
 		caex = RootModel.getLinkedModel(extRef);
 	else
 		caex = RootModel;
-	
-	if(caex = null)
-		return "External Reference " + extRef + " not found";
-	
-	SUL = caex.getSystemUnitClassLib(lib);
-	
-	if(SUL == null)
-		return "SystemUnitClassLib " + lib + " not found";
-	
-	for(aktPath : String in path)
-	{
-		if(SUC = null)
-			SUC = SUL.getSystemUnitClass(aktPath);
-		else
-			SUC = SUC.getSystemUnitClass(aktPath);	
-			
-		if(SUC = null)
-			return "SystemUnitClass " + aktPath + " not found";
-	}	
-	
-	return "";
-
-}
-
-operation checkRefBaseClassPathRCL(pathMap : Map, eContainer : CAEXObject) : String
-{
-	var extRef : String;
-	var lib : String;
-	var caex : CAEXFile = null;
-	var path : Sequence;
-	var attrib : String;
-	var interface : String;
 		
-	extRef = pathMap.get("ExtRef");
-	lib    = pathMap.get("Lib");
-	path   = pathMap.get("Path");	
-	attrib = pathMap.get("Attribut");
-	interface = pathMap.get("Interface");		
-
-	var RCL : RoleClassLib = null;
-	var RC : RoleClass = null;	
-	var atr : Attribute = null;	
-	
-	//One hierarchy level above
-	if(extRef ="" and lib = "" and attrib = "" and interface = "" and path.size() = 1)
-	{
-		if(path.at(0).println() <> eContainer.name.println())
-			return "RoleClass " + path.at(0) + " not found";	
-		else
-			return "";
-	}	
-	
-	
-	if(extRef <> "")
-		caex = RootModel.getLinkedModel(extRef);
-	else
-		caex = RootModel;
-	
 	if(caex = null)
 		return "External Reference " + extRef + " not found";
-	
-	RCL = caex.getRoleClassLib(lib);
-	
-	if(RCL == null)
-		return "RoleClassLib " + lib + " not found";
-	
-	for(aktPath : String in path)
-	{
-		if(RC = null)
-			RC = RCL.getRoleClass(aktPath);
-		else
-			RC = RC.getRoleClass(aktPath);	
-			
-		if(RC = null)
-			return "RoleClass " + aktPath + " not found";
-	}	
-	
-	return "";
-}
-
-
-operation checkRefBaseClassPathICL(pathMap : Map, eContainer : CAEXObject) : String
-{
-	var extRef : String;
-	var lib : String;
-	var caex : CAEXFile = null;
-	var path : Sequence;
-	var attrib : String;
-	var interface : String;
 		
-	extRef = pathMap.get("ExtRef");
-	lib    = pathMap.get("Lib");
-	path   = pathMap.get("Path");	
-	attrib = pathMap.get("Attribut");
-	interface = pathMap.get("Interface");		
-
-	var ICL : InterfaceClassLib = null;
-	var IC : InterfaceClass = null;	
-	var atr : Attribute = null;	
-	
-	//One hierarchy level above
-	if(extRef ="" and lib = "" and attrib = "" and interface = "" and path.size() = 1)
-	{
-		if(path.at(0).println() <> eContainer.name.println())
-			return "InterfaceClass " + path.at(0) + " not found";	
-		else
-			return "";
-	}	
-	
-	
-	if(extRef <> "")
-		caex = RootModel.getLinkedModel(extRef);
-	else
-		caex = RootModel;
-	
-	if(caex = null)
-		return "External Reference " + extRef + " not found";
-	
-	ICL = caex.getInterfaceClassLib(lib);
-	
-	if(ICL == null)
-		return "InterfaceClassLib " + lib + " not found";
+    library = self.getLibrary(lib, caex);
+    
+    if(library == null)
+		return self.errorLibNotFound(lib);
 	
 	for(aktPath : String in path)
 	{
-		if(IC = null)
-			IC = ICL.getInterfaceClass(aktPath);
+		if(class = null)
+			class = library.getClass(aktPath);
 		else
-			IC = IC.getInterfaceClass(aktPath);	
+			class = class.getClass(aktPath);	
 			
-		if(IC = null)
-			return "InterfaceClass " + aktPath + " not found";
+		if(class = null)
+			return self.errorClassNotFound(aktPath);
 	}	
 	
-	return "";
+	return "";		
+}
+
+operation SystemUnitClass errorLibNotFound(lib : String) : String
+{
+	return "SystemUnitClassLib " + lib + " not found";
+}
+
+operation RoleClass errorLibNotFound(lib : String) : String
+{
+	return "RoleClassLib " + lib + " not found";
+}
+
+operation InterfaceClass errorLibNotFound(lib : String) : String
+{
+	return "InterfaceClassLib " + lib + " not found";
 }
 
 
+operation SystemUnitClass errorClassNotFound(class : String) : String
+{
+	return "SystemUnitClass " + class + " not found";
+}
+
+operation RoleClass errorClassNotFound(class : String) : String
+{
+	return "RoleClass " + class + " not found";
+}
+
+operation InterfaceClass errorClassNotFound(class : String) : String
+{
+	return "InterfaceClass " + class + " not found";
+}
+
+
+operation SystemUnitClass getLibrary(lib : String, caexFile : CAEXFile) : SystemUnitClassLib
+{
+	return caexFile.getSystemUnitClassLib(lib);
+}
+
+operation RoleClass getLibrary(lib : String, caexFile : CAEXFile) : RoleClassLib
+{
+	return caexFile.getRoleClassLib(lib);
+}
+
+operation InterfaceClass getLibrary(lib : String, caexFile : CAEXFile) : InterfaceClassLib
+{
+	return caexFile.getInterfaceClassLib(lib);
+}
+
+
+operation SystemUnitClass getClass(class : String) : SystemUnitClass
+{
+	return self.getSystemUnitClass(class);
+}
+
+operation RoleClass getClass(class : String) :RoleClass
+{
+	return self.getRoleClass(class);
+}
+
+operation InterfaceClass getClass(class : String) :InterfaceClass
+{
+	return self.getInterfaceClass(class);
+}
+
+operation SystemUnitClassLib getClass(class : String) : SystemUnitClass
+{
+	return self.getSystemUnitClass(class);
+}
+
+operation RoleClassLib getClass(class : String) :RoleClass
+{
+	return self.getRoleClass(class);
+}
+
+operation InterfaceClassLib getClass(class : String) :InterfaceClass
+{
+	return self.getInterfaceClass(class);
+}
