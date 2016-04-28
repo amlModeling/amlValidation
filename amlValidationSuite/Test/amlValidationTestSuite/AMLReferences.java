@@ -112,5 +112,163 @@ public class AMLReferences {
 		Assert.assertTrue(actual.containsAll(expected)&& expected.containsAll(actual));		
 	}
 	
+	@Test
+	public void Test_008_RC_NotExisting_SameFile() throws Exception 
+	{
+		String modelPath = TestModelPath + "008_RC_NotExisting_SameFile\\";		
+		expected.addExpectedConstraint("IsRefBaseClassPathValid", "File=Testcase.aml - RefBaseClassPath not valid: RoleClass RoleClassNotExisting not found");
+				
+		actual = new AMLExpectedUnsatisfiedConstraints(validationSuite.execute(modelPath, "Testcase"));
+		
+		Assert.assertTrue(actual.containsAll(expected)&& expected.containsAll(actual));		
+	}
+	
+	@Test
+	public void Test_009_RCL_NotExisting_SameFile() throws Exception 
+	{
+		String modelPath = TestModelPath + "009_RCL_NotExisting_SameFile\\";		
+		expected.addExpectedConstraint("IsRefBaseClassPathValid", "File=Testcase.aml - RefBaseClassPath not valid: RoleClassLib RoleClassLibNotExisting not found");
+				
+		actual = new AMLExpectedUnsatisfiedConstraints(validationSuite.execute(modelPath, "Testcase"));
+		
+		Assert.assertTrue(actual.containsAll(expected)&& expected.containsAll(actual));		
+	}
+	
+	@Test
+	public void Test_010_RC_Existing_OneHierarchyAbove() throws Exception 
+	{
+		String modelPath = TestModelPath + "010_RC_Existing_OneHierarchyAbove\\";		
+		
+				
+		actual = new AMLExpectedUnsatisfiedConstraints(validationSuite.execute(modelPath, "Testcase"));
+		
+		Assert.assertTrue(actual.containsAll(expected)&& expected.containsAll(actual));		
+	}
+	
+	@Test
+	public void Test_011_RC_NotExisting_OneHierarchyAbove() throws Exception 
+	{
+		String modelPath = TestModelPath + "011_RC_NotExisting_OneHierarchyAbove\\";		
+		
+		expected.addExpectedConstraint("IsRefBaseClassPathValid", "File=Testcase.aml - RefBaseClassPath not valid: RoleClass RobotNotExisting not found");		
+		actual = new AMLExpectedUnsatisfiedConstraints(validationSuite.execute(modelPath, "Testcase"));
+		
+		Assert.assertTrue(actual.containsAll(expected)&& expected.containsAll(actual));		
+	}
+	
+	@Test
+	public void Test_012_RCL_Existing_MultipleModels() throws Exception 
+	{
+		String modelPath = TestModelPath + "012_RCL_Existing_MultipleModels\\";		
+		
+		actual = new AMLExpectedUnsatisfiedConstraints(validationSuite.execute(modelPath, "Testcase"));
+		
+		Assert.assertTrue(actual.containsAll(expected)&& expected.containsAll(actual));		
+	}
+	
+	@Test
+	public void Test_013_RCL_NotExisting_MultipleModels() throws Exception 
+	{
+		String modelPath = TestModelPath + "013_RCL_NotExisting_MultipleModels\\";
+		expected.addExpectedConstraint("IsRefBaseClassPathValid", "File=Testcase.aml - RefBaseClassPath not valid: RoleClassLib ReferencedRCLNotExisting not found");
+		
+		actual = new AMLExpectedUnsatisfiedConstraints(validationSuite.execute(modelPath, "Testcase"));
+		
+		Assert.assertTrue(actual.containsAll(expected)&& expected.containsAll(actual));		
+	}
+	
+	@Test
+	public void Test_014_RC_NotExisting_MultipleModels() throws Exception 
+	{
+		String modelPath = TestModelPath + "014_RC_NotExisting_MultipleModels\\";
+		expected.addExpectedConstraint("IsRefBaseClassPathValid", "File=Testcase.aml - RefBaseClassPath not valid: RoleClass ReferencedRCNotExisting not found");
+		
+		actual = new AMLExpectedUnsatisfiedConstraints(validationSuite.execute(modelPath, "Testcase"));
+		
+		Assert.assertTrue(actual.containsAll(expected)&& expected.containsAll(actual));		
+	}
+	
+
+	@Test
+	public void Test_015_IC_NotExisting_SameFile() throws Exception 
+	{
+		String modelPath = TestModelPath + "015_IC_NotExisting_SameFile\\";
+		expected.addExpectedConstraint("IsRefBaseClassPathValid", "File=Testcase.aml - RefBaseClassPath not valid: InterfaceClass NotExistingIC not found");
+		
+		actual = new AMLExpectedUnsatisfiedConstraints(validationSuite.execute(modelPath, "Testcase"));
+		
+		Assert.assertTrue(actual.containsAll(expected)&& expected.containsAll(actual));		
+	}
+	
+	@Test
+	public void Test_016_ICL_NotExisting_SameFile() throws Exception 
+	{
+		String modelPath = TestModelPath + "016_ICL_NotExisting_SameFile\\";
+		expected.addExpectedConstraint("IsRefBaseClassPathValid", "File=Testcase.aml - RefBaseClassPath not valid: InterfaceClassLib InterfaceClassLibNotExisting not found");
+		
+		actual = new AMLExpectedUnsatisfiedConstraints(validationSuite.execute(modelPath, "Testcase"));
+		
+		Assert.assertTrue(actual.containsAll(expected)&& expected.containsAll(actual));		
+	}
+	
+	@Test
+	public void Test_017_IC_Existing_OneHierarchyAbove() throws Exception 
+	{
+		String modelPath = TestModelPath + "017_IC_Existing_OneHierarchyAbove\\";
+			
+		actual = new AMLExpectedUnsatisfiedConstraints(validationSuite.execute(modelPath, "Testcase"));
+		
+		Assert.assertTrue(actual.containsAll(expected)&& expected.containsAll(actual));		
+	}
+	
+	@Test
+	public void Test_018_IC_NotExisting_OneHierarchyAbove() throws Exception 
+	{
+		String modelPath = TestModelPath + "018_IC_NotExisting_OneHierarchyAbove\\";
+		expected.addExpectedConstraint("IsRefBaseClassPathValid", "File=Testcase.aml - RefBaseClassPath not valid: InterfaceClass RobotNotExisting not found");
+		
+		actual = new AMLExpectedUnsatisfiedConstraints(validationSuite.execute(modelPath, "Testcase"));
+		
+		Assert.assertTrue(actual.containsAll(expected)&& expected.containsAll(actual));		
+	}
+	
+	@Test
+	public void Test_019_ICL_Existing_MultipleModels() throws Exception 
+	{
+		String modelPath = TestModelPath + "019_ICL_Existing_MultipleModels\\";
+		
+		
+		actual = new AMLExpectedUnsatisfiedConstraints(validationSuite.execute(modelPath, "Testcase"));
+		
+		Assert.assertTrue(actual.containsAll(expected)&& expected.containsAll(actual));		
+	}
+	
+	@Test
+	public void Test_020_ICL_NotExisting_MultipleModels() throws Exception 
+	{
+		String modelPath = TestModelPath + "020_ICL_NotExisting_MultipleModels\\";
+		expected.addExpectedConstraint("IsRefBaseClassPathValid", "File=Testcase.aml - RefBaseClassPath not valid: InterfaceClassLib ReferencedICLNotExisting not found");
+				
+		actual = new AMLExpectedUnsatisfiedConstraints(validationSuite.execute(modelPath, "Testcase"));
+		
+		Assert.assertTrue(actual.containsAll(expected)&& expected.containsAll(actual));		
+	}
+	
+	@Test
+	public void Test_021_IC_NotExisting_MultipleModels() throws Exception 
+	{
+		String modelPath = TestModelPath + "021_IC_NotExisting_MultipleModels\\";
+		expected.addExpectedConstraint("IsRefBaseClassPathValid", "File=Testcase.aml - RefBaseClassPath not valid: InterfaceClass ReferencedICNotExisting not found");
+		
+		actual = new AMLExpectedUnsatisfiedConstraints(validationSuite.execute(modelPath, "Testcase"));
+		
+		Assert.assertTrue(actual.containsAll(expected)&& expected.containsAll(actual));		
+	}
+	
+	
+	
+	
+	
+	
 	
 }

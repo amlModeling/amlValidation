@@ -355,9 +355,9 @@ operation checkRefBaseClassPathRCL(pathMap : Map, eContainer : CAEXObject) : Str
 	for(aktPath : String in path)
 	{
 		if(RC = null)
-			RC = SUL.getRoleClass(aktPath);
+			RC = RCL.getRoleClass(aktPath);
 		else
-			RC = SUC.getRoleClass(aktPath);	
+			RC = RC.getRoleClass(aktPath);	
 			
 		if(RC = null)
 			return "RoleClass " + aktPath + " not found";

@@ -23,10 +23,66 @@ context CAEX!SystemUnitClass
 			getAllContainer(self, allContainer);
 			file = allContainer.get("CAEXFile");
 			
-			return "File=" + file.filename + " - RefBaseClassPath not valid: " + errorText;
-			
+			return "File=" + file.filename + " - RefBaseClassPath not valid: " + errorText;			
 		
 		} 	
 	}
 }
 
+
+context CAEX!RoleClass
+{
+	constraint IsRefBaseClassPathValid
+	{
+		guard: self.refBaseClassPath.isDefined()
+		
+		check
+		{
+			var pathMap = prepareRefBaseClassPath(self.refBaseClassPath);
+			
+			var errorText = checkRefBaseClassPathRCL(pathMap, self.eContainer);
+		
+			return errorText = "";
+		} 
+		
+		message
+		{
+			var allContainer : Map;
+			var file : CAEXFile;
+			getAllContainer(self, allContainer);
+			file = allContainer.get("CAEXFile");
+			
+			return "File=" + file.filename + " - RefBaseClassPath not valid: " + errorText;			
+		
+		} 	
+	}
+}
+
+
+context CAEX!InterfaceClass
+{
+	constraint IsRefBaseClassPathValid
+	{
+		guard: self.refBaseClassPath.isDefined()
+		
+		check
+		{
+			var pathMap = prepareRefBaseClassPath(self.refBaseClassPath);
+			
+			var errorText = checkRefBaseClassPathICL(pathMap, self.eContainer);
+		
+			return errorText = "";
+		} 
+		
+		message
+		{
+			var allContainer : Map;
+			var file : CAEXFile;
+			getAllContainer(self, allContainer);
+			file = allContainer.get("CAEXFile");
+			
+			return "File=" + file.filename + " - RefBaseClassPath not valid: " + errorText;			
+		
+		} 	
+	}
+}
