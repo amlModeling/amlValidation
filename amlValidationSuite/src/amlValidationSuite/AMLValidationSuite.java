@@ -97,7 +97,7 @@ public class AMLValidationSuite {
 		
 		config.setModelPath(modelPath);
 		
-		helper.checkParam(model);
+		helper.checkParam(model, modelPath);
 		this.rootModel = model;
 		
 		transformer.transformModelsToXMI(config.getModelPath(), model, modelHierarchy);		

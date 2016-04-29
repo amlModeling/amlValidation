@@ -28,3 +28,17 @@ context CAEX!CAEXObject
 		} 
 	}
 }
+
+
+context CAEX!InternalElement
+{
+	constraint NoInheritanceOfClasses
+	{
+		check: not self.refBaseClassPath.isDefined()
+		
+		message: "Inheritance between classes and instances is not allowed"
+	}
+
+
+
+}

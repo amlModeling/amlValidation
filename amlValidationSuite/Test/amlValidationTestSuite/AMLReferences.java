@@ -265,6 +265,17 @@ public class AMLReferences {
 		Assert.assertTrue(actual.containsAll(expected)&& expected.containsAll(actual));		
 	}
 	
+	@Test
+	public void Test_022_NoInheritanceBetweenInstancesAndClasses() throws Exception 
+	{
+		String modelPath = TestModelPath + "022_NoInheritanceBetweenInstancesAndClasses\\";
+		//expected.addExpectedConstraint("IsRefBaseClassPathValid", "File=Testcase.aml - RefBaseClassPath not valid: InterfaceClass ReferencedICNotExisting not found");
+		
+		actual = new AMLExpectedUnsatisfiedConstraints(validationSuite.execute(modelPath, "Testcase"));
+		
+		Assert.assertTrue(actual.containsAll(expected)&& expected.containsAll(actual));		
+	}
+	
 	
 	
 	

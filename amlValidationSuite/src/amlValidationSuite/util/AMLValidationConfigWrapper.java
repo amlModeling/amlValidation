@@ -13,9 +13,12 @@ public class AMLValidationConfigWrapper {
 	private String evlSrcFile;
 	private String propertyFile;
 	private String modelPath;
+	private String caexSchema;
 	
 		
 	
+	
+
 	private AMLValidationConfigWrapper() {		
 	}
 	
@@ -50,6 +53,7 @@ public class AMLValidationConfigWrapper {
 
 		setSrcDir(prop.getProperty("srcDir"));		
 		setEvlSrcFile(prop.getProperty("evlSrcFile"));
+		setCaexSchema(prop.getProperty("CAEXSchema"));
 				
 	}
 	
@@ -84,6 +88,14 @@ public class AMLValidationConfigWrapper {
 
 	public void setModelPath(String modelPath) {
 		this.modelPath = modelPath;
+	}
+	
+	public String getCaexSchema() {
+		return caexSchema;
+	}
+
+	public void setCaexSchema(String caexSchema) {
+		this.caexSchema = caexSchema;
 	}
 
 	

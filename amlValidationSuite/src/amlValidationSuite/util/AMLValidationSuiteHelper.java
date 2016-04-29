@@ -2,6 +2,7 @@ package amlValidationSuite.util;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
@@ -10,6 +11,12 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+
+import javax.xml.XMLConstants;
+import javax.xml.transform.stream.StreamSource;
+import javax.xml.validation.Schema;
+import javax.xml.validation.SchemaFactory;
+import javax.xml.validation.Validator;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -23,6 +30,7 @@ import org.eclipse.epsilon.eol.execute.context.Variable;
 import org.eclipse.epsilon.eol.models.IModel;
 import org.eclipse.epsilon.eol.models.IRelativePathResolver;
 import org.eclipse.epsilon.evl.EvlModule;
+import org.xml.sax.SAXException;
 
 import CAEX.AdditionalInformation;
 import CAEX.CAEXFile;
@@ -52,34 +60,6 @@ public class AMLValidationSuiteHelper {
 	
 	
 	
-	
-	
-	
-	private static List<Variable> parameters = new ArrayList<Variable>();
-	
-	/*
-	public EmfModel createEmfModel(String name, String model, 
-			String metamodel, boolean readOnLoad, boolean storeOnDisposal) 
-					throws EolModelLoadingException, URISyntaxException {
-		EmfModel emfModel = new EmfModel();
-		StringProperties properties = new StringProperties();
-		AMLValidationConfigWrapper config = AMLValidationConfigWrapper.getInstance();
-		
-		
-		
-		properties.put(EmfModel.PROPERTY_NAME, name);
-		properties.put(EmfModel.PROPERTY_FILE_BASED_METAMODEL_URI,
-				getFileURI(metamodel).toString());
-		properties.put(EmfModel.PROPERTY_MODEL_URI, 
-				getFileURI(model).toString());
-		properties.put(EmfModel.PROPERTY_READONLOAD, readOnLoad + "");
-		properties.put(EmfModel.PROPERTY_STOREONDISPOSAL, 
-				storeOnDisposal + "");
-		emfModel.load(properties, null);
-		return emfModel;
-	}
-	*/
-
 	public EmfModel createEmfModelByURI(String name, String model, 
 			String metamodel, boolean readOnLoad, boolean storeOnDisposal) 
 					throws EolModelLoadingException, URISyntaxException {
@@ -103,57 +83,45 @@ public class AMLValidationSuiteHelper {
 		return emfModel;
 	}
 	
-/*
 	
-	public static IEolExecutableModule createModule() throws URISyntaxException, Exception {
-		EvlModule module = new EvlModule();
-		
-		module.parse(AMLValidationSuiteHelper.getFileURI(AMLValidationSuiteHelper.getSource()));
-		
-		if (module.getParseProblems().size() > 0) {
-			System.err.println("Parse errors occured...");
-			for (ParseProblem problem : module.getParseProblems()) {
-				System.err.println(problem.toString());
-			}
-			return null;
-		}
-		
-		for (IModel model : AMLValidationSuiteHelper.getModels()) {
-			module.getContext().getModelRepository().addModel(model);
-			
-			module.getContext().getModelRepository().
-		}
-		
-		for (Variable parameter : parameters) {
-			module.getContext().getFrameStack().put(parameter);
-		}
-		
-		
-		
-		return module;
-	}
-	
-	
-	
-	*/
-	
-	
-	public boolean checkParam(String model) throws FileNotFoundException
+	public boolean checkParam(String model, String modelFilePath) throws FileNotFoundException
 	{
 		AMLValidationConfigWrapper config = AMLValidationConfigWrapper.getInstance();
-		String modelFilePath = config.getModelPath();
+		//String modelFilePath = config.getModelPath();
 		
 		File f = new File(modelFilePath + model + XMLExtension);
-		
-		//ToDo: Eventuell CAEX Schema Validierung aufrufen
-		
+				
 		if(!f.exists())
 		{
 			throw new FileNotFoundException("Model input file " + model + " not found");
 		}
 		
-		return true;
+		
+		
+		return validateCAEXSchema(modelFilePath + model + ".aml");
 	}
+	
+			
+	public  boolean validateCAEXSchema(String modelPath){
+		AMLValidationConfigWrapper config = AMLValidationConfigWrapper.getInstance();
+		
+	      try {
+	         SchemaFactory factory = 
+	            SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+	         Schema schema = factory.newSchema(new File(config.getCaexSchema()));
+	            Validator validator = schema.newValidator();
+	            validator.validate(new StreamSource(new File(modelPath)));
+	      } catch (IOException e){    
+	         System.out.println(modelPath + " Exception: "+e.getMessage());
+	         return false;
+	      }catch(SAXException e1){
+	         System.out.println(modelPath + " SAX Exception: "+e1.getMessage());
+	         return false;
+	      }
+	      return true;
+	   }
+	
+	
 	
 	public EvlModule initializeEVLSource() throws IllegalArgumentException
 	{

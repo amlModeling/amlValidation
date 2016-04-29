@@ -51,6 +51,8 @@ public class AMLModelTransformer {
 	public void transformModelsToXMI(String modelXMLDir, String model, AMLModelHierarchy modelHierarchy) throws IOException
 	{	
 		AMLValidationConfigWrapper config = AMLValidationConfigWrapper.getInstance();
+		AMLValidationSuiteHelper helper = AMLValidationSuiteHelper.getInstance();
+		
 		String modelXMIDir = config.getModelPath();
 		File xmlFile = new File(modelXMLDir + model + "." + amlExtension);
 		File xmiFile = new File(modelXMIDir + model + "." + xmiExtension);
@@ -76,6 +78,9 @@ public class AMLModelTransformer {
 			for(int i = 0; i < list.getLength(); i++)
 			{
 				AMLExternalReference externalRef = parseExternalReference((Element) list.item(i));			
+				
+				helper.checkParam(externalRef.getRefModel(), config.getModelPath() + externalRef.getModelPath());
+				
 				
 				modelHierarchy.addExternalReferenceToModel(model, externalRef);								
 				transformModelsToXMI(modelXMLDir + externalRef.getModelPath(), externalRef.getRefModel(), modelHierarchy);				

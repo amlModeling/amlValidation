@@ -99,9 +99,7 @@ operation duplicateIDsToString(duplicates : Map) : String
 	var ret : String = "";
 	var elementsWithSameID : Sequence;
 	var allContainer : Map;
-	var container : CAEXObject;
-	
-	
+	var container : CAEXObject;	
 	
 	for(key : String in duplicates.keyset())
 	{
@@ -125,9 +123,7 @@ operation duplicateIDsToString(duplicates : Map) : String
 			
 			ret += "\nFile="+ file.filename + " " + container.eClass.getName() + "=" + container.name + " type=" + element.eClass.getName() + " ID='" + key + "' Name='" + element.name + "'";			
 		}
-		ret +="\n";
-		
-		
+		ret +="\n";		
 	}
 	
 	return ret;	
@@ -229,16 +225,13 @@ operation prepareRefBaseClassPath(path : String) : Map
 		Token = replaceChars(path.substring(LastTokenBegin, i));
 			
 		Path.add(Token);
-	}		
-	
+	}			
 	
 	objectMap.put("ExtRef", LinkedModul);
 	objectMap.put("Lib", Lib);
 	objectMap.put("Path", Path);
 	objectMap.put("Attribut", Attribut);
 	objectMap.put("Interface", Interface);	
-	
-	objectMap.println();
 		
 	return objectMap;
 }
@@ -285,8 +278,10 @@ operation CAEXObject checkRefBaseClassPath(pathMap : Map, eContainer : CAEXObjec
 	//One hierarchy level above
 	if(extRef ="" and lib = "" and interface = "" and path.size() = 1)
 	{
-		if(path.at(0).println() <> eContainer.name.println())
-			return self.errorClassNotFound(path.at(0));
+		var class = path.at(0);
+		
+		if(class <> eContainer.name)
+			return self.errorClassNotFound(class);
 		else
 			return "";
 	}
