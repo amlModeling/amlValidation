@@ -3,7 +3,6 @@
 package CAEX.impl;
 
 import CAEX.CAEXPackage;
-import CAEX.InterfaceClass;
 import CAEX.RoleClass;
 import CAEX.RoleClassLib;
 

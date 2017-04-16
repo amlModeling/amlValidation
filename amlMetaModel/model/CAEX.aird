@@ -17,6 +17,8 @@
   <semanticResources>../testOutput/manual.xmi</semanticResources>
   <semanticResources>GenericAnyType.ecore</semanticResources>
   <semanticResources>GenericAnyType.genmodel</semanticResources>
+  <semanticResources>Validation.genmodel</semanticResources>
+  <semanticResources>Validation.ecore</semanticResources>
   <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_zJbJULEOEeSxr4YWZVjqcw">
     <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_zVpncLEOEeSxr4YWZVjqcw" name="CAEX class diagram">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_zWUV0LEOEeSxr4YWZVjqcw" source="GMF_DIAGRAMS">
