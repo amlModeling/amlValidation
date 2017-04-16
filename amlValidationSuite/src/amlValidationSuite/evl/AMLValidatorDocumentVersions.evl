@@ -14,11 +14,8 @@ context CAEX!CAEXFile
 				
 		message
 		{
-			return ValidationExecution.addError(self.filename, "", "", "HasAttributeAutomationMLVersion", "No Attribute <AdditionalInformation>.AutomationMLVersion defined");			
-						
+		   return ValidationExecution.addError(self.filename, "", "", "HasAttributeAutomationMLVersion", "No Attribute <AdditionalInformation>.AutomationMLVersion defined");			
 		} 
-		
-
 	}
 		
 	
@@ -39,7 +36,6 @@ context CAEX!CAEXFile
 		message
 		{	
 			return ValidationExecution.addError(self.filename, AutomationMLVersion, documentAMLVersion, "HasCorrectAutomationMLVersion", "");								 
-			 
 		} 
 	}
 	
@@ -66,45 +62,19 @@ context CAEX!CAEXFile
 } 
 
 
-context CAEX!InterfaceClassLib
+context CAEX!CAEXObject
 {
 	constraint HasLibraryVersion
 	{
-		/* Every AML standard library and every user defined AML library shall define its version
-		   number utilizing the CAEX element “Version”. The syntax of the value of the version number
-		   is not defined in this part of IEC 62714. */
-
+		guard: self.isTypeOf(InterfaceClassLib) or
+			   self.isTypeOf(SystemUnitClassLib) or
+			   self.isTypeOf(RoleClassLib)
+			   
 		check: self.version.isDefined()
 		
-		message: self.eContainer.filename + ": <InterfaceClassLib>.Version is not defined"
-	}
-}
-
-context CAEX!SystemUnitClassLib
-{
-	constraint HasLibraryVersion
-	{
-		/* Every AML standard library and every user defined AML library shall define its version
-		   number utilizing the CAEX element “Version”. The syntax of the value of the version number
-		   is not defined in this part of IEC 62714. */
-
-		check: self.version.isDefined()
-		
-		message: self.eContainer.filename + ": <SystemUnitClassLib>.Version is not defined"
-	}
-}
-
-
-context CAEX!RoleClassLib
-{
-	constraint HasLibraryVersion
-	{
-		/* Every AML standard library and every user defined AML library shall define its version
-		   number utilizing the CAEX element “Version”. The syntax of the value of the version number
-		   is not defined in this part of IEC 62714. */
-
-		check: self.version.isDefined()
-		
-		message: self.eContainer.filename + ": <RoleClassLib>.Version is not defined"
+		message
+		{
+			return ValidationExecution.addError(self.eContainer.filename, "", "", "HasLibraryVersion", self.errorVersionNotFound());
+		} 
 	}
 }

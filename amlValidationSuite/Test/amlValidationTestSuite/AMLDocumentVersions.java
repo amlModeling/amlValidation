@@ -86,9 +86,9 @@ public class AMLDocumentVersions extends AMLTest{
 	{
 		String modelPath = TestModelPath + "006_NoLibraryVersions\\";
 		
-		addExpectedTestResult("Testcase.aml", "HasLibraryVersion", "", "", "<InterfaceClassLib>.Version is not defined");
-		addExpectedTestResult("Testcase.aml", "HasLibraryVersion", "", "", "<SystemUnitClassLib>.Version is not defined");
-		addExpectedTestResult("Testcase.aml", "HasLibraryVersion", "", "", "<RoleClassLib>.Version is not defined");
+		addExpectedTestResult("Testcase.aml", "HasLibraryVersion", "", "", "<InterfaceClassLib>InterfaceClassLib1.Version not found");
+		addExpectedTestResult("Testcase.aml", "HasLibraryVersion", "", "", "<SystemUnitClassLib>SystemUnitClassLib1.Version not found");
+		addExpectedTestResult("Testcase.aml", "HasLibraryVersion", "", "", "<RoleClassLib>RoleClassLib1.Version not found");
 				
 		Assert.assertTrue(executeAndValidateTest(modelPath));		
 	}

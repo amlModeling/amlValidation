@@ -22,7 +22,8 @@ context CAEX!CAEXFile
 		
 		check: self.getAdditionalInformationEntry("WriterHeader", self.additionalInformation) <> null 
 						
-		message : self.filename + ": No Element <WriterHeader> defined"
+		message: ValidationExecution.addError(self.filename, "", "", "HasElementWriterHeader", "No Element <WriterHeader> defined") 
+		
 	}	
 	
 	constraint HasWriterName
@@ -30,10 +31,9 @@ context CAEX!CAEXFile
 		/* Meta information "WriterName" mandatory */		
 		guard: self.satisfies("HasElementWriterHeader")
 		
-		check: self.getAdditionalInformationEntry("WriterName", self.additionalInformation) <> null
+		check: self.getAdditionalInformationEntry("WriterName", self.additionalInformation) <> null		
 		
-		
-		message: self.filename + ": No Element <WriterName> defined"	
+		message: ValidationExecution.addError(self.filename, "", "", "HasWriterName", "No Element <WriterName> defined") 		
 	}
 	
 	constraint HasWriterID
@@ -41,11 +41,9 @@ context CAEX!CAEXFile
 		/* Meta information "WriterID" mandatory */
 		guard: self.satisfies("HasElementWriterHeader")
 		
-		check: self.getAdditionalInformationEntry("WriterID", self.additionalInformation) <> null 
+		check: self.getAdditionalInformationEntry("WriterID", self.additionalInformation) <> null 		
 		
-		
-		message: self.filename + ": No Element <WriterID> defined"
-	
+		message: ValidationExecution.addError(self.filename, "", "", "HasWriterID", "No Element <WriterID> defined")	
 	}
 	
 	constraint HasVendor
@@ -56,8 +54,7 @@ context CAEX!CAEXFile
 		check: self.getAdditionalInformationEntry("WriterVendor", self.additionalInformation) <> null 
 		
 		
-		message: self.filename + ": No Element <WriterVendor> defined"
-	
+		message: ValidationExecution.addError(self.filename, "", "", "HasVendor", "No Element <WriterVendor> defined")	
 	}
 	
 	constraint HasVendorURL
@@ -67,8 +64,7 @@ context CAEX!CAEXFile
 		
 		check: self.getAdditionalInformationEntry("WriterVendorURL", self.additionalInformation) <> null 
 				
-		message: self.filename + ": No Element <WriterVendorURL> defined"
-	
+		message: ValidationExecution.addError(self.filename, "", "", "HasVendorURL", "No Element <WriterVendorURL> defined")	
 	}
 	
 	constraint HasVersion
@@ -78,8 +74,7 @@ context CAEX!CAEXFile
 		
 		check: self.getAdditionalInformationEntry("WriterVersion", self.additionalInformation) <> null 
 				
-		message: self.filename + ": No Element <WriterVersion> defined"
-	
+		message: ValidationExecution.addError(self.filename, "", "", "HasVersion", "No Element <WriterVersion> defined")	
 	}
 	
 	constraint HasWriterRelease
@@ -89,8 +84,7 @@ context CAEX!CAEXFile
 		
 		check: self.getAdditionalInformationEntry("WriterRelease", self.additionalInformation) <> null 
 				
-		message: self.filename + ": No Element <WriterRelease> defined"
-	
+		message: ValidationExecution.addError(self.filename, "", "", "HasWriterRelease", "No Element <WriterRelease> defined")	
 	}
 	
 	constraint HasLastWritingDateTime
@@ -100,8 +94,7 @@ context CAEX!CAEXFile
 		
 		check: self.getAdditionalInformationEntry("LastWritingDateTime", self.additionalInformation) <> null 
 			
-		message: self.filename + ": No Element <LastWritingDateTime> defined"
-	
+		message: ValidationExecution.addError(self.filename, "", "", "HasLastWritingDateTime", "No Element <LastWritingDateTime> defined")	
 	}
 	
 	constraint IsLastWritingDateTimeCorrectFormated
@@ -113,12 +106,10 @@ context CAEX!CAEXFile
 		check
 		{
 			var lastWritingDate = self.getAdditionalInformationEntry("LastWritingDateTime", self.additionalInformation).value;
-			//var lastWritingDate = self.additionalInformation.getGenericElement("LastWritingDateTime").value;
-			
 			return lastWritingDate.matches("(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2}).*");			
 		}
 		
-		message: self.filename + ": LastWritingDateTime '" + lastWritingDate + "' is not of type DateTime"	
+		message: ValidationExecution.addError(self.filename, "", lastWritingDate, "IsLastWritingDateTimeCorrectFormated", "Value ist not of type DateTime")		
 	}
 	
 	
@@ -135,7 +126,12 @@ context CAEX!CAEXFile
 			return duplicates.isEmpty();						
 		}
 		
-		message: self.filename + ": Duplicate Metainformation - multiple instances of element(s): '" + duplicates.keyset().toString() + "'"	
+		message
+		{
+			var listDuplicates = duplicates.keyset().toString(); 
+			return ValidationExecution.addError(self.filename, "", "", "NoDuplicatedMetaInformationInWriterHeader", "Duplicate Metainformation - multiple instances of element(s): '" + listDuplicates + "'");
+		
+		} 		
 	}
 	
 	constraint OrderOfWriterHeaderCorrect
@@ -170,5 +166,3 @@ context CAEX!CAEXFile
 		message: self.filename + ": Order of <WriterHeader> elements not correct"
 	}
 }
-
-

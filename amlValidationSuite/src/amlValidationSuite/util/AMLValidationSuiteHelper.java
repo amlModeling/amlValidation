@@ -74,9 +74,7 @@ public class AMLValidationSuiteHelper {
 		if(!model.isEmpty())
 			modelUri = config.getModelPath() + model;
 		else
-			readOnLoad = false;
-			
-			
+			readOnLoad = false;			
 		
 		properties.put(EmfModel.PROPERTY_NAME, name);
 		properties.put(EmfModel.PROPERTY_METAMODEL_URI, metamodel);

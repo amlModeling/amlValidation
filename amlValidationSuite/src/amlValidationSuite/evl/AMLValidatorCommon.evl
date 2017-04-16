@@ -11,7 +11,7 @@ context CAEX!CAEXFile
 	
 		check:	not self.additionalInformation.isEmpty()
 		
-		message : self.filename + ": No element <AdditionalInformation> defined"
+		message: ValidationExecution.addError(self.filename, "", "", "HasElementAdditionalInformation", "No element <AdditionalInformation> defined")
 	}	
 
 }

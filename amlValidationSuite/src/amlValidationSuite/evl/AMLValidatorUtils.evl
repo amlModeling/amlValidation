@@ -344,6 +344,21 @@ operation InterfaceClass errorClassNotFound(class : String) : String
 	return "InterfaceClass " + class + " not found";
 }
 
+operation InterfaceClassLib errorVersionNotFound() : String
+{
+	return "<InterfaceClassLib>" + self.name + ".Version not found";
+}
+
+operation SystemUnitClassLib errorVersionNotFound() : String
+{
+	return "<SystemUnitClassLib>" + self.name + ".Version not found";
+}
+
+operation RoleClassLib errorVersionNotFound() : String
+{
+	return "<RoleClassLib>" + self.name + ".Version not found";
+}
+
 
 operation SystemUnitClass getLibrary(lib : String, caexFile : CAEXFile) : SystemUnitClassLib
 {
