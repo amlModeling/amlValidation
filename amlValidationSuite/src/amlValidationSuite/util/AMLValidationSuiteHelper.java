@@ -38,6 +38,9 @@ import CAEX.ExternalReference;
 import GenericAnyType.Element;
 import GenericAnyType.GenericAttribute;
 import GenericAnyType.GenericElement;
+import ValidationModel.ValidationError;
+import ValidationModel.ValidationExecution;
+import ValidationModel.ValidationModelFactory;
 import amlValidationSuite.AMLValidationSuite;
 
 public class AMLValidationSuiteHelper {
@@ -66,10 +69,18 @@ public class AMLValidationSuiteHelper {
 		EmfModel emfModel = new EmfModel();
 		StringProperties properties = new StringProperties();
 		AMLValidationConfigWrapper config = AMLValidationConfigWrapper.getInstance();
+		String modelUri = "";
+				
+		if(!model.isEmpty())
+			modelUri = config.getModelPath() + model;
+		else
+			readOnLoad = false;
+			
+			
 		
 		properties.put(EmfModel.PROPERTY_NAME, name);
 		properties.put(EmfModel.PROPERTY_METAMODEL_URI, metamodel);
-		properties.put(EmfModel.PROPERTY_MODEL_URI, config.getModelPath() + model);
+		properties.put(EmfModel.PROPERTY_MODEL_URI, modelUri);
 		properties.put(EmfModel.PROPERTY_READONLOAD, readOnLoad + "");
 		properties.put(EmfModel.PROPERTY_STOREONDISPOSAL, 
 				storeOnDisposal + "");
@@ -84,9 +95,10 @@ public class AMLValidationSuiteHelper {
 	}
 	
 	
-	public boolean checkParam(String model, String modelFilePath) throws FileNotFoundException
+	public boolean checkParam(String model, String modelFilePath, ValidationExecution valEx) throws FileNotFoundException
 	{
 		AMLValidationConfigWrapper config = AMLValidationConfigWrapper.getInstance();
+		boolean bRet = false;
 		//String modelFilePath = config.getModelPath();
 		
 		File f = new File(modelFilePath + model + XMLExtension);
@@ -94,15 +106,27 @@ public class AMLValidationSuiteHelper {
 		if(!f.exists())
 		{
 			throw new FileNotFoundException("Model input file " + model + " not found");
+		}		
+		
+		try
+		{		
+			bRet =  validateCAEXSchema(modelFilePath + model + ".aml");
+		}
+		catch(SAXException ex)
+		{
+			ValidationError saxError = ValidationModelFactory.eINSTANCE.createValidationError();
+			saxError.setConstraintName("CAEX Schema Validation");
+			saxError.setAdditionalInformation(ex.getMessage());		
+			saxError.setModelFileName(model+".aml");
+			
+			valEx.getValidationErrors().add(saxError);			
 		}
 		
-		
-		
-		return validateCAEXSchema(modelFilePath + model + ".aml");
+		return bRet;
 	}
 	
 			
-	public  boolean validateCAEXSchema(String modelPath){
+	public  boolean validateCAEXSchema(String modelPath) throws SAXException{
 		AMLValidationConfigWrapper config = AMLValidationConfigWrapper.getInstance();
 		
 	      try {
@@ -114,10 +138,8 @@ public class AMLValidationSuiteHelper {
 	      } catch (IOException e){    
 	         System.out.println(modelPath + " Exception: "+e.getMessage());
 	         return false;
-	      }catch(SAXException e1){
-	         System.out.println(modelPath + " SAX Exception: "+e1.getMessage());
-	         return false;
 	      }
+	      
 	      return true;
 	   }
 	
@@ -171,7 +193,15 @@ public class AMLValidationSuiteHelper {
 				}
 				mapModels.put(modelName, model);
 			}
-		}		
+		}
+		
+		try {
+			EmfModel model = createEmfModelByURI("ValidationModel", "", "http://ValidationModel", false, false);
+			mapModels.put("ValidationModel", model);
+		} catch (EolModelLoadingException | URISyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
 	}
 	
 	

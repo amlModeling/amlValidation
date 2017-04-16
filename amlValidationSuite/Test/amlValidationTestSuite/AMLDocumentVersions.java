@@ -16,125 +16,84 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TestName;
 
+import ValidationModel.ValidationExecution;
 import amlValidationSuite.AMLValidationSuite;
 import amlValidationTestSuite.util.AMLExpectedUnsatisfiedConstraint;
 import amlValidationTestSuite.util.AMLExpectedUnsatisfiedConstraints;
 
-public class AMLDocumentVersions {
-	@Rule public TestName name = new TestName();
-	
+public class AMLDocumentVersions extends AMLTest{	
 	
 	private String TestModelPath = ".\\TestModels\\AMLDocumentVersions\\";
-	
-	private AMLValidationSuite validationSuite = null;
-	private AMLExpectedUnsatisfiedConstraints expected = null;
-	private AMLExpectedUnsatisfiedConstraints actual = null;
-	private String testName = null; 
-	
-
-	
-
-	@Before
-	public void setUp() throws Exception {
-		validationSuite = new AMLValidationSuite("configUnitTest.properties");
-		
-		expected = new AMLExpectedUnsatisfiedConstraints();		
-	}
-
-	@After
-	public void tearDown() throws Exception {
-		if(!(actual.containsAll(expected)&& expected.containsAll(actual)))
-		{
-			System.out.println("Testcase: " + testName);
-			System.out.println("ACTUAL: " + actual.toString()); 
-			System.out.println("EXPECTED: " + expected.toString());
-	
-		}
-	}
 	
 	
 	@Test
 	public void Test_001_NoAttributeAutomationMLVersion() throws Exception 
 	{
-		String modelPath = TestModelPath + "001_NoAttributeAutomationMLVersion\\";		
-		testName = name.getMethodName();
-		
-		expected.addExpectedConstraint("HasAttributeAutomationMLVersion", "Testcase.aml: No Attribute <AdditionalInformation>.AutomationMLVersion defined");
-		
-		actual = new AMLExpectedUnsatisfiedConstraints(validationSuite.execute(modelPath, "Testcase"));
-		
-		Assert.assertTrue(actual.containsAll(expected)&& expected.containsAll(actual));		
+		String modelPath = TestModelPath + "001_NoAttributeAutomationMLVersion\\";	
+		addExpectedTestResult("Testcase.aml", "HasAttributeAutomationMLVersion", "", "", "No Attribute <AdditionalInformation>.AutomationMLVersion defined");
+				
+		Assert.assertTrue(executeAndValidateTest(modelPath));		
 	}
+	
+	
 	
 	@Test
 	public void Test_002_WrongAutomationMLVersion() throws Exception 
 	{
 		String modelPath = TestModelPath + "002_WrongAutomationMLVersion\\";		
-		testName = name.getMethodName();
-		
-		expected.addExpectedConstraint("HasCorrectAutomationMLVersion", "Testcase.aml: <AdditionalInformation>.AutomationMLVersion '3.0' found - Expected: '2.0'");
-		
-		actual = new AMLExpectedUnsatisfiedConstraints(validationSuite.execute(modelPath, "Testcase"));
-		
-		Assert.assertTrue(actual.containsAll(expected)&& expected.containsAll(actual));		
+		addExpectedTestResult("Testcase.aml", "HasCorrectAutomationMLVersion", "3.0", "2.0", "");
+					
+		Assert.assertTrue(executeAndValidateTest(modelPath));		
 	}
+	
 	
 	@Test
 	public void Test_003_InconsistentAMLVersionReferencedCAEXDoc() throws Exception 
 	{
 		String modelPath = TestModelPath + "003_InconsistentAMLVersionReferencedCAEXDoc\\";		
-		testName = name.getMethodName();
 		
-		expected.addExpectedConstraint("HasCorrectAutomationMLVersion", "ReferencedLib.aml: <AdditionalInformation>.AutomationMLVersion '3.0' found - Expected: '2.0'");
-		expected.addExpectedConstraint("HasAutomationMLVersionOfRootModel", "ReferencedLib.aml: <AdditionalInformation>.AutomationMLVersion '3.0' not consistent with RootModel-AutomationMLVersion - Expected: '2.0'");
-		
-		actual = new AMLExpectedUnsatisfiedConstraints(validationSuite.execute(modelPath, "Testcase"));
-		
-		Assert.assertTrue(actual.containsAll(expected)&& expected.containsAll(actual));		
-	}
+		addExpectedTestResult("ReferencedLib.aml", "HasCorrectAutomationMLVersion", "3.0", "2.0", "");
+		addExpectedTestResult("ReferencedLib.aml", "HasAutomationMLVersionOfRootModel", "3.0", "2.0", "<AdditionalInformation>.AutomationMLVersion not consistent with RootModel-AutomationMLVersion");
+				
+		Assert.assertTrue(executeAndValidateTest(modelPath));		
+	}	
 	
 	@Test
 	public void Test_004_WrongCAEXSchemaVersion() throws Exception 
 	{
-		String modelPath = TestModelPath + "004_WrongCAEXSchemaVersion\\";		
-		testName = name.getMethodName();
+		String modelPath = TestModelPath + "004_WrongCAEXSchemaVersion\\";	
 		
-		expected.addExpectedConstraint("HasCorrectCAEXSchemaVersion", "Testcase.aml: <CAEXFile>.SchemaVersion '2.16' found - Expected: '2.15'");
-				
-		actual = new AMLExpectedUnsatisfiedConstraints(validationSuite.execute(modelPath, "Testcase"));
+		addExpectedTestResult("Testcase.aml", "CAEX Schema Validation", "", "", "");
 		
-		Assert.assertTrue(actual.containsAll(expected)&& expected.containsAll(actual));		
+		Assert.assertTrue(executeAndValidateTest(modelPath));		
 	}
 	
+		
 	@Test
-	public void Test_005_InconsistentCAEXSchemaVersionReferencedCAEXDoc() throws Exception 
+	public void Test_005_WrongCAEXSchemaVersionInReferencedCAEXDoc() throws Exception 
 	{
-		String modelPath = TestModelPath + "005_InconsistentCAEXSchemaVersionReferencedCAEXDoc\\";
-		testName = name.getMethodName();
+		String modelPath = TestModelPath + "005_WrongCAEXSchemaVersionInReferencedCAEXDoc\\";		
 		
-		expected.addExpectedConstraint("HasCorrectCAEXSchemaVersion", "ReferencedLib.aml: <CAEXFile>.SchemaVersion '2.16' found - Expected: '2.15'");
-		expected.addExpectedConstraint("HasCAEXSchemaVersionOfRootModel", "ReferencedLib.aml: <CAEXFile>.SchemaVersion '2.16' not consistent with RootModel-SchemaVersion - Expected: '2.15'");
+		addExpectedTestResult("ReferencedLib.aml", "CAEX Schema Validation", "", "", "");		
 				
-		actual = new AMLExpectedUnsatisfiedConstraints(validationSuite.execute(modelPath, "Testcase"));
-		
-		Assert.assertTrue(actual.containsAll(expected)&& expected.containsAll(actual));		
+		Assert.assertTrue(executeAndValidateTest(modelPath));	
 	}
+	
+	
 	
 	@Test
 	public void Test_006_NoLibraryVersions() throws Exception 
 	{
 		String modelPath = TestModelPath + "006_NoLibraryVersions\\";
-		testName = name.getMethodName();
 		
-		expected.addExpectedConstraint("HasLibraryVersion", "Testcase.aml: <InterfaceClassLib>.Version is not defined");
-		expected.addExpectedConstraint("HasLibraryVersion", "Testcase.aml: <SystemUnitClassLib>.Version is not defined");
-		expected.addExpectedConstraint("HasLibraryVersion", "Testcase.aml: <RoleClassLib>.Version is not defined");
+		addExpectedTestResult("Testcase.aml", "HasLibraryVersion", "", "", "<InterfaceClassLib>.Version is not defined");
+		addExpectedTestResult("Testcase.aml", "HasLibraryVersion", "", "", "<SystemUnitClassLib>.Version is not defined");
+		addExpectedTestResult("Testcase.aml", "HasLibraryVersion", "", "", "<RoleClassLib>.Version is not defined");
 				
-		actual = new AMLExpectedUnsatisfiedConstraints(validationSuite.execute(modelPath, "Testcase"));
-		
-		Assert.assertTrue(actual.containsAll(expected)&& expected.containsAll(actual));		
+		Assert.assertTrue(executeAndValidateTest(modelPath));		
 	}
 	
+	/*
 	
 	@Test
 	public void Test_100_Valid() throws Exception 
@@ -187,6 +146,6 @@ public class AMLDocumentVersions {
 
 	
 	
-	
+	*/
 	
 }

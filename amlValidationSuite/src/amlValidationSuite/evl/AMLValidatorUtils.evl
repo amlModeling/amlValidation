@@ -390,3 +390,18 @@ operation InterfaceClassLib getClass(class : String) :InterfaceClass
 {
 	return self.getInterfaceClass(class);
 }
+
+
+operation ValidationModel!ValidationExecution addError(modelName : String, expectedValue : String, actualValue : String, constraintName : String, additionalInfo : String) : String
+{
+	var error : new ValidationModel!ValidationError;
+			
+	error.ModelFileName = modelName;
+	error.ExpectedValue = expectedValue;
+	error.ActualValue = actualValue;
+	error.ConstraintName = constraintName;
+	error.AdditionalInformation = additionalInfo;
+			
+	self.ValidationErrors.add(error);
+	return self.asString();
+}

@@ -16,10 +16,12 @@ import CAEX.CAEXPackage;
 import CAEX.ExternalReference;
 import CAEX.RoleClassLib;
 import GenericAnyType.GenericAnyTypePackage;
+import ValidationModel.*;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.GenericArrayType;
+import java.lang.reflect.InvocationTargetException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -32,8 +34,17 @@ import java.util.Set;
 
 import javax.xml.parsers.ParserConfigurationException;
 
+import org.eclipse.emf.common.notify.Adapter;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.epsilon.emc.emf.EmfModel;
 import org.eclipse.epsilon.eol.IEolExecutableModule;
 import org.eclipse.epsilon.eol.exceptions.EolRuntimeException;
@@ -65,7 +76,8 @@ public class AMLValidationSuite {
 	private HashMap<String, EmfModel> mapModels = null;
 	private List<String> models = null;
 	private List<String> referencedModels = null;
-		
+	private ValidationExecution valExec = ValidationModelFactory.eINSTANCE.createValidationExecution();
+	
 	
 	public AMLValidationSuite(String propertyFile) throws FileNotFoundException, IllegalArgumentException
 	{
@@ -84,6 +96,8 @@ public class AMLValidationSuite {
 		module = helper.initializeEVLSource();		
 		EPackage.Registry.INSTANCE.put(CAEXPackage.eINSTANCE.getNsURI(), CAEXPackage.eINSTANCE);
 		EPackage.Registry.INSTANCE.put(GenericAnyTypePackage.eINSTANCE.getNsURI(), GenericAnyTypePackage.eINSTANCE);
+		EPackage.Registry.INSTANCE.put(ValidationModelPackage.eINSTANCE.getNsURI(), ValidationModelPackage.eINSTANCE);
+		
 		
 		
 	}
@@ -93,11 +107,11 @@ public class AMLValidationSuite {
 		AMLValidationSuiteHelper helper = AMLValidationSuiteHelper.getInstance();
 		AMLValidationConfigWrapper config = AMLValidationConfigWrapper.getInstance();
 				
-		AMLModelTransformer transformer = new AMLModelTransformer();
+		AMLModelTransformer transformer = new AMLModelTransformer(valExec);
 		
 		config.setModelPath(modelPath);
 		
-		helper.checkParam(model, modelPath);
+		helper.checkParam(model, modelPath, valExec);
 		this.rootModel = model;
 		
 		transformer.transformModelsToXMI(config.getModelPath(), model, modelHierarchy);		
@@ -111,20 +125,28 @@ public class AMLValidationSuite {
 		Iterator<Entry<String, Object>> it = parameter.entrySet().iterator();
 		Variable actVar = null;
 		
+				
 		while(it.hasNext())
 		{
 			Entry<String, Object> entry = it.next();
 			
-			actVar = Variable.createReadOnlyVariable(entry.getKey(), entry.getValue());
-			module.getContext().getFrameStack().put(actVar);			
-		}		
+			actVar = Variable.createReadOnlyVariable(entry.getKey(), entry.getValue());			
+			module.getContext().getFrameStack().put(actVar);
+			
+		}
+		
+		actVar = new Variable("ValidationExecution", valExec, new EolModelType());
+		
+		module.getContext().getFrameStack().put(actVar);
+		
+		
 	}
 	
 	
 	private void registerModelsAtModule() throws FileNotFoundException 
 	{
 		AMLValidationSuiteHelper helper = AMLValidationSuiteHelper.getInstance();
-		IModel iRootModel = null;
+		IModel iRootModel = null, iValidationModel = null;
 		Map<String, Object> parameter = null;
 		
 		models = modelHierarchy.getModels();
@@ -143,8 +165,12 @@ public class AMLValidationSuite {
 		parameter = helper.readParameterForEVL(mapModels.get(rootModel), this.rootModel);
 		
 		iRootModel = mapModels.get(rootModel);		
+		iValidationModel = mapModels.get("ValidationModel");
 			
 		module.getContext().getModelRepository().addModel(iRootModel);
+		module.getContext().getModelRepository().addModel(iValidationModel);
+		
+		
 		
 		setParametersToEVL(parameter);
 	}
@@ -152,15 +178,17 @@ public class AMLValidationSuite {
 	
 	
 	
-	public Collection<UnsatisfiedConstraint> execute(String modelPath, String model) throws IOException, EolRuntimeException 
+	public ValidationExecution execute(String modelPath, String model) throws IOException, EolRuntimeException 
 	{		
 		preProcessModels(modelPath, model);
 		
-		execute(module);		
+		if(valExec.getValidationErrors().size() == 0)
+		{
+			execute(module);				
+		}
 		
-		postProcess();	
-		
-		return getUnsatisfiedConstraints();
+		postProcess();		
+		return getValExec();
 	}
 	
 	
@@ -204,6 +232,10 @@ public class AMLValidationSuite {
 		return module.execute();
 	}
 	
+	public ValidationExecution getValExec() {
+		return valExec;
+	}
+	
 	
 	public static void main(String[] args) throws Exception 
 	{		
@@ -214,8 +246,8 @@ public class AMLValidationSuite {
 		try
 		{
 			AMLValidationSuite validationSuite = new AMLValidationSuite(propertyFile);	
-			Collection<UnsatisfiedConstraint> unsatisfied = validationSuite.execute(modelPath, paramModelXML);
-			validationSuite.showValidationResult(unsatisfied);
+			//Collection<UnsatisfiedConstraint> unsatisfied = validationSuite.execute(modelPath, paramModelXML);
+			//validationSuite.showValidationResult(unsatisfied);
 		}
 		catch(IOException | IllegalArgumentException e)
 		{

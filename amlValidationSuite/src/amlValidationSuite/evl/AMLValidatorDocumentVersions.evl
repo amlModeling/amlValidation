@@ -12,7 +12,13 @@ context CAEX!CAEXFile
 		
 		check: self.getAdditionalInformationEntry("AutomationMLVersion", self.additionalInformation) <> null
 				
-		message : self.filename + ": No Attribute <AdditionalInformation>.AutomationMLVersion defined"
+		message
+		{
+			return ValidationExecution.addError(self.filename, "", "", "HasAttributeAutomationMLVersion", "No Attribute <AdditionalInformation>.AutomationMLVersion defined");			
+						
+		} 
+		
+
 	}
 		
 	
@@ -26,14 +32,14 @@ context CAEX!CAEXFile
 		
 		check
 		{ 
-			//var documentAMLVersion = self.additionalInformation.getGenericElement("AutomationMLVersion").value;			
 			var documentAMLVersion = self.getAdditionalInformationEntry("AutomationMLVersion", self.additionalInformation).value;
 			return documentAMLVersion = AutomationMLVersion;		
 		}		  
 		
 		message
-		{									 
-			return self.filename + ": <AdditionalInformation>.AutomationMLVersion '" + documentAMLVersion + "' found - Expected: '" + AutomationMLVersion	+ "'";
+		{	
+			return ValidationExecution.addError(self.filename, AutomationMLVersion, documentAMLVersion, "HasCorrectAutomationMLVersion", "");								 
+			 
 		} 
 	}
 	
@@ -47,61 +53,15 @@ context CAEX!CAEXFile
 		guard: self.satisfies("HasAttributeAutomationMLVersion")
 		
 		check 
-		{
-			
+		{			
 			var documentAMLVersion = self.getAdditionalInformationEntry("AutomationMLVersion", self.additionalInformation).value; 
 			return documentAMLVersion = RootModelAutomationMLVersion;		
 		}	
 		
 		message
-		{							 
-			return self.filename + ": <AdditionalInformation>.AutomationMLVersion '" + documentAMLVersion + "' not consistent with RootModel-AutomationMLVersion - Expected: '" + RootModelAutomationMLVersion	+ "'";
+		{	
+			return ValidationExecution.addError(self.filename, RootModelAutomationMLVersion, documentAMLVersion, "HasAutomationMLVersionOfRootModel", "<AdditionalInformation>.AutomationMLVersion not consistent with RootModel-AutomationMLVersion");						 
 		}				
-	}
-	
-	
-	constraint HasCAEXSchemaVersion
-	{
-		/* IEC 62714 is based on the following document formats:
-		   CAEX version 2.15;
-		*/
-		
-		check: self.schemaVersion.isDefined()
-		
-		message: self.filename + "CAEX Schema Version not defined"
-	
-	}
-
-	
-	constraint HasCorrectCAEXSchemaVersion
-	{
-		/* IEC 62714 is based on the following document formats:
-		   CAEX version 2.15;
-		*/
-		
-		guard: self.satisfies("HasCAEXSchemaVersion")
-		
-		check:	self.schemaVersion = CAEXSChemaVersion
-		
-		message : self.filename + ": <CAEXFile>.SchemaVersion '" + self.schemaVersion + "' found - Expected: '" + CAEXSChemaVersion	+ "'"
-	}	
-	
-	constraint HasCAEXSchemaVersionOfRootModel
-	{
-		/* Every referenced external document shall also follow the named schema versions specified
-		   in the above AML version specification. Mixing of external document versions outside
-		   of one AML version specification is explicitly forbidden.
-		*/	
-		
-		guard: self.satisfies("HasCAEXSchemaVersion")			
-		
-		check 
-		{
-			var documentCAEXSchemaVersion = self.schemaVersion;			
-			return documentCAEXSchemaVersion = RootModelCAEXSchemaVersion;	
-		}	
-	
-		message : self.filename + ": <CAEXFile>.SchemaVersion '" + documentCAEXSchemaVersion + "' not consistent with RootModel-SchemaVersion - Expected: '" + RootModelCAEXSchemaVersion	+ "'"	
 	}	
 } 
 

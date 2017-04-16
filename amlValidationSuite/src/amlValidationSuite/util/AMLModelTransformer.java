@@ -25,6 +25,7 @@ import org.xml.sax.SAXException;
 
 import CAEX.util.CAEXResourceFactoryImpl;
 import CAEX.util.CaexSerializer;
+import ValidationModel.ValidationExecution;
 import CAEX.InstanceHierarchy;
 import CAEX.InternalElement;
 
@@ -35,8 +36,9 @@ public class AMLModelTransformer {
 	private ResourceSet resourceSet = null;
 	private String amlExtension = "aml";
 	private String xmiExtension = "xmi";
+	private ValidationExecution valExec = null;
 	
-	public AMLModelTransformer()
+	public AMLModelTransformer(ValidationExecution valExec)
 	{
 		resourceSet = new ResourceSetImpl();
 		
@@ -45,6 +47,8 @@ public class AMLModelTransformer {
 	
 		ResourceFactoryRegistryImpl.INSTANCE.getExtensionToFactoryMap()
 			.put(xmiExtension, new XMIResourceFactoryImpl());
+		
+		this.valExec = valExec;
 		
 	}	
 	
@@ -66,21 +70,19 @@ public class AMLModelTransformer {
 		try
 		{
 			DocumentBuilder db = dbf.newDocumentBuilder();
+			Document doc = null;
+			NodeList list = null;
 			
 			serializer.writeXMI(xmlFile, resourceSet, xmiFile);			
-		
-			Document doc = db.parse(new FileInputStream(xmlFile));
-			
-			modelHierarchy.addModel(model);
-			
-			NodeList list = doc.getElementsByTagName("ExternalReference");			
+			doc = db.parse(new FileInputStream(xmlFile));			
+			modelHierarchy.addModel(model);			
+			list = doc.getElementsByTagName("ExternalReference");			
 			
 			for(int i = 0; i < list.getLength(); i++)
 			{
 				AMLExternalReference externalRef = parseExternalReference((Element) list.item(i));			
 				
-				helper.checkParam(externalRef.getRefModel(), config.getModelPath() + externalRef.getModelPath());
-				
+				helper.checkParam(externalRef.getRefModel(), config.getModelPath() + externalRef.getModelPath(), valExec);				
 				
 				modelHierarchy.addExternalReferenceToModel(model, externalRef);								
 				transformModelsToXMI(modelXMLDir + externalRef.getModelPath(), externalRef.getRefModel(), modelHierarchy);				
@@ -90,9 +92,12 @@ public class AMLModelTransformer {
 		{
 			throw new IOException("XMIFile " + xmiFile + " could not be created");
 		}
-		catch(ParserConfigurationException | SAXException e)
+		catch(ParserConfigurationException ex)
 		{
 			throw new IllegalArgumentException("Problem parsing " + xmlFile + " file");			
+		} catch (SAXException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 				
 	}	

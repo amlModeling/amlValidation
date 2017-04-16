@@ -1,9 +1,15 @@
 package amlValidationTestSuite.util;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import ValidationModel.*;
+import ValidationModel.impl.*;
 
+import org.eclipse.emf.ecore.xml.type.internal.DataValue.Base64;
 import org.eclipse.epsilon.evl.execute.UnsatisfiedConstraint;
 
 public class AMLExpectedUnsatisfiedConstraints {
@@ -15,6 +21,7 @@ public class AMLExpectedUnsatisfiedConstraints {
 		UnsatisfiedConstraint act = null;
 		String constraint;
 		String message;
+		
 		
 		while(it.hasNext())
 		{
