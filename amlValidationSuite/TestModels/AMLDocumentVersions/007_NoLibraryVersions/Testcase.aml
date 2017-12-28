@@ -13,4 +13,14 @@
 			<WriterProjectID>unspecified</WriterProjectID>
 		</WriterHeader>
 	</AdditionalInformation>
+	<AdditionalInformation AutomationMLVersion="2.0" />
+	<InterfaceClassLib Name="InterfaceClassLib1">
+		<Version/>
+	</InterfaceClassLib>
+	<RoleClassLib Name="RoleClassLib1">
+		<Version/>		
+	</RoleClassLib>
+	<SystemUnitClassLib Name="SystemUnitClassLib1">
+		<Version/>
+	</SystemUnitClassLib>
 </CAEXFile>
