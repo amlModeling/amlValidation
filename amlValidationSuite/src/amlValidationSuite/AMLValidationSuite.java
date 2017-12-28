@@ -102,22 +102,27 @@ public class AMLValidationSuite {
 		
 	}
 	
-	private void preProcessModels(String modelPath, String model)  throws IOException
+	private boolean preProcessModels(String modelPath, String model)  throws IOException
 	{		
 		AMLValidationSuiteHelper helper = AMLValidationSuiteHelper.getInstance();
 		AMLValidationConfigWrapper config = AMLValidationConfigWrapper.getInstance();
+		boolean bValidModel = false;
 				
 		AMLModelTransformer transformer = new AMLModelTransformer(valExec);
 		
 		config.setModelPath(modelPath);
 		
-		helper.checkParam(model, modelPath, valExec);
-		this.rootModel = model;
+		bValidModel = helper.checkParam(model, modelPath, valExec);
 		
-		transformer.transformModelsToXMI(config.getModelPath(), model, modelHierarchy);		
-		registerModelsAtModule();		
+		if(bValidModel)
+		{
+			this.rootModel = model;
 		
+			transformer.transformModelsToXMI(config.getModelPath(), model, modelHierarchy);		
+			registerModelsAtModule();	
+		}
 		
+		return bValidModel;		
 	};
 	
 	private void setParametersToEVL(Map<String, Object> parameter)
@@ -179,10 +184,11 @@ public class AMLValidationSuite {
 	
 	
 	public ValidationExecution execute(String modelPath, String model) throws IOException, EolRuntimeException 
-	{		
-		preProcessModels(modelPath, model);
+	{	
+			
+		boolean bValidModel = preProcessModels(modelPath, model);
 		
-		if(valExec.getValidationErrors().size() == 0)
+		if(bValidModel)
 		{
 			execute(module);				
 		}

@@ -64,8 +64,13 @@ context CAEX!CAEXFile
 
 context CAEX!CAEXObject
 {
-	constraint HasLibraryVersion
+	constraint HasAttributLibraryVersion
 	{
+		/* Every AML standard library and every user defined AML library shall define its version
+			number utilizing the CAEX element “Version”.
+		  This constraints assures that the attribut "version" is definied
+		*/
+		
 		guard: self.isTypeOf(InterfaceClassLib) or
 			   self.isTypeOf(SystemUnitClassLib) or
 			   self.isTypeOf(RoleClassLib)
@@ -74,7 +79,27 @@ context CAEX!CAEXObject
 		
 		message
 		{
-			return ValidationExecution.addError(self.eContainer.filename, "", "", "HasLibraryVersion", self.errorVersionNotFound());
+			return ValidationExecution.addError(self.eContainer.filename, "", "", "HasAttributLibraryVersion", self.errorVersionNotFound());
+		} 
+	}
+	
+	constraint HasLibraryVersion
+	{
+		/* Every AML standard library and every user defined AML library shall define its version
+		   number utilizing the CAEX element “Version”.
+		   This constraints assures that the attribut "version" is filled
+		*/
+		
+		guard: self.satisfies("HasAttributLibraryVersion") and 
+		       (self.isTypeOf(InterfaceClassLib) or
+			   self.isTypeOf(SystemUnitClassLib) or
+			   self.isTypeOf(RoleClassLib))
+			   
+		check: self.version.value <> ""
+		
+		message
+		{
+			return ValidationExecution.addError(self.eContainer.filename, "", "", "HasLibraryVersion", self.errorVersionEmpty());
 		} 
 	}
 }

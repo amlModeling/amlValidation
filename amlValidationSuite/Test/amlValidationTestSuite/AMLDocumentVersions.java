@@ -29,17 +29,21 @@ public class AMLDocumentVersions extends AMLTest{
 	@Test
 	public void Test_001_NoAttributeAutomationMLVersion() throws Exception 
 	{
+		/* The element “AdditionalInformation” shall have an attribute “AutomationMLVersion”. */
 		String modelPath = TestModelPath + "001_NoAttributeAutomationMLVersion\\";	
 		addExpectedTestResult("Testcase.aml", "HasAttributeAutomationMLVersion", "", "", "No Attribute <AdditionalInformation>.AutomationMLVersion defined");
 				
 		Assert.assertTrue(executeAndValidateTest(modelPath));		
 	}
 	
-	
-	
+		
 	@Test
 	public void Test_002_WrongAutomationMLVersion() throws Exception 
 	{
+		/* The value of this attribute “AutomationMLVersion” shall be stored in the XML document. It
+		   shall be “2.0” to correspond to this standard. 
+		*/ 
+		
 		String modelPath = TestModelPath + "002_WrongAutomationMLVersion\\";		
 		addExpectedTestResult("Testcase.aml", "HasCorrectAutomationMLVersion", "3.0", "2.0", "");
 					
@@ -50,6 +54,10 @@ public class AMLDocumentVersions extends AMLTest{
 	@Test
 	public void Test_003_InconsistentAMLVersionReferencedCAEXDoc() throws Exception 
 	{
+		/* Every referenced CAEX document shall follow the same AML version of the root document.
+		   Mixing of documents with different AML versions is explicitly forbidden.
+		*/
+		
 		String modelPath = TestModelPath + "003_InconsistentAMLVersionReferencedCAEXDoc\\";		
 		
 		addExpectedTestResult("ReferencedLib.aml", "HasCorrectAutomationMLVersion", "3.0", "2.0", "");
@@ -61,6 +69,10 @@ public class AMLDocumentVersions extends AMLTest{
 	@Test
 	public void Test_004_WrongCAEXSchemaVersion() throws Exception 
 	{
+		/*Every referenced external document shall also follow the named schema versions specified
+		in the above AML version specification. Mixing of external document versions outside
+		of one AML version specification is explicitly forbidden. */
+		
 		String modelPath = TestModelPath + "004_WrongCAEXSchemaVersion\\";	
 		
 		addExpectedTestResult("Testcase.aml", "CAEX Schema Validation", "", "", "");
@@ -72,23 +84,39 @@ public class AMLDocumentVersions extends AMLTest{
 	@Test
 	public void Test_005_WrongCAEXSchemaVersionInReferencedCAEXDoc() throws Exception 
 	{
+		/*Every referenced external document shall also follow the named schema versions specified
+		in the above AML version specification. Mixing of external document versions outside
+		of one AML version specification is explicitly forbidden. */
+		
 		String modelPath = TestModelPath + "005_WrongCAEXSchemaVersionInReferencedCAEXDoc\\";		
 		
-		addExpectedTestResult("ReferencedLib.aml", "CAEX Schema Validation", "", "", "");		
-				
+		addExpectedTestResult("ReferencedLib.aml", "CAEX Schema Validation", "", "", "");
+						
 		Assert.assertTrue(executeAndValidateTest(modelPath));	
 	}
 	
 	
 	
 	@Test
-	public void Test_006_NoLibraryVersions() throws Exception 
+	public void Test_006_NoAttributLibraryVersions() throws Exception 
 	{
-		String modelPath = TestModelPath + "006_NoLibraryVersions\\";
+		String modelPath = TestModelPath + "006_NoAttributLibraryVersions\\";
 		
-		addExpectedTestResult("Testcase.aml", "HasLibraryVersion", "", "", "<InterfaceClassLib>InterfaceClassLib1.Version not found");
-		addExpectedTestResult("Testcase.aml", "HasLibraryVersion", "", "", "<SystemUnitClassLib>SystemUnitClassLib1.Version not found");
-		addExpectedTestResult("Testcase.aml", "HasLibraryVersion", "", "", "<RoleClassLib>RoleClassLib1.Version not found");
+		addExpectedTestResult("Testcase.aml", "HasAttributLibraryVersion", "", "", "<InterfaceClassLib>InterfaceClassLib1.Version not found");
+		addExpectedTestResult("Testcase.aml", "HasAttributLibraryVersion", "", "", "<SystemUnitClassLib>SystemUnitClassLib1.Version not found");
+		addExpectedTestResult("Testcase.aml", "HasAttributLibraryVersion", "", "", "<RoleClassLib>RoleClassLib1.Version not found");
+				
+		Assert.assertTrue(executeAndValidateTest(modelPath));		
+	}
+	
+	@Test
+	public void Test_007_NoLibraryVersions() throws Exception 
+	{
+		String modelPath = TestModelPath + "007_NoLibraryVersions\\";
+		
+		addExpectedTestResult("Testcase.aml", "HasLibraryVersion", "", "", "<InterfaceClassLib>InterfaceClassLib1.Version empty");
+		addExpectedTestResult("Testcase.aml", "HasLibraryVersion", "", "", "<SystemUnitClassLib>SystemUnitClassLib1.Version empty");
+		addExpectedTestResult("Testcase.aml", "HasLibraryVersion", "", "", "<RoleClassLib>RoleClassLib1.Version empty");
 				
 		Assert.assertTrue(executeAndValidateTest(modelPath));		
 	}

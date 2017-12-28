@@ -359,6 +359,21 @@ operation RoleClassLib errorVersionNotFound() : String
 	return "<RoleClassLib>" + self.name + ".Version not found";
 }
 
+operation InterfaceClassLib errorVersionEmpty() : String
+{
+	return "<InterfaceClassLib>" + self.name + ".Version empty";
+}
+
+operation SystemUnitClassLib errorVersionEmpty() : String
+{
+	return "<SystemUnitClassLib>" + self.name + ".Version empty";
+}
+
+operation RoleClassLib errorVersionEmpty() : String
+{
+	return "<RoleClassLib>" + self.name + ".Version empty";
+}
+
 
 operation SystemUnitClass getLibrary(lib : String, caexFile : CAEXFile) : SystemUnitClassLib
 {
