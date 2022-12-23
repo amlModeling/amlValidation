@@ -9,9 +9,12 @@ import CAEX.InstanceHierarchy;
 import CAEX.InterfaceClassLib;
 import CAEX.RoleClassLib;
 import CAEX.SystemUnitClassLib;
+
 import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -297,8 +300,7 @@ public class CAEXFileImpl extends CAEXBasicObjectImpl implements CAEXFile {
 	public boolean isSetSchemaVersion() {
 		return schemaVersionESet;
 	}
-	
-	
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

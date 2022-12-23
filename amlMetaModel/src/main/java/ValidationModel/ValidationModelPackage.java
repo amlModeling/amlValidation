@@ -185,7 +185,6 @@ public interface ValidationModelPackage extends EPackage {
 	 */
 	int VALIDATION_EXECUTION_OPERATION_COUNT = 0;
 
-
 	/**
 	 * The meta object id for the '{@link ValidationModel.impl.ValidationResultImpl <em>Validation Result</em>}' class.
 	 * <!-- begin-user-doc -->

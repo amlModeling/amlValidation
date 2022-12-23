@@ -9,9 +9,12 @@ import CAEX.InternalElement;
 import CAEX.InternalLink;
 import CAEX.SupportedRoleClass;
 import CAEX.SystemUnitClass;
+
 import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -292,7 +295,7 @@ public class SystemUnitClassImpl extends CAEXObjectImpl implements SystemUnitCla
 		}
 		return systemUnitClass;
 	}
-	
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

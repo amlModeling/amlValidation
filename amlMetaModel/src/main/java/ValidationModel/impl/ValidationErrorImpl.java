@@ -413,7 +413,7 @@ public class ValidationErrorImpl extends MinimalEObjectImpl.Container implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @NOT generated
+	 * @generated
 	 */
 	@Override
 	public String toString() {

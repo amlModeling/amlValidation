@@ -5,8 +5,11 @@ package CAEX.impl;
 import CAEX.CAEXPackage;
 import CAEX.InstanceHierarchy;
 import CAEX.InternalElement;
+
 import java.util.Collection;
+
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -70,7 +73,6 @@ public class InstanceHierarchyImpl extends CAEXObjectImpl implements InstanceHie
 		}
 		return internalElement;
 	}
-	
 
 	/**
 	 * <!-- begin-user-doc -->

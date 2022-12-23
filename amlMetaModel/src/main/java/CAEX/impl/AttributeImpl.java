@@ -6,9 +6,12 @@ import CAEX.Attribute;
 import CAEX.AttributeValueRequirement;
 import CAEX.CAEXPackage;
 import CAEX.RefSemantic;
+
 import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -299,7 +302,6 @@ public class AttributeImpl extends CAEXObjectImpl implements Attribute {
 			eNotify(new ENotificationImpl(this, Notification.SET, CAEXPackage.ATTRIBUTE__ATTRIBUTE_DATA_TYPE, oldAttributeDataType, attributeDataType));
 	}
 
-	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

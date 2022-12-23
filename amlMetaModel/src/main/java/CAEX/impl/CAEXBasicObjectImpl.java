@@ -10,7 +10,9 @@ import CAEX.Copyright;
 import CAEX.Description;
 import CAEX.Revision;
 import CAEX.Version;
+
 import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -353,7 +355,6 @@ public class CAEXBasicObjectImpl extends MinimalEObjectImpl.Container implements
 		return changeModeESet;
 	}
 
-	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

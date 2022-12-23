@@ -5,8 +5,11 @@ package CAEX.impl;
 import CAEX.CAEXPackage;
 import CAEX.SystemUnitClass;
 import CAEX.SystemUnitClassLib;
+
 import java.util.Collection;
+
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -70,7 +73,7 @@ public class SystemUnitClassLibImpl extends CAEXObjectImpl implements SystemUnit
 		}
 		return systemUnitClass;
 	}
-	
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

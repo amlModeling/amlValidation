@@ -5,7 +5,9 @@ package CAEX.impl;
 import CAEX.CAEXPackage;
 import CAEX.InterfaceClass;
 import CAEX.InterfaceClassLib;
+
 import java.util.Collection;
+
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -71,7 +73,6 @@ public class InterfaceClassLibImpl extends CAEXObjectImpl implements InterfaceCl
 		}
 		return interfaceClass;
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->

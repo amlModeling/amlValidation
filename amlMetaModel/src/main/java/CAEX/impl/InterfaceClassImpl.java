@@ -5,8 +5,8 @@ package CAEX.impl;
 import CAEX.Attribute;
 import CAEX.CAEXPackage;
 import CAEX.InterfaceClass;
+
 import java.util.Collection;
-import java.util.Iterator;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -194,30 +194,6 @@ public class InterfaceClassImpl extends CAEXObjectImpl implements InterfaceClass
 			interfaceClass = new EObjectContainmentEList<InterfaceClass>(InterfaceClass.class, this, CAEXPackage.INTERFACE_CLASS__INTERFACE_CLASS);
 		}
 		return interfaceClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public InterfaceClass getInterfaceClass(String name) {
-		EList<InterfaceClass> listIFC = getInterfaceClass();
-		Iterator<InterfaceClass> itIFC = listIFC.iterator();
-		InterfaceClass ret = null;
-		
-		while(itIFC.hasNext())
-		{
-			InterfaceClass IFC = itIFC.next();
-			
-			if(IFC.getName().equals(name))
-			{
-				ret = IFC;
-				break;
-			}
-		}
-				
-		return ret;
 	}
 
 	/**

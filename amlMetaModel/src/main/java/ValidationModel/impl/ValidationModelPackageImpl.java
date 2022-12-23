@@ -6,8 +6,8 @@ import ValidationModel.ValidationError;
 import ValidationModel.ValidationExecution;
 import ValidationModel.ValidationModelFactory;
 import ValidationModel.ValidationModelPackage;
-
 import ValidationModel.ValidationResult;
+
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EGenericType;

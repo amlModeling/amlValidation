@@ -7,8 +7,10 @@ import CAEX.InternalElement;
 import CAEX.Mapping;
 import CAEX.RoleRequirements;
 import CAEX.SystemUnitClass;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -252,7 +254,6 @@ public class InternalElementImpl extends SystemUnitClassImpl implements Internal
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CAEXPackage.INTERNAL_ELEMENT__BASE_SYSTEM_UNIT, oldBaseSystemUnit, baseSystemUnit));
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->

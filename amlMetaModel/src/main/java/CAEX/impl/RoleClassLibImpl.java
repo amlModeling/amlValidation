@@ -5,8 +5,11 @@ package CAEX.impl;
 import CAEX.CAEXPackage;
 import CAEX.RoleClass;
 import CAEX.RoleClassLib;
+
 import java.util.Collection;
+
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -70,7 +73,6 @@ public class RoleClassLibImpl extends CAEXObjectImpl implements RoleClassLib {
 		}
 		return roleClass;
 	}
-	
 
 	/**
 	 * <!-- begin-user-doc -->
