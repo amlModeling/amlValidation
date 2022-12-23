@@ -1,0 +1,137 @@
+import "AMLValidatorUtils.evl";
+
+
+context CAEX!CAEXFile
+{		
+	//called multiple times from WriterHeader subitems -> therefore cached operation
+	 
+	constraint HasElementWriterHeader
+	{
+		/* MG - Reviewed */
+		/* In a data exchange tool chain, all participating tools shall store this information in the
+		   CAEX document in the same way. Hence, the document may contain information about
+		   multiple tools of a data exchange tool chain.A tool may remove the writer information of
+		   other tools. This may hinder the iterative data exchange with the other tools: hence the
+		   removal of writer information of other tools is not recommended.
+		   • This information shall be stored as part of the CAEX AdditionalInformation of the root
+		   object of the CAEX document.
+	       • The AdditionalInfomation block shall be named “WriterHeader”.
+		*/		
+		check
+		{	
+  			return not self.getWriterHeaderElements().isEmpty();		 	
+	 	} 
+						
+		message: ValidationExecution.addError(self.filename, "", "", "HasElementWriterHeader", "No Element <WriterHeader> defined") 
+		
+	}	
+	
+	
+	constraint ValidateWriterHeader
+	{
+	
+		guard: self.satisfies("HasElementWriterHeader")
+		
+		check
+		{
+			var writerHeaders = self.getWriterHeaderElements();					
+			var bValid : Boolean = true;
+			var validationErrors : Sequence;
+					
+			//writerHeaders.println();
+			
+			for (writerHeader : Element in writerHeaders)
+			{
+				//writerHeader.nestedElements.println();
+				validationErrors.addAll(writerHeader.validateWriterHeader(self.filename));			
+			}
+						
+			return validationErrors.isEmpty();
+		}
+		
+		message: ValidationExecution.addErrors(self.filename, "ValidateWriterHeader", validationErrors)	
+	}
+}
+
+
+
+@Cached
+operation CAEXFile getWriterHeaderElements() : Sequence
+{
+	var elements : Sequence;	
+						
+	for(additionalInformation : Element in self.AdditionalInformation)
+	{		
+		for (nestedElement : Element in additionalInformation.nestedElements)
+		{
+			if (nestedElement.name = "WriterHeader")
+				elements.add(nestedElement);
+		}		
+	}	
+	
+	return elements;	
+}
+
+
+operation Element validateWriterHeader(filename : String) : Sequence
+{
+	var elementMap : Map;
+	var validationErrors : Sequence;
+	var iPosition : Integer = 0;
+	var bCorrectOrder : Boolean = true;
+	var bElementMissing : Boolean = false;
+	var bElementDuplicate : Boolean = false;
+	var duplicateElements : Sequence;
+	var value : String;	
+	
+	var elementNamesOrder : Sequence  = Sequence {"WriterName", "WriterID", "WriterVendor", "WriterVendorURL", "WriterVersion", "WriterRelease", "LastWritingDateTime", "WriterProjectTitle", "WriterProjectID"};
+	var elementNamesMandatory: Sequence  = Sequence {"WriterName", "WriterID", "WriterVendor", "WriterVendorURL", "WriterVersion", "WriterRelease", "LastWritingDateTime"};
+
+	for (writeHeaderElement : Element in self.nestedElements)
+	{
+		//Zur besseren Überprüfung in eine Map umschichten
+		if(not elementMap.containsKey(writeHeaderElement.name))
+			elementMap.put(writeHeaderElement.name, writeHeaderElement.value);
+		else
+			bElementDuplicate = true;
+			
+		
+		//Prüfen ob die Elemente in richtiger Reihenfolge stehen
+		bCorrectOrder = bCorrectOrder and writeHeaderElement.name == elementNamesOrder.at(iPosition);
+		iPosition++;		
+	}	
+	
+	for (elementName : String in elementNamesMandatory)
+	{
+		if(not elementMap.containsKey(elementName))
+		{
+			validationErrors.add(elementName + " not defined");
+			bElementMissing = true;
+		
+		}
+		else 
+		{	
+			value = elementMap.get(elementName);
+			if (value == null)
+				validationErrors.add(elementName + " empty");			
+			else
+			{
+				if (elementName == "LastWritingDateTime")
+				{
+					if (not value.matches("(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2}).*"))
+						validationErrors.add(elementName + " '" + value + "' is not of type DateTime");						
+				}
+			}
+		}	
+	}
+	
+	if (bElementDuplicate = true and not bElementMissing)
+		validationErrors.add("Duplicate elements detected");
+		
+	
+	if (bCorrectOrder == false and not bElementMissing)
+		validationErrors.add("Order of <WriterHeader> elements not correct");
+		
+		
+	return validationErrors;
+}

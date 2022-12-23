@@ -1,0 +1,38 @@
+﻿<CAEXFile FileName="Testcase.aml" SchemaVersion="2.15" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="CAEX_ClassModel_V2.15.xsd">
+  <AdditionalInformation AutomationMLVersion="2.0" />
+  <AdditionalInformation>
+    <WriterHeader>
+      <WriterName>AutomationML Editor</WriterName>
+      <WriterID>916578CA-FE0D-474E-A4FC-9E1719892369</WriterID>
+      <WriterVendor>AutomationML e.V.</WriterVendor>
+      <WriterVendorURL>www.AutomationML.org</WriterVendorURL>
+      <WriterVersion>6.0.5.0</WriterVersion>
+      <WriterRelease>6.0.5.0</WriterRelease>
+      <LastWritingDateTime>2022-08-17T00:24:18.7737055</LastWritingDateTime>
+      <WriterProjectTitle>unspecified</WriterProjectTitle>
+      <WriterProjectID>unspecified</WriterProjectID>
+    </WriterHeader>
+  </AdditionalInformation>
+  <ExternalReference Alias="AMLBaseClasses" Path="AMLBaseclasses.aml" />
+  <RoleClassLib Name="RoleClassLib">
+    <Version>0</Version>
+    <RoleClass Name="RoleClass" RefBaseClassPath="AMLBaseClasses@AutomationMLBaseRoleClassLib/AutomationMLBaseRole/Port" />
+  </RoleClassLib>
+  <SystemUnitClassLib Name="SystemUnitClassLib">
+    <Version>0</Version>
+    <SystemUnitClass Name="SystemUnitClass" ID="a9107b0a-8b15-4257-8eda-7fd26f45543b">
+      <Attribute Name="Cardinality">
+        <Attribute Name="MinOccur" AttributeDataType="xs:unsignedInt">
+          <Value>5</Value>
+        </Attribute>
+        <Attribute Name="MaxOccur" AttributeDataType="xs:unsignedInt">
+          <Value>2</Value>
+        </Attribute>
+      </Attribute>
+      <Attribute Name="Category" AttributeDataType="xs:string" />
+      <ExternalInterface Name="ConnectionPoint" ID="8a63c74a-5092-481d-9114-f44fb761e0f7" RefBaseClassPath="AMLBaseClasses@AutomationMLInterfaceClassLib/AutomationMLBaseInterface/PortConnector"/>
+	  <ExternalInterface Name="InterfaceBC" ID="GUID2" />
+      <SupportedRoleClass RefRoleClassPath="RoleClassLib/RoleClass" />
+    </SystemUnitClass>
+  </SystemUnitClassLib>
+</CAEXFile>

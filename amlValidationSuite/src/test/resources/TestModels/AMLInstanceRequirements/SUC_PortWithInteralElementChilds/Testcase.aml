@@ -1,0 +1,42 @@
+﻿<CAEXFile FileName="Testcase.aml" SchemaVersion="2.15" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="CAEX_ClassModel_V2.15.xsd">
+  <AdditionalInformation AutomationMLVersion="2.0" />
+  <AdditionalInformation>
+    <WriterHeader>
+      <WriterName>AutomationML Editor</WriterName>
+      <WriterID>916578CA-FE0D-474E-A4FC-9E1719892369</WriterID>
+      <WriterVendor>AutomationML e.V.</WriterVendor>
+      <WriterVendorURL>www.AutomationML.org</WriterVendorURL>
+      <WriterVersion>6.0.5.0</WriterVersion>
+      <WriterRelease>6.0.5.0</WriterRelease>
+      <LastWritingDateTime>2022-08-17T00:49:00.9851318</LastWritingDateTime>
+      <WriterProjectTitle>unspecified</WriterProjectTitle>
+      <WriterProjectID>unspecified</WriterProjectID>
+    </WriterHeader>
+  </AdditionalInformation>
+  <ExternalReference Alias="AMLBaseClasses" Path="AMLBaseclasses.aml" />
+  <RoleClassLib Name="RoleClassLib">
+    <Version>0</Version>
+    <RoleClass Name="RoleClass" RefBaseClassPath="AMLBaseClasses@AutomationMLBaseRoleClassLib/AutomationMLBaseRole/Port" />
+  </RoleClassLib>
+  <SystemUnitClassLib Name="SystemUnitClassLib">
+    <Version>0</Version>
+    <SystemUnitClass Name="SystemUnitClass1" ID="bea79b3e-46bd-4b61-9d0e-a4d7001bf38a">
+      <Attribute Name="Direction" AttributeDataType="xs:string">
+        <Value>In</Value>
+      </Attribute>
+      <Attribute Name="Cardinality">
+        <Attribute Name="MinOccur" AttributeDataType="xs:unsignedInt">
+          <Value>0</Value>
+        </Attribute>
+        <Attribute Name="MaxOccur" AttributeDataType="xs:unsignedInt">
+          <Value>5</Value>
+        </Attribute>
+      </Attribute>
+      <Attribute Name="Category" AttributeDataType="xs:string" />
+      <ExternalInterface Name="ConnectionPoint" ID="8a63c74a-5092-481d-9114-f44fb761e0f7" RefBaseClassPath="AMLBaseClasses@AutomationMLInterfaceClassLib/AutomationMLBaseInterface/PortConnector" />
+	  <ExternalInterface Name="InterfaceBC" ID="GUID2" />
+      <InternalElement Name="NotAllowedIE" ID="d0945dc3-493c-4963-8026-5612a41393ff" />
+      <SupportedRoleClass RefRoleClassPath="RoleClassLib/RoleClass" />
+    </SystemUnitClass>
+  </SystemUnitClassLib>
+</CAEXFile>

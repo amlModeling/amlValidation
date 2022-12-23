@@ -1,0 +1,35 @@
+﻿<CAEXFile FileName="Testcase.aml" SchemaVersion="2.15" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="CAEX_ClassModel_V2.15.xsd">
+  <AdditionalInformation AutomationMLVersion="2.0" />
+  <AdditionalInformation>
+    <WriterHeader>
+      <WriterName>AutomationML Editor</WriterName>
+      <WriterID>916578CA-FE0D-474E-A4FC-9E1719892369</WriterID>
+      <WriterVendor>AutomationML e.V.</WriterVendor>
+      <WriterVendorURL>www.AutomationML.org</WriterVendorURL>
+      <WriterVersion>6.0.5.0</WriterVersion>
+      <WriterRelease>6.0.5.0</WriterRelease>
+      <LastWritingDateTime>2022-09-03T22:16:49.5358809</LastWritingDateTime>
+      <WriterProjectTitle>unspecified</WriterProjectTitle>
+      <WriterProjectID>unspecified</WriterProjectID>
+    </WriterHeader>
+  </AdditionalInformation>
+  <ExternalReference Alias="AMLBaseClasses" Path="AMLBaseclasses.aml" />
+  <InstanceHierarchy Name="InstanceHierarchy">
+    <Version>0</Version>
+    <InternalElement Name="Artefact" ID="2f041770-96c7-4a56-a309-dcac9b1874aa">
+      <InternalElement Name="IE1" ID="GUID1" />
+      <InternalElement Name="IE2" ID="GUID2" />
+      <InternalElement Name="IE3" ID="GUID3" />
+      <InternalElement Name="IE4" ID="GUID4" />
+    </InternalElement>
+    <InternalElement Name="Group2" ID="72e613dd-a8cf-488e-a335-300af2510427">
+      <InternalElement Name="IE1" ID="186fae82-7c42-4179-8b5c-0e85b03252d9" RefBaseSystemUnitPath="GUID1" />
+      <InternalElement Name="IE2" ID="2c41a3bc-f870-4cc0-85e7-bd5e53aebfc4" RefBaseSystemUnitPath="GUID2" />
+      <RoleRequirements RefBaseRoleClassPath="AMLBaseClasses@AutomationMLBaseRoleClassLib/AutomationMLBaseRole/Group" />
+    </InternalElement>
+    <InternalElement Name="Group1" ID="61ccabf1-1906-4f75-a505-8f10fd31b9dc">
+      <InternalElement Name="IE4" ID="7fbbe13e-df29-46a2-8270-7e0e6d0ec2d6" RefBaseSystemUnitPath="GUID4" />
+      <RoleRequirements RefBaseRoleClassPath="AMLBaseClasses@AutomationMLBaseRoleClassLib/AutomationMLBaseRole/Group" />
+    </InternalElement>
+  </InstanceHierarchy>
+</CAEXFile>

@@ -1,0 +1,24 @@
+﻿<CAEXFile FileName="Testcase.aml" SchemaVersion="2.15" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <AdditionalInformation AutomationMLVersion="2.0" />
+  <AdditionalInformation>
+    <WriterHeader>
+      <WriterName>AutomationML Editor</WriterName>
+      <WriterID>916578CA-FE0D-474E-A4FC-9E1719892369</WriterID>
+      <WriterVendor>AutomationML e.V.</WriterVendor>
+      <WriterVendorURL>www.AutomationML.org</WriterVendorURL>
+      <WriterVersion>6.0.5.0</WriterVersion>
+      <WriterRelease>6.0.5.0</WriterRelease>
+      <LastWritingDateTime>2022-08-04T01:10:35.0755607</LastWritingDateTime>
+      <WriterProjectTitle>unspecified</WriterProjectTitle>
+      <WriterProjectID>unspecified</WriterProjectID>
+    </WriterHeader>
+  </AdditionalInformation>
+  <ExternalReference Alias="AMLBaseClasses" Path="AMLBaseclasses.aml" />
+  <ExternalReference Alias="RefLib" Path="ReferencedLib.aml" />
+  <InterfaceClassLib Name="InterfaceClassLib">
+    <Version>0</Version>
+    <InterfaceClass Name="InterfaceClass" RefBaseClassPath="AMLBaseClasses@AutomationMLInterfaceClassLib/AutomationMLBaseInterface/PortConnector"/>
+	<InterfaceClass Name="InterfaceClass1" RefBaseClassPath="RefLib@ReferecedICL/ReferencedICParent/ReferencedICLChild"/>
+	
+  </InterfaceClassLib>  
+</CAEXFile>

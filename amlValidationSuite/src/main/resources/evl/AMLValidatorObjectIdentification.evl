@@ -1,0 +1,127 @@
+import "AMLValidatorUtils.evl";
+
+context CAEX!InterfaceClassLib
+{
+	constraint IsNameUnique
+	{
+		/*  This name shall be unique within the hierarchy level of the corresponding AML library over
+			the life time of the class.*/
+		check
+		{
+			var duplicates = getDuplicateCAEXObjects(self.interfaceClass);			
+					
+			return duplicates.isEmpty();
+		}
+	
+		message: ValidationExecution.addError(self.eContainer.filename, "", "", "IsNameUnique", "InterfaceClassLib=" + self.name + ": Duplicate Class Names: " + duplicates.getAsCommaSeparatedString())	
+		
+	}
+}
+
+
+
+context CAEX!SystemUnitClassLib
+{
+	constraint IsNameUnique
+	{
+		/*  This name shall be unique within the hierarchy level of the corresponding AML library over
+			the life time of the class.*/
+		check
+		{
+			var duplicates = getDuplicateCAEXObjects(self.systemunitclass);			
+					
+			return duplicates.isEmpty();
+		}
+	
+		message: ValidationExecution.addError(self.eContainer.filename, "", "", "IsNameUnique", "SystemUnitClassLib=" + self.name + ": Duplicate Class Names: " + duplicates.getAsCommaSeparatedString())
+	}
+}
+
+
+
+
+context CAEX!RoleClassLib
+{
+	constraint IsNameUnique
+	{
+		/*  This name shall be unique within the hierarchy level of the corresponding AML library over
+			the life time of the class.*/
+		check
+		{
+			var duplicates = getDuplicateCAEXObjects(self.roleclass);			
+					
+			return duplicates.isEmpty();
+		}
+	
+		message: ValidationExecution.addError(self.eContainer.filename, "", "", "IsNameUnique", "RoleClassLib=" + self.name + ": Duplicate Class Names: " + duplicates.getAsCommaSeparatedString()) 
+	}
+}
+
+context CAEX!InternalElement
+{
+	constraint HasID
+	{
+		/* According to IEC 62424:2008, A.3.15, the tag “ID” is not mandatory in contrast to this part of IEC 62714.*/
+		
+		check: self.id.isDefined()
+		
+		message
+		{
+			var caexFile : CAEXFile;
+			caexFile = self.getCAEXFile();		
+			
+			return ValidationExecution.addError(caexFile.filename, "", "", "HasID", "InternalElement " + self.name + " without ID defined");
+		}	
+	}
+	
+	
+	constraint IsIDGUID
+	{
+		guard: self.satisfies("HasID")
+		
+		check 
+		{
+			var caexFile : CAEXFile;
+			caexFile = self.getCAEXFile();
+			return getAnzForID(self.ID) == 1;
+		}
+		
+		message: ValidationExecution.addError(caexFile.filename, "", "", "IsIDGUID", "InternalElement " + self.name + " has a non unique ID: " + self.ID)		
+	}
+}
+
+context CAEX!ExternalInterface
+{
+	constraint HasID
+	{
+		/* According to IEC 62424:2008, A.3.15, the tag “ID” is not mandatory in contrast to this part of IEC 62714.*/
+			
+		check:	self.id.isDefined()
+		
+		message
+		{
+			var caexFile : CAEXFile;
+			caexFile = self.getCAEXFile();
+			
+			return ValidationExecution.addError(caexFile.filename, "", "", "HasID", "ExternalInterface " + self.name + " without ID defined");
+		}	
+	}
+	
+	constraint IsIDGUID
+	{
+		guard: self.satisfies("HasID")
+		
+		check 
+		{
+			var caexFile : CAEXFile;
+			caexFile = self.getCAEXFile();
+			return getAnzForID(self.ID) == 1;
+		}
+		
+		message: ValidationExecution.addError(caexFile.filename, "", "", "IsIDGUID", "ExternalInterface " + self.name + " has a non unique ID: " + self.ID)		
+	}
+}
+
+
+
+

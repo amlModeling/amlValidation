@@ -1,0 +1,42 @@
+﻿<CAEXFile FileName="Testcase.aml" SchemaVersion="2.15" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="CAEX_ClassModel_V2.15.xsd">
+  <AdditionalInformation AutomationMLVersion="2.0" />
+  <AdditionalInformation>
+    <WriterHeader>
+      <WriterName>AutomationML Editor</WriterName>
+      <WriterID>916578CA-FE0D-474E-A4FC-9E1719892369</WriterID>
+      <WriterVendor>AutomationML e.V.</WriterVendor>
+      <WriterVendorURL>www.AutomationML.org</WriterVendorURL>
+      <WriterVersion>6.1.0.0</WriterVersion>
+      <WriterRelease>6.1.0.0</WriterRelease>
+      <LastWritingDateTime>2022-09-19T22:46:52.0840963</LastWritingDateTime>
+      <WriterProjectTitle>unspecified</WriterProjectTitle>
+      <WriterProjectID>unspecified</WriterProjectID>
+    </WriterHeader>
+  </AdditionalInformation>
+  <ExternalReference Alias="AMLBaseClasses" Path="AMLBaseclasses.aml" />
+  <InstanceHierarchy Name="InstanceHierarchy">
+    <Version>0</Version>
+    <InternalElement Name="InternalElement" ID="56fe7685-7b01-4e1f-b4ff-fa0265560639">
+      <Attribute Name="x" AttributeDataType="xs:double" Unit="m" />
+      <Attribute Name="y" AttributeDataType="xs:double" Unit="m" />
+      <InternalElement Name="Maße" ID="81ff783b-b9be-4b02-90d1-60648cc1cc16">
+        <ExternalInterface Name="ExternalInterface" ID="0111c34b-2676-49a1-820f-4e01c34a6104" />
+        <RoleRequirements RefBaseRoleClassPath="RoleClassLib/RoleClass">
+          <Attribute Name="Laenge" AttributeDataType="xs:double" Unit="m" />
+          <Attribute Name="Breite" AttributeDataType="xs:double" Unit="m" />
+        </RoleRequirements>
+        <MappingObject>
+          <AttributeNameMapping SystemUnitAttributeName="x" RoleAttributeName="Laenge" />
+          <AttributeNameMapping SystemUnitAttributeName="y" RoleAttributeName="Breite" />
+        </MappingObject>
+      </InternalElement>
+    </InternalElement>
+  </InstanceHierarchy>
+  <RoleClassLib Name="RoleClassLib">
+    <Version>0</Version>
+    <RoleClass Name="RoleClass" RefBaseClassPath="AMLBaseClasses@AutomationMLBaseRoleClassLib/AutomationMLBaseRole/PropertySet" ID="a7bed062-a1c2-462e-ba9e-89eca2610f17">
+      <Attribute Name="Laenge" AttributeDataType="xs:double" Unit="m" />
+      <Attribute Name="Breite" AttributeDataType="xs:double" Unit="m" />
+    </RoleClass>
+  </RoleClassLib>
+</CAEXFile>
