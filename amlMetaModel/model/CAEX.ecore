@@ -40,7 +40,6 @@
       <details key="name" value="AttributeType"/>
       <details key="kind" value="elementOnly"/>
     </eAnnotations>
-    <eOperations name="getAllAttributes" upperBound="-1" eType="#//Attribute"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="defaultValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="A predefined default value for an attribute."/>
@@ -175,10 +174,6 @@
       <details key="name" value="CAEXBasicObject"/>
       <details key="kind" value="elementOnly"/>
     </eAnnotations>
-    <eOperations name="getAdditionalInformationEntry" eType="ecore:EClass GenericAnyType.ecore#//Element">
-      <eParameters name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
-      <eParameters name="listAdditionalInformation" upperBound="-1" eType="ecore:EClass GenericAnyType.ecore#//GenericElement"/>
-    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="description" eType="#//Description"
         containment="true" resolveProxies="false">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -254,30 +249,6 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="CAEX basis object that comprises a basic set of attributes and header information which exist for all CAEX elements."/>
     </eAnnotations>
-    <eOperations name="getAllInternalElements" upperBound="-1" eType="#//InternalElement">
-      <eParameters name="includeExternalReferences" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Boolean"/>
-    </eOperations>
-    <eOperations name="getAllExternalInterfaces" upperBound="-1" eType="#//ExternalInterface">
-      <eParameters name="includeExternalReferences" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Boolean"/>
-    </eOperations>
-    <eOperations name="getAllRoleClasses" upperBound="-1" eType="#//RoleClass">
-      <eParameters name="includeExternalReferences" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Boolean"/>
-    </eOperations>
-    <eOperations name="getAllSystemUnitClasses" upperBound="-1" eType="#//SystemUnitClass">
-      <eParameters name="includeExternalReferences" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Boolean"/>
-    </eOperations>
-    <eOperations name="getLinkedModel" eType="#//CAEXFile">
-      <eParameters name="modelName" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
-    </eOperations>
-    <eOperations name="getSystemUnitClassLib" eType="#//SystemUnitClassLib">
-      <eParameters name="libName" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
-    </eOperations>
-    <eOperations name="getRoleClassLib" eType="#//RoleClassLib">
-      <eParameters name="libName" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
-    </eOperations>
-    <eOperations name="getInterfaceClassLib" eType="#//InterfaceClassLib">
-      <eParameters name="libName" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
-    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="externalReference" upperBound="-1"
         eType="#//ExternalReference" containment="true" resolveProxies="false">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -520,7 +491,6 @@
       <details key="name" value="InstanceHierarchy"/>
       <details key="kind" value="elementOnly"/>
     </eAnnotations>
-    <eOperations name="getAllInternalElements" upperBound="-1" eType="#//InternalElement"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="internalElement" upperBound="-1"
         eType="#//InternalElement" containment="true" resolveProxies="false">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -538,9 +508,6 @@
       <details key="name" value="InterfaceClassLib"/>
       <details key="kind" value="elementOnly"/>
     </eAnnotations>
-    <eOperations name="getInterfaceClass" eType="#//InterfaceClass">
-      <eParameters name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
-    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="interfaceClass" upperBound="-1"
         eType="#//InterfaceClass" containment="true" resolveProxies="false">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -561,9 +528,6 @@
       <details key="name" value="InterfaceClassType"/>
       <details key="kind" value="elementOnly"/>
     </eAnnotations>
-    <eOperations name="getInterfaceClass" eType="#//InterfaceClass">
-      <eParameters name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
-    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="attribute" upperBound="-1"
         eType="#//Attribute" containment="true" resolveProxies="false">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -634,7 +598,6 @@
       <details key="name" value="InternalElementType"/>
       <details key="kind" value="elementOnly"/>
     </eAnnotations>
-    <eOperations name="getAllInternalElements" upperBound="-1" eType="#//InternalElement"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="roleRequirements" eType="#//RoleRequirements"
         containment="true" resolveProxies="false">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -837,10 +800,6 @@
       <details key="name" value="RoleClassLib"/>
       <details key="kind" value="elementOnly"/>
     </eAnnotations>
-    <eOperations name="getAllRoleClasses" upperBound="-1" eType="#//RoleClass"/>
-    <eOperations name="getRoleClass" eType="#//RoleClass">
-      <eParameters name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
-    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="roleClass" upperBound="-1"
         eType="#//RoleClass" containment="true" resolveProxies="false">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -861,10 +820,6 @@
       <details key="name" value="RoleClassType"/>
       <details key="kind" value="elementOnly"/>
     </eAnnotations>
-    <eOperations name="getAllRoleClasses" upperBound="-1" eType="#//RoleClass"/>
-    <eOperations name="getRoleClass" eType="#//RoleClass">
-      <eParameters name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
-    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="attribute" upperBound="-1"
         eType="#//Attribute" containment="true" resolveProxies="false">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -936,7 +891,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="externalInterface" upperBound="-1"
-        eType="#//InterfaceClass" containment="true" resolveProxies="false">
+        eType="#//ExternalInterface" containment="true" resolveProxies="false">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
         <details key="name" value="ExternalInterface"/>
@@ -979,10 +934,6 @@
       <details key="name" value="SystemUnitClassLib"/>
       <details key="kind" value="elementOnly"/>
     </eAnnotations>
-    <eOperations name="getAllSystemUnitClasses" upperBound="-1" eType="#//SystemUnitClass"/>
-    <eOperations name="getSystemUnitClass" eType="#//SystemUnitClass">
-      <eParameters name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
-    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="systemUnitClass" upperBound="-1"
         eType="#//SystemUnitClass" containment="true" resolveProxies="false">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -1003,14 +954,6 @@
       <details key="name" value="SystemUnitClassType"/>
       <details key="kind" value="elementOnly"/>
     </eAnnotations>
-    <eOperations name="getSystemUnitClass" eType="#//SystemUnitClass">
-      <eParameters name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
-    </eOperations>
-    <eOperations name="getAttribute" eType="#//Attribute">
-      <eParameters name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
-    </eOperations>
-    <eOperations name="getAllSystemUnitClasses" upperBound="-1" eType="#//SystemUnitClass"/>
-    <eOperations name="getAllInternalElements" upperBound="-1" eType="#//InternalElement"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="attribute" upperBound="-1"
         eType="#//Attribute" containment="true" resolveProxies="false">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">

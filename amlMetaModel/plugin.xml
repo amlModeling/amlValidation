@@ -2,20 +2,9 @@
 <?eclipse version="3.0"?>
 
 <!--
- <copyright>
- </copyright>
-
- $Id$
 -->
 
 <plugin>
-
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <package
-            uri="http://ValidationModel"
-            class="ValidationModel.ValidationModelPackage"
-            genModel="model/Validation.genmodel"/>
-   </extension>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated CAEX -->
@@ -35,8 +24,17 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated CAEX -->
       <package
-            uri="genAnyType"
+            uri="http://genAnyType"
             class="GenericAnyType.GenericAnyTypePackage"
             genModel="model/CAEX.genmodel"/>
    </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated Validation -->
+      <package
+            uri="http://ValidationModel"
+            class="ValidationModel.ValidationModelPackage"
+            genModel="model/Validation.genmodel"/>
+   </extension>
+
 </plugin>

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/amlMetaModel/src" modelPluginID="amlMetaModel"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/amlMetaModel/src/main/java" editDirectory="/amlMetaModel.edit/src/main/java"
+    editorDirectory="/amlMetaModel.editor/src/main/java" modelPluginID="amlMetaModel"
     modelName="Validation" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
-    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
-    operationReflection="true" importOrganizing="true">
+    testsDirectory="/amlMetaModel.tests/src/main/java" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="8.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
   <foreignModel>Validation.ecore</foreignModel>
   <genPackages prefix="ValidationModel" disposableProviderFactory="true" ecorePackage="Validation.ecore#/">
     <genClasses ecoreClass="Validation.ecore#//ValidationError">
@@ -12,6 +13,18 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Validation.ecore#//ValidationError/ActualValue"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Validation.ecore#//ValidationError/ConstraintName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Validation.ecore#//ValidationError/AdditionalInformation"/>
+      <genOperations ecoreOperation="Validation.ecore#//ValidationError/equals">
+        <genParameters ecoreParameter="Validation.ecore#//ValidationError/equals/obj"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="Validation.ecore#//ValidationExecution">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Validation.ecore#//ValidationExecution/ExecutionTime"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Validation.ecore#//ValidationExecution/ValidationErrors"/>
+    </genClasses>
+    <genClasses ecoreClass="Validation.ecore#//ValidationResult">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Validation.ecore#//ValidationResult/isValid"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Validation.ecore#//ValidationResult/wrongElements"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Validation.ecore#//ValidationResult/wrongAttributes"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>
