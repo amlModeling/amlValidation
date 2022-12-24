@@ -30,6 +30,7 @@
         <configuration>
           <release>17</release>
         </configuration>
+        
       </plugin>
     </plugins>
   </build>

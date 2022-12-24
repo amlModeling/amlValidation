@@ -37,13 +37,13 @@ public class AMLDocumentVersions extends AMLTest{
 	}
 	
 	@Test
-	public void NoAttributLibraryVersions() throws Exception 
+	public void NoElementLibraryVersions() throws Exception 
 	{
-		String modelPath = TestModelPath + "NoAttributLibraryVersions\\";
+		String modelPath = TestModelPath + "NoElementLibraryVersions\\";
 		
-		addExpectedTestResult("Testcase.aml", "HasAttributLibraryVersion", "", "", "<InterfaceClassLib>InterfaceClassLib1.Version not found");
-		addExpectedTestResult("Testcase.aml", "HasAttributLibraryVersion", "", "", "<SystemUnitClassLib>SystemUnitClassLib1.Version not found");
-		addExpectedTestResult("Testcase.aml", "HasAttributLibraryVersion", "", "", "<RoleClassLib>RoleClassLib1.Version not found");
+		addExpectedTestResult("Testcase.aml", "HasElementLibraryVersion", "", "", "<InterfaceClassLib>InterfaceClassLib1.Version not found");
+		addExpectedTestResult("Testcase.aml", "HasElementLibraryVersion", "", "", "<SystemUnitClassLib>SystemUnitClassLib1.Version not found");
+		addExpectedTestResult("Testcase.aml", "HasElementLibraryVersion", "", "", "<RoleClassLib>RoleClassLib1.Version not found");
 				
 		Assertions.assertTrue(executeAndValidateTest(modelPath));		
 	}
