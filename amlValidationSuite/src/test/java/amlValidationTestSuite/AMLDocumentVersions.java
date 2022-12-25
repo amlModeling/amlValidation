@@ -9,23 +9,7 @@ public class AMLDocumentVersions extends AMLTest{
 	
 	private String TestModelPath = "AMLDocumentVersions/";	
 	
-
-	@Test
-	public void InconsistentAMLVersionReferencedCAEXDoc() throws Exception 
-	{
-		/* Every referenced CAEX document shall follow the same AML version of the root document.
-		   Mixing of documents with different AML versions is explicitly forbidden.
-		*/
 		
-		String modelPath = TestModelPath + "InconsistentAMLVersionReferencedCAEXDoc/";		
-		
-		addExpectedTestResult("ReferencedLib.aml", "HasCorrectAutomationMLVersion", "3.0", "2.0", "");
-		addExpectedTestResult("ReferencedLib.aml", "HasAutomationMLVersionOfRootModel", "3.0", "2.0", "<AdditionalInformation>.AutomationMLVersion not consistent with RootModel-AutomationMLVersion");
-				
-		Assertions.assertTrue(executeAndValidateTest(modelPath));		
-	}	
-		
-	
 	@Test
 	public void NoAttributeAutomationMLVersion() throws Exception 
 	{
@@ -35,6 +19,20 @@ public class AMLDocumentVersions extends AMLTest{
 		addExpectedTestResult("Testcase.aml", "HasAttributeAutomationMLVersion", "", "", "No or multiple Attributes <AdditionalInformation>.AutomationMLVersion defined");				
 		Assertions.assertTrue(executeAndValidateTest(modelPath));		
 	}
+	
+	@Test
+	public void WrongAutomationMLVersion() throws Exception 
+	{
+		/* The value of this attribute “AutomationMLVersion” shall be stored in the XML document. It
+		   shall be “2.0” to correspond to this standard. 
+		*/ 
+		
+		String modelPath = TestModelPath + "WrongAutomationMLVersion/";		
+		addExpectedTestResult("Testcase.aml", "HasCorrectAutomationMLVersion", "3.0", "2.0", "");
+					
+		Assertions.assertTrue(executeAndValidateTest(modelPath));		
+	}
+	
 	
 	@Test
 	public void NoElementLibraryVersions() throws Exception 
@@ -68,31 +66,15 @@ public class AMLDocumentVersions extends AMLTest{
 		Assertions.assertTrue(executeAndValidateTest(modelPath));		
 	}
 	
-	
-		
-	@Test
-	public void WrongAutomationMLVersion() throws Exception 
-	{
-		/* The value of this attribute “AutomationMLVersion” shall be stored in the XML document. It
-		   shall be “2.0” to correspond to this standard. 
-		*/ 
-		
-		String modelPath = TestModelPath + "WrongAutomationMLVersion/";		
-		addExpectedTestResult("Testcase.aml", "HasCorrectAutomationMLVersion", "3.0", "2.0", "");
-					
-		Assertions.assertTrue(executeAndValidateTest(modelPath));		
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+//	@Test
+//	public void InconsistentAMLVersionReferencedCAEXDoc() throws Exception 
+//	{
+//		String modelPath = TestModelPath + "InconsistentAMLVersionReferencedCAEXDoc/";		
+//		
+//		addExpectedTestResult("ReferencedLib.aml", "HasCorrectAutomationMLVersion", "3.0", "2.0", "");
+//		addExpectedTestResult("ReferencedLib.aml", "HasAutomationMLVersionOfRootModel", "3.0", "2.0", "<AdditionalInformation>.AutomationMLVersion not consistent with RootModel-AutomationMLVersion");
+//				
+//		Assertions.assertTrue(executeAndValidateTest(modelPath));		
+//	}	
 	
 }

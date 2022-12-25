@@ -38,7 +38,6 @@ context CAEX!CAEXFile
 	
 	constraint HasCorrectAutomationMLVersion
 	{
-		/* MG - Reviewed */
 		/* The value of this attribute “AutomationMLVersion” shall be stored in the XML document. It
 		   shall be “2.0” to correspond to this standard. 
 		*/ 
@@ -57,27 +56,26 @@ context CAEX!CAEXFile
 		} 
 	}
 	
-	
-	constraint HasAutomationMLVersionOfRootModel
-	{
-		/* MG - Reviewed */
-		/* Every referenced CAEX document shall follow the same AML version of the root document.
-		   Mixing of documents with different AML versions is explicitly forbidden.
-		*/
-			
-		guard: self.satisfies("HasAttributeAutomationMLVersion")
-		
-		check 
-		{			
-			var documentAMLVersion = self.getAutomationMLVersion();
-			return getAutomationMLVersionOfRootModel() = documentAMLVersion;
-		}	
-		
-		message
-		{	
-			return ValidationExecution.addError(self.filename, getAutomationMLVersionOfRootModel(), documentAMLVersion, "HasAutomationMLVersionOfRootModel", "<AdditionalInformation>.AutomationMLVersion not consistent with RootModel-AutomationMLVersion");						 
-		}				
-	}
+//	Not necessary as this implementation allows only AML Version 2.0
+//	constraint HasAutomationMLVersionOfRootModel
+//	{
+//		 Every referenced CAEX document shall follow the same AML version of the root document.
+//		   Mixing of documents with different AML versions is explicitly forbidden.
+//		
+//			
+//		guard: self.satisfies("HasAttributeAutomationMLVersion")
+//		
+//		check 
+//		{			
+//			var documentAMLVersion = self.getAutomationMLVersion();
+//			return getAutomationMLVersionOfRootModel() = documentAMLVersion;
+//		}	
+//		
+//		message
+//		{	
+//			return ValidationExecution.addError(self.filename, getAutomationMLVersionOfRootModel(), documentAMLVersion, "HasAutomationMLVersionOfRootModel", "<AdditionalInformation>.AutomationMLVersion not consistent with RootModel-AutomationMLVersion");						 
+//		}				
+//	}
 	
 	
 	
@@ -135,7 +133,6 @@ context CAEX!CAEXObject
 {
 	constraint HasElementLibraryVersion
 	{
-		/* MG - Reviewed */
 		/* Every AML standard library and every user defined AML library shall define its version
 			number utilizing the CAEX element “Version”.
 		  This constraints assures that the attribut "version" is definied
@@ -155,7 +152,6 @@ context CAEX!CAEXObject
 	
 	constraint HasLibraryVersion
 	{
-		/* MG - Reviewed */
 		/* Every AML standard library and every user defined AML library shall define its version
 		   number utilizing the CAEX element “Version”.
 		   This constraints assures that the attribut "version" is filled
@@ -177,10 +173,10 @@ context CAEX!CAEXObject
 
 /******************************************************************************************************************************************/
 
-operation getAutomationMLVersionOfRootModel() : String
-{
-	return mapAliasToCAEXObj.get("RootModel").getAutomationMLVersion();
-}
+//operation getAutomationMLVersionOfRootModel() : String
+//{
+//	return mapAliasToCAEXObj.get("RootModel").getAutomationMLVersion();
+//}
 
 @Cached
 operation CAEXFile getAutomationMLVersionElements() : Sequence
@@ -204,19 +200,12 @@ operation CAEXFile getAutomationMLVersionElements() : Sequence
 	return elements;	
 }
 
-
-
-
 operation CAEXFile getAutomationMLVersion() : String
 {
 	var elements = self.getAutomationMLVersionElements();
 	
 	return elements.first().value;
 }
-
-
-
-
 
 operation getValidAutomationMLVersion() : String
 {
