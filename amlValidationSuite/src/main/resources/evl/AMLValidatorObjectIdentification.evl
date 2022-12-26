@@ -2,38 +2,34 @@ import "AMLValidatorUtils.evl";
 
 context CAEX!InterfaceClassLib
 {
-	constraint IsNameUnique
+	constraint IsInterfaceClassNameUnique
 	{
 		/*  This name shall be unique within the hierarchy level of the corresponding AML library over
 			the life time of the class.*/
 		check
 		{
-			var duplicates = getDuplicateCAEXObjects(self.interfaceClass);			
-					
+			var duplicates = getDuplicateCAEXObjects(self.interfaceClass);
 			return duplicates.isEmpty();
 		}
 	
-		message: ValidationExecution.addError(self.eContainer.filename, "", "", "IsNameUnique", "InterfaceClassLib=" + self.name + ": Duplicate Class Names: " + duplicates.getAsCommaSeparatedString())	
-		
+		message: ValidationExecution.addError(self.eContainer.filename, "", "", "IsInterfaceClassNameUnique", "InterfaceClassLib=" + self.name + ": Duplicate Class Names: " + duplicates.getAsCommaSeparatedString())
 	}
 }
 
 
-
 context CAEX!SystemUnitClassLib
 {
-	constraint IsNameUnique
+	constraint IsSystemUnitClassNameUnique
 	{
 		/*  This name shall be unique within the hierarchy level of the corresponding AML library over
 			the life time of the class.*/
 		check
 		{
-			var duplicates = getDuplicateCAEXObjects(self.systemunitclass);			
-					
+			var duplicates = getDuplicateCAEXObjects(self.systemunitclass);
 			return duplicates.isEmpty();
 		}
 	
-		message: ValidationExecution.addError(self.eContainer.filename, "", "", "IsNameUnique", "SystemUnitClassLib=" + self.name + ": Duplicate Class Names: " + duplicates.getAsCommaSeparatedString())
+		message: ValidationExecution.addError(self.eContainer.filename, "", "", "IsSystemUnitClassNameUnique", "SystemUnitClassLib=" + self.name + ": Duplicate Class Names: " + duplicates.getAsCommaSeparatedString())
 	}
 }
 
@@ -42,18 +38,17 @@ context CAEX!SystemUnitClassLib
 
 context CAEX!RoleClassLib
 {
-	constraint IsNameUnique
+	constraint IsRoleClassNameUnique
 	{
 		/*  This name shall be unique within the hierarchy level of the corresponding AML library over
 			the life time of the class.*/
 		check
 		{
-			var duplicates = getDuplicateCAEXObjects(self.roleclass);			
-					
+			var duplicates = getDuplicateCAEXObjects(self.roleclass);		
 			return duplicates.isEmpty();
 		}
 	
-		message: ValidationExecution.addError(self.eContainer.filename, "", "", "IsNameUnique", "RoleClassLib=" + self.name + ": Duplicate Class Names: " + duplicates.getAsCommaSeparatedString()) 
+		message: ValidationExecution.addError(self.eContainer.filename, "", "", "IsRoleClassNameUnique", "RoleClassLib=" + self.name + ": Duplicate Class Names: " + duplicates.getAsCommaSeparatedString()) 
 	}
 }
 

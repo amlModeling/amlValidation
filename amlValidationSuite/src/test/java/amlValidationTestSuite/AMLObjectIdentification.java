@@ -12,33 +12,37 @@ public class AMLObjectIdentification extends AMLTest{
 
 	private String TestModelPath = "AMLObjectIdentification\\";
 	
-	
 	@Test
-	public void DuplicateInterfaceClassLibNames() throws Exception 
+	public void InterfaceClassesNotUnique() throws Exception 
 	{
-		String modelPath = TestModelPath + "DuplicateInterfaceClassLibNames\\";		
+		String modelPath = TestModelPath + "InterfaceClassesNotUnique\\";		
 		
-		addExpectedTestResult("Testcase.aml", "IsInterfaceClassLibUnique", "", "", "InterfaceClassLibNames not unique: Duplicates: InterfaceClassLib1");		
+		addExpectedTestResult("Testcase.aml", "IsInterfaceClassNameUnique", "", "", "InterfaceClassLib=MyInterfaces: Duplicate Class Names: Interface1");
+				
 		Assertions.assertTrue(executeAndValidateTest(modelPath));		
-	}
-	
-	@Test
-	public void DuplicateRoleClassLibNames() throws Exception 
-	{
-		String modelPath = TestModelPath + "DuplicateRoleClassLibNames\\";
-		
-		addExpectedTestResult("Testcase.aml", "IsRoleClassLibUnique", "", "", "RoleClassLibNames not unique: Duplicates: RoleClassLib1");				
-		Assertions.assertTrue(executeAndValidateTest(modelPath));		
-	}
-	
-	@Test
-	public void DuplicateSystemUnitClassLibNames() throws Exception 
-	{
-		String modelPath = TestModelPath + "DuplicateSystemUnitClassLibNames\\";		
-		
-		addExpectedTestResult("Testcase.aml", "IsSystemUnitClassLibUnique", "", "", "SystemUnitClassLibNames not unique: Duplicates: SystemUnitClassLib1");
-		Assertions.assertTrue(executeAndValidateTest(modelPath));
 	}	
+	
+	@Test
+	public void RoleClassesNotUnique() throws Exception 
+	{
+		String modelPath = TestModelPath + "RoleClassesNotUnique\\";		
+				
+		addExpectedTestResult("Testcase.aml", "IsRoleClassNameUnique", "", "", "RoleClassLib=ManufacturingRoleClasses: Duplicate Class Names: Roleclass1");
+		
+		Assertions.assertTrue(executeAndValidateTest(modelPath));
+	}
+	
+	@Test
+	public void SystemClassesNotUnique() throws Exception 
+	{
+		String modelPath = TestModelPath + "SystemClassesNotUnique\\";		
+				
+		addExpectedTestResult("Testcase.aml", "IsSystemUnitClassNameUnique", "", "", "SystemUnitClassLib=LibOfCommonTools: Duplicate Class Names: SystemUnitClass1");		
+				
+		Assertions.assertTrue(executeAndValidateTest(modelPath));
+	}
+	
+	
 	
 	@Test
 	public void ExternalInterface_EmptyID() throws Exception 
@@ -64,35 +68,7 @@ public class AMLObjectIdentification extends AMLTest{
 	
 	
 
-	@Test
-	public void InterfaceClassesNotUnique() throws Exception 
-	{
-		String modelPath = TestModelPath + "InterfaceClassesNotUnique\\";		
-		
-		addExpectedTestResult("Testcase.aml", "IsNameUnique", "", "", "InterfaceClassLib=MyInterfaces: Duplicate Class Names: Interface1");
-				
-		Assertions.assertTrue(executeAndValidateTest(modelPath));		
-	}	
 	
-	@Test
-	public void RoleClassesNotUnique() throws Exception 
-	{
-		String modelPath = TestModelPath + "RoleClassesNotUnique\\";		
-				
-		addExpectedTestResult("Testcase.aml", "IsNameUnique", "", "", "RoleClassLib=ManufacturingRoleClasses: Duplicate Class Names: Roleclass1");
-		
-		Assertions.assertTrue(executeAndValidateTest(modelPath));
-	}
-	
-	@Test
-	public void SystemClassesNotUnique() throws Exception 
-	{
-		String modelPath = TestModelPath + "SystemClassesNotUnique\\";		
-				
-		addExpectedTestResult("Testcase.aml", "IsNameUnique", "", "", "SystemUnitClassLib=LibOfCommonTools: Duplicate Class Names: SystemUnitClass1");		
-				
-		Assertions.assertTrue(executeAndValidateTest(modelPath));
-	}
 	
 	
 	

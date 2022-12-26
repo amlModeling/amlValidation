@@ -59,6 +59,36 @@ public class AMLDocumentVersions extends AMLTest{
 	}
 	
 	@Test
+	public void DuplicateInterfaceClassLibNames() throws Exception 
+	{
+		String modelPath = TestModelPath + "DuplicateInterfaceClassLibNames\\";		
+		
+		addExpectedTestResult("Testcase.aml", "IsInterfaceClassLibUnique", "", "", "InterfaceClassLibNames not unique: Duplicates: InterfaceClassLib1");		
+		Assertions.assertTrue(executeAndValidateTest(modelPath));		
+	}
+	
+	@Test
+	public void DuplicateRoleClassLibNames() throws Exception 
+	{
+		String modelPath = TestModelPath + "DuplicateRoleClassLibNames\\";
+		
+		addExpectedTestResult("Testcase.aml", "IsRoleClassLibUnique", "", "", "RoleClassLibNames not unique: Duplicates: RoleClassLib1");				
+		Assertions.assertTrue(executeAndValidateTest(modelPath));		
+	}
+	
+	@Test
+	public void DuplicateSystemUnitClassLibNames() throws Exception 
+	{
+		String modelPath = TestModelPath + "DuplicateSystemUnitClassLibNames\\";		
+		
+		addExpectedTestResult("Testcase.aml", "IsSystemUnitClassLibUnique", "", "", "SystemUnitClassLibNames not unique: Duplicates: SystemUnitClassLib1");
+		Assertions.assertTrue(executeAndValidateTest(modelPath));
+	}	
+	
+	
+	
+	
+	@Test
 	public void Valid() throws Exception 
 	{
 		String modelPath = TestModelPath + "Valid\\";

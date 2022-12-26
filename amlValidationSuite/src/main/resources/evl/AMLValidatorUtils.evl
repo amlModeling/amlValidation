@@ -822,8 +822,8 @@ operation CAEXObject isAMLBaseClass() : Boolean
 	
 	if(self.isTypeOf(SystemUnitClass) or
 	   self.isTypeOf(InterfaceClass) or 
-	   self.isTypeOf(RoleClass) or 
-	   self.isTypeOf(ExternalInterface))
+	   self.isTypeOf(RoleClass))
+	  
 	   ret = true;
 	
 	return ret;
