@@ -499,8 +499,7 @@ operation CAEXBasicObject searchItem (pathMap : Map, searchParentNode : Boolean,
 		var element : SystemUnitClass; 
 		element = self.eContainer();
 		//Ausgangsbasis der Suche ist der Parent vom InternalLink
-		
-				
+						
 		for (actPath : String in path)
 		{
 			bFound = false;
@@ -513,8 +512,7 @@ operation CAEXBasicObject searchItem (pathMap : Map, searchParentNode : Boolean,
 					break;
 				}
 			}
-		}
-		
+		}		
 		
 		if(bFound == false)
 		{
@@ -597,10 +595,6 @@ operation CAEXBasicObject searchItem (pathMap : Map, searchParentNode : Boolean,
 				
 			if(class == null)
 			{
-				aktPath.println();
-				self.println();
-				pathMap.println();
-			
 				retMap.put("MissingObject", aktPath);
 				retMap.put("ErrorMsg", self.errorClassNotFound(aktPath));
 				return false;
@@ -655,24 +649,24 @@ operation debugOutput(text : String)
 
 
 
-operation getDuplicateCAEXObjects(classes : OrderedSet) : Sequence
+operation getDuplicateCAEXObjects(objects : OrderedSet) : Sequence
 {
 	var duplicates : Sequence;
 	var keyMap : Map;
-	var className : String;
+	var objName : String;
 		
 	
-    for(class : CAEXObject in classes)
+    for(obj : CAEXObject in objects)
 	{
-		className = class.name;
+		objName = obj.name;
 		
-		if(not keyMap.containsKey(className))
+		if(not keyMap.containsKey(objName))
 		{	
-			keyMap.put(className, className);
+			keyMap.put(objName, objName);
 		}
 		else
 		{
-			duplicates.add(className);
+			duplicates.add(objName);
 		}	
 	}		
 		

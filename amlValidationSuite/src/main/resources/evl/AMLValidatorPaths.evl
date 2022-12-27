@@ -4,11 +4,12 @@ context CAEX!InternalElement
 {
 	constraint IsRefBaseSystemUnitPathValid
 	{
+	
+		guard: self.refBaseSystemUnitPath.isDefined()
+	
+	
 		check
 		{
-			if(not self.refBaseSystemUnitPath.isDefined())
-				return true;		
-		
 			debugOutput("IsRefBaseSystemUnitPathValid: " + self);
 			
 			var mapPath : Map;			
@@ -16,8 +17,7 @@ context CAEX!InternalElement
 			var caexFile : CAEXFile;			
 		
 			caexFile = self.getCAEXFile();
-			mapPath = parsePath(self.refBaseSystemUnitPath);
-			
+			mapPath = parsePath(self.refBaseSystemUnitPath);			
 									
 			validationError = self.isRefBaseSystemUnitPathValid(mapPath);
 			return validationError.Length() == 0;	
