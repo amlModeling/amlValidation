@@ -43,10 +43,7 @@ public class AMLClassRequirements extends AMLTest{
 		
 		Assertions.assertTrue(executeAndValidateTest(modelPath));		
 	}
-	
-	
 
-	
 		
 	
 	@Test

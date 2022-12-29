@@ -26,6 +26,6 @@
   </InstanceHierarchy>
   <InterfaceClassLib Name="InterfaceClassLib">
     <Version>0</Version>
-    <InterfaceClass Name="InterfaceClass" RefBaseClassPath="AMLBaseClasses@AutomationMLInterfaceClassLib/AutomationMLBaseInterface/ExternalDataConnector" />
+    <InterfaceClass Name="InterfaceClass" RefBaseClassPath="AMLBaseClasses@AutomationMLInterfaceClassLib/AutomationMLBaseInterface/ExternalDataConnector/COLLADAInterface" />
   </InterfaceClassLib>
 </CAEXFile>
