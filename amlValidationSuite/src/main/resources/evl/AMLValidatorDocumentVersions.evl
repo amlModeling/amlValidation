@@ -79,53 +79,7 @@ context CAEX!CAEXFile
 	
 	
 	
-	constraint IsInterfaceClassLibUnique
-	{
-		/* Same libraries of different versions are forbidden to be stored in the same AML file.*/		
-		
-		check
-		{
-			 var duplicateLibs : Sequence;			 
-			 duplicateLibs = getDuplicateCAEXObjects(self.interfaceClassLib);			 
-			 return duplicateLibs.isEmpty();			 
-		}		
-		message
-		{
-			 return ValidationExecution.addError(self.filename, "", "", "IsInterfaceClassLibUnique", "InterfaceClassLibNames not unique: Duplicates: " + duplicateLibs.getAsCommaSeparatedString());
-		}	
-	}
 	
-	constraint IsRoleClassLibUnique
-	{
-		/* Same libraries of different versions are forbidden to be stored in the same AML file.*/		
-		
-		check
-		{
-			 var duplicateLibs : Sequence;			 
-			 duplicateLibs = getDuplicateCAEXObjects(self.roleClassLib);			 
-			 return duplicateLibs.isEmpty();			 
-		}		
-		message
-		{
-			 return ValidationExecution.addError(self.filename, "", "", "IsRoleClassLibUnique", "RoleClassLibNames not unique: Duplicates: " + duplicateLibs.getAsCommaSeparatedString());
-		}	
-	}
-	
-	constraint IsSystemUnitClassLibUnique
-	{
-		/* Same libraries of different versions are forbidden to be stored in the same AML file.*/		
-		
-		check
-		{
-			 var duplicateLibs : Sequence;			 
-			 duplicateLibs = getDuplicateCAEXObjects(self.systemUnitClassLib);			 
-			 return duplicateLibs.isEmpty();			 
-		}		
-		message
-		{
-			 return ValidationExecution.addError(self.filename, "", "", "IsSystemUnitClassLibUnique", "SystemUnitClassLibNames not unique: Duplicates: " + duplicateLibs.getAsCommaSeparatedString());
-		}	
-	}	
 } 
 
 

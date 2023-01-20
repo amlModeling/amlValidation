@@ -94,11 +94,11 @@ public class AMLValidationSuite {
 		
 		
 
-		ResourceFactoryRegistryImpl.INSTANCE.getExtensionToFactoryMap()
-		.put("aml", new XMLResourceFactoryImpl()); 
+		//ResourceFactoryRegistryImpl.INSTANCE.getExtensionToFactoryMap()
+		//.put("aml", new XMLResourceFactoryImpl()); 
 		
-	//	ResourceFactoryRegistryImpl.INSTANCE.getExtensionToFactoryMap()
-	//	.put("aml", new CAEXResourceFactoryImpl()); 
+		ResourceFactoryRegistryImpl.INSTANCE.getExtensionToFactoryMap()
+		.put("aml", new CAEXResourceFactoryImpl()); 
 				
 		ResourceFactoryRegistryImpl.INSTANCE.getExtensionToFactoryMap()
 		.put("xmi", new XMIResourceFactoryImpl());
