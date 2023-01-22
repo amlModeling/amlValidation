@@ -57,22 +57,20 @@ public class AMLDocumentVersions extends AMLTest{
 	
 	
 	@Test
-	public void Valid() throws Exception 
+	public void ValidAMLVersion() throws Exception 
 	{
-		String modelPath = TestModelPath + "Valid\\";
+		String modelPath = TestModelPath + "ValidAMLVersion\\";
 		
 		Assertions.assertTrue(executeAndValidateTest(modelPath));		
 	}
 	
-//	@Test
-//	public void InconsistentAMLVersionReferencedCAEXDoc() throws Exception 
-//	{
-//		String modelPath = TestModelPath + "InconsistentAMLVersionReferencedCAEXDoc/";		
-//		
-//		addExpectedTestResult("ReferencedLib.aml", "HasCorrectAutomationMLVersion", "3.0", "2.0", "");
-//		addExpectedTestResult("ReferencedLib.aml", "HasAutomationMLVersionOfRootModel", "3.0", "2.0", "<AdditionalInformation>.AutomationMLVersion not consistent with RootModel-AutomationMLVersion");
-//				
-//		Assertions.assertTrue(executeAndValidateTest(modelPath));		
-//	}	
+	
+	@Test
+	public void ValidLibraryVersion() throws Exception 
+	{
+		String modelPath = TestModelPath + "ValidLibraryVersion\\";
+		
+		Assertions.assertTrue(executeAndValidateTest(modelPath));		
+	}
 	
 }

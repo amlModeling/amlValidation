@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="utf-8" standalone="no"?>
-<CAEXFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" FileName="Testcase.aml" SchemaVersion="2.15" xsi:noNamespaceSchemaLocation="./Source/CAEX_ClassModel_V2.15.xsd">
-	<AdditionalInformation AutomationMLVersion="2.0"/>	
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CAEXFile FileName="Testcase.aml" SchemaVersion="2.15" xsi:noNamespaceSchemaLocation="CAEX_ClassModel_V2.15.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<AdditionalInformation>
 		<WriterHeader>
 			<WriterName>AutomationML Editor</WriterName>
@@ -9,10 +8,10 @@
 			<WriterVendorURL>www.AutomationML.org</WriterVendorURL>
 			<WriterVersion>4.3.11.0</WriterVersion>
 			<WriterRelease>4.3.11.0</WriterRelease>
-			<LastWritingDateTime>2016-04-11T23:57:35.5278227+02:00</LastWritingDateTime>
+			<LastWritingDateTime>2016-03-25T02:34:57.427098+01:00</LastWritingDateTime>
 			<WriterProjectTitle>unspecified</WriterProjectTitle>
 			<WriterProjectID>unspecified</WriterProjectID>
 		</WriterHeader>
 	</AdditionalInformation>
-	<ExternalReference Alias="ReferencedLib" Path="ReferencedLib.aml"/>	
+	<AdditionalInformation AutomationMLVersion="2.0" />
 </CAEXFile>
