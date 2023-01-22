@@ -21,7 +21,10 @@
       <Attribute Name="y" AttributeDataType="xs:double" Unit="m" />
       <InternalElement Name="Maße" ID="81ff783b-b9be-4b02-90d1-60648cc1cc16">
         <ExternalInterface Name="ExternalInterface" ID="0111c34b-2676-49a1-820f-4e01c34a6104" />
-        <RoleRequirements RefBaseRoleClassPath="RoleClassLib/RoleClass" />
+        <RoleRequirements RefBaseRoleClassPath="RoleClassLib/RoleClass">
+          <Attribute Name="Laenge" AttributeDataType="xs:double" Unit="m" />
+          <Attribute Name="Breite" AttributeDataType="xs:double" Unit="m" />
+        </RoleRequirements>
         <MappingObject>
           <AttributeNameMapping SystemUnitAttributeName="x" RoleAttributeName="Laenge" />
           <AttributeNameMapping SystemUnitAttributeName="y" RoleAttributeName="Breite" />
