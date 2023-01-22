@@ -57,9 +57,9 @@ public class AMLInstanceRequirements extends AMLTest{
 	
 	
 	@Test
-	public void AMLFacetValid() throws Exception 
+	public void ValidAMLFacet() throws Exception 
 	{
-		String modelPath = TestModelPath + "Facet\\AMLFacetValid\\";
+		String modelPath = TestModelPath + "Facet\\ValidAMLFacet\\";
 		
 		Assertions.assertTrue(executeAndValidateTest(modelPath));		
 	}
@@ -88,9 +88,9 @@ public class AMLInstanceRequirements extends AMLTest{
 	
 		
 	@Test
-	public void AMLGroupValid() throws Exception 
+	public void ValidAMLGroup() throws Exception 
 	{
-		String modelPath = TestModelPath + "Group\\AMLGroupValid\\";		
+		String modelPath = TestModelPath + "Group\\ValidAMLGroup\\";		
 		
 		//addExpectedTestResult("Testcase.aml", "IsDerivedFromAMLBaseClass", "", "", "Class not derived from AMLInterfaceclass: InterfaceClass");
 		Assertions.assertTrue(executeAndValidateTest(modelPath));		
@@ -167,9 +167,9 @@ public class AMLInstanceRequirements extends AMLTest{
 	
 	
 	@Test
-	public void IE_InteralLinkPortCorrect() throws Exception 
+	public void ValidIE_InteralLinkPort() throws Exception 
 	{
-		String modelPath = TestModelPath + "Port\\IE_InteralLinkPortCorrect\\";		
+		String modelPath = TestModelPath + "Port\\ValidIE_InteralLinkPort\\";		
 			
 		Assertions.assertTrue(executeAndValidateTest(modelPath));		
 	}	
@@ -188,8 +188,7 @@ public class AMLInstanceRequirements extends AMLTest{
 	{
 		String modelPath = TestModelPath + "Port\\IE_PortWithoutExternalInterface\\";		
 		
-		addExpectedTestResult("Testcase.aml", "HasPortExternalInterface", "", "", "Port without ExternalInterface (exkl PortConnector): InternalElement10000");
-		
+		addExpectedTestResult("Testcase.aml", "HasPortExternalInterface", "", "", "Port without ExternalInterface (exkl PortConnector): InternalElement10000");		
 		Assertions.assertTrue(executeAndValidateTest(modelPath));		
 	}
 	

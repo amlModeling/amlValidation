@@ -13,7 +13,6 @@ public class AMLDocumentVersions extends AMLTest{
 	@Test
 	public void NoAttributeAutomationMLVersion() throws Exception 
 	{
-		/* The element “AdditionalInformation” shall have an attribute “AutomationMLVersion”. */
 		String modelPath = TestModelPath + "NoAttributeAutomationMLVersion/";	
 		
 		addExpectedTestResult("Testcase.aml", "HasAttributeAutomationMLVersion", "", "", "No or multiple Attributes <AdditionalInformation>.AutomationMLVersion defined");				
@@ -23,10 +22,7 @@ public class AMLDocumentVersions extends AMLTest{
 	@Test
 	public void WrongAutomationMLVersion() throws Exception 
 	{
-		/* The value of this attribute “AutomationMLVersion” shall be stored in the XML document. It
-		   shall be “2.0” to correspond to this standard. 
-		*/ 
-		
+			
 		String modelPath = TestModelPath + "WrongAutomationMLVersion/";		
 		addExpectedTestResult("Testcase.aml", "HasCorrectAutomationMLVersion", "3.0", "2.0", "");
 					
