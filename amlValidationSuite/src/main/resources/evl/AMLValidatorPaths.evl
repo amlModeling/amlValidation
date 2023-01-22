@@ -187,35 +187,37 @@ operation InternalElement checkPropertySetMappings(ergMap : Map) : String
 	var foundAttributeIC : Boolean;
 	var foundRoleRequirement : Boolean;	
 		
+	//Input parameter is the Property-Set IE, not the parent IE with the origin attributes
+	
 	mapPath = parsePath(self.roleRequirements.refBaseRoleClassPath);
 	
 	self.searchItem(mapPath, searchParent, mirrorSearch, retMap, "RoleClass");
 	rc = retMap.get("obj");
 	
-	for (mappedFacetAttribute : AttributeNameMapping in self.mappingObject.attributeNameMapping)
+	for (mappedAttribute : AttributeNameMapping in self.mappingObject.attributeNameMapping)
 	{
 		foundRoleRequirement = false;
-		mappedFacetAttribute.println();
+		mappedAttribute.println();
 		
-		foundAttributeRC = searchAttribute(rc.attribute, mappedFacetAttribute.roleAttributeName, true, retMap);
-		foundAttributeIC = searchAttribute(base.attribute, mappedFacetAttribute.systemUnitAttributeName, true, retMap);
+		foundAttributeRC = searchAttribute(rc.attribute, mappedAttribute.roleAttributeName, true, retMap);
+		foundAttributeIC = searchAttribute(base.attribute, mappedAttribute.systemUnitAttributeName, true, retMap);
 		
 		foundAttributeRC.println();
 		foundAttributeIC.println();
 		
 		
 		if (not foundAttributeRC)
-			errorText += mappedFacetAttribute.roleAttributeName + " not found in RC ";
+			errorText += mappedAttribute.roleAttributeName + " not found in RC ";
 		
 		if (not foundAttributeIC)		
-			errorText += mappedFacetAttribute.systemUnitAttributeName + " not found in IE ";
+			errorText += mappedAttribute.systemUnitAttributeName + " not found in IE ";
 			
 		if (foundAttributeRC == true and foundAttributeIC == true)
 		{
 		
-			foundRoleRequirement = searchAttribute(self.roleRequirements.attribute, mappedFacetAttribute.roleAttributeName, true, retMap);
+			foundRoleRequirement = searchAttribute(self.roleRequirements.attribute, mappedAttribute.roleAttributeName, true, retMap);
 			if (not foundRoleRequirement)
-				errorText += mappedFacetAttribute.roleAttributeName + " not found in RoleRequirements ";
+				errorText += mappedAttribute.roleAttributeName + " not found in RoleRequirements ";
 		
 		}
 	}

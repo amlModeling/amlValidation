@@ -17,13 +17,10 @@
   <InstanceHierarchy Name="InstanceHierarchy">
     <Version>0</Version>
     <InternalElement Name="InternalElement" ID="56fe7685-7b01-4e1f-b4ff-fa0265560639">
-      <Attribute Name="x" AttributeDataType="xs:double" Unit="m" />
+      <Attribute Name="xMissingAttribute" AttributeDataType="xs:double" Unit="m" />
       <Attribute Name="y" AttributeDataType="xs:double" Unit="m" />
       <InternalElement Name="Maße" ID="81ff783b-b9be-4b02-90d1-60648cc1cc16">
-        <RoleRequirements RefBaseRoleClassPath="RoleClassLib/RoleClass">
-          <!--<Attribute Name="Laenge" AttributeDataType="xs:double" Unit="m" />-->
-          <Attribute Name="Breite" AttributeDataType="xs:double" Unit="m" />
-        </RoleRequirements>
+        <RoleRequirements RefBaseRoleClassPath="RoleClassLib/RoleClass" />
         <MappingObject>
           <AttributeNameMapping SystemUnitAttributeName="x" RoleAttributeName="Laenge" />
           <AttributeNameMapping SystemUnitAttributeName="y" RoleAttributeName="Breite" />

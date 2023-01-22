@@ -8,7 +8,7 @@
       <WriterVendorURL>www.AutomationML.org</WriterVendorURL>
       <WriterVersion>6.1.0.0</WriterVersion>
       <WriterRelease>6.1.0.0</WriterRelease>
-      <LastWritingDateTime>2022-09-19T22:44:48.9393336</LastWritingDateTime>
+      <LastWritingDateTime>2022-09-19T22:46:52.0840963</LastWritingDateTime>
       <WriterProjectTitle>unspecified</WriterProjectTitle>
       <WriterProjectID>unspecified</WriterProjectID>
     </WriterHeader>
@@ -20,11 +20,7 @@
       <Attribute Name="x" AttributeDataType="xs:double" Unit="m" />
       <Attribute Name="y" AttributeDataType="xs:double" Unit="m" />
       <InternalElement Name="Maße" ID="81ff783b-b9be-4b02-90d1-60648cc1cc16">
-        <InternalElement Name="InternalElement" ID="51ec3d81-208c-426c-b92b-128a21dcce20" />
-        <RoleRequirements RefBaseRoleClassPath="RoleClassLib/RoleClass">
-          <Attribute Name="Laenge" AttributeDataType="xs:double" Unit="m" />
-          <Attribute Name="Breite" AttributeDataType="xs:double" Unit="m" />
-        </RoleRequirements>
+        <RoleRequirements RefBaseRoleClassPath="RoleClassLib/RoleClass" />
         <MappingObject>
           <AttributeNameMapping SystemUnitAttributeName="x" RoleAttributeName="Laenge" />
           <AttributeNameMapping SystemUnitAttributeName="y" RoleAttributeName="Breite" />
@@ -35,7 +31,7 @@
   <RoleClassLib Name="RoleClassLib">
     <Version>0</Version>
     <RoleClass Name="RoleClass" RefBaseClassPath="AMLBaseClasses@AutomationMLBaseRoleClassLib/AutomationMLBaseRole/PropertySet" ID="a7bed062-a1c2-462e-ba9e-89eca2610f17">
-      <Attribute Name="Laenge" AttributeDataType="xs:double" Unit="m" />
+      <Attribute Name="LaengeMissing" AttributeDataType="xs:double" Unit="m" />
       <Attribute Name="Breite" AttributeDataType="xs:double" Unit="m" />
     </RoleClass>
   </RoleClassLib>

@@ -8,7 +8,7 @@
       <WriterVendorURL>www.AutomationML.org</WriterVendorURL>
       <WriterVersion>6.1.0.0</WriterVersion>
       <WriterRelease>6.1.0.0</WriterRelease>
-      <LastWritingDateTime>2022-09-19T22:46:01.2893618</LastWritingDateTime>
+      <LastWritingDateTime>2022-09-19T22:44:48.9393336</LastWritingDateTime>
       <WriterProjectTitle>unspecified</WriterProjectTitle>
       <WriterProjectID>unspecified</WriterProjectID>
     </WriterHeader>
@@ -20,11 +20,8 @@
       <Attribute Name="x" AttributeDataType="xs:double" Unit="m" />
       <Attribute Name="y" AttributeDataType="xs:double" Unit="m" />
       <InternalElement Name="Maße" ID="81ff783b-b9be-4b02-90d1-60648cc1cc16">
-        <Attribute Name="Attribute" AttributeDataType="xs:string" />
-        <RoleRequirements RefBaseRoleClassPath="RoleClassLib/RoleClass">
-          <Attribute Name="Laenge" AttributeDataType="xs:double" Unit="m" />
-          <Attribute Name="Breite" AttributeDataType="xs:double" Unit="m" />
-        </RoleRequirements>
+        <InternalElement Name="InternalElement" ID="51ec3d81-208c-426c-b92b-128a21dcce20" />
+        <RoleRequirements RefBaseRoleClassPath="RoleClassLib/RoleClass" />
         <MappingObject>
           <AttributeNameMapping SystemUnitAttributeName="x" RoleAttributeName="Laenge" />
           <AttributeNameMapping SystemUnitAttributeName="y" RoleAttributeName="Breite" />
