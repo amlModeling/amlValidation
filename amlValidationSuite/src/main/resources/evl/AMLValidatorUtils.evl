@@ -260,7 +260,7 @@ operation SystemUnitClass hasRoleRequirementPropertySet() : Boolean
 	baseRoleClass = ergMap.get("obj");
 	
 	
-	if(baseRoleClass.isClassChildOf(ergMap1, "PropertySet", "RoleClass") == true ) //and not isBaseClassDerivedFrom("AutomationMLBaseInterfaces_Extended", self.name))
+	if(baseRoleClass.isDefined() and baseRoleClass.isClassChildOf(ergMap1, "PropertySet", "RoleClass") == true ) //and not isBaseClassDerivedFrom("AutomationMLBaseInterfaces_Extended", self.name))
 	{		
 		return true;
 	}
