@@ -815,7 +815,7 @@ operation CAEXObject isAMLBaseClass() : Boolean
 	var ret : Boolean = false;
 	
 	if(self.isTypeOf(SystemUnitClass) or
-	   self.isTypeOf(InterfaceClass) or 
+	   self.isKindOf(InterfaceClass) or 
 	   self.isTypeOf(RoleClass))
 	  
 	   ret = true;
