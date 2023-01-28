@@ -436,7 +436,7 @@ public class AMLObjectIdentification extends AMLTest{
 	@Test
 	public void ExternalInterfaceInRoleRequirements() throws Exception 
 	{
-		/* Funktioniert nicht, da External Interface im RoleRequirement als InterfaceClass modelliert ist!?!*/
+		
 		
 		String modelPath = TestModelPath + "InstanceID\\ExternalInterfaceInRoleRequirements\\";		
 		
@@ -445,6 +445,27 @@ public class AMLObjectIdentification extends AMLTest{
 		
 		Assertions.assertTrue(executeAndValidateTest(modelPath));
 	}
+	
+	
+	@Test
+	public void ValidExternalInterfaceInInternalElement() throws Exception 
+	{
+
+		String modelPath = TestModelPath + "InstanceID\\ValidExternalInterfaceInInternalElement\\";		
+		
+		Assertions.assertTrue(executeAndValidateTest(modelPath));
+	}
+	
+	
+	@Test
+	public void ValidInternalElements_DifferentIH_NotNested() throws Exception 
+	{
+
+		String modelPath = TestModelPath + "InstanceID\\ValidInternalElements_DifferentIH_NotNested\\";		
+		
+		Assertions.assertTrue(executeAndValidateTest(modelPath));
+	}
+	
 	
 	@Test
 	public void InternalElements_DuplicateIDInstanceHierarchy_SystemUnitClass() throws Exception 
