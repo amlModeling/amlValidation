@@ -39,6 +39,34 @@ public class AMLObjectIdentification extends AMLTest{
 		Assertions.assertTrue(executeAndValidateTest(modelPath));
 	}	
 	
+	
+	@Test
+	public void ValidInterfaceClassLibNames() throws Exception 
+	{
+		String modelPath = TestModelPath + "LibraryNames\\ValidInterfaceClassLibNames\\";		
+		
+				
+		Assertions.assertTrue(executeAndValidateTest(modelPath));		
+	}
+	
+	@Test
+	public void ValidRoleClassLibNames() throws Exception 
+	{
+		String modelPath = TestModelPath + "LibraryNames\\ValidRoleClassLibNames\\";
+		
+						
+		Assertions.assertTrue(executeAndValidateTest(modelPath));		
+	}
+	
+	@Test
+	public void ValidSystemUnitClassLibNames() throws Exception 
+	{
+		String modelPath = TestModelPath + "LibraryNames\\ValidSystemUnitClassLibNames\\";		
+		
+		
+		Assertions.assertTrue(executeAndValidateTest(modelPath));
+	}	
+	
 /*****************************************************************************************************/	
 	
 	@Test
