@@ -65,17 +65,8 @@ public class AMLInstanceRequirements extends AMLTest{
 	}
 	
 	
-	
-	
-	@Test
-	public void BigModelValid() throws Exception 
-	{
-		String modelPath = TestModelPath + "BigModelValid\\";		
-		
-		//addExpectedTestResult("Testcase.aml", "ArePropertySetMappingsValid", "", "", "Laenge not found in RC");
-		Assertions.assertTrue(executeAndValidateTest(modelPath));		
-	}
-	
+
+
 	
 	
 	
@@ -120,6 +111,16 @@ public class AMLInstanceRequirements extends AMLTest{
 		addExpectedTestResult("Testcase.aml", "HasOrderInstanceDirection", "", "", "Instance of Type Order doesn't have attribute Direction: InterfaceClass");
 		Assertions.assertTrue(executeAndValidateTest(modelPath));		
 	}
+	
+	@Test
+	public void ValidIE_CorrectOrder() throws Exception 
+	{
+		String modelPath = TestModelPath + "Order\\ValidIE_CorrectOrder\\";		
+				
+		Assertions.assertTrue(executeAndValidateTest(modelPath));		
+	}
+	
+	
 	
 	@Test
 	public void IE_OrderWithWrongDirectionAttribute() throws Exception 
@@ -347,6 +348,15 @@ public class AMLInstanceRequirements extends AMLTest{
 		String modelPath = TestModelPath + "ExternalDataCon\\IE_ExternalDataConnector_WithoutRefUI\\";		
 		
 		addExpectedTestResult("Testcase.aml", "HasExternalDataConnectorRefURI", "", "", "Instance of Type ExternalDataConnector doesn't have attribute refURI: InterfaceClass");
+		Assertions.assertTrue(executeAndValidateTest(modelPath));		
+	}
+	
+	
+	@Test
+	public void ValidIE_CorrectExternalDataConnector() throws Exception 
+	{
+		String modelPath = TestModelPath + "ExternalDataCon\\ValidIE_CorrectExternalDataConnector\\";
+		
 		Assertions.assertTrue(executeAndValidateTest(modelPath));		
 	}
 	
