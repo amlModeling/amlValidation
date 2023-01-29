@@ -507,5 +507,22 @@ public class AMLPaths extends AMLTest{
 	}
 	
 	
+	@Test
+	public void ValidRCL_Existing_SameFile_RRQ() throws Exception 
+	{
+		String modelPath = TestModelPath + "RoleClass\\ValidRCL_Existing_SameFile_RRQ\\";		
+		
+		Assertions.assertTrue(executeAndValidateTest(modelPath));		
+	}
+	
+	@Test
+	public void ValidRCL_Existing_SameFile_SRC() throws Exception 
+	{
+		String modelPath = TestModelPath + "RoleClass\\ValidRCL_Existing_SameFile_SRC\\";
+		
+		Assertions.assertTrue(executeAndValidateTest(modelPath));		
+	}
+	
+	
 	
 }

@@ -1,0 +1,29 @@
+﻿<CAEXFile FileName="Testcase.aml" SchemaVersion="2.15" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <AdditionalInformation AutomationMLVersion="2.0" />
+  <AdditionalInformation>
+    <WriterHeader>
+      <WriterName>AutomationML Editor</WriterName>
+      <WriterID>916578CA-FE0D-474E-A4FC-9E1719892369</WriterID>
+      <WriterVendor>AutomationML e.V.</WriterVendor>
+      <WriterVendorURL>www.AutomationML.org</WriterVendorURL>
+      <WriterVersion>6.1.3.0</WriterVersion>
+      <WriterRelease>6.1.3.0</WriterRelease>
+      <LastWritingDateTime>2023-01-29T22:45:16.4700996</LastWritingDateTime>
+      <WriterProjectTitle>unspecified</WriterProjectTitle>
+      <WriterProjectID>unspecified</WriterProjectID>
+    </WriterHeader>
+  </AdditionalInformation>
+  <ExternalReference Alias="AMLBaseClasses" Path="AMLBaseclasses.aml" />
+  <InstanceHierarchy Name="InstanceHierarchy">
+    <Version>0</Version>
+    <InternalElement Name="InternalElement" ID="9f32e193-0f73-498f-94c3-d3dbe746f347">
+      <SupportedRoleClass RefRoleClassPath="RoleClassLib/RoleClass1" />
+      <RoleRequirements RefBaseRoleClassPath="RoleClassLib/RoleClass" />
+    </InternalElement>
+  </InstanceHierarchy>
+  <RoleClassLib Name="RoleClassLib">
+    <Version>0</Version>
+    <RoleClass Name="RoleClass" RefBaseClassPath="AMLBaseClasses@AutomationMLBaseRoleClassLib/AutomationMLBaseRole"/>
+    <RoleClass Name="RoleClass1" RefBaseClassPath="AMLBaseClasses@AutomationMLBaseRoleClassLib/AutomationMLBaseRole"/>
+  </RoleClassLib>
+</CAEXFile>
