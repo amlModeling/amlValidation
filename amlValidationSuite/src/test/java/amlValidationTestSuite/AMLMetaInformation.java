@@ -134,7 +134,7 @@ public class AMLMetaInformation extends AMLTest{
 	{
 		String modelPath = TestModelPath + "DuplicateMetaInformation\\";		
 		
-		addExpectedTestResult("Testcase.aml", "ValidateWriterHeader", "", "", "Order of <WriterHeader> elements not correct");
+		addExpectedTestResult("Testcase.aml", "ValidateWriterHeader", "", "", "Duplicate elements detected");
 		
 		Assertions.assertTrue(executeAndValidateTest(modelPath));	
 				
@@ -142,15 +142,24 @@ public class AMLMetaInformation extends AMLTest{
 	
 	
 	@Test
-	public void MultipleWriterHeader() throws Exception 
+	public void MultipleWriterHeaderWrongOrder() throws Exception 
 	{
 		String modelPath = TestModelPath + "MultipleWriterHeader\\";		
 		
-		//addExpectedTestResult("Testcase.aml", "OrderOfWriterHeaderCorrect", "", "", "Order of <WriterHeader> elements not correct");
+		addExpectedTestResult("Testcase.aml", "ValidateWriterHeader", "", "", "Order of <WriterHeader> elements not correct");
 		
 		Assertions.assertTrue(executeAndValidateTest(modelPath));
 		
 				
+	}
+	
+	
+	@Test
+	public void ValidMetaInformation() throws Exception 
+	{
+		String modelPath = TestModelPath + "ValidMetaInformation\\";	
+		
+		Assertions.assertTrue(executeAndValidateTest(modelPath));		
 	}
 	
 	

@@ -97,7 +97,10 @@ operation Element validateWriterHeader(filename : String) : Sequence
 			
 		
 		//Prüfen ob die Elemente in richtiger Reihenfolge stehen
-		bCorrectOrder = bCorrectOrder and writeHeaderElement.name == elementNamesOrder.at(iPosition);
+		iPosition.println();
+		writeHeaderElement.println();
+		if(not bElementDuplicate)
+			bCorrectOrder = bCorrectOrder and writeHeaderElement.name == elementNamesOrder.at(iPosition);
 		iPosition++;		
 	}	
 	
