@@ -209,9 +209,10 @@ operation CAEXObject isClassChildOf(erg : Map, searchCategory : String, libType 
 {
 	var baseClass : InterfaceClass = null; 
 	var mapPath : Map;
-	
+		
+		
 	if (isBaseClassDerivedFrom(searchCategory, self.name))
-	{		
+	{	
 		return true;
 	}
 	if(self.refBaseClassPath.isDefined())
@@ -230,7 +231,17 @@ operation CAEXObject isClassChildOf(erg : Map, searchCategory : String, libType 
 			return false;
 		}
 		else 
-			return retMap.get("obj").isClassChildOf(erg, searchCategory, libType);			
+		{
+			var retRekursion : Boolean;		
+		
+			retRekursion = retMap.get("obj").isClassChildOf(erg, searchCategory, libType);			
+			erg.put("MissingObject", self.name);			
+			return retRekursion;
+		}				
+	}
+	else
+	{	
+		return false;
 	}
 }
 

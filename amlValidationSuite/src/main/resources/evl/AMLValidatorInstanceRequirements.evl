@@ -256,7 +256,7 @@ context CAEX!InternalLink
 
 
 
-context CAEX!InternalElement
+context CAEX!SystemUnitClass
 {
 	constraint AreFacetAttributesValid
 	{
@@ -352,7 +352,7 @@ context CAEX!InternalElement
 }
 
 
-context CAEX!InternalElement
+context CAEX!SystemUnitClass
 {
 	constraint AreGroupChildrenValid
 	{
@@ -524,7 +524,7 @@ operation SystemUnitClass isFacetInstance() : Boolean
 }
 
 
-operation InternalElement isGroupInstance() : Boolean
+operation SystemUnitClass isGroupInstance() : Boolean
 {		
 	var isGroup = self.roleRequirements.isDefined() and self.hasRoleRequirementGroup();
 	

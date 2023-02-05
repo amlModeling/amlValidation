@@ -197,13 +197,13 @@ operation InternalElement checkPropertySetMappings(ergMap : Map) : String
 	for (mappedAttribute : AttributeNameMapping in self.mappingObject.attributeNameMapping)
 	{
 		foundRoleRequirement = false;
-		mappedAttribute.println();
+		//mappedAttribute.println();
 		
 		foundAttributeRC = searchAttribute(rc.attribute, mappedAttribute.roleAttributeName, true, retMap);
 		foundAttributeIC = searchAttribute(base.attribute, mappedAttribute.systemUnitAttributeName, true, retMap);
 		
-		foundAttributeRC.println();
-		foundAttributeIC.println();
+		//foundAttributeRC.println();
+		//foundAttributeIC.println();
 		
 		
 		if (not foundAttributeRC)

@@ -10,10 +10,13 @@ context CAEX!InterfaceClass
 		{	
 			debugOutput("isDerivedFromAMLBaseClass: " + self);
 			
+			//";Eval;isDerivedFromAMLBaseClass;".print();
 			var caexFile : CAEXFile;	
 			var ergMap : Map;
 			var bRet : Boolean;
 			var objName : String;
+			
+			
 			
 			caexFile = self.getCAEXFile();
 			
@@ -24,15 +27,22 @@ context CAEX!InterfaceClass
 			}	
 			else
 			{	
-				self.isClassChildOf(ergMap, "AutomationMLBaseInterfaces", "InterfaceClass");
+				
+				bRet = self.isClassChildOf(ergMap, "AutomationMLBaseInterfaces", "InterfaceClass");
+				
+				ergMap.println();
 				objName = ergMap.get("MissingObject");		
-				bRet = not objName.isDefined();
+				
 			}			
 			
-			return bRet ;
+			return bRet;
 		}
 	
-		message: ValidationExecution.addError(caexFile.filename, "", "", "IsDerivedFromAMLBaseClass", "Class not derived from AMLInterfaceclass: " + objName)		
+		message
+		{ 
+			("FoundConstraintViolation;IsDerivedFromAMLBaseClass;InterfaceClass;"+ objName).println();
+			return ValidationExecution.addError(caexFile.filename, "", "", "IsDerivedFromAMLBaseClass", "Class not derived from AMLInterfaceclass: " + objName);
+		}		
 	}
 }
 
@@ -59,9 +69,9 @@ context CAEX!RoleClass
 			}	
 			else
 			{	
-				self.isClassChildOf(ergMap, "AutomationMLBaseRoles", "RoleClass");
-				objName = ergMap.get("MissingObject");		
-				bRet = not objName.isDefined();
+				bRet = self.isClassChildOf(ergMap, "AutomationMLBaseRoles", "RoleClass");
+				objName = ergMap.get("MissingObject");	
+				
 			}
 			
 			return bRet ;

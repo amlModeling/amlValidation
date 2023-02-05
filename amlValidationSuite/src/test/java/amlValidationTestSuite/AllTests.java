@@ -10,7 +10,8 @@ import org.junit.platform.suite.api.Suite;
 				AMLInstanceRequirements.class,				
 				AMLPaths.class,			
 				AMLMetaInformation.class, 
-				AMLObjectIdentification.class})
+				AMLObjectIdentification.class, 
+				AMLClassRequirements.class})
 public class AllTests {
 
 }

@@ -22,7 +22,9 @@ public class AMLClassRequirements extends AMLTest{
 	{
 		String modelPath = TestModelPath + "InterfaceClass\\IE_WithoutAMLBaseClass_MultipeFiles\\";		
 		
-		addExpectedTestResult("ReferencedLib.aml", "IsDerivedFromAMLBaseClass", "", "", "Class not derived from AMLInterfaceclass: ReferencedICLChild");
+		addExpectedTestResult("Testcase.aml", "IsDerivedFromAMLBaseClass", "", "", "Class not derived from AMLInterfaceclass: InterfaceClass1");
+		addExpectedTestResult("ReferencedLib.aml", "IsDerivedFromAMLBaseClass", "", "", "Class not derived from AMLInterfaceclass: ReferencedICLChild");		
+		
 		Assertions.assertTrue(executeAndValidateTest(modelPath));		
 	}
 		
