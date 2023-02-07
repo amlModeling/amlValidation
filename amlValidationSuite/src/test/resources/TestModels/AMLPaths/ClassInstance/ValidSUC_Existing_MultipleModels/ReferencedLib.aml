@@ -1,0 +1,22 @@
+﻿<CAEXFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" FileName="ReferencedLib.aml" SchemaVersion="2.15" xsi:noNamespaceSchemaLocation="CAEX_ClassModel_V2.15.xsd">
+  <AdditionalInformation AutomationMLVersion="2.0" />
+  <AdditionalInformation>
+    <WriterHeader>
+      <WriterName>AutomationML Editor</WriterName>
+      <WriterID>916578CA-FE0D-474E-A4FC-9E1719892369</WriterID>
+      <WriterVendor>AutomationML e.V.</WriterVendor>
+      <WriterVendorURL>www.AutomationML.org</WriterVendorURL>
+      <WriterVersion>6.1.4.0</WriterVersion>
+      <WriterRelease>6.1.4.0</WriterRelease>
+      <LastWritingDateTime>2023-02-07T01:28:04.5281245</LastWritingDateTime>
+      <WriterProjectTitle>unspecified</WriterProjectTitle>
+      <WriterProjectID>unspecified</WriterProjectID>
+    </WriterHeader>
+  </AdditionalInformation>
+  <SystemUnitClassLib Name="ReferencedSUCL">
+    <Version>1.0.0</Version>
+    <SystemUnitClass Name="ReferencedSUC" ID="472aa5e6-1b84-4308-8d2e-1b8b7f1c58cc">
+		<SupportedRoleClass RefRoleClassPath="AMLBaseClasses@AutomationMLBaseRoleClassLib/AutomationMLBaseRole" />
+	</SystemUnitClass>
+  </SystemUnitClassLib>
+</CAEXFile>

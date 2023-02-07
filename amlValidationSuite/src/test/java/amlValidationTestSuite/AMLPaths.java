@@ -206,7 +206,7 @@ public class AMLPaths extends AMLTest{
 	@Test
 	public void RCL_Existing_MultipleModels() throws Exception 
 	{
-		String modelPath = TestModelPath + "Inheritance\\RCL_Existing_MultipleModels\\";		
+		String modelPath = TestModelPath + "Inheritance\\ValidRCL_Existing_MultipleModels\\";		
 		
 		Assertions.assertTrue(executeAndValidateTest(modelPath));
 	}
@@ -483,6 +483,15 @@ public class AMLPaths extends AMLTest{
 		addExpectedTestResult("Testcase.aml", "IsRefBaseSystemUnitPathValid", "", "", "RefBaseSystemUnitPath not valid: SystemUnitClassLib ReferencedSUCL not found");
 		Assertions.assertTrue(executeAndValidateTest(modelPath));		
 		
+	}
+	
+	
+	@Test
+	public void ValidSUC_Existing_MultipleModels() throws Exception 
+	{
+		String modelPath = TestModelPath + "ClassInstance\\ValidSUC_Existing_MultipleModels\\";		
+
+		Assertions.assertTrue(executeAndValidateTest(modelPath));		
 	}
 	
 	
