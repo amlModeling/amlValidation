@@ -460,7 +460,7 @@ operation CAEXObject isRefBaseClassPathValid(pathMap : Map, libType : String) : 
 
 	ret = self.searchItem(pathMap, searchParent, mirrorSearch, retMap, libType);
 	
-	if (ret = false)
+	if (not ret)
 	{
 		return retMap.get("ErrorMsg");
 	}

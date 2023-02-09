@@ -38,11 +38,8 @@ context CAEX!CAEXFile
 			var bValid : Boolean = true;
 			var validationErrors : Sequence;
 					
-			//writerHeaders.println();
-			
 			for (writerHeader : Element in writerHeaders)
 			{
-				//writerHeader.nestedElements.println();
 				validationErrors.addAll(writerHeader.validateWriterHeader(self.filename));			
 			}
 						
@@ -95,10 +92,6 @@ operation Element validateWriterHeader(filename : String) : Sequence
 		else
 			bElementDuplicate = true;
 			
-		
-		//Prüfen ob die Elemente in richtiger Reihenfolge stehen
-		//iPosition.println();
-		//writeHeaderElement.println();
 		if(not bElementDuplicate)
 			bCorrectOrder = bCorrectOrder and writeHeaderElement.name == elementNamesOrder.at(iPosition);
 		iPosition++;		
@@ -128,11 +121,11 @@ operation Element validateWriterHeader(filename : String) : Sequence
 		}	
 	}
 	
-	if (bElementDuplicate = true and not bElementMissing)
+	if (bElementDuplicate and not bElementMissing)
 		validationErrors.add("Duplicate elements detected");
 		
 	
-	if (bCorrectOrder == false and not bElementMissing)
+	if (not bCorrectOrder and not bElementMissing)
 		validationErrors.add("Order of <WriterHeader> elements not correct");
 		
 		
