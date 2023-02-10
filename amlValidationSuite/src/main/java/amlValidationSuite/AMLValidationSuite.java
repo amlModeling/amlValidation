@@ -16,15 +16,12 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Properties;
-
 import java.util.Set;
 
 import javax.xml.XMLConstants;
@@ -255,51 +252,6 @@ public class AMLValidationSuite {
 	}
 	
 	
-	private XmlModel createEmfModelByURIXML(String metaModelName, String modelPath, 
-			String metamodel, boolean readOnLoad, boolean storeOnDisposal) 
-					throws EolModelLoadingException, URISyntaxException {
-		AMLValidationConfigWrapper config = AMLValidationConfigWrapper.getInstance();
-		XmlModel model = new XmlModel();
-		//StringProperties properties = new StringProperties();
-		StringProperties propertiesXML = new StringProperties();	
-		String modelUri = "";
-		String xsdUri = "";
-				
-		if(!modelPath.isEmpty())
-		{
-			org.eclipse.emf.common.util.URI URIModel = org.eclipse.emf.common.util.URI.createFileURI(modelPath);
-			org.eclipse.emf.common.util.URI URIXsd = org.eclipse.emf.common.util.URI.createFileURI(config.getCaexSchema());
-			modelUri = URIModel.toString();
-			xsdUri = URIXsd.toString();
-		}
-		else
-			readOnLoad = false;		
-		
-		
-		
-		
-		propertiesXML.put(EmfModel.PROPERTY_NAME, metaModelName);
-		propertiesXML.put(EmfModel.PROPERTY_METAMODEL_URI, metamodel);
-		propertiesXML.put(EmfModel.PROPERTY_MODEL_URI, modelUri);
-		//propertiesXML.put(EmfModel.PROPERTY_MODEL_FILE, modelPath);
-		propertiesXML.put(EmfModel.PROPERTY_READONLOAD, readOnLoad + "");
-		//propertiesXML.put(XmlModel.PROPERTY_XSD_URI, xsdUri);
-		propertiesXML.put(EmfModel.PROPERTY_STOREONDISPOSAL, storeOnDisposal + "");
-		propertiesXML.put(EmfModel.PROPERTY_EXPAND, true + "");
-		propertiesXML.put(EmfModel.PROPERTY_CACHED, false + "");
-		propertiesXML.put(XmlModel.PROPERTY_XSD_URI, xsdUri);
-		
-		model.load(propertiesXML, (IRelativePathResolver)null);
-		
-		
-		
-		
-		
-		return model;
-	}
-	
-	
-	
 	private AMLExternalReference parseExternalReference(Element xmlExternalRef)
 	{
 		AMLExternalReference amlExternalReference = new AMLExternalReference();
@@ -327,9 +279,6 @@ public class AMLValidationSuite {
 		
 		return amlExternalReference;
 	}
-	
-	
-	
 	
 	
 	private boolean validateCAEXConformity(String model, String modelFilePath, ValidationExecution valEx) throws FileNotFoundException
@@ -432,8 +381,6 @@ public class AMLValidationSuite {
 		
 		return variables;
 	}
-	
-	
 	
 	
 	public void initializeEVLSource(String filename) throws IllegalArgumentException
@@ -544,12 +491,8 @@ public class AMLValidationSuite {
 	
 	private Collection<UnsatisfiedConstraint> getUnsatisfiedConstraints()
 	{
-		return module.getContext().getUnsatisfiedConstraints();	
-		
-		
+		return module.getContext().getUnsatisfiedConstraints();			
 	}
-	
-	
 	
 	private Set<UnsatisfiedConstraint> execute(IEvlModule module) 
 			throws EolRuntimeException {

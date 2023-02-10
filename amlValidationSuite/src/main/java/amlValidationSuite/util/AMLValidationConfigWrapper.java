@@ -161,14 +161,4 @@ public class AMLValidationConfigWrapper {
 	public void setEvlScrFilePhaseSix(String evlScrFilePhaseSix) {
 		this.evlScrFilePhaseSix = evlScrFilePhaseSix;
 	}
-
-
-	
-
-	
-	
-	
-	
-	
-
 }

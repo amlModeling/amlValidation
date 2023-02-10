@@ -23,9 +23,4 @@ public class AMLExternalReference {
 	public void setRefModel(String refModel) {
 		this.refModel = refModel;
 	}
-	
-	
-
-	
-
 }
